@@ -1,6 +1,26 @@
 # VTI Projekt
 
 
+## Användbara gitkommandon:
+git status
+
+Gör en branch och gå till den:
+git checkout -b <branch name>
+
+För att pusha från branch(körs en gång):
+git push --set-upstream origin <branch name>
+
+Från en branch, pull från en annan branch:
+git pull origin <branch name>
+
+Mergea branch till master:
+git checkout master
+git merge <branch name>
+
+Sparar username och password i en timme:
+git config --global credential.helper 'cache --timeout=3600'
+git push eller git pull
+Skriv in username och password en gång.
 
 ## Getting started
 
