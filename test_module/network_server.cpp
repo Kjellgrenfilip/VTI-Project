@@ -1,6 +1,7 @@
 #include "network_server.h"
 
 #include <QDebug>
+#include <QString>
 
 Network_Server::Network_Server() : QObject(), m_tcpServer{new QTcpServer{this}}
 {
@@ -15,6 +16,30 @@ Network_Server::~Network_Server()
 {
     delete m_tcpServer;
     delete m_tcpSocket;
+}
+
+QJsonObject const& Network_Server::getUpdate()
+{
+    return m_JSON;
+}
+
+void Network_Server::sendUpdate(const QJsonObject &obj)
+{
+    qDebug() << "Not implemented";
+}
+
+void Network_Server::toJSON(QByteArray const& data)
+{
+    QJsonDocument doc{QJsonDocument::fromJson(data)};
+    if(doc.isObject())
+        m_JSON = doc.object();
+    else
+        qDebug() << "weird json format";
+
+    foreach(const QString& key, m_JSON.keys()) {
+        QJsonValue value = m_JSON.value(key);
+        qDebug() << "Key = " << key << ", Value = " << value;
+    }
 }
 
 void Network_Server::newConnection()
@@ -32,5 +57,7 @@ void Network_Server::newConnection()
 void Network_Server::readyRead()
 {
     qDebug() << "Reading ... ";
-    qDebug() << m_tcpSocket->readAll();
+    QByteArray data{m_tcpSocket->readAll()};
+    toJSON(data);
 }
+
