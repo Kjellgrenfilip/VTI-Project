@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>View_Power.qml</file>
+        <file>desk_ikoner/indicator_frameR.png</file>
+        <file>desk_ikoner/Up.png</file>
+        <file>desk_ikoner/indicator_frame.png</file>
+        <file>desk_ikoner/Down.png</file>
+        <file>desk_ikoner/yellow.png</file>
+        <file>desk_ikoner/button69.png</file>
     </qresource>
 </RCC>

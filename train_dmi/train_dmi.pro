@@ -28,3 +28,39 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    desk_ikoner/Down.tif \
+    desk_ikoner/DownY.tif \
+    desk_ikoner/Up.tif \
+    desk_ikoner/UpY.tif \
+    desk_ikoner/back.tif \
+    desk_ikoner/backR.tif \
+    desk_ikoner/backY.tif \
+    desk_ikoner/button.tif \
+    desk_ikoner/button69.tif \
+    desk_ikoner/closed.tif \
+    desk_ikoner/closedG.tif \
+    desk_ikoner/deskPanel.tif \
+    desk_ikoner/deskPanel.xml \
+    desk_ikoner/deskPanel0.bmp \
+    desk_ikoner/deskPanel1.bmp \
+    desk_ikoner/deskPanel2.bmp \
+    desk_ikoner/doorleft.tif \
+    desk_ikoner/doorleftY.tif \
+    desk_ikoner/doorright.tif \
+    desk_ikoner/doorrightY.tif \
+    desk_ikoner/emergencyCall.tif \
+    desk_ikoner/emergencyCallR.tif \
+    desk_ikoner/frontLight.tif \
+    desk_ikoner/frontLightY.tif \
+    desk_ikoner/green.tif \
+    desk_ikoner/indicator_frame.png \
+    desk_ikoner/indicator_frameR.png \
+    desk_ikoner/power.tif \
+    desk_ikoner/power_green.tif \
+    desk_ikoner/redButton.tif \
+    desk_ikoner/siren.tif \
+    desk_ikoner/siren5.tif \
+    desk_ikoner/siren6.tif \
+    desk_ikoner/yellow.tif
