@@ -13,5 +13,6 @@
         <file>desk_ikoner/doorright.png</file>
         <file>desk_ikoner/avgang.png</file>
         <file>desk_ikoner/closed.png</file>
+        <file>View_Brakes.qml</file>
     </qresource>
 </RCC>

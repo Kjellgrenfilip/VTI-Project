@@ -30,13 +30,13 @@ Item
         {
             id: name
             text: qsTr("SPÄNNING")
-            font.pointSize: power.width / 25 // gives warning
+            font.pointSize: power.width / 25
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
-    Grid
-    {
+
+    Grid {
         id: grid
         spacing: 10
         transformOrigin: Item.Center
