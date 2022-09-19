@@ -433,13 +433,18 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qml.cpp
 qrc_qml.cpp: ../train_dmi/qml.qrc \
 		/usr/lib/qt5/bin/rcc \
+		../train_dmi/View_Doors.qml \
 		../train_dmi/View_Power.qml \
 		../train_dmi/main.qml \
 		../train_dmi/desk_ikoner/indicator_frame.png \
+		../train_dmi/desk_ikoner/closed.png \
 		../train_dmi/desk_ikoner/yellow.png \
 		../train_dmi/desk_ikoner/button69.png \
 		../train_dmi/desk_ikoner/Up.png \
+		../train_dmi/desk_ikoner/doorright.png \
+		../train_dmi/desk_ikoner/doorleft.png \
 		../train_dmi/desk_ikoner/indicator_frameR.png \
+		../train_dmi/desk_ikoner/avgang.png \
 		../train_dmi/desk_ikoner/Down.png
 	/usr/lib/qt5/bin/rcc -name qml ../train_dmi/qml.qrc -o qrc_qml.cpp
 

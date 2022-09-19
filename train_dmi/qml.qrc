@@ -8,5 +8,10 @@
         <file>desk_ikoner/Down.png</file>
         <file>desk_ikoner/yellow.png</file>
         <file>desk_ikoner/button69.png</file>
+        <file>View_Doors.qml</file>
+        <file>desk_ikoner/doorleft.png</file>
+        <file>desk_ikoner/doorright.png</file>
+        <file>desk_ikoner/avgang.png</file>
+        <file>desk_ikoner/closed.png</file>
     </qresource>
 </RCC>

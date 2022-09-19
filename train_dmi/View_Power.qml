@@ -30,7 +30,7 @@ Item
         {
             id: name
             text: qsTr("SPÄNNING")
-            font.pointSize: power.width / 25
+            font.pointSize: power.width / 25 // gives warning
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
         }
