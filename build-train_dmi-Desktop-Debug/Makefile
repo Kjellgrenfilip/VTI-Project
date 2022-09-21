@@ -435,6 +435,7 @@ qrc_qml.cpp: ../train_dmi/qml.qrc \
 		/usr/lib/qt5/bin/rcc \
 		../train_dmi/View_Back_Horn.qml \
 		../train_dmi/View_Alarm.qml \
+		../train_dmi/View_Text_Info.qml \
 		../train_dmi/View_Doors.qml \
 		../train_dmi/View_Activate.qml \
 		../train_dmi/View_Brakes.qml \

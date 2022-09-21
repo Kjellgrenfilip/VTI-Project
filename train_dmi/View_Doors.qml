@@ -34,7 +34,7 @@ Item {
     }
     Grid
     {
-        id: grid
+        id: grid_doors
         spacing: 10
         transformOrigin: Item.Center
         anchors.fill:parent
