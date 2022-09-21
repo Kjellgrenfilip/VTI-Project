@@ -6,5 +6,5 @@ Window {
     width: 640
     height: 480
     title: qsTr("Hello World")
-    View_Light_Emergency{}
+    View_Activate{}
 }

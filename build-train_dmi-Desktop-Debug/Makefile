@@ -435,11 +435,13 @@ qrc_qml.cpp: ../train_dmi/qml.qrc \
 		/usr/lib/qt5/bin/rcc \
 		../train_dmi/View_Alarm.qml \
 		../train_dmi/View_Doors.qml \
+		../train_dmi/View_Activate.qml \
 		../train_dmi/View_Brakes.qml \
 		../train_dmi/View_Power.qml \
 		../train_dmi/View_Light_Emergency.qml \
 		../train_dmi/main.qml \
 		../train_dmi/desk_ikoner/indicator_frame.png \
+		../train_dmi/desk_ikoner/power_green.png \
 		../train_dmi/desk_ikoner/closed.png \
 		../train_dmi/desk_ikoner/yellow.png \
 		../train_dmi/desk_ikoner/button69.png \

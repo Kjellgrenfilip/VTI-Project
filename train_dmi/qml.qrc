@@ -16,5 +16,7 @@
         <file>View_Brakes.qml</file>
         <file>View_Alarm.qml</file>
         <file>View_Light_Emergency.qml</file>
+        <file>View_Activate.qml</file>
+        <file>desk_ikoner/power_green.png</file>
     </qresource>
 </RCC>
