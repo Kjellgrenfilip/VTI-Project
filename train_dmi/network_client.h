@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 class Network_Client : public QObject
 {
@@ -12,11 +14,13 @@ public:
     ~Network_Client();
 
     void connectToServer();
-    void sendMessage(char const*data);
+    void sendUpdate(const QJsonObject &obj);
 
 private:
-    QTcpSocket *m_tcpSocket;
+    void toJSON(QByteArray const& data);
 
+    QTcpSocket *m_tcpSocket;
+    QJsonObject m_JSON;
 signals:
 
 public slots:

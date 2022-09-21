@@ -24,6 +24,11 @@ private:
     QTcpSocket *m_tcpSocket;
     QJsonObject m_JSON;
 
+signals:
+    void updateReceived();
+
+
+
 public slots:
     void newConnection();
     void readyRead();

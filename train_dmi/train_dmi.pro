@@ -31,4 +31,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    network_client.h
+    network_client.h \
+    network_interface.h

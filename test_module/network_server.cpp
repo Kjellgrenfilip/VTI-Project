@@ -6,6 +6,7 @@
 Network_Server::Network_Server() : QObject(), m_tcpServer{new QTcpServer{this}}
 {
     connect(m_tcpServer, SIGNAL(newConnection()), this, SLOT(newConnection()));
+
     if(!m_tcpServer->listen(QHostAddress::Any, 1200))
         qDebug() << "Server could not start";
     else
@@ -25,7 +26,9 @@ QJsonObject const& Network_Server::getUpdate()
 
 void Network_Server::sendUpdate(const QJsonObject &obj)
 {
-    qDebug() << "Not implemented";
+    QByteArray data = QJsonDocument{obj}.toJson();
+    m_tcpSocket->write(data, qstrlen(data));
+    m_tcpSocket->flush();
 }
 
 void Network_Server::toJSON(QByteArray const& data)
@@ -48,9 +51,6 @@ void Network_Server::newConnection()
 
     connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 
-    m_tcpSocket->write("hello client \r\n");
-    m_tcpSocket->flush();
-
     m_tcpSocket->waitForBytesWritten(3000);
 }
 
@@ -59,5 +59,6 @@ void Network_Server::readyRead()
     qDebug() << "Reading ... ";
     QByteArray data{m_tcpSocket->readAll()};
     toJSON(data);
+    emit updateReceived();
 }
 

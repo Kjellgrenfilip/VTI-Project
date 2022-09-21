@@ -1,12 +1,13 @@
 #include <QCoreApplication>
 
 #include "network_server.h"
+#include "test_module.h"
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    Network_Server n_Server{};
+    Test_Module tester{};
 
     return a.exec();
 }

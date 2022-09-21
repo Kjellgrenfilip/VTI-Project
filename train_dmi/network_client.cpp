@@ -4,6 +4,7 @@
 
 Network_Client::Network_Client() : QObject(), m_tcpSocket{new QTcpSocket{this}}
 {
+    // Connects signals for TCP connection handling.
     connect(m_tcpSocket, SIGNAL(connected()), this, SLOT(connected()));
     connect(m_tcpSocket, SIGNAL(disconnected()), this, SLOT(disconnected()));
     connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
@@ -15,10 +16,25 @@ Network_Client::~Network_Client()
     delete m_tcpSocket;
 }
 
-void Network_Client::sendMessage(char const*data)
+void Network_Client::sendUpdate(const QJsonObject &obj)
 {
+    QByteArray data = QJsonDocument{obj}.toJson();
     m_tcpSocket->write(data, qstrlen(data));
     m_tcpSocket->flush();
+}
+
+void Network_Client::toJSON(QByteArray const& data)
+{
+    QJsonDocument doc{QJsonDocument::fromJson(data)};
+    if(doc.isObject())
+        m_JSON = doc.object();
+    else
+        qDebug() << "weird json format";
+
+    foreach(const QString& key, m_JSON.keys()) {
+        QJsonValue value = m_JSON.value(key);
+        qDebug() << "Key = " << key << ", Value = " << value;
+    }
 }
 
 void Network_Client::connectToServer()
@@ -27,7 +43,6 @@ void Network_Client::connectToServer()
     m_tcpSocket->connectToHost("127.0.0.1", 1200);
     m_tcpSocket->waitForConnected(1000);
 }
-
 
 void Network_Client::connected()
 {
@@ -47,6 +62,7 @@ void Network_Client::bytesWritten(qint64 bytes)
 void Network_Client::readyRead()
 {
     qDebug() << "Reading ... ";
-    qDebug() << m_tcpSocket->readAll();
+    QByteArray data{m_tcpSocket->readAll()};
+    toJSON(data);
 }
 

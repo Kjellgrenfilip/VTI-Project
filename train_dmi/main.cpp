@@ -4,6 +4,7 @@
 #include <QJsonDocument>
 
 #include "network_client.h"
+#include "network_interface.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,17 +23,15 @@ int main(int argc, char *argv[])
 
     QJsonObject json{};
 
-    json.insert("Test0", 10);
-    json.insert("Test1", QJsonValue::Null);
-    json.insert("Test2", true);
-    json.insert("Test3", false);
-    json.insert("Test4", "Hejsan");
-    json.insert("Test5", 100);
-    json.insert("Test6", 10.0);
+
+    json.insert(VTI_DMI::BUTTON_1, true);
+    json.insert(VTI_DMI::BUTTON_2, false);
+    json.insert(VTI_DMI::VELOCITY, 100);
+    json.insert(VTI_DMI::VOLTAGE, 10.0);
 
     Network_Client n_Client{};
     n_Client.connectToServer();
-    n_Client.sendMessage(QJsonDocument{json}.toJson());
+    n_Client.sendUpdate(json);
 
     return app.exec();
 }
