@@ -15,5 +15,6 @@
         <file>desk_ikoner/closed.png</file>
         <file>View_Brakes.qml</file>
         <file>View_Alarm.qml</file>
+        <file>View_Light_Emergency.qml</file>
     </qresource>
 </RCC>
