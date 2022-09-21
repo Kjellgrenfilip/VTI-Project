@@ -26,15 +26,15 @@ Item {
         Text
         {
             id: name
-            text: qsTr("DÖRRAR")
-            font.pointSize: brakes.width / 25 // gives warning
+            text: qsTr("BROMS")
+            font.pointSize: brakes.width / 20 // gives warning
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
     Grid
     {
-        id: grid
+        id: grid_brakes
         spacing: 10
         transformOrigin: Item.Center
         anchors.fill:parent
@@ -48,14 +48,17 @@ Item {
             height: parent.height / 2 - 5
             Image
             {
-
-                id: pont_up
+                id: park_image
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
             Text {
-                id: park
+                id: park_text
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("PARK")
+                font.pointSize: parent.width /8
+                color: "White"
 
             }
         }
@@ -65,26 +68,25 @@ Item {
             height: parent.height / 2 - 5
             Image
             {
-
-                id: b
+                id: broms_image
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
             Text {
-                id: broms
+                id: broms_text_a
+                anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                y:parent.y + parent.height/2
                 text: qsTr("BROMS")
-                font.pointSize: parent.width /15
+                font.pointSize: parent.width /8
                 color:"White"
             }
             Text {
-                id: bromon
+                id: broms_text_b
                 text: qsTr("FRÅN")
+                anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                //anchors.verticalCenter: parent.verticalCenter
-                y:broms.y + 30
-                font.pointSize: parent.width /15
+                //y:broms.y + 30
+                font.pointSize: parent.width /8
                 color:"White"
             }
         }
@@ -94,10 +96,26 @@ Item {
             height: parent.height / 2 - 5
             Image
             {
-
-                id: c
+                id: elbr_image
                 anchors.fill: parent
-                source: "desk_ikoner/avgang.png"
+                source: "desk_ikoner/button69.png"
+            }
+            Text {
+                id: elbr_text_a
+                anchors.bottom: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("ELBR")
+                font.pointSize: parent.width /8
+                color:"White"
+            }
+            Text {
+                id: elbr_text_b
+                text: qsTr("TILL")
+                anchors.top: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                //y:broms.y + 30
+                font.pointSize: parent.width /8
+                color:"White"
             }
 
         }
@@ -107,10 +125,17 @@ Item {
             height: parent.height / 2 - 5
             Image
             {
-
-                id: d
+                id: mg_image
                 anchors.fill: parent
-                source: "desk_ikoner/closed.png"
+                source: "desk_ikoner/button69.png"
+            }
+            Text {
+                id: mg_text
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("MG")
+                font.pointSize: parent.width /8
+                color:"White"
             }
         }
 
