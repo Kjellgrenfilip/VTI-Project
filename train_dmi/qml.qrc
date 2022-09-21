@@ -18,5 +18,7 @@
         <file>View_Light_Emergency.qml</file>
         <file>View_Activate.qml</file>
         <file>desk_ikoner/power_green.png</file>
+        <file>View_Back_Horn.qml</file>
+        <file>desk_ikoner/siren5.png</file>
     </qresource>
 </RCC>

@@ -433,6 +433,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qml.cpp
 qrc_qml.cpp: ../train_dmi/qml.qrc \
 		/usr/lib/qt5/bin/rcc \
+		../train_dmi/View_Back_Horn.qml \
 		../train_dmi/View_Alarm.qml \
 		../train_dmi/View_Doors.qml \
 		../train_dmi/View_Activate.qml \
@@ -447,6 +448,7 @@ qrc_qml.cpp: ../train_dmi/qml.qrc \
 		../train_dmi/desk_ikoner/button69.png \
 		../train_dmi/desk_ikoner/Up.png \
 		../train_dmi/desk_ikoner/doorright.png \
+		../train_dmi/desk_ikoner/siren5.png \
 		../train_dmi/desk_ikoner/doorleft.png \
 		../train_dmi/desk_ikoner/indicator_frameR.png \
 		../train_dmi/desk_ikoner/avgang.png \
