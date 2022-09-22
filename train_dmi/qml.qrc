@@ -6,5 +6,7 @@
         <file>DESK_view.qml</file>
         <file>Imports/Constants.qml</file>
         <file>Imports/qmldir</file>
+        <file>Buttontest.qml</file>
+        <file>Buttontest2.qml</file>
     </qresource>
 </RCC>

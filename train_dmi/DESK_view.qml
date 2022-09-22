@@ -9,7 +9,7 @@ Item{
     Frame{
         id: leftFrame;
         anchors.left: mainItem.left;
-        width: (parent.width-640) / 2 ;
+        width: parent.width/4
         height:parent.height;
         background: Rectangle{
             anchors.fill: parent;
@@ -23,12 +23,61 @@ Item{
             }
 
         }
-        Grid{
-            id: leftGrid
+        GridLayout{
             anchors.fill: parent;
             columns: 1;
-            rows: 3;
-            rowSpacing: 2;
+            rows: 4;
+            rowSpacing: 4;
+
+
+            Rectangle{
+                       color: "red";
+                       border.color: "white";
+                       border.width: 2;
+                       Layout.fillHeight: true
+                       Layout.fillWidth: true
+                       //Layout.rowSpan: 3
+                       //Layout.row: 4
+                       Layout.preferredHeight: (parent.height*3)/7
+                       Buttontest2{}
+
+                     }
+            Rectangle{
+                        color: "yellow";
+                        border.color: "white";
+                        border.width: 2;
+                        //height: 100;
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        //Layout.rowSpan: 2
+                        Layout.preferredHeight: (parent.height*2)/7
+                        Buttontest{}
+                     }
+
+            Rectangle{
+                        color: "blue";
+                        border.color: "white";
+                        border.width: 2;
+                        //height: 100;
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        //Layout.rowSpan: 1
+                        Layout.preferredHeight: (parent.height*1)/7
+
+                     }
+            Rectangle{
+                        color: "blue";
+                        border.color: "white";
+                        border.width: 2;
+                        //height: 100;
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        //Layout.rowSpan: 1
+                        Layout.preferredHeight: (parent.height*1)/7
+
+                     }
+
+
 
         }
     }
@@ -37,7 +86,7 @@ Item{
         anchors.bottom: mainItem.bottom;
         anchors.horizontalCenter: mainItem.horizontalCenter;
         width: mainItem.width-leftFrame.width-rightFrame.width;
-        height: mainItem.height-480;
+        height: mainItem.height/6;
 
         background: Rectangle{
             anchors.fill: parent;
@@ -55,7 +104,7 @@ Item{
     Frame{
         id: rightFrame;
         anchors.right: mainItem.right
-        width: (parent.width-640) / 2 ;
+        width: parent.width/4
         height:parent.height;
         background: Rectangle{
             anchors.fill: parent;

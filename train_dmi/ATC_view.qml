@@ -3,11 +3,12 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 Item {
+    anchors.fill: parent;
     visible: false;
     Frame{
         id: leftFrame;
-        width: 1080;
-        height: 50;
+        width: parent.width;
+        height: parent.height/6;
         background: Rectangle{
             anchors.fill: parent;
             color: "black";

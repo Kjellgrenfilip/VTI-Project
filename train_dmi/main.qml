@@ -7,8 +7,8 @@ import "Imports" 1.0
 Window {
     id: mainWindow
     visible: true
-    width: MyConst.window_width
-    height: MyConst.window_height
+    minimumWidth: MyConst.window_width
+    minimumHeight: MyConst.window_height
 
 
     title: qsTr("Hello World")
