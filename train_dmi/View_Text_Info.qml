@@ -19,19 +19,40 @@ Item {
         anchors.left: parent.right
         rows: 1
         columns: 2
-        anchors.margins: 30
-
-        TextArea
+        //anchors.margins: 30
+        Rectangle
         {
-            id: text_info_text_area
-            width: parent.width / 2 - 5
+            width: parent.width*7/8
             height: parent.height - 5
-            color: "White"
+            color: "black"
+            border.width: 10
+            border.color: "grey"
+            radius: 25
+            Text {
+                id: text_info_a
+                anchors.left: parent.left
+                anchors.top: parent.top
+                anchors.margins: 15
+                text: qsTr("")
+                color:"White"
+            }
+            Text {
+                id: text_info_b
+                //anchors.fill: parent
+                anchors.top: text_info_a.bottom
+                anchors.left: parent.left
+                anchors.leftMargin: 15
+                anchors.topMargin: 3
+
+                text: qsTr("")
+                color:"White"
+            }
         }
+
 
         Button
         {
-            width: parent.width / 2 - 5
+            width: parent.width / 8 - 5
             height: parent.height - 5
             Image
             {
