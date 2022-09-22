@@ -4,6 +4,7 @@
         <file>ATC_view.qml</file>
         <file>ETCS_view.qml</file>
         <file>DESK_view.qml</file>
-        <file>Constants.qml</file>
+        <file>Imports/Constants.qml</file>
+        <file>Imports/qmldir</file>
     </qresource>
 </RCC>

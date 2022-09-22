@@ -32,3 +32,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     network_client.h
+
+DISTFILES += \
+    qmldir

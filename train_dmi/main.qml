@@ -2,15 +2,15 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
-//import "Constants.qml"
+import "Imports" 1.0
 
 Window {
     id: mainWindow
     visible: true
-    width: Constants.WIDTH
-    height: Constants.HEIGHT
-    minimumHeight:720
-    minimumWidth: 1280
+    width: MyConst.window_width
+    height: MyConst.window_height
+
+
     title: qsTr("Hello World")
     DESK_view{}
     ETCS_view{}
