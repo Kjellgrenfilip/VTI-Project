@@ -44,8 +44,13 @@ Item {
         anchors.margins: 30
         Button
         {
-            width: parent.width / 2 - 5
+            id: nbo_button
+
+
+            //width: parent.width / 2 - 5
+            width: (nbo_button.pressed) ? parent.width / 2 - 5 : parent.width / 3
             height: parent.height - 5
+
             Image
             {
                 id: nbo_image
@@ -61,6 +66,7 @@ Item {
                 color: "White"
 
             }
+
         }
         Button
         {

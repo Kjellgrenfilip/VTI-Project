@@ -41,6 +41,7 @@ Item {
                 color: "White"
 
             }
+
         }
         Button
         {
