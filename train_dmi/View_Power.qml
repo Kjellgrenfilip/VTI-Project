@@ -48,8 +48,9 @@ Item
         // clickable pantograph up
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 3 - 5
+            id:pont_up_button
+            width: (pont_up_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(pont_up_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             Image
             {
 
@@ -61,8 +62,9 @@ Item
         // non-clickable power indicator
         Button
         {
-            width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            id:pont_charge_button
+            width:  parent.width / 2 - 5
+            height: parent.height / 3 - 7
 
             Image
             {
@@ -75,8 +77,9 @@ Item
         //clickable pantograph down
         Button
         {
-            width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            id:pont_down_button
+            width: (pont_down_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(pont_down_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             Image
             {
                 id:pont_down
@@ -88,8 +91,9 @@ Item
         // non-clickable current indicator?
         Button
         {
-            width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            id:sp_button
+            width: parent.width / 2 - 5
+            height: parent.height / 3 - 10
             Image
             {
                 id:sp
@@ -101,8 +105,9 @@ Item
         //clickable main breaker
         Button
         {
-            width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            id:h_bryt_button
+            width: (h_bryt_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(h_bryt_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             Image
             {
                 id: h_bryt
@@ -114,8 +119,9 @@ Item
         //clickable heating
         Button
         {
-            width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            id:tågv_button
+            width: (tågv_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(tågv_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             Image
             {
                 id:tågv

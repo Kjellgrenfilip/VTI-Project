@@ -22,8 +22,9 @@ Item {
         anchors.margins: 30
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height - 5
+            id: back_button
+            width: (back_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(back_button.pressed) ? parent.height - 10 : parent.height - 5
             Image
             {
                 id: back_image
@@ -42,8 +43,10 @@ Item {
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height - 5
+
+            id: horn_button
+            width: (horn_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(horn_button.pressed) ? parent.height - 10 : parent.height - 5
             Image
             {
                 id: horn_image

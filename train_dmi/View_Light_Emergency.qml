@@ -37,8 +37,9 @@ Item {
         anchors.margins: 30
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height - 5
+            id: light_button
+            width: (light_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(light_button.pressed) ? parent.height - 10 : parent.height - 5
             Image
             {
                 id: light_image
@@ -64,8 +65,9 @@ Item {
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height - 5
+            id: emergency_button
+            width: (emergency_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(emergency_button.pressed) ? parent.height - 10 : parent.height - 5
             Image
             {
                 id: emergency_image

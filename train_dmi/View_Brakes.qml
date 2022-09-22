@@ -44,8 +44,9 @@ Item {
         anchors.margins: 30
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 2 - 5
+            id: park_button
+            width: (park_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(park_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
                 id: park_image
@@ -64,8 +65,9 @@ Item {
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 2 - 5
+            id: broms_button
+            width: (broms_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(broms_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
                 id: broms_image
@@ -92,8 +94,9 @@ Item {
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 2 - 5
+            id: elbr_button
+            width: (elbr_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(elbr_button.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
             Image
             {
                 id: elbr_image
@@ -121,8 +124,9 @@ Item {
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 2 - 5
+            id: mg_button
+            width: (mg_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(mg_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
                 id: mg_image

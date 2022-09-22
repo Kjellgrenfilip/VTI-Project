@@ -44,36 +44,39 @@ Item {
         anchors.margins: 30
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 2 - 5
+            id: door_left_button
+            width: (door_left_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(door_left_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
 
-                id: pont_up
+                id: door_left_image
                 anchors.fill: parent
                 source: "desk_ikoner/doorleft.png"
             }
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 2 - 5
+            id:door_right_button
+            width: (door_right_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(door_right_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
 
-                id: b
+                id:door_right_image
                 anchors.fill: parent
                 source: "desk_ikoner/doorright.png"
             }
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 2 - 5
+            id:avgang_button
+            width: (avgang_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(avgang_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
 
-                id: c
+                id: avgang_image
                 anchors.fill: parent
                 source: "desk_ikoner/avgang.png"
             }
@@ -81,12 +84,13 @@ Item {
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height / 2 - 5
+            id:closed_button
+            width: (closed_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(closed_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
 
-                id: d
+                id: closed_image
                 anchors.fill: parent
                 source: "desk_ikoner/closed.png"
             }

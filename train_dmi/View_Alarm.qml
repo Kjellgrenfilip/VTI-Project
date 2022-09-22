@@ -48,8 +48,8 @@ Item {
 
 
             //width: parent.width / 2 - 5
-            width: (nbo_button.pressed) ? parent.width / 2 - 5 : parent.width / 3
-            height: parent.height - 5
+            width: (nbo_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(nbo_button.pressed) ? parent.height - 10 : parent.height - 5
 
             Image
             {
@@ -70,8 +70,11 @@ Item {
         }
         Button
         {
-            width: parent.width / 2 - 5
-            height: parent.height - 5
+            id: brand_button
+            width: (brand_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(brand_button.pressed) ? parent.height - 10 : parent.height - 5
+
+            anchors.left: parent.horizontalCenter
             Image
             {
                 id: brand_image

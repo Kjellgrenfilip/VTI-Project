@@ -23,8 +23,9 @@ Item {
         anchors.margins: 30
         Button
         {
-            width: parent.width / 3 - 5
-            height: parent.height - 5
+            id: activate_button
+            width: (activate_button.pressed) ? parent.width / 3 -10 : parent.width / 3 - 5
+            height:(activate_button.pressed) ? parent.height - 10 : parent.height - 5
             Image
             {
                 id: activate_image
@@ -45,8 +46,9 @@ Item {
         }
         Button
         {
-            width: parent.width / 3 - 5
-            height: parent.height - 5
+            id: protection_button
+            width: (protection_button.pressed) ? parent.width / 3 -10 : parent.width / 3 - 5
+            height:(protection_button.pressed) ? parent.height - 10 : parent.height - 5
             Image
             {
                 id: protection_image
@@ -65,8 +67,9 @@ Item {
            }
         Button
         {
-            width: parent.width / 3 - 5
-            height: parent.height - 5
+            id: cart_button
+            width: (cart_button.pressed) ? parent.width / 3 -10 : parent.width / 3 - 5
+            height:(cart_button.pressed) ? parent.height - 10 : parent.height - 5
             Image
             {
                 id: cart_image

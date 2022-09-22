@@ -6,5 +6,5 @@ Window {
     width: 640
     height: 480
     title: qsTr("Hello World")
-    View_Alarm{}
+    View_Power{}
 }
