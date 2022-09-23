@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-
+/*known bug : text follows when button is pressed. this should not happen*/
 Item {
     id: brakes
     anchors.fill: parent
@@ -36,7 +36,7 @@ Item {
                 id: activate_text
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: activate_image.bottom
+                anchors.top:parent.bottom
                 text: qsTr("AKTIVERING")
                 font.pointSize: parent.width /8
                 color: "White"

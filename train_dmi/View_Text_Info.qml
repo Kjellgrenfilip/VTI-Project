@@ -22,7 +22,7 @@ Item {
         //anchors.margins: 30
         Rectangle
         {
-            width: parent.width*7/8
+            width: parent.width*7/8 -5
             height: parent.height - 5
             color: "black"
             border.width: 10

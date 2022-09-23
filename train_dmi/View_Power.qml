@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.12
 //import
 //import "other files/desk_ikoner"
 
@@ -36,21 +37,24 @@ Item
         }
     }
 
-    Grid {
+   Grid  {
         id: grid
         spacing: 10
-        transformOrigin: Item.Center
+        //transformOrigin: Item.Center
         anchors.fill:parent
-        anchors.left: parent.right
+        //anchors.left: parent.right
         rows: 3
         columns: 2
         anchors.margins: 30
         // clickable pantograph up
         Button
         {
+
             id:pont_up_button
             width: (pont_up_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pont_up_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            //anchors.fill: parent
+
             Image
             {
 
@@ -93,7 +97,7 @@ Item
         {
             id:sp_button
             width: parent.width / 2 - 5
-            height: parent.height / 3 - 10
+            height: parent.height / 3 - 7
             Image
             {
                 id:sp
@@ -108,6 +112,7 @@ Item
             id:h_bryt_button
             width: (h_bryt_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(h_bryt_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+
             Image
             {
                 id: h_bryt
@@ -122,6 +127,7 @@ Item
             id:tågv_button
             width: (tågv_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(tågv_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+
             Image
             {
                 id:tågv
