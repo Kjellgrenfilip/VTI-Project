@@ -14,7 +14,9 @@ Item {
         anchors.verticalCenter: etcs.verticalCenter;
         background: Rectangle{
             anchors.fill: parent;
-            color: "black";
+            color: "#041122";
+            border.color: "#bfbfbf";
+            border.width: 2;
             Text{
                 text: "ETCS_Panel";
                 color:"white";

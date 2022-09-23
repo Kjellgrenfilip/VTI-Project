@@ -2,24 +2,28 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-
+import "Imports" 1.0
 Item{
     anchors.fill: parent
     id: mainItem
+
     Frame{
         id: leftFrame;
         anchors.left: mainItem.left;
+        anchors.bottom: mainItem.bottom;
         width: parent.width/4
-        height:parent.height;
+        height:(parent.height/6)*5;
+
         background: Rectangle{
             anchors.fill: parent;
-            color: "black";
-            border.color: "white";
+            color: MyConst.backgroundColor;
+            border.color: "#bfbfbf";
             border.width: 2;
 
             Text{
             text: "Left Desk PANEL";
             color: "white";
+
             }
 
         }
@@ -28,59 +32,58 @@ Item{
             columns: 1;
             rows: 4;
             rowSpacing: 4;
+            anchors.margins: 10;
 
-
+            //Each rectangle represents a group of buttons. Insert one ButtonGroup per rectangle.
             Rectangle{
-                       color: "red";
-                       border.color: "white";
+                       id: powerButtons
+                       color: "transparent";
+                       border.color: "#bfbfbf";
                        border.width: 2;
                        Layout.fillHeight: true
                        Layout.fillWidth: true
-                       //Layout.rowSpan: 3
-                       //Layout.row: 4
                        Layout.preferredHeight: (parent.height*3)/7
-                       Buttontest2{}
+                       //Call ButtonGroup qml file here.
 
                      }
+
             Rectangle{
-                        color: "yellow";
-                        border.color: "white";
+                        id: doorButtons
+                        color: "transparent";
+                        border.color: "#bfbfbf";
                         border.width: 2;
-                        //height: 100;
                         Layout.fillHeight: true
                         Layout.fillWidth: true
-                        //Layout.rowSpan: 2
                         Layout.preferredHeight: (parent.height*2)/7
-                        Buttontest{}
+                        //Call ButtonGroup qml file here.
                      }
 
             Rectangle{
-                        color: "blue";
-                        border.color: "white";
+                        id: backhornButtons
+                        color: "transparent";
+                        border.color: "#bfbfbf";
                         border.width: 2;
-                        //height: 100;
                         Layout.fillHeight: true
                         Layout.fillWidth: true
-                        //Layout.rowSpan: 1
                         Layout.preferredHeight: (parent.height*1)/7
-
+                         //Call ButtonGroup qml file here.
                      }
             Rectangle{
-                        color: "blue";
-                        border.color: "white";
+                        id: activationButtons
+                        color: "transparent";
+                        border.color: "#bfbfbf";
                         border.width: 2;
-                        //height: 100;
                         Layout.fillHeight: true
                         Layout.fillWidth: true
-                        //Layout.rowSpan: 1
                         Layout.preferredHeight: (parent.height*1)/7
-
+                         //Call ButtonGroup qml file here.
                      }
 
 
 
         }
     }
+
     Frame{
         id: bottomFrame
         anchors.bottom: mainItem.bottom;
@@ -90,8 +93,8 @@ Item{
 
         background: Rectangle{
             anchors.fill: parent;
-            color: "black";
-            border.color: "white";
+            color: MyConst.backgroundColor;
+            border.color: "#bfbfbf";
             border.width: 2;
 
             Text{
@@ -100,22 +103,89 @@ Item{
 
             }
         }
+        Rectangle{
+            color: "transparent";
+            anchors.fill: parent;
+
+
+        }
     }
     Frame{
         id: rightFrame;
         anchors.right: mainItem.right
+        anchors.bottom: mainItem.bottom
         width: parent.width/4
-        height:parent.height;
+        height:(parent.height/6)*5;
         background: Rectangle{
             anchors.fill: parent;
-            color: "black";
-            border.color: "white";
+            color: MyConst.backgroundColor;
+            border.color: "#bfbfbf";
             border.width: 2;
+            Text{
+            text: "right Desk PANEL";
+            color: "white";
+            }
         }
-        Text{
-        text: "right Desk PANEL";
-        color: "white";
+
+
+        GridLayout{
+            anchors.fill: parent;
+            columns: 1;
+            rows: 4;
+            rowSpacing: 4;
+            anchors.margins: 10;
+
+
+            Rectangle{
+                       color: "transparent";
+                       border.color: "#bfbfbf";
+                       border.width: 2;
+                       Layout.fillHeight: true
+                       Layout.fillWidth: true
+
+                       Layout.preferredHeight: (parent.height*2)/7
+
+
+                     }
+            Rectangle{
+                        color: "transparent";
+                        border.color: "#bfbfbf";
+                        border.width: 2;
+
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        Layout.preferredHeight: (parent.height*3)/7
+
+                     }
+
+            Rectangle{
+                        color: "transparent";
+                        border.color: "#bfbfbf";
+                        border.width: 2;
+
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        Layout.preferredHeight: (parent.height*1)/7
+
+                     }
+            Rectangle{
+                        color: "transparent";
+                        border.color: "#bfbfbf";
+                        border.width: 2;
+
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        Layout.preferredHeight: (parent.height*1)/7
+
+                     }
+
+
+
         }
     }
+
 }
 

@@ -59,7 +59,8 @@ OBJECTS       = main.o \
 		network_client.o \
 		qrc_qml.o \
 		moc_network_client.o
-DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
+DIST          = ../train_dmi/qmldir \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf \
@@ -405,11 +406,14 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qml.cpp
 qrc_qml.cpp: ../train_dmi/qml.qrc \
 		/usr/lib/qt5/bin/rcc \
+		../train_dmi/Buttontest.qml \
 		../train_dmi/ATC_view.qml \
 		../train_dmi/DESK_view.qml \
-		../train_dmi/Constants.qml \
+		../train_dmi/Buttontest2.qml \
 		../train_dmi/ETCS_view.qml \
-		../train_dmi/main.qml
+		../train_dmi/main.qml \
+		../train_dmi/Imports/Constants.qml \
+		../train_dmi/Imports/qmldir
 	/usr/lib/qt5/bin/rcc -name qml ../train_dmi/qml.qrc -o qrc_qml.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h

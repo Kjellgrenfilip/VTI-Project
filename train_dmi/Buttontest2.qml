@@ -49,7 +49,7 @@ Item
         Button
         {
             width: parent.width / 2 - 5
-            height: parent.height / 3 - 5
+            height: parent.height / 3 - 7
             Image
             {
 
@@ -62,7 +62,7 @@ Item
         Button
         {
             width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            height: parent.height / 3 - 7
 
             Image
             {
@@ -78,7 +78,7 @@ Item
         Button
         {
             width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            height: parent.height / 3 - 7
             Image
             {
                 id:pont_down
@@ -91,7 +91,7 @@ Item
         Button
         {
             width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            height: parent.height / 3 - 7
             Image
             {
                 id:sp
@@ -104,7 +104,7 @@ Item
         Button
         {
             width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            height: parent.height / 3 - 7
             Image
             {
                 id: h_bryt
@@ -117,7 +117,7 @@ Item
         Button
         {
             width: parent.width / 2 -5
-            height: parent.height / 3 - 5
+            height: parent.height / 3 - 7
             Image
             {
                 id:tågv

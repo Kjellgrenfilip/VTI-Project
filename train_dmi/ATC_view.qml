@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.12
 
 Item {
     anchors.fill: parent;
-    visible: false;
+    visible: true;
     Frame{
         id: leftFrame;
         width: parent.width;

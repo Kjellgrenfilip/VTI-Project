@@ -9,7 +9,7 @@ Window {
     visible: true
     minimumWidth: MyConst.window_width
     minimumHeight: MyConst.window_height
-
+    color: MyConst.backgroundColor;
 
     title: qsTr("Hello World")
     DESK_view{}
