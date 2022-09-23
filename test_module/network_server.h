@@ -6,6 +6,8 @@
 #include <QTcpSocket>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QTime>
+#include <QCoreApplication>
 
 class Network_Server : public QObject
 {
@@ -14,20 +16,18 @@ public:
     explicit Network_Server();
     ~Network_Server();
 
-    QJsonObject const& getUpdate();
-    void sendUpdate(QJsonObject const& obj);
+    QJsonObject getUpdate();
+    bool sendUpdate(QJsonObject const& obj);
 
 private:
-    void toJSON(QByteArray const& bytes);
+    void delay(int time_to_wait);
 
     QTcpServer *m_tcpServer;
     QTcpSocket *m_tcpSocket;
-    QJsonObject m_JSON;
+    QJsonObject m_jsonUpdate;
 
 signals:
     void updateReceived();
-
-
 
 public slots:
     void newConnection();

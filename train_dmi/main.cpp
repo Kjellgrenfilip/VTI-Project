@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QTime>
 
 #include "network_client.h"
 #include "network_interface.h"
@@ -23,15 +24,18 @@ int main(int argc, char *argv[])
 
     QJsonObject json{};
 
-
     json.insert(VTI_DMI::BUTTON_1, true);
     json.insert(VTI_DMI::BUTTON_2, false);
-    json.insert(VTI_DMI::VELOCITY, 100);
+    json.insert(VTI_DMI::VELOCITY, 0);
     json.insert(VTI_DMI::VOLTAGE, 10.0);
 
     Network_Client n_Client{};
     n_Client.connectToServer();
-    n_Client.sendUpdate(json);
 
+    for(int i{1}; i < 1000; i++)
+    {
+        json.insert(VTI_DMI::VELOCITY, i);
+        n_Client.sendUpdate(json);
+    }
     return app.exec();
 }
