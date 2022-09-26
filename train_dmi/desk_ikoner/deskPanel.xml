@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<atc>
+	<view type="orthographic" left="0" right="1" bottom="0" top="1" near="0.01" far="10"/>
+	
+	<panel name="deskPanel">
+		<property name="0" default="enabled" x="0.5" y="0.5" width="1" height="1">
+			<symbol id="enabled" file="desk/deskPanel2.bmp" />				
+			<symbol id="init" file="desk/deskPanel1.bmp"/>	
+			<symbol id="disabled" file="desk/deskPanel0.bmp"/>	
+		</property>
+		
+		<property name="tagv" default="enabled" x="0.145" y="0.58" width=".072" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="TÅGV." alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="yellow" file="desk/yellow.tif" >	
+				<text string="TÅGV." alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="16kV" default="16kV" x="0.145" y="0.77" width=".072" height=".08">
+			<symbol id="16kV" file="desk/indicator_frame.png">	
+				<text string="16kV" alignment="center" width="0.014" height="0.020" grey="0.1"/>	
+			</symbol>	
+			<symbol id="0V" file="desk/indicator_frameR.png">	
+				<text string="0V" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="0-sp" default="enabled" x="0.145" y="0.675" width=".072" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="0-SP." alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="yellow" file="desk/yellow.tif" >	
+				<text string="0-SP." alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="pantographUp" default="yellow" x="0.065" y="0.77" width=".072" height=".08">
+			<symbol id="enabled"  file="desk/Up.tif"/>	
+			<symbol id="yellow" file="desk/UpY.tif"/>	
+			<symbol id="disabled" file=""/>	
+		</property>
+		<property name="pantographDn" default="enabled" x="0.065" y="0.675" width=".072" height=".08">
+			<symbol id="enabled"  file="desk/Down.tif"/>	
+			<symbol id="yellow" file="desk/DownY.tif"/>	
+			<symbol id="disabled" file=""/>	
+		</property>
+		
+		<property name="hbryt" default="disabled" x="0.065" y="0.58" width=".072" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="H-BRYT" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="yellow" file="desk/yellow.tif">	
+				<text string="H-BRYT" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+
+		<property name="brakeOn" default="green" x="0.94" y="0.77" width=".07" height=".08">
+			<symbol id="green" file="desk/green.tif">	
+				<text string="BROMS#FRÅN" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="red" file="desk/redButton.tif">	
+				<text string="BROMS#TILL" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="mgbrake" default="enabled" x="0.94" y="0.675" width=".07" height=".08">
+			<symbol id="enabled" file="desk/button.tif" >	
+				<text string="MG" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="red" file="desk/redButton.tif" >	
+				<text string="MG" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+		
+		<property name="Pbrake" default="enabled" x="0.86" y="0.77" width=".07" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="PARK" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="yellow" file="desk/yellow.tif">	
+				<text string="PARK" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="Elbrake" default="enabled" x="0.86" y="0.675" width=".07" height=".08">
+			<symbol id="yellow" file="desk/yellow.tif">	
+				<text string="ELBR#FRÅN" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="ELBR#TILL" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="frontLight" default="enabled" x="0.86" y="0.22" width=".07" height=".08">
+		<symbol id="enabled" file="desk/frontLight.tif"/>	
+			<!--symbol id="enabled" file="desk/button.tif">	
+				<text string="BLINKANDE#FRONTLJUS" alignment="center" width="0.010" height="0.015" grey="1"/>	
+			</symbol>
+			<symbol id="yellow" file="desk/yellow.tif">	
+				<text string="BLINKANDE#FRONTLJUS" alignment="center" width="0.010" height="0.020" grey="1"/>	
+			</symbol-->
+		<symbol id="yellow" file="desk/frontLightY.tif"/>	
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="emergencyCall" default="enabled" x="0.94" y="0.22" width=".07" height=".08">
+			<symbol id="enabled" file="desk/redButton.tif">	
+				<text string="NÖD#ANROP" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="red" file="desk/button.tif">	
+				<text string="NÖD#ANROP" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="nbo" default="enabled" x="0.86" y="0.085" width=".07" height=".08">
+			<symbol id="enabled" file="desk/button.tif" >	
+				<text string="NBÖ" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="red" file="desk/redButton.tif" >	
+				<text string="NBÖ" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="fire" default="enabled" x="0.94" y="0.085" width=".07" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="BRAND" alignment="center " width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="red" file="desk/redButton.tif">	
+				<text string="BRAND" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="kvitt" default="enabled" x="0.75" y="0.078" width=".07" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="FEL#KVITT." alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="yellow" file="desk/yellow.tif">	
+				<text string="FEL#KVITT." alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="doorleft" default="enabled" x="0.065" y="0.44" width=".07" height=".08">
+			<symbol id="enabled" file="desk/doorleft.tif"/>	
+			<symbol id="yellow" file="desk/doorleftY.tif"/>
+			<symbol id="disabled" file=""/>	
+		</property>
+		<property name="doorright" default="enabled" x="0.145" y="0.44" width=".07" height=".08">
+			<symbol id="enabled" file="desk/doorright.tif"/>	
+			<symbol id="yellow" file="desk/doorrightY.tif"/>	
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="ready" default="enabled" x="0.065" y="0.345" width=".07" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="KLART#FÖR#AVGÅNG" alignment="center" width="0.014" height="0.020" grey="1"/>	
+				</symbol>
+			<symbol id="green" file="desk/green.tif">	
+				<text string="KLART#FÖR#AVGÅNG" alignment="center" width="0.014" height="0.020" grey="1"/>	
+				</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+		<property name="ClosedDoor" default="enabled" x="0.145" y="0.345" width=".07" height=".08">
+		<symbol id="enabled" file="desk/closed.tif" />	
+			<symbol id="green" file="desk/closedG.tif" />	
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="forregl" default="enabled" x="0.065" y="0.44" width=".07" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="FÖRREG" alignment="center" width="0.014" height="0.020" grey="1"/>	
+				</symbol>
+			<symbol id="green" file="desk/green.tif">
+				<text string="FÖRREG" alignment="center" width="0.014" height="0.020" grey="1"/>	
+				</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="klartavg" default="enabled" x="0.145" y="0.44" width=".07" height=".08">
+			<symbol id="enabled" file="desk/button.tif">	
+				<text string="KLART#FÖR#AVGÅNG" alignment="center" width="0.014" height="0.020" grey="1"/>	
+				</symbol>
+			<symbol id="green" file="desk/green.tif">
+				<text string="KLART#FÖR#AVGÅNG" alignment="center" width="0.014" height="0.020" grey="1"/>	
+				</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+		
+
+		<property name="active" default="enabled" x="0.065" y="0.09" width=".055" height=".085">
+			<symbol id="enabled" file="desk/power.tif"/>	
+			<symbol id="green" file="desk/power_green.tif"/>	
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="skydd" default="enabled" x="0.145" y="0.09" width=".055" height=".085">
+			<symbol id="enabled" file="desk/power.tif"/>	
+			<symbol id="green" file="desk/power_green.tif"/>	
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="bytahytt" default="enabled" x="0.225" y="0.09" width=".055" height=".085">
+			<symbol id="enabled" file="desk/power_green.tif"/>	
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="reverse" default="enabled" x="0.065" y="0.22" width=".07" height=".08">
+			<symbol id="standby" file="desk/button.tif">	
+				<text string="BACK" alignment="center" width="0.014" height="0.020" grey="1"/>	
+			</symbol>
+			<symbol id="yellow" file="desk/yellow.tif">	
+				<text string="BACK" alignment="center" width="0.014" height="0.020" grey="1"/>
+			</symbol>	
+			<symbol id="disabled" file=""/>	
+		</property>
+		
+		<property name="typhoon" default="enabled" x="0.145" y="0.22" width=".07" height=".08">
+			<symbol id="enabled" file="desk/siren5.tif"/>	
+			<symbol id="disabled" file=""/>	
+		</property>
+
+		<property name="text" default="nbo" x="0.46" y="0.07" width=".072" height=".09">
+			<symbol id="fire" file="">	
+				<text string="Brand i tågsätt" alignment="center" width="0.03" height="0.030" grey="1"/>	
+			</symbol>
+			<symbol id="nbo" file="">	
+				<text string="Nödbroms aktiverad" alignment="center" width="0.03" height="0.030" grey="1"/>	
+			</symbol>
+			<symbol id="autodrop" file="">	
+				<text string="Autodrop utlöst" alignment="center" width="0.03" height="0.030" grey="1"/>	
+			</symbol>
+			<symbol id="disabled" file=""/>	
+		</property>
+
+	</panel>
+</atc>

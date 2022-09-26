@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+
         <file>ATC_view.qml</file>
         <file>ETCS_view.qml</file>
         <file>DESK_view.qml</file>
@@ -8,5 +9,25 @@
         <file>Imports/qmldir</file>
         <file>Buttontest.qml</file>
         <file>Buttontest2.qml</file>
+        <file>View_Power.qml</file>
+        <file>desk_ikoner/indicator_frameR.png</file>
+        <file>desk_ikoner/Up.png</file>
+        <file>desk_ikoner/indicator_frame.png</file>
+        <file>desk_ikoner/Down.png</file>
+        <file>desk_ikoner/yellow.png</file>
+        <file>desk_ikoner/button69.png</file>
+        <file>View_Doors.qml</file>
+        <file>desk_ikoner/doorleft.png</file>
+        <file>desk_ikoner/doorright.png</file>
+        <file>desk_ikoner/avgang.png</file>
+        <file>desk_ikoner/closed.png</file>
+        <file>View_Brakes.qml</file>
+        <file>View_Alarm.qml</file>
+        <file>View_Light_Emergency.qml</file>
+        <file>View_Activate.qml</file>
+        <file>desk_ikoner/power_green.png</file>
+        <file>View_Back_Horn.qml</file>
+        <file>desk_ikoner/siren5.png</file>
+        <file>View_Text_Info.qml</file>
     </qresource>
 </RCC>
