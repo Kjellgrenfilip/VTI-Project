@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import "Imports" 1.0
 
 Item {
     anchors.fill: parent;
@@ -11,8 +12,8 @@ Item {
         height: parent.height/6;
         background: Rectangle{
             anchors.fill: parent;
-            color: "black";
-            border.color: "white";
+            color: MyConst.backgroundColor;
+            border.color: "#bfbfbf";
             border.width: 2;
 
             Text{
@@ -20,8 +21,6 @@ Item {
             color: "white";
             }
 
-        }
-        Grid{
         }
     }
 }
