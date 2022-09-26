@@ -7,24 +7,16 @@ Item {
     Rectangle
     {
         anchors.fill: parent
-        color: "black"
-    }
+        color: "transparent"
 
-    Grid
-    {
-        id: grid_back_horn
-        spacing: 10
-        transformOrigin: Item.Center
-        anchors.fill:parent
-        anchors.left: parent.right
-        rows: 1
-        columns: 2
-        anchors.margins: 30
         Button
         {
             id: back_button
-            width: (back_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(back_button.pressed) ? parent.height - 10 : parent.height - 5
+            width: (back_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+            height:(back_button.pressed) ? parent.height - 40 : parent.height - 35
+            anchors.margins: 5
+            anchors.right: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             Image
             {
                 id: back_image
@@ -45,8 +37,11 @@ Item {
         {
 
             id: horn_button
-            width: (horn_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(horn_button.pressed) ? parent.height - 10 : parent.height - 5
+            width: (horn_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+            height:(horn_button.pressed) ? parent.height - 40 : parent.height - 35
+            anchors.margins: 5
+            anchors.left: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             Image
             {
                 id: horn_image
@@ -55,6 +50,19 @@ Item {
             }
            }
     }
+
+//    Grid
+//    {
+//        id: grid_back_horn
+//        spacing: 10
+//        transformOrigin: Item.Center
+//        anchors.fill:parent
+//        anchors.left: parent.right
+//        rows: 1
+//        columns: 2
+//        anchors.margins: 30
+
+//    }
 }
 
 

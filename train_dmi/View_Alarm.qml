@@ -6,51 +6,42 @@ Item {
     anchors.fill: parent
     Rectangle
     {
-        anchors.fill: parent
-        color: "black"
-    }
-    Rectangle
-    {
-        anchors.fill: parent
-        color: "black"
-        border.width: 10
-        border.color: "grey"
-        radius: 50
-    }
-    Rectangle
-    {
-        width: parent.width / 2
-        height: 30
-        x: parent.width / 4
-        color: "black"
-        Text
+        Rectangle
         {
-            id: larm_text
-            text: qsTr("LARM")
-            font.pointSize: brakes.width / 20 // gives warning
-            color: "white"
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.fill: parent
+            color: "transparent"
+            border.width: 10
+            border.color: "grey"
+            radius: 50
         }
-    }
-    Grid
-    {
-        id: grid_alarm
-        spacing: 10
-        transformOrigin: Item.Center
-        anchors.fill:parent
-        anchors.left: parent.right
-        rows: 1
-        columns: 2
-        anchors.margins: 15
+        Rectangle
+        {
+            width: parent.width / 2
+            height: 30
+            x: parent.width / 4
+            color: "#041122"
+            Text
+            {
+                id: larm_text
+                text: qsTr("LARM")
+                font.pointSize: brakes.width / 20 // gives warning
+                color: "white"
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+        }
+        anchors.fill: parent
+        color: "transparent"
         Button
         {
             id: nbo_button
 
 
             //width: parent.width / 2 - 5
-            width: (nbo_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(nbo_button.pressed) ? parent.height - 10 : parent.height - 5
-
+            width: (nbo_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+            height:(nbo_button.pressed) ? parent.height - 40 : parent.height - 35
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.horizontalCenter
+            anchors.margins: 5
             Image
             {
                 id: nbo_image
@@ -71,10 +62,11 @@ Item {
         Button
         {
             id: brand_button
-            width: (brand_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(brand_button.pressed) ? parent.height - 10 : parent.height - 5
-
-
+            width: (brand_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+            height:(brand_button.pressed) ? parent.height - 40 : parent.height - 35
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.horizontalCenter
+            anchors.margins: 5
             Image
             {
                 id: brand_image
@@ -91,4 +83,17 @@ Item {
             }
            }
     }
+
+//    Grid
+//    {
+//        id: grid_alarm
+//        spacing: 10
+//        transformOrigin: Item.Center
+//        anchors.fill:parent
+//        anchors.left: parent.right
+//        rows: 1
+//        columns: 2
+//        anchors.margins: 15
+
+//    }
 }
