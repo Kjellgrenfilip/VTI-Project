@@ -44,6 +44,7 @@ Item{
                        Layout.fillWidth: true
                        Layout.preferredHeight: (parent.height*3)/7
                        //Call ButtonGroup qml file here.
+                       View_Power{}
 
                      }
 
@@ -56,6 +57,7 @@ Item{
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*2)/7
                         //Call ButtonGroup qml file here.
+                        View_Doors{}
                      }
 
             Rectangle{
@@ -67,6 +69,7 @@ Item{
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*1)/7
                          //Call ButtonGroup qml file here.
+                        View_Back_Horn{}
                      }
             Rectangle{
                         id: activationButtons
@@ -77,6 +80,7 @@ Item{
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*1)/7
                          //Call ButtonGroup qml file here.
+                        View_Activate{}
                      }
 
 
@@ -104,9 +108,10 @@ Item{
             }
         }
         Rectangle{
+            id: textInfo
             color: "transparent";
             anchors.fill: parent;
-
+            View_Text_Info{}
 
         }
     }
@@ -137,6 +142,7 @@ Item{
 
 
             Rectangle{
+                        id: breakButtons
                        color: "transparent";
                        border.color: "#bfbfbf";
                        border.width: 2;
@@ -144,7 +150,7 @@ Item{
                        Layout.fillWidth: true
 
                        Layout.preferredHeight: (parent.height*2)/7
-
+                        View_Brakes{}
 
                      }
             Rectangle{
@@ -160,6 +166,7 @@ Item{
                      }
 
             Rectangle{
+                        id: lightEmergency
                         color: "transparent";
                         border.color: "#bfbfbf";
                         border.width: 2;
@@ -168,9 +175,13 @@ Item{
                         Layout.fillWidth: true
 
                         Layout.preferredHeight: (parent.height*1)/7
+
+                        View_Light_Emergency{}
+
 
                      }
             Rectangle{
+                        id: alarmButtons
                         color: "transparent";
                         border.color: "#bfbfbf";
                         border.width: 2;
@@ -179,6 +190,7 @@ Item{
                         Layout.fillWidth: true
 
                         Layout.preferredHeight: (parent.height*1)/7
+                        View_Alarm{}
 
                      }
 

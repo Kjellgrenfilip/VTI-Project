@@ -34,7 +34,7 @@ HEADERS += \
     network_client.h
 
 DISTFILES += \
-    qmldir
+    qmldir \
     desk_ikoner/Down.tif \
     desk_ikoner/DownY.tif \
     desk_ikoner/Up.tif \
@@ -69,4 +69,3 @@ DISTFILES += \
     desk_ikoner/siren5.tif \
     desk_ikoner/siren6.tif \
     desk_ikoner/yellow.tif
-

@@ -41,7 +41,7 @@ Item {
         anchors.left: parent.right
         rows: 1
         columns: 2
-        anchors.margins: 30
+        anchors.margins: 15
         Button
         {
             id: nbo_button
@@ -74,7 +74,7 @@ Item {
             width: (brand_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(brand_button.pressed) ? parent.height - 10 : parent.height - 5
 
-            anchors.left: parent.horizontalCenter
+
             Image
             {
                 id: brand_image
