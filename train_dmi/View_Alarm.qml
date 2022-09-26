@@ -24,7 +24,7 @@ Item {
             {
                 id: larm_text
                 text: qsTr("LARM")
-                font.pointSize: brakes.width / 20 // gives warning
+                font.pointSize: brakes.width / 25 // gives warning
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
