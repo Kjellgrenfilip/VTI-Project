@@ -32,16 +32,7 @@ Item {
                 anchors.fill: parent
                 source: "desk_ikoner/power_green.png"
             }
-            Text {
-                id: activate_text
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top:parent.bottom
-                text: qsTr("AKTIVERING")
-                font.pointSize: parent.width /8
-                color: "White"
 
-            }
 
         }
         Button
@@ -86,6 +77,16 @@ Item {
                 color:"White"
             }
            }
+    }
+    Text {
+        id: activate_text
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+        //anchors.top:parent.bottom
+        text: qsTr("AKTIVERING")
+        font.pointSize: parent.width /8
+        color: "White"
+
     }
 }
 
