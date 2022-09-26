@@ -21,7 +21,7 @@ bool Network_Client::sendUpdate(const QJsonObject &obj)
     QByteArray data = QJsonDocument{obj}.toJson();
     qint64 dataWritten = m_tcpSocket->write(data, qstrlen(data));
 
-    // Less than 10 milliseconds and there is no gurantee all that will be processed correctly.
+    // Less than 10 milliseconds and there is no guarantee all that will be processed correctly.
     delay(10);
 
     if(data.size() != dataWritten)
