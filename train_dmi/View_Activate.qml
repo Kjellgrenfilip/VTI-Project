@@ -7,7 +7,7 @@ Item {
     Rectangle
     {
         anchors.fill: parent
-        color: "black"
+        color: "transparent"
         Button
         {
             id: activate_button

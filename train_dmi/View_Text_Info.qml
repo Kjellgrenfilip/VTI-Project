@@ -7,24 +7,12 @@ Item {
     Rectangle
     {
         anchors.fill: parent
-        color: "black"
-    }
-
-    Grid
-    {
-        id: grid_text_info
-        spacing: 10
-        transformOrigin: Item.Center
-        anchors.fill:parent
-        anchors.left: parent.right
-        rows: 1
-        columns: 2
-        //anchors.margins: 30
+        color: "transparent"
         Rectangle
         {
             width: parent.width*7/8 -5
             height: parent.height - 5
-            color: "black"
+            color: "transparent"
             border.width: 10
             border.color: "grey"
             radius: 25
@@ -52,8 +40,11 @@ Item {
 
         Button
         {
-            width: parent.width / 8 - 5
-            height: parent.height - 5
+            id: kvitt_button
+            width:(kvitt_button.pressed) ? parent.width / 8 - 10 : parent.width / 8 - 5
+            height: (kvitt_button.pressed) ? parent.height/2 - 10 : parent.height/2 - 5
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
             Image
             {
                 id: fel_kvitt_image
@@ -80,6 +71,19 @@ Item {
 
         }
     }
+
+//    Grid
+//    {
+//        id: grid_text_info
+//        spacing: 10
+//        transformOrigin: Item.Center
+//        anchors.fill:parent
+//        anchors.left: parent.right
+//        rows: 1
+//        columns: 2
+//        //anchors.margins: 30
+
+//    }
 }
 
 

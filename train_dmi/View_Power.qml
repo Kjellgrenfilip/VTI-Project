@@ -11,12 +11,12 @@ Item
     Rectangle
     {
         anchors.fill: parent
-        color: "black"
+        color: "transparent"
     }
     Rectangle
     {
         anchors.fill: parent
-        color: "black"
+        color: "transparent"
         border.width: 10
         border.color: "grey"
         radius: 50
@@ -26,7 +26,7 @@ Item
         width: parent.width / 2
         height: 30
         x: parent.width / 4
-        color: "black"
+        color: "#041122"
         Text
         {
             id: name
