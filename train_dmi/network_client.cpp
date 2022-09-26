@@ -4,6 +4,7 @@
 
 Network_Client::Network_Client() : QObject(), m_tcpSocket{new QTcpSocket{this}}
 {
+    // Connects signals for TCP connection handling.
     connect(m_tcpSocket, SIGNAL(connected()), this, SLOT(connected()));
     connect(m_tcpSocket, SIGNAL(disconnected()), this, SLOT(disconnected()));
     connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
@@ -15,10 +16,17 @@ Network_Client::~Network_Client()
     delete m_tcpSocket;
 }
 
-void Network_Client::sendMessage(char const*data)
+bool Network_Client::sendUpdate(const QJsonObject &obj)
 {
-    m_tcpSocket->write(data, qstrlen(data));
-    m_tcpSocket->flush();
+    QByteArray data = QJsonDocument{obj}.toJson();
+    qint64 dataWritten = m_tcpSocket->write(data, qstrlen(data));
+
+    // Less than 10 milliseconds and there is no guarantee all that will be processed correctly.
+    delay(10);
+
+    if(data.size() != dataWritten)
+        return false;
+    return true;
 }
 
 void Network_Client::connectToServer()
@@ -28,6 +36,12 @@ void Network_Client::connectToServer()
     m_tcpSocket->waitForConnected(1000);
 }
 
+void Network_Client::delay(int time_to_wait)
+{
+    QTime dieTime= QTime::currentTime().addMSecs(time_to_wait);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
 
 void Network_Client::connected()
 {
@@ -41,12 +55,14 @@ void Network_Client::disconnected()
 
 void Network_Client::bytesWritten(qint64 bytes)
 {
-    qDebug() << "We wrote: " << bytes;
+    //qDebug() << "We wrote: " << bytes;
 }
 
 void Network_Client::readyRead()
 {
     qDebug() << "Reading ... ";
-    qDebug() << m_tcpSocket->readAll();
+    QByteArray data{m_tcpSocket->readAll()};
+    m_jsonState = (QJsonDocument(QJsonDocument::fromJson(data)).object());
+    qDebug() << m_jsonState;
 }
 
