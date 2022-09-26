@@ -5,17 +5,17 @@
 git status
 
 Gör en branch och gå till den:
-git checkout -b <branch name>
+git checkout -b branch_name
 
 För att pusha från branch(körs en gång):
-git push --set-upstream origin <branch name>
+git push --set-upstream origin branch_name
 
 Från en branch, pull från en annan branch:
-git pull origin <branch name>
+git pull origin branch_name
 
-Mergea branch till master:
-git checkout master
-git merge <branch name>
+Mergea branch till main:
+git checkout main
+git merge branch_name
 
 Sparar username och password i en timme:
 git config --global credential.helper 'cache --timeout=3600'
