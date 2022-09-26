@@ -2,6 +2,7 @@ QT += quick
 
 CONFIG += c++17
 
+
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Refer to the documentation for the
@@ -15,7 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        network_client.cpp
+        network_client.cpp \
+        power_button_implement.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,7 +34,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     network_client.h \
-    network_interface.h
+    network_interface.h \
+    power_button_implement.h
 
 DISTFILES += \
     qmldir \

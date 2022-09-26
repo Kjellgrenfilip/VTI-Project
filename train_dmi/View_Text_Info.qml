@@ -72,18 +72,6 @@ Item {
         }
     }
 
-//    Grid
-//    {
-//        id: grid_text_info
-//        spacing: 10
-//        transformOrigin: Item.Center
-//        anchors.fill:parent
-//        anchors.left: parent.right
-//        rows: 1
-//        columns: 2
-//        //anchors.margins: 30
-
-//    }
 }
 
 

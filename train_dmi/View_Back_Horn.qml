@@ -50,19 +50,6 @@ Item {
             }
            }
     }
-
-//    Grid
-//    {
-//        id: grid_back_horn
-//        spacing: 10
-//        transformOrigin: Item.Center
-//        anchors.fill:parent
-//        anchors.left: parent.right
-//        rows: 1
-//        columns: 2
-//        anchors.margins: 30
-
-//    }
 }
 
 

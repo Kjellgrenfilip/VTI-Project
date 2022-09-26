@@ -54,19 +54,14 @@ Item {
 
 
            }
-        TextArea {
+        TextArea
+        {
             id: activate_text
-    //            anchors.verticalCenter: activate_button.verticalCenter
-    //            anchors.horizontalCenter: activate_button.horizontalCenter
-    //            anchors.bottom: parent.bottom
-    //            text: qsTr("AKTIVERING")
-    //            font.pointSize: parent.width /32
-    //            color: "White"
             width: parent.width/9
             anchors.horizontalCenter: activate_button.horizontalCenter
             anchors.bottom:parent.bottom
-            Text {
-                 //anchors.horizontalCenter: parent.horizontalCenter
+            Text
+            {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("AKTIVERING")
                 font.pointSize: parent.width/3
@@ -75,15 +70,14 @@ Item {
 
 
         }
-        TextArea {
+        TextArea
+        {
             id: protection_text
-    //            anchors.verticalCenter: parent.verticalCenter
-    //            anchors.horizontalCenter: parent.horizontalCenter
-    //            anchors.top: protection_image.bottom
             width: parent.width/9
             anchors.bottom:parent.bottom
             anchors.horizontalCenter: protection_button.horizontalCenter
-            Text{
+            Text
+            {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("TÅGSKYDD")
                 font.pointSize: parent.width/3
@@ -94,29 +88,21 @@ Item {
 
 
         }
-        TextArea {
+        TextArea
+        {
             id: cart_text
-    //            anchors.verticalCenter: parent.verticalCenter
-    //            anchors.horizontalCenter: parent.horizontalCenter
-    //            anchors.top: cart_image.bottom
-
-
             anchors.bottom:parent.bottom
             anchors.horizontalCenter: cart_button.horizontalCenter
             width: parent.width/9
-            Text{
+            Text
+            {
                 anchors.horizontalCenter: parent.horizontalCenter
-
-
                 text: qsTr("BYT HYTT")
                 font.pointSize: parent.width/3
                 color:"White"
             }
 
-
-
-
-        }
+       }
     }
 
 

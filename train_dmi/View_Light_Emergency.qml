@@ -72,32 +72,5 @@ Item {
            }
     }
 
-//    Rectangle
-//    {
-//        width: parent.width / 2
-//        height: 30
-//        x: parent.width / 4
-//        color: "black"
-//        Text
-//        {
-//            id: larm_text
-//            text: qsTr("LARM")
-//            font.pointSize: brakes.width / 20 // gives warning
-//            color: "white"
-//            anchors.horizontalCenter: parent.horizontalCenter
-//        }
-//    }
-//    Grid
-//    {
-//        id: grid_light_emergency
-//        spacing: 10
-//        transformOrigin: Item.Center
-//        anchors.fill:parent
-//        anchors.left: parent.right
-//        rows: 1
-//        columns: 2
-//        anchors.margins: 30
-
-//    }
 }
 

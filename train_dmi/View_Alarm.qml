@@ -34,9 +34,6 @@ Item {
         Button
         {
             id: nbo_button
-
-
-            //width: parent.width / 2 - 5
             width: (nbo_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
             height:(nbo_button.pressed) ? parent.height - 40 : parent.height - 35
             anchors.verticalCenter: parent.verticalCenter
@@ -84,16 +81,5 @@ Item {
            }
     }
 
-//    Grid
-//    {
-//        id: grid_alarm
-//        spacing: 10
-//        transformOrigin: Item.Center
-//        anchors.fill:parent
-//        anchors.left: parent.right
-//        rows: 1
-//        columns: 2
-//        anchors.margins: 15
 
-//    }
 }

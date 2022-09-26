@@ -1,8 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.12
-//import
-//import "other files/desk_ikoner"
+//import power_button_implement 1.0
 
 Item
 {
@@ -40,9 +39,7 @@ Item
    Grid  {
         id: grid
         spacing: 10
-        //transformOrigin: Item.Center
         anchors.fill:parent
-        //anchors.left: parent.right
         rows: 3
         columns: 2
         anchors.margins: 30
@@ -62,6 +59,7 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/Up.png"
             }
+            onClicked: update_power()
         }
         // non-clickable power indicator
         Button
