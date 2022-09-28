@@ -8,6 +8,7 @@ Test_Module::Test_Module()
 
 Test_Module::~Test_Module()
 {
+    delete m_networkServer;
 }
 
 void Test_Module::receiveUpdate()
@@ -17,24 +18,24 @@ void Test_Module::receiveUpdate()
     foreach(const QString& key, tmp.keys())
     {
         QJsonValue value = tmp.value(key);
-        if(key == VTI_DMI::BUTTON_1)
+        if(key == VTI_DMI::PONTOGRAPH_UP)
         {
-             qDebug() << "BUTTON1 update";
+             qDebug() << "PONTOGRAPH_UP update" << value;
              m_jsonState.insert(key, value);
         }
-        if(key == VTI_DMI::BUTTON_2)
+        else if(key == VTI_DMI::BUTTON_2)
         {
-             qDebug() << "BUTTON2 update";
+             qDebug() << "BUTTON2 update" << value;
              m_jsonState.insert(key, value);
         }
-        if(key == VTI_DMI::VELOCITY)
+        else if(key == VTI_DMI::VELOCITY)
         {
              qDebug() << "VELOCITY update: " << value;
              m_jsonState.insert(key, value);
         }
-        if(key == VTI_DMI::VOLTAGE)
+        else if(key == VTI_DMI::VOLTAGE)
         {
-            qDebug() << "VOLTAGE update";
+            qDebug() << "VOLTAGE update" << value;
             m_jsonState.insert(key, value);
         }
     }
