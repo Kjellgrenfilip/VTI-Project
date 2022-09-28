@@ -8,6 +8,8 @@
 #include <QGuiApplication>
 #include <QTime>
 
+#include "network_interface.h"
+
 class Network_Client : public QObject
 {
     Q_OBJECT
@@ -30,6 +32,8 @@ public slots:
     void disconnected();
     void bytesWritten(qint64 bytes);
     void readyRead();
+
+    void pontUpClicked();
 };
 
 #endif // NETWORK_CLIENT_H

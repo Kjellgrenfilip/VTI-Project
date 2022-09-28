@@ -66,3 +66,11 @@ void Network_Client::readyRead()
     qDebug() << m_jsonState;
 }
 
+void Network_Client::pontUpClicked()
+{
+    qDebug() << "Pontograph Up!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::PONTOGRAPH_UP, true);
+    sendUpdate(json);
+}
+

@@ -49,15 +49,15 @@ Item
         // clickable pantograph up
         Button
         {
-
             id:pont_up_button
             width: (pont_up_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pont_up_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             //anchors.fill: parent
 
+            onClicked: network.pontUpClicked()
+
             Image
             {
-
                 id: pont_up
                 anchors.fill: parent
                 source: "desk_ikoner/Up.png"
