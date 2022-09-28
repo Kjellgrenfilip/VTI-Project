@@ -54,7 +54,7 @@ Item
             height:(pont_up_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             //anchors.fill: parent
 
-            onClicked: network.pontUpClicked()
+            onClicked: buttonHandler.pontUpClicked()
 
             Image
             {

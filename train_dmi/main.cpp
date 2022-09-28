@@ -7,6 +7,7 @@
 
 #include "network_client.h"
 #include "network_interface.h"
+#include "dmi_handler.h"
 
 int main(int argc, char *argv[])
 {
@@ -31,11 +32,7 @@ int main(int argc, char *argv[])
     json.insert(VTI_DMI::VELOCITY, 0);
     json.insert(VTI_DMI::VOLTAGE, 10.0);
 
-    Network_Client n_Client{};
-    n_Client.connectToServer();
-
-    QQmlContext *rootContext = engine.rootContext();
-    rootContext->setContextProperty("network", &n_Client);
+    DMI_Handler dmiHandler{engine.rootContext()};
 
 //    for(int i{1}; i < 1000; i++)
 //    {

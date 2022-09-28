@@ -16,16 +16,17 @@ class Network_Client : public QObject
 public:
     explicit Network_Client();
     ~Network_Client();
-
+    QJsonObject getUpdate();
     void connectToServer();
-    bool sendUpdate(const QJsonObject &obj);
+
 
 private:
     void delay(int time_to_wait);
 
     QTcpSocket *m_tcpSocket;
-    QJsonObject m_jsonState;
+    QJsonObject m_jsonUpdate;
 signals:
+    void updateReceived();
 
 public slots:
     void connected();
@@ -33,7 +34,7 @@ public slots:
     void bytesWritten(qint64 bytes);
     void readyRead();
 
-    void pontUpClicked();
+    void sendUpdate(const QJsonObject &obj);
 };
 
 #endif // NETWORK_CLIENT_H
