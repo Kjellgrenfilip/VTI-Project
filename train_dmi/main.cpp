@@ -6,7 +6,6 @@
 #include <QQmlContext>
 #include "network_client.h"
 #include "network_interface.h"
-#include "power_button_implement.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -38,7 +37,6 @@ int main(int argc, char *argv[])
         json.insert(VTI_DMI::VELOCITY, i);
         n_Client.sendUpdate(json);
     }
-    power_button_implement *a = new power_button_implement();
 
     return app.exec();
 }

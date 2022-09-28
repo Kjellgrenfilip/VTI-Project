@@ -16,8 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        network_client.cpp \
-        power_button_implement.cpp
+        network_client.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,8 +33,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     network_client.h \
-    network_interface.h \
-    power_button_implement.h
+    network_interface.h
 
 DISTFILES += \
     qmldir \
