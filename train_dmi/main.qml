@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import "Imports" 1.0
 
+
 Window {
     id: mainWindow
     visible: true

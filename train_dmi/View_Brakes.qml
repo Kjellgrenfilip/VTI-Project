@@ -4,12 +4,8 @@ import QtQuick.Controls 2.0
 Item {
     id: brakes
     anchors.fill: parent
-    Rectangle
-    {
-        anchors.fill: parent
-        color: "transparent"
-    }
-    Rectangle
+
+    Rectangle       //Grey fram around ButtonGroup
     {
         anchors.fill: parent
         color: "transparent"
@@ -17,7 +13,7 @@ Item {
         border.color: "grey"
         radius: 50
     }
-    Rectangle
+    Rectangle       //Rectangle to hold the text
     {
         width: parent.width / 2
         height: 30
@@ -47,11 +43,12 @@ Item {
             id: park_button
             width: (park_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(park_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+
             Image
             {
                 id: park_image
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "desk_ikoner/yellow.png"
             }
             Text {
                 id: park_text
@@ -62,12 +59,30 @@ Item {
                 color: "White"
 
             }
+
+        states: [
+            State {
+                name: "on";
+                PropertyChanges {
+                    target: park_image
+                    source:"desk_ikoner/yellow.png"
+                }
+            },
+            State {
+                name: "off"; when:park_button.pressed
+                PropertyChanges {
+                    target: park_image
+                    source:"desk_ikoner/button69.png"
+                }
+            }
+        ]
         }
+
         Button
         {
             id: broms_button
-            width: (broms_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(broms_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            width: parent.width / 2 - 5
+            height: parent.height / 2 - 5
             Image
             {
                 id: broms_image
@@ -120,6 +135,26 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
+            states: [
+                State {
+                    name: "on"; when:elbr_button.pressed
+                    PropertyChanges {
+                        target: park_image
+                        source:"desk_ikoner/yellow.png"
+                    }
+                    PropertyChanges {
+                        target: elbr_text_b
+                        text: qsTr("FRÅN")
+                    }
+                },
+                State {
+                    name: "off";
+                    PropertyChanges {
+                        target: park_image
+                        source:"desk_ikoner/button69.png"
+                    }
+                }
+            ]
 
         }
         Button
@@ -142,6 +177,22 @@ Item {
                 color:"White"
             }
         }
+        states: [
+            State {
+                name: "on"; when:mg_button.pressed
+                PropertyChanges {
+                    target: mg_image
+                    source:"desk_ikoner/redButton.png"
+                }
+            },
+            State {
+                name: "off";
+                PropertyChanges {
+                    target: mg_image
+                    source:"desk_ikoner/button69.png"
+                }
+            }
+        ]
 
     }
 }

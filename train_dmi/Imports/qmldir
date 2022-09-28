@@ -1,1 +1,2 @@
 singleton MyConst 1.0 Constants.qml
+MyTest 1.0 network_interface.h

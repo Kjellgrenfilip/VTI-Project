@@ -12,3 +12,5 @@ namespace VTI_DMI
 };
 
 #endif // NETWORK_INTERFACE_H
+
+//onClicked: network.sendupdate(VTI_DMI::VOLTAGE, True)
