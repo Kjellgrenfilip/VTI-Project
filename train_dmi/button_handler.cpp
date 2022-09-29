@@ -11,5 +11,4 @@ void Button_Handler::pontUpClicked()
     emit sendUpdate(json);
 }
 
-
 //QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);

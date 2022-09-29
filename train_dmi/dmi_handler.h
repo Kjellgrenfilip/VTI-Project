@@ -17,11 +17,7 @@ public:
 private:
     Network_Client *m_client;
     Button_Handler *m_buttonHandler;
-<<<<<<< HEAD
-    QObject *rootObject;
-=======
     QObject *m_rootObject;
->>>>>>> 5fdf118bb576aa33b91dbd3db41ae2799dd131d2
 
     QJsonObject m_jsonState;
 
