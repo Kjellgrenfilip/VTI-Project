@@ -33,6 +33,11 @@ void Test_Module::receiveUpdate()
             qDebug() << "VOLTAGE update" << value;
             m_jsonState.insert(key, value);
         }
+        else if (key == VTI_DMI::FIRE)
+        {
+            qDebug() << "FIRE update" << value;
+            m_jsonState.insert(key, "active");
+        }
     }
 
     m_networkServer->sendUpdate(m_jsonState);

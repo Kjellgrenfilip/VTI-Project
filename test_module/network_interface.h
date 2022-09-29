@@ -3,6 +3,7 @@
 
 #include <QJsonObject>
 #include <QJsonValue>
+#include <QString>
 
 namespace VTI_DMI
 {
@@ -17,8 +18,8 @@ namespace VTI_DMI
         {PONTOGRAPH_UP, QJsonValue::Bool},
         {VELOCITY, QJsonValue::Double},
         {VOLTAGE, QJsonValue::Double},
-        {NBO, QJsonValue::Bool},
-        {FIRE, QJsonValue::Bool}
+        {NBO, QString{}},
+        {FIRE, QString{}}
     };
 };
 

@@ -84,22 +84,29 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
-//            states: [
-//                State {
-//                    name: "on";
-//                    PropertyChanges {
-//                        target: park_image
-//                        source:"desk_ikoner/redButton.png"
-//                    }
-//                },
-//                State {
-//                    name: "off"; when:park_button.pressed
-//                    PropertyChanges {
-//                        target: park_image
-//                        source:"desk_ikoner/button69.png"
-//                    }
-//                }
-//            ]
+            states: [
+                State {
+                    name: "active";
+                    PropertyChanges {
+                        target: fire_image
+                        source:"desk_ikoner/redButton.png"
+                    }
+                },
+                State {
+                    name: "inactive";
+                    PropertyChanges {
+                        target: fire_image
+                        source:"desk_ikoner/button69.png"
+                    }
+                },
+                State {
+                    name: "warning";
+                    PropertyChanges {
+                        target: fire_image
+                        source:"desk_ikoner/yellow.png"
+                    }
+                }
+            ]
         }
     }
 }

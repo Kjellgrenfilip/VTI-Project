@@ -20,6 +20,7 @@ signals:
 
 public slots:
     void pontUpClicked();
+    void fireClicked();
 };
 
 #endif // BUTTON_HANDLER_H

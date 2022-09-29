@@ -7,6 +7,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
 {
     rootContext->setContextProperty("buttonHandler", m_buttonHandler);
     connect(m_buttonHandler, SIGNAL(sendUpdate(QJsonObject)), m_client, SLOT(sendUpdate(QJsonObject)));
+    connect(m_client, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
     m_client->connectToServer();
 }
 
@@ -28,14 +29,16 @@ void DMI_Handler::receiveUpdate()
         {
             // Special case example
         }
+        else if ( key == VTI_DMI::VOLTAGE )
+        {
+            // Special case example
+        }
         else
         {
             QString newState = m_jsonState.value(key).toString();
-            obj->setProperty("state", newState);
+            qDebug() << key << " : " << newState;
+            if ( obj )
+                obj->setProperty("state", newState);
         }
-
     }
 }
-
-
-// QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
