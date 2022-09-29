@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 
 Item {
-    id: brakes
+    id: alarm
     anchors.fill: parent
     Rectangle
     {
@@ -22,9 +22,9 @@ Item {
             color: "#041122"
             Text
             {
-                id: larm_text
+                id: alarm_text
                 text: qsTr("LARM")
-                font.pointSize: brakes.width / 25 // gives warning
+                font.pointSize: alarm.width / 25 // gives warning
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
@@ -34,11 +34,15 @@ Item {
         Button
         {
             id: nbo_button
+            objectName: "emergency_brake"
             width: (nbo_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
             height:(nbo_button.pressed) ? parent.height - 40 : parent.height - 35
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.horizontalCenter
             anchors.margins: 5
+
+            onClicked: buttonHandler.nboClicked()
+
             Image
             {
                 id: nbo_image
@@ -52,34 +56,50 @@ Item {
                 text: qsTr("NBÖ")
                 font.pointSize: parent.width /8
                 color: "White"
-
             }
-
         }
         Button
         {
-            id: brand_button
-            width: (brand_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-            height:(brand_button.pressed) ? parent.height - 40 : parent.height - 35
+            id: fire_button
+            objectName: "fire"
+            width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+            height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.horizontalCenter
             anchors.margins: 5
+
+            onClicked: buttonHandler.fireClicked()
+
             Image
             {
-                id: brand_image
+                id: fire_image
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
             Text {
-                id: brand_text
+                id: fire_text
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BRAND")
                 font.pointSize: parent.width /8
                 color:"White"
             }
-           }
+//            states: [
+//                State {
+//                    name: "on";
+//                    PropertyChanges {
+//                        target: park_image
+//                        source:"desk_ikoner/redButton.png"
+//                    }
+//                },
+//                State {
+//                    name: "off"; when:park_button.pressed
+//                    PropertyChanges {
+//                        target: park_image
+//                        source:"desk_ikoner/button69.png"
+//                    }
+//                }
+//            ]
+        }
     }
-
-
 }

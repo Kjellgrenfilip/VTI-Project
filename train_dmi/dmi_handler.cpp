@@ -22,8 +22,22 @@ void DMI_Handler::receiveUpdate()
 
     foreach(const QString& key, m_jsonState.keys())
     {
+
         //Update GUI
-        // QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
+
+
+        QObject *obj = m_rootObject->findChild<QObject*>(key);
+
+        if ( key == VTI_DMI::VELOCITY )
+        {
+            // Special case example
+        }
+        else
+        {
+            QString newState = m_jsonState.value(key).toString();
+            obj->setProperty("state", newState);
+        }
+
     }
 }
 

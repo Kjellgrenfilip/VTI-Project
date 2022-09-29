@@ -9,8 +9,9 @@ namespace VTI_DMI
     QString const VELOCITY = "velocity";
     QString const VOLTAGE = "voltage";
     QString const PARK_BRAKE = "parking_brake";
+    QString const NBO = "emergency_brake";
+    QString const FIRE = "fire";
+
 };
 
 #endif // NETWORK_INTERFACE_H
-
-//onClicked: network.sendupdate(VTI_DMI::VOLTAGE, True)

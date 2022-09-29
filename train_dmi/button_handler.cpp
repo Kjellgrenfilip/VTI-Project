@@ -7,9 +7,10 @@ void Button_Handler::pontUpClicked()
 {
     qDebug() << "Pontograph Up!";
     QJsonObject json{};
-    json.insert(VTI_DMI::PONTOGRAPH_UP, true);
+    json.insert(VTI_DMI::PONTOGRAPH_UP, true);    
     emit sendUpdate(json);
 }
+
 
 void Button_Handler::parkBrakeClicked()
 {
@@ -18,3 +19,5 @@ void Button_Handler::parkBrakeClicked()
     json.insert(VTI_DMI::PARK_BRAKE, true);
     emit sendUpdate(json);
 }
+
+
