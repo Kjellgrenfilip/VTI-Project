@@ -11,7 +11,10 @@ class Button_Handler : public QObject
 {
     Q_OBJECT
 public:
-    explicit Button_Handler(QObject *parent = nullptr);
+    explicit Button_Handler(QObject *obj);
+
+private:
+    QObject *rootObject;
 
 signals:
     void sendUpdate(QJsonObject);
