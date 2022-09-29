@@ -17,6 +17,7 @@ public:
 private:
     Network_Client *m_client;
     Button_Handler *m_buttonHandler;
+    QObject *rootObject;
 
     QJsonObject m_jsonState;
 
