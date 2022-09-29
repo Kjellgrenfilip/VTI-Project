@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QJsonObject>
 
-#include "network_interface.h"
+#include "../network_interface.h"
 
 class Button_Handler : public QObject
 {
@@ -21,6 +21,7 @@ signals:
 public slots:
     void pontUpClicked();
     void parkBrakeClicked();
+    void fireClicked();
 
 };
 

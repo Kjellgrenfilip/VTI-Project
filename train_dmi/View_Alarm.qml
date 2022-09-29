@@ -62,8 +62,8 @@ Item {
         {
             id: fire_button
             objectName: "fire"
-            width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-            height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
+            width: parent.width / 2 - 35
+            height: parent.height - 35
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.horizontalCenter
             anchors.margins: 5
@@ -84,22 +84,28 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
-//            states: [
-//                State {
-//                    name: "on";
-//                    PropertyChanges {
-//                        target: park_image
-//                        source:"desk_ikoner/redButton.png"
-//                    }
-//                },
-//                State {
-//                    name: "off"; when:park_button.pressed
-//                    PropertyChanges {
-//                        target: park_image
-//                        source:"desk_ikoner/button69.png"
-//                    }
-//                }
-//            ]
+
+            states: [
+                State {
+                    name: "active";
+                    PropertyChanges {
+                        target: fire_image
+                        source:"desk_ikoner/redButton.png"
+                    }
+                },
+                State {
+                    name: "warning";
+                    PropertyChanges {
+                        target: fire_image
+                        source:"desk_ikoner/yellow.png"
+                    }
+                    PropertyChanges {
+                        target: fire_button
+                        width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+                        height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
+                    }
+                }
+            ]
         }
     }
 }

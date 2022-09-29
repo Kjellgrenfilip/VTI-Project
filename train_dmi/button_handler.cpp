@@ -23,3 +23,14 @@ void Button_Handler::parkBrakeClicked()
 
 //Park_button, true
 
+
+void Button_Handler::fireClicked()
+{
+    qDebug() << "Fire button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::FIRE, true);
+    emit sendUpdate(json);
+}
+
+//QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
+

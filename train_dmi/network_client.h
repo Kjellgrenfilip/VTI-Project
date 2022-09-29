@@ -8,7 +8,7 @@
 #include <QGuiApplication>
 #include <QTime>
 
-#include "network_interface.h"
+#include "../network_interface.h"
 
 class Network_Client : public QObject
 {

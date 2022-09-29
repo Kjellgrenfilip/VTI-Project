@@ -27,16 +27,20 @@ void DMI_Handler::receiveUpdate()
     {
 
         //Update GUI
-
-
         QObject *obj = m_rootObject->findChild<QObject*>(key);
+
         if(!obj)
         {
             qDebug() << "Unknown object: " << key;
-            return;
+            continue;
         }
 
+
         if ( key == VTI_DMI::VELOCITY )
+        {
+            // Special case example
+        }
+        else if ( key == VTI_DMI::VOLTAGE )
         {
             // Special case example
         }
@@ -46,7 +50,6 @@ void DMI_Handler::receiveUpdate()
             obj->setProperty("state", newState);
             qDebug() << m_jsonState.value(key);
         }
-
     }
 }
 

@@ -34,6 +34,7 @@ void Test_Module::receiveUpdate()
             qDebug() << "VOLTAGE update" << value;
             m_jsonState.insert(key, value);
         }
+
         else if(key == VTI_DMI::PARK_BRAKE)
         {
 
@@ -45,8 +46,22 @@ void Test_Module::receiveUpdate()
             qDebug() << "PARKING-BRAKE update" << m_jsonState.value(VTI_DMI::VELOCITY).toDouble();
 
         }
-        else if(key == VTI_DMI::E_BRAKE)
+        else if(key == VTI_DMI::ELECTRICITY_BRAKE)
+        {}
+
+
+        else if (key == VTI_DMI::FIRE)
         {
+            QString currentState = m_jsonState.value(key).toString();
+
+            if ( currentState == STATE::DEFAULT )
+                m_jsonState.insert(VTI_DMI::FIRE, STATE::WARNING);
+
+            else if ( currentState == STATE::WARNING )
+                m_jsonState.insert(VTI_DMI::FIRE, STATE::ACTIVE);
+
+            else if ( currentState == STATE::ACTIVE )
+                m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
 
         }
     }

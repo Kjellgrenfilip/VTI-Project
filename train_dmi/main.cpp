@@ -5,7 +5,6 @@
 #include <QTime>
 #include <QQmlContext>
 #include "network_client.h"
-#include "network_interface.h"
 #include "dmi_handler.h"
 
 
