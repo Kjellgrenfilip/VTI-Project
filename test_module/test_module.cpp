@@ -21,7 +21,39 @@ void Test_Module::receiveUpdate()
         if(key == VTI_DMI::PONTOGRAPH_UP)
         {
              qDebug() << "PONTOGRAPH_UP update" << value;
-             m_jsonState.insert(key, value);
+             if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
+             {
+                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
+             }
+             else
+             {
+                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"on");
+                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"off");
+             }
+
+        }
+        else if(key == VTI_DMI::PONTOGRAPH_DOWN)
+        {
+            if(m_jsonState.value(VTI_DMI::PONTOGRAPH_DOWN)=="on")
+            {
+                m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"off");
+            }
+            else
+            {
+                m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"on");
+                m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
+            }
+        }
+        else if(key == VTI_DMI::HBRYT)
+        {
+            if(m_jsonState.value(VTI_DMI::HBRYT)=="on")
+            {
+                m_jsonState.insert(VTI_DMI::HBRYT,"off");
+            }
+            else
+            {
+                m_jsonState.insert(VTI_DMI::HBRYT,"on");
+            }
         }
         else if(key == VTI_DMI::VELOCITY)
         {

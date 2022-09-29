@@ -20,6 +20,8 @@ signals:
 
 public slots:
     void pontUpClicked();
+    void pontDownClicked();
+    void hBrytClicked();
 };
 
 #endif // BUTTON_HANDLER_H

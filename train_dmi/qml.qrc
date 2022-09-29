@@ -27,5 +27,7 @@
         <file>desk_ikoner/siren5.png</file>
         <file>View_Text_Info.qml</file>
         <file>desk_ikoner/redButton.png</file>
+        <file>desk_ikoner/UpY.png</file>
+        <file>desk_ikoner/DownY.png</file>
     </qresource>
 </RCC>

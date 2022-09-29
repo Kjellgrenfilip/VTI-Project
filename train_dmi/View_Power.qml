@@ -47,7 +47,7 @@ Item
         Button
         {
             id:pont_up_button
-            objectName: "pontograph up"
+            objectName: "pontograph_up"
             width: (pont_up_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pont_up_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             //anchors.fill: parent
@@ -65,7 +65,7 @@ Item
             name: "on"
             PropertyChanges {
                 target: pont_up
-                source: "desk_ikoner/yellow.png"
+                source: "desk_ikoner/UpY.png"
 
             }
 
@@ -99,6 +99,7 @@ Item
         Button
         {
             id:pont_down_button
+            objectName:  "pontograph_down"
             width: (pont_down_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pont_down_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             Image
@@ -107,6 +108,26 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/Down.png"
             }
+            onClicked: buttonHandler.pontDownClicked()
+            states:[
+            State {
+                name: "on"
+                PropertyChanges {
+                    target: pont_down
+                    source: "desk_ikoner/DownY.png"
+
+                }
+
+            },
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: pont_down
+                        source:"desk_ikoner/Down.png"
+
+                    }
+                }
+            ]
 
         }
         // non-clickable current indicator?
@@ -137,6 +158,27 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "H-BRYT"
+            onClicked: buttonHandler.hBrytClicked()
+            states:[
+            State {
+                name: "on"
+                PropertyChanges {
+                    target: pont_up
+                    source: "desk_ikoner/yellow.png"
+
+                }
+
+            },
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: pont_up
+                        source:"desk_ikoner/button69.png"
+
+                    }
+                }
+            ]
+
         }
         //clickable heating
         Button
