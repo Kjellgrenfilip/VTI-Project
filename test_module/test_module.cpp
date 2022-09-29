@@ -23,11 +23,6 @@ void Test_Module::receiveUpdate()
              qDebug() << "PONTOGRAPH_UP update" << value;
              m_jsonState.insert(key, value);
         }
-        else if(key == VTI_DMI::BUTTON_2)
-        {
-             qDebug() << "BUTTON2 update" << value;
-             m_jsonState.insert(key, value);
-        }
         else if(key == VTI_DMI::VELOCITY)
         {
              qDebug() << "VELOCITY update: " << value;
@@ -48,5 +43,3 @@ void Test_Module::receiveUpdate()
 
     m_networkServer->sendUpdate(m_jsonState);
 }
-
-
