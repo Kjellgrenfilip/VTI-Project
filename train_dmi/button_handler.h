@@ -20,9 +20,13 @@ signals:
 
 public slots:
     void pontUpClicked();
+
     void parkBrakeClicked();
     void fireClicked();
 
+    void pontDownClicked();
+    void hBrytClicked();
+    void heatingClicked();
 };
 
 #endif // BUTTON_HANDLER_H

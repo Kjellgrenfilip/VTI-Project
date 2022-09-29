@@ -29,5 +29,7 @@
         <file>desk_ikoner/redButton.png</file>
         <file>desk_ikoner/green.png</file>
         <file>desk_ikoner/indicator_frame_green.png</file>
+        <file>desk_ikoner/UpY.png</file>
+        <file>desk_ikoner/DownY.png</file>
     </qresource>
 </RCC>

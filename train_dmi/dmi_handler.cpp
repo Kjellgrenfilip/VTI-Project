@@ -8,6 +8,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
     rootContext->setContextProperty("buttonHandler", m_buttonHandler);
     connect(m_buttonHandler, SIGNAL(sendUpdate(QJsonObject)), m_client, SLOT(sendUpdate(QJsonObject)));
     connect(m_client, SIGNAL(updateReceived()),this, SLOT(receiveUpdate()));
+
     m_client->connectToServer();
 
 }
@@ -48,7 +49,8 @@ void DMI_Handler::receiveUpdate()
         {
             QString newState = m_jsonState.value(key).toString();
             obj->setProperty("state", newState);
-            qDebug() << m_jsonState.value(key);
+            qDebug() << newState;
+
         }
     }
 }
