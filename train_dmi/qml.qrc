@@ -1,14 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-
         <file>ATC_view.qml</file>
         <file>ETCS_view.qml</file>
         <file>DESK_view.qml</file>
         <file>Imports/Constants.qml</file>
         <file>Imports/qmldir</file>
-        <file>Buttontest.qml</file>
-        <file>Buttontest2.qml</file>
         <file>View_Power.qml</file>
         <file>desk_ikoner/indicator_frameR.png</file>
         <file>desk_ikoner/Up.png</file>
@@ -29,5 +26,6 @@
         <file>View_Back_Horn.qml</file>
         <file>desk_ikoner/siren5.png</file>
         <file>View_Text_Info.qml</file>
+        <file>desk_ikoner/redButton.png</file>
     </qresource>
 </RCC>
