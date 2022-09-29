@@ -6,13 +6,12 @@
 
 namespace VTI_DMI
 {
-    QString const PONTOGRAPH_UP = "pontograph up";
-    QString const BUTTON_2 = "button_2";
-    QString const VELOCITY = "velocity";
-    QString const VOLTAGE = "voltage";
+    extern QString const PONTOGRAPH_UP = "pontograph up";
+    extern QString const BUTTON_2 = "button_2";
+    extern QString const VELOCITY = "velocity";
+    extern QString const VOLTAGE = "voltage";
 
-
-    QJsonObject const JSON_TEMPLATE
+    extern QJsonObject const JSON_TEMPLATE
     {
         {PONTOGRAPH_UP, QJsonValue::Bool},
         {BUTTON_2, QJsonValue::Bool},
