@@ -6,6 +6,9 @@
 #include <QQmlContext>
 #include "network_client.h"
 #include "network_interface.h"
+#include "dmi_handler.h"
+
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -24,19 +27,12 @@ int main(int argc, char *argv[])
 
     QJsonObject json{};
 
-    json.insert(VTI_DMI::BUTTON_1, true);
+    json.insert(VTI_DMI::PONTOGRAPH_UP, false);
     json.insert(VTI_DMI::BUTTON_2, false);
     json.insert(VTI_DMI::VELOCITY, 0);
     json.insert(VTI_DMI::VOLTAGE, 10.0);
 
-    Network_Client n_Client{};
-    n_Client.connectToServer();
-
-    for(int i{1}; i < 1000; i++)
-    {
-        json.insert(VTI_DMI::VELOCITY, i);
-        n_Client.sendUpdate(json);
-    }
+    DMI_Handler dmiHandler{engine.rootContext()};
 
     return app.exec();
 }

@@ -16,17 +16,9 @@ Network_Client::~Network_Client()
     delete m_tcpSocket;
 }
 
-bool Network_Client::sendUpdate(const QJsonObject &obj)
+QJsonObject Network_Client::getUpdate()
 {
-    QByteArray data = QJsonDocument{obj}.toJson();
-    qint64 dataWritten = m_tcpSocket->write(data, qstrlen(data));
-
-    // Less than 10 milliseconds and there is no guarantee all that will be processed correctly.
-    delay(10);
-
-    if(data.size() != dataWritten)
-        return false;
-    return true;
+    return m_jsonUpdate;
 }
 
 void Network_Client::connectToServer()
@@ -62,7 +54,18 @@ void Network_Client::readyRead()
 {
     qDebug() << "Reading ... ";
     QByteArray data{m_tcpSocket->readAll()};
-    m_jsonState = (QJsonDocument(QJsonDocument::fromJson(data)).object());
-    qDebug() << m_jsonState;
+    m_jsonUpdate= (QJsonDocument(QJsonDocument::fromJson(data)).object());
+    emit updateReceived();
 }
+
+void Network_Client::sendUpdate(const QJsonObject &obj)
+{
+    QByteArray data = QJsonDocument{obj}.toJson();
+    m_tcpSocket->write(data, qstrlen(data));
+
+    // Less than 10 milliseconds and there is no guarantee all that will be processed correctly.
+    delay(10);
+}
+
+
 
