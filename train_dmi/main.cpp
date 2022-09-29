@@ -25,13 +25,6 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    QJsonObject json{};
-
-    json.insert(VTI_DMI::PONTOGRAPH_UP, false);
-    json.insert(VTI_DMI::BUTTON_2, false);
-    json.insert(VTI_DMI::VELOCITY, 0);
-    json.insert(VTI_DMI::VOLTAGE, 10.0);
-
     DMI_Handler dmiHandler{engine.rootContext()};
 
     return app.exec();
