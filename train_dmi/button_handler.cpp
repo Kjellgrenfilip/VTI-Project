@@ -1,9 +1,7 @@
 #include "button_handler.h"
 
-Button_Handler::Button_Handler(QObject *obj) : QObject(), rootObject{obj}
-{
-
-}
+Button_Handler::Button_Handler() : QObject()
+{}
 
 void Button_Handler::pontUpClicked()
 {
