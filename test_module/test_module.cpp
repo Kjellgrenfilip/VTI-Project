@@ -4,7 +4,7 @@ Test_Module::Test_Module()
     : QObject(), m_networkServer{new Network_Server{}}, m_jsonState{VTI_DMI::JSON_TEMPLATE}
 {
     connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
-    m_jsonState.insert(VTI_DMI::VELOCITY, 2.0);
+
 }
 
 Test_Module::~Test_Module()
@@ -36,16 +36,17 @@ void Test_Module::receiveUpdate()
         }
         else if(key == VTI_DMI::PARK_BRAKE)
         {
-            qDebug() << "PARKING-BRAKE update" << m_jsonState.value(VTI_DMI::PARK_BRAKE);
 
-            if((m_jsonState.value(VTI_DMI::VELOCITY) == 0) && (m_jsonState.value(VTI_DMI::PARK_BRAKE) == "off"))
+            if(m_jsonState.value(VTI_DMI::PARK_BRAKE) == "" || m_jsonState.value(VTI_DMI::PARK_BRAKE) == "on")
+                m_jsonState.insert(VTI_DMI::PARK_BRAKE, "off");
+            else if((m_jsonState.value(VTI_DMI::VELOCITY).toDouble() == 0.0) && (m_jsonState.value(VTI_DMI::PARK_BRAKE) == "off"))
                 m_jsonState.insert(VTI_DMI::PARK_BRAKE, "on");
-            else if((m_jsonState.value(VTI_DMI::PARK_BRAKE) == "on"))
 
+            qDebug() << "PARKING-BRAKE update" << m_jsonState.value(VTI_DMI::VELOCITY).toDouble();
 
-
-
-            qDebug() << "PARKING-BRAKE update" << m_jsonState.value(VTI_DMI::PARK_BRAKE);
+        }
+        else if(key == VTI_DMI::E_BRAKE)
+        {
 
         }
     }

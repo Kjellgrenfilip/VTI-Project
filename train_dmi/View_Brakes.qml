@@ -40,6 +40,7 @@ Item {
         anchors.margins: 30
         Button
         {
+
             id: park_button
             objectName: "park_button"
             width: (park_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
@@ -132,9 +133,10 @@ Item {
         }
         Button
         {
-            id: elbr_button
-            width: (elbr_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(elbr_button.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
+            id: electricity_brake
+            objectName: electricity_brake
+            width: (electricity_brake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(electricity_brake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
             Image
             {
                 id: elbr_image
@@ -160,9 +162,9 @@ Item {
             }
             states: [
                 State {
-                    name: "on"; when:elbr_button.pressed
+                    name: "on"; when:electricity_brake.pressed
                     PropertyChanges {
-                        target: park_image
+                        target: elbr_image
                         source:"desk_ikoner/yellow.png"
                     }
                     PropertyChanges {
@@ -173,7 +175,7 @@ Item {
                 State {
                     name: "off";
                     PropertyChanges {
-                        target: park_image
+                        target: elbr_image
                         source:"desk_ikoner/button69.png"
                     }
                 }

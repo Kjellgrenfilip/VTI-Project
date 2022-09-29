@@ -11,9 +11,11 @@ namespace VTI_DMI
     QString const VOLTAGE = "voltage";
 
     QString const PARK_BRAKE = "park_button";
+    QString const ELECTRICITY_BRAKE = "electricity_brake";
 
     QString const NBO = "emergency_brake";
     QString const FIRE = "fire";
+
 
 
     QJsonObject const JSON_TEMPLATE
@@ -23,7 +25,8 @@ namespace VTI_DMI
         {VOLTAGE, QJsonValue::Double},
         {PARK_BRAKE, ""},
         {NBO, QJsonValue::Bool},
-        {FIRE, QJsonValue::Bool}
+        {FIRE, QJsonValue::Bool},
+        {ELECTRICITY_BRAKE, ""}
 
     };
 };
