@@ -11,7 +11,7 @@ class DMI_Handler : public QObject
 {
     Q_OBJECT
 public:
-    explicit DMI_Handler(QQmlContext *rootContext);
+    explicit DMI_Handler(QQmlContext *rootContext, QObject *obj);
     ~DMI_Handler();
 
 private:
