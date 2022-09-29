@@ -35,8 +35,16 @@ void Test_Module::receiveUpdate()
         }
         else if (key == VTI_DMI::FIRE)
         {
-            qDebug() << "FIRE update" << value;
-            m_jsonState.insert(key, "active");
+            QString currentState = m_jsonState.value(key).toString();
+
+            if ( currentState == STATE::DEFAULT )
+                m_jsonState.insert(VTI_DMI::FIRE, STATE::WARNING);
+
+            else if ( currentState == STATE::WARNING )
+                m_jsonState.insert(VTI_DMI::FIRE, STATE::ACTIVE);
+
+            else if ( currentState == STATE::ACTIVE )
+                m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
         }
     }
 

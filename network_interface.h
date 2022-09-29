@@ -5,6 +5,15 @@
 #include <QJsonValue>
 #include <QString>
 
+namespace STATE
+{
+    QString const DEFAULT = "";
+    QString const ACTIVE = "active";
+    QString const INACTIVE = "inactive";
+    QString const WARNING = "warning";
+
+}
+
 namespace VTI_DMI
 {
     QString const PONTOGRAPH_UP = "pontograph_up";
@@ -15,11 +24,11 @@ namespace VTI_DMI
 
     QJsonObject const JSON_TEMPLATE
     {
-        {PONTOGRAPH_UP, QJsonValue::Bool},
+        {PONTOGRAPH_UP, STATE::DEFAULT},
         {VELOCITY, QJsonValue::Double},
         {VOLTAGE, QJsonValue::Double},
-        {NBO, QString{}},
-        {FIRE, QString{}}
+        {NBO, STATE::DEFAULT},
+        {FIRE, STATE::DEFAULT}
     };
 };
 

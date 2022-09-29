@@ -25,6 +25,7 @@ signals:
 public slots:
     void receiveUpdate();
 
+
 };
 
 #endif // TEST_MODULE_H

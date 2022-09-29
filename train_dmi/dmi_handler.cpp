@@ -24,6 +24,8 @@ void DMI_Handler::receiveUpdate()
     foreach(const QString& key, m_jsonState.keys())
     {
         QObject *obj = m_rootObject->findChild<QObject*>(key);
+        if ( obj == nullptr )
+            continue;
 
         if ( key == VTI_DMI::VELOCITY )
         {
@@ -36,9 +38,7 @@ void DMI_Handler::receiveUpdate()
         else
         {
             QString newState = m_jsonState.value(key).toString();
-            qDebug() << key << " : " << newState;
-            if ( obj != nullptr )
-                obj->setProperty("state", newState);
+            obj->setProperty("state", newState);
         }
     }
 }
