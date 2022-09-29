@@ -47,6 +47,7 @@ Item
         Button
         {
             id:pont_up_button
+            objectName: "pontograph up"
             width: (pont_up_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pont_up_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             //anchors.fill: parent
@@ -59,7 +60,25 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/Up.png"
             }
+        states:[
+        State {
+            name: "on"
+            PropertyChanges {
+                target: pont_up
+                source: "desk_ikoner/yellow.png"
 
+            }
+
+        },
+            State {
+                name: "off"
+                PropertyChanges {
+                    target: pont_up
+                    source:"desk_ikoner/Up.png"
+
+                }
+            }
+        ]
         }
         // non-clickable power indicator
         Button
