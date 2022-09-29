@@ -13,6 +13,9 @@ namespace VTI_DMI
     QString const NBO = "emergency_brake";
     QString const FIRE = "fire";
     QString const HBRYT = "h-bryt";
+    QString const SP = "sp";
+    QString const HEATING = "heating";
+
 
     QJsonObject const JSON_TEMPLATE
     {
@@ -22,7 +25,9 @@ namespace VTI_DMI
         {NBO, QJsonValue::Bool},
         {FIRE, QJsonValue::Bool},
         {PONTOGRAPH_DOWN,""},
-        {HBRYT,""}
+        {HBRYT,""},
+        {SP,""},
+        {HEATING,""}
     };
 };
 

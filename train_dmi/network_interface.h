@@ -12,6 +12,8 @@ namespace VTI_DMI
     QString const NBO = "emergency_brake";
     QString const FIRE = "fire";
     QString const HBRYT = "h-bryt";
+    QString const SP = "sp";
+    QString const HEATING = "heating";
 };
 
 #endif // NETWORK_INTERFACE_H

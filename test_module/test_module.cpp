@@ -24,11 +24,18 @@ void Test_Module::receiveUpdate()
              if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
              {
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
+                 m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
+                 m_jsonState.insert(VTI_DMI::HEATING,"off");
              }
              else
              {
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"on");
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"off");
+                 if(m_jsonState.value(VTI_DMI::HBRYT) == "on")
+                 {
+                     m_jsonState.insert(VTI_DMI::VOLTAGE,"on");
+                 }
+
              }
 
         }
@@ -42,17 +49,39 @@ void Test_Module::receiveUpdate()
             {
                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"on");
                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
+                m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
+                m_jsonState.insert(VTI_DMI::HEATING,"off");
             }
         }
         else if(key == VTI_DMI::HBRYT)
         {
+            qDebug() << "H-bryt update" << value;
             if(m_jsonState.value(VTI_DMI::HBRYT)=="on")
             {
                 m_jsonState.insert(VTI_DMI::HBRYT,"off");
+                m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
             }
             else
             {
                 m_jsonState.insert(VTI_DMI::HBRYT,"on");
+                if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
+                {
+                    m_jsonState.insert(VTI_DMI::VOLTAGE,"on");
+                }
+            }
+        }
+        else if(key == VTI_DMI::HEATING)
+        {
+            if(m_jsonState.value(VTI_DMI::HEATING)=="on")
+            {
+                m_jsonState.insert(VTI_DMI::HEATING,"off");
+            }
+            else
+            {
+                if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
+                {
+                    m_jsonState.insert(VTI_DMI::HEATING,"on");
+                }
             }
         }
         else if(key == VTI_DMI::VELOCITY)

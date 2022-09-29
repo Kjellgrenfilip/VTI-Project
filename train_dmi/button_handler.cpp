@@ -24,4 +24,11 @@ void Button_Handler::hBrytClicked()
     json.insert(VTI_DMI::HBRYT, true);
     emit sendUpdate(json);
 }
+void Button_Handler::heatingClicked()
+{
+    qDebug() << "TAGV pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::HEATING, true);
+    emit sendUpdate(json);
+}
 //QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);

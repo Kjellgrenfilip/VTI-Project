@@ -84,6 +84,7 @@ Item
         Button
         {
             id:pont_charge_button
+            objectName: "voltage";
             width:  parent.width / 2 - 5
             height: parent.height / 3 - 7
 
@@ -94,6 +95,33 @@ Item
                 source: "desk_ikoner/indicator_frameR.png"
             }
             text: "0V"
+            states:[
+            State {
+                name: "on"
+                PropertyChanges {
+                    target: pont_charge_button
+                    text:"16kV"
+
+                }
+                PropertyChanges {
+                    target: pont_charge
+                    source: "desk_ikoner/indicator_frame.png"
+
+                }
+
+            },
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: pont_charge_button
+                        text: "0V"
+                    }
+                    PropertyChanges {
+                        target: pont_charge
+                        source: "desk_ikoner/indicator_frameR.png"
+                }
+             }
+            ]
         }
         //clickable pantograph down
         Button
@@ -134,6 +162,7 @@ Item
         Button
         {
             id:sp_button
+            objectName: "sp"
             width: parent.width / 2 - 5
             height: parent.height / 3 - 7
             Image
@@ -143,11 +172,30 @@ Item
                 source: "desk_ikoner/yellow.png"
             }
             text: "0-SP"
+//            states:[
+//            State {
+//                name: "on"
+//                PropertyChanges {
+//                    target: sp_button
+//                    text:"16-SP"
+
+//                }
+//            },
+//                State {
+//                    name: "off"
+//                    PropertyChanges {
+//                        target: sp_button
+//                        text:"0-SP"
+
+//                    }
+//                }
+//            ]
         }
         //clickable main breaker
         Button
         {
             id:h_bryt_button
+            objectName: "h-bryt"
             width: (h_bryt_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(h_bryt_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
 
@@ -163,7 +211,7 @@ Item
             State {
                 name: "on"
                 PropertyChanges {
-                    target: pont_up
+                    target: h_bryt
                     source: "desk_ikoner/yellow.png"
 
                 }
@@ -172,7 +220,7 @@ Item
                 State {
                     name: "off"
                     PropertyChanges {
-                        target: pont_up
+                        target: h_bryt
                         source:"desk_ikoner/button69.png"
 
                     }
@@ -184,6 +232,7 @@ Item
         Button
         {
             id:tågv_button
+            objectName: "heating"
             width: (tågv_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(tågv_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
 
@@ -194,6 +243,26 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "TÅGV."
+            onClicked: buttonHandler.heatingClicked()
+            states:[
+            State {
+                name: "on"
+                PropertyChanges {
+                    target: tågv
+                    source: "desk_ikoner/yellow.png"
+
+                }
+
+            },
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: tågv
+                        source:"desk_ikoner/button69.png"
+
+                    }
+                }
+            ]
         }
     }
 }
