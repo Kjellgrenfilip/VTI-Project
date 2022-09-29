@@ -21,6 +21,8 @@ signals:
 
 public slots:
     void pontUpClicked();
+    void parkBrakeClicked();
+
 };
 
 #endif // BUTTON_HANDLER_H

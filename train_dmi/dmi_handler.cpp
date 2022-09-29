@@ -24,5 +24,4 @@ void DMI_Handler::receiveUpdate()
     {
         //Update GUI
 
-    }
 }

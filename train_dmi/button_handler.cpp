@@ -13,3 +13,11 @@ void Button_Handler::pontUpClicked()
     QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
     emit sendUpdate(json);
 }
+
+void Button_Handler::parkBrakeClicked()
+{
+    qDebug() << "Park brake pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::PARK_BRAKE, true);
+    emit sendUpdate(json);
+}

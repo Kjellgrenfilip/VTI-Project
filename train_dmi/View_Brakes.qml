@@ -41,9 +41,11 @@ Item {
         Button
         {
             id: park_button
+            objectName: "park_button"
             width: (park_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(park_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
 
+            onClicked: buttonHandler.parkBrakeClicked()
             Image
             {
                 id: park_image
@@ -69,7 +71,7 @@ Item {
                 }
             },
             State {
-                name: "off"; when:park_button.pressed
+                name: "off";
                 PropertyChanges {
                     target: park_image
                     source:"desk_ikoner/button69.png"
@@ -87,7 +89,7 @@ Item {
             {
                 id: broms_image
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "desk_ikoner/indicator_frame_green.png"
             }
             Text {
                 id: broms_text_a
@@ -106,6 +108,26 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
+            states: [
+                State {
+                    name: "on"; when:broms_button.pressed
+                    PropertyChanges {
+                        target: broms_image
+                        source:"desk_ikoner/indicator_frameR.png"
+                    }
+                    PropertyChanges {
+                        target: broms_text_b
+                        text: qsTr("TILL")
+                    }
+                },
+                State {
+                    name: "off";
+                    PropertyChanges {
+                        target: broms_image
+                        source:"desk_ikoner/indicator_frame_green.png"
+                    }
+                }
+            ]
         }
         Button
         {
