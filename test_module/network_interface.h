@@ -9,7 +9,7 @@ namespace VTI_DMI
     QString const PONTOGRAPH_UP = "pontograph_up";
     QString const VELOCITY = "velocity";
     QString const VOLTAGE = "voltage";
-    QString const PARK_BRAKE = "park brake";
+    QString const PARK_BRAKE = "parking_brake";
 
 
     QJsonObject const JSON_TEMPLATE
