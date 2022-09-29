@@ -7,7 +7,7 @@
 #include <QThread>
 
 #include <network_server.h>
-#include "network_interface.h"
+#include "../network_interface.h"
 
 class Test_Module : public QObject
 {
