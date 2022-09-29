@@ -3,8 +3,6 @@
 
 #include <QObject>
 #include <QDebug>
-#include <QSemaphore>
-#include <QThread>
 
 #include <network_server.h>
 #include "../network_interface.h"
@@ -24,8 +22,6 @@ signals:
 
 public slots:
     void receiveUpdate();
-
-
 };
 
 #endif // TEST_MODULE_H

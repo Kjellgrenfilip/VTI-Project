@@ -68,6 +68,8 @@ Item {
             anchors.left: parent.horizontalCenter
             anchors.margins: 5
 
+            onClicked: buttonHandler.fireClicked()
+
             Image
             {
                 id: fire_image
@@ -101,9 +103,7 @@ Item {
                         target: fire_button
                         width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
                         height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
-                        onClicked: buttonHandler.fireClicked()
                     }
-
                 }
             ]
         }
