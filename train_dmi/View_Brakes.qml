@@ -46,6 +46,7 @@ Item {
             height:(park_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
 
             onClicked: buttonHandler.parkBrakeClicked()
+
             Image
             {
                 id: park_image

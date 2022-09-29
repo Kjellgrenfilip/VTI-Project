@@ -95,6 +95,7 @@ Item
         {
             id:sp_button
             width: parent.width / 2 - 5
+
             height: parent.height / 3 - 7
             Image
             {

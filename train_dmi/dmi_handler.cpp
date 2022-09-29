@@ -7,7 +7,9 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
 {
     rootContext->setContextProperty("buttonHandler", m_buttonHandler);
     connect(m_buttonHandler, SIGNAL(sendUpdate(QJsonObject)), m_client, SLOT(sendUpdate(QJsonObject)));
+    connect(m_client, SIGNAL(updateReceived()),this, SLOT(receiveUpdate()));
     m_client->connectToServer();
+
 }
 
 DMI_Handler::~DMI_Handler()
@@ -19,6 +21,7 @@ DMI_Handler::~DMI_Handler()
 void DMI_Handler::receiveUpdate()
 {
     m_jsonState = m_client->getUpdate();
+    qDebug() << "Kommer in i funktionern";
 
     foreach(const QString& key, m_jsonState.keys())
     {
@@ -27,6 +30,11 @@ void DMI_Handler::receiveUpdate()
 
 
         QObject *obj = m_rootObject->findChild<QObject*>(key);
+        if(!obj)
+        {
+            qDebug() << "Unknown object: " << key;
+            return;
+        }
 
         if ( key == VTI_DMI::VELOCITY )
         {
@@ -36,9 +44,11 @@ void DMI_Handler::receiveUpdate()
         {
             QString newState = m_jsonState.value(key).toString();
             obj->setProperty("state", newState);
+            qDebug() << m_jsonState.value(key);
         }
 
     }
 }
+
 
 

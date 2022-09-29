@@ -10,7 +10,7 @@ namespace VTI_DMI
     QString const VELOCITY = "velocity";
     QString const VOLTAGE = "voltage";
 
-    QString const PARK_BRAKE = "parking_brake";
+    QString const PARK_BRAKE = "park_button";
 
     QString const NBO = "emergency_brake";
     QString const FIRE = "fire";
@@ -21,7 +21,7 @@ namespace VTI_DMI
         {PONTOGRAPH_UP, QJsonValue::Bool},
         {VELOCITY, QJsonValue::Double},
         {VOLTAGE, QJsonValue::Double},
-        {PARK_BRAKE, QJsonValue::Bool},
+        {PARK_BRAKE, ""},
         {NBO, QJsonValue::Bool},
         {FIRE, QJsonValue::Bool}
 
