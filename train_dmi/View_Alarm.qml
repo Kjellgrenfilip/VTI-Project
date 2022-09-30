@@ -85,6 +85,25 @@ Item {
                 color:"White"
             }
 
+            SequentialAnimation {
+                id: warningAnimation
+                running: false
+                loops: Animation.Infinite
+                PropertyAnimation {
+                    target: fire_image
+                    property: "source"
+                    to: "desk_ikoner/redButton.png"
+                    duration: 300
+                }
+
+                PropertyAnimation {
+                    target: fire_image
+                    property: "source"
+                    to: "desk_ikoner/button69.png"
+                    duration: 300
+                }
+            }
+
             states: [
                 State {
                     name: "active";
@@ -96,13 +115,14 @@ Item {
                 State {
                     name: "warning";
                     PropertyChanges {
-                        target: fire_image
-                        source:"desk_ikoner/yellow.png"
-                    }
-                    PropertyChanges {
                         target: fire_button
                         width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
                         height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
+                    }
+
+                    PropertyChanges {
+                        target: warningAnimation
+                        running: true
                     }
                 }
             ]

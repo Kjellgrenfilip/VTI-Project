@@ -27,7 +27,7 @@ namespace VTI_DMI
         { VELOCITY,         QJsonValue::Double },
         { VOLTAGE,          QJsonValue::Double },
         { EMERGENCY_BRAKE,  STATE::DEFAULT },
-        { FIRE,             STATE::DEFAULT }
+        { FIRE,             STATE::WARNING }
     };
 };
 
