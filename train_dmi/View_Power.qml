@@ -84,7 +84,7 @@ Item
         Button
         {
             id:pont_charge_button
-            objectName: "voltage";
+            objectName: "voltage"
             width:  parent.width / 2 - 5
             height: parent.height / 3 - 7
 
@@ -92,9 +92,16 @@ Item
             {
                 id:pont_charge
                 anchors.fill: parent
-                source: "desk_ikoner/indicator_frameR.png"
+                source: (pont_charge_button.text == "0V") ? "desk_ikoner/indicator_frameR.png" : "desk_ikoner/indicator_frame.png"
             }
-            text: "0V"
+
+            text: "0v"
+            onTextChanged: pont_charge_button.text = pont_charge_button.text + "V"
+//            Text {
+//                id: texttwo
+//                text: "0V"
+//            }
+
             states:[
             State {
                 name: "on"

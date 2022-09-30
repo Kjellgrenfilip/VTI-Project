@@ -32,7 +32,7 @@ namespace VTI_DMI
     {
         { PONTOGRAPH_UP,        STATE::DEFAULT },
         { VELOCITY,             QJsonValue::Double },
-        { VOLTAGE,              QJsonValue::Double },
+        { VOLTAGE,              QJsonValue::Double }, // should be a double
         { EMERGENCY_BRAKE,      STATE::DEFAULT },
         { FIRE,                 STATE::DEFAULT },
         { PARK_BRAKE,           STATE::DEFAULT },

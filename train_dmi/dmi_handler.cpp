@@ -44,6 +44,9 @@ void DMI_Handler::receiveUpdate()
         else if ( key == VTI_DMI::VOLTAGE )
         {
             // Special case example
+            double newState = m_jsonState.value(key).toDouble();
+            obj->setProperty("text", newState);
+            qDebug() << newState;
         }
         else
         {

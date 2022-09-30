@@ -22,10 +22,11 @@ void Test_Module::receiveUpdate()
         if(key == VTI_DMI::PONTOGRAPH_UP)
         {
              qDebug() << "PONTOGRAPH_UP update" << value;
+             //m_jsonState.insert(key,value);
              if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
              {
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
-                 m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
+                 m_jsonState.insert(VTI_DMI::VOLTAGE,0);
                  m_jsonState.insert(VTI_DMI::HEATING,"off");
              }
              else
@@ -34,7 +35,7 @@ void Test_Module::receiveUpdate()
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"off");
                  if(m_jsonState.value(VTI_DMI::HBRYT) == "on")
                  {
-                     m_jsonState.insert(VTI_DMI::VOLTAGE,"on");
+                     m_jsonState.insert(VTI_DMI::VOLTAGE,16);
                  }
 
              }
@@ -50,7 +51,7 @@ void Test_Module::receiveUpdate()
             {
                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"on");
                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
-                m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
+                m_jsonState.insert(VTI_DMI::VOLTAGE,0);
                 m_jsonState.insert(VTI_DMI::HEATING,"off");
             }
         }
@@ -60,14 +61,15 @@ void Test_Module::receiveUpdate()
             if(m_jsonState.value(VTI_DMI::HBRYT)=="on")
             {
                 m_jsonState.insert(VTI_DMI::HBRYT,"off");
-                m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
+                m_jsonState.insert(VTI_DMI::VOLTAGE,0);
             }
             else
             {
                 m_jsonState.insert(VTI_DMI::HBRYT,"on");
                 if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
                 {
-                    m_jsonState.insert(VTI_DMI::VOLTAGE,"on");
+                    qDebug() << "should turn on";
+                    m_jsonState.insert(VTI_DMI::VOLTAGE,16);
                 }
             }
         }
