@@ -46,6 +46,19 @@ void Test_Module::receiveUpdate()
             else if ( currentState == STATE::ACTIVE )
                 m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
         }
+        else if (key == VTI_DMI::EMERGENCY_BRAKE)
+        {
+            QString currentState = m_jsonState.value(key).toString();
+
+            if ( currentState == STATE::DEFAULT )
+                m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::WARNING);
+
+            else if ( currentState == STATE::WARNING )
+                m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::ACTIVE);
+
+            else if ( currentState == STATE::ACTIVE )
+                m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
+        }
     }
 
     m_networkServer->sendUpdate(m_jsonState);

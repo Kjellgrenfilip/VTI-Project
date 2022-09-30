@@ -38,6 +38,7 @@ void DMI_Handler::receiveUpdate()
         else
         {
             QString newState = m_jsonState.value(key).toString();
+            qDebug() << key << " : " << newState;
             obj->setProperty("state", newState);
         }
     }

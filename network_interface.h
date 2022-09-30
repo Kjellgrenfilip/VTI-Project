@@ -7,7 +7,7 @@
 
 namespace STATE
 {
-    QString const DEFAULT   = "";
+    QString const DEFAULT   = "default";
     QString const ACTIVE    = "active";
     QString const INACTIVE  = "inactive";
     QString const WARNING   = "warning";
@@ -27,7 +27,7 @@ namespace VTI_DMI
         { VELOCITY,         QJsonValue::Double },
         { VOLTAGE,          QJsonValue::Double },
         { EMERGENCY_BRAKE,  STATE::DEFAULT },
-        { FIRE,             STATE::WARNING }
+        { FIRE,             STATE::DEFAULT }
     };
 };
 

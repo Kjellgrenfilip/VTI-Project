@@ -21,6 +21,7 @@ signals:
 public slots:
     void pontUpClicked();
     void fireClicked();
+    void nboClicked();
 };
 
 #endif // BUTTON_HANDLER_H

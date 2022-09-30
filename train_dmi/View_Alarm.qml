@@ -57,6 +57,54 @@ Item {
                 font.pointSize: parent.width /8
                 color: "White"
             }
+
+            SequentialAnimation {
+                id: nboWarningAnimation
+                running: false
+                loops: Animation.Infinite
+                PropertyAnimation {
+                    target: nbo_image
+                    property: "source"
+                    to: "desk_ikoner/redButton.png"
+                    duration: 300
+                }
+
+                PropertyAnimation {
+                    target: nbo_image
+                    property: "source"
+                    to: "desk_ikoner/button69.png"
+                    duration: 300
+                }
+            }
+            states: [
+                State {
+                    name: "default";
+                    PropertyChanges {
+                        target: nbo_image
+                        source:"desk_ikoner/button69.png"
+                    }
+                },
+                State {
+                    name: "active";
+                    PropertyChanges {
+                        target: nbo_image
+                        source:"desk_ikoner/redButton.png"
+                    }
+                },
+                State {
+                    name: "warning";
+                    PropertyChanges {
+                        target: nbo_image
+                        width: (nbo_image.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+                        height:(nbo_image.pressed) ? parent.height - 40 : parent.height - 35
+                    }
+
+                    PropertyChanges {
+                        target: nboWarningAnimation
+                        running: true
+                    }
+                }
+            ]
         }
         Button
         {
@@ -86,7 +134,7 @@ Item {
             }
 
             SequentialAnimation {
-                id: warningAnimation
+                id: fireWarningAnimation
                 running: false
                 loops: Animation.Infinite
                 PropertyAnimation {
@@ -103,8 +151,14 @@ Item {
                     duration: 300
                 }
             }
-
             states: [
+                State {
+                    name: "default";
+                    PropertyChanges {
+                        target: fire_image
+                        source:"desk_ikoner/button69.png"
+                    }
+                },
                 State {
                     name: "active";
                     PropertyChanges {
@@ -121,7 +175,7 @@ Item {
                     }
 
                     PropertyChanges {
-                        target: warningAnimation
+                        target: fireWarningAnimation
                         running: true
                     }
                 }
