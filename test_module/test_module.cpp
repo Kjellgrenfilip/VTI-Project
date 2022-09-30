@@ -108,7 +108,25 @@ void Test_Module::receiveUpdate()
 
         }
         else if(key == VTI_DMI::ELECTRICITY_BRAKE)
-        {}
+        {
+            QString currentState = m_jsonState.value(key).toString();
+
+            if(currentState == STATE::DEFAULT || currentState == "off")
+                m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, "on");
+            else
+                m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, "off");
+        }
+
+        else if(key == VTI_DMI::MAGNETIC_BRAKE)
+        {
+            QString currentState = m_jsonState.value(key).toString();
+            bool tmpvalue = value.toBool();
+
+            if(tmpvalue == true)
+                m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, "on");
+            else
+                m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, "off");
+        }
 
 
         else if (key == VTI_DMI::FIRE)

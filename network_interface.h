@@ -23,10 +23,12 @@ namespace VTI_DMI
     QString const FIRE              = "fire";
     QString const PARK_BRAKE        = "parking_brake";
     QString const ELECTRICITY_BRAKE = "electricity_brake";
+    QString const MAGNETIC_BRAKE = "magnetic_brake";
+    QString const BRAKE_INDICATOR = "brake_indicator";
     QString const HBRYT = "h-bryt";
     QString const SP = "sp";
     QString const HEATING = "heating";
-
+    QString const BREAKING = "breaking";
 
     QJsonObject const JSON_TEMPLATE
     {
@@ -37,6 +39,9 @@ namespace VTI_DMI
         { FIRE,                 STATE::DEFAULT },
         { PARK_BRAKE,           STATE::DEFAULT },
         { ELECTRICITY_BRAKE,    STATE::DEFAULT },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT },
+        { BRAKE_INDICATOR,      STATE::DEFAULT },
+        { BREAKING,             QJsonValue::Bool},
         {PONTOGRAPH_DOWN,""},
         {HBRYT,""},
         {SP,""},

@@ -22,7 +22,7 @@ DMI_Handler::~DMI_Handler()
 void DMI_Handler::receiveUpdate()
 {
     m_jsonState = m_client->getUpdate();
-    qDebug() << "Kommer in i funktionern";
+
 
     foreach(const QString& key, m_jsonState.keys())
     {
@@ -44,6 +44,14 @@ void DMI_Handler::receiveUpdate()
         else if ( key == VTI_DMI::VOLTAGE )
         {
             // Special case example
+        }
+        else if (key == VTI_DMI::BRAKE_INDICATOR)
+        {
+            if(m_jsonState.value(VTI_DMI::BREAKING) == true)
+                obj->setProperty("state", "on");
+            else
+                obj->setProperty("state", "off");
+
         }
         else
         {

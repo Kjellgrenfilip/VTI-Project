@@ -20,7 +20,29 @@ void Button_Handler::parkBrakeClicked()
     json.insert(VTI_DMI::PARK_BRAKE, true);
     emit sendUpdate(json);
 }
-
+void Button_Handler::electricityBrakeClicked()
+{
+    qDebug() << "Electicity brake button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::ELECTRICITY_BRAKE, true);
+    emit sendUpdate(json);
+}
+void Button_Handler::magneticBrakeClicked()
+{
+    qDebug() << "Magnetic brake button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::MAGNETIC_BRAKE, true);
+    emit sendUpdate(json);
+    qDebug() << "Magnetic brake sent a json file";
+}
+void Button_Handler::magneticBrakeReleased()
+{
+    qDebug() << "Magnetic brake button released!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::MAGNETIC_BRAKE, false);
+    emit sendUpdate(json);
+    qDebug() << "Magnetic brake sent a json file";
+}
 
 //Park_button, true
 

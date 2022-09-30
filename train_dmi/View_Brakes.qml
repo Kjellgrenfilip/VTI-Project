@@ -42,11 +42,11 @@ Item {
         {
 
             id: park_button
-            objectName: "park_button"
+            objectName: "parking_brake"
             width: (park_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(park_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
 
-            onClicked: buttonHandler.parkBrakeClicked()
+            onPressed: buttonHandler.parkBrakeClicked()
 
             Image
             {
@@ -84,7 +84,8 @@ Item {
 
         Button
         {
-            id: broms_button
+            id: brake_indicator
+            objectName: "brake_indicator"
             width: parent.width / 2 - 5
             height: parent.height / 2 - 5
             Image
@@ -112,7 +113,7 @@ Item {
             }
             states: [
                 State {
-                    name: "on"; when:broms_button.pressed
+                    name: "on";
                     PropertyChanges {
                         target: broms_image
                         source:"desk_ikoner/indicator_frameR.png"
@@ -134,9 +135,11 @@ Item {
         Button
         {
             id: electricity_brake
-            objectName: electricity_brake
+            objectName: "electricity_brake"
             width: (electricity_brake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(electricity_brake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
+
+            onPressed:  buttonHandler.electricityBrakeClicked()
             Image
             {
                 id: elbr_image
@@ -162,7 +165,7 @@ Item {
             }
             states: [
                 State {
-                    name: "on"; when:electricity_brake.pressed
+                    name: "on";
                     PropertyChanges {
                         target: elbr_image
                         source:"desk_ikoner/yellow.png"
@@ -184,9 +187,15 @@ Item {
         }
         Button
         {
-            id: mg_button
-            width: (mg_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(mg_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id: magnetic_brake
+            objectName: "magnetic_brake"
+            width: (magnetic_brake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(magnetic_brake.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+
+            onPressed:  buttonHandler.magneticBrakeClicked()
+            onReleased:  buttonHandler.magneticBrakeReleased()
+            onCanceled:  buttonHandler.magneticBrakeReleased()
+
             Image
             {
                 id: mg_image
@@ -201,23 +210,24 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
+            states: [
+                State {
+                    name: "on";
+                    PropertyChanges {
+                        target: mg_image
+                        source:"desk_ikoner/redButton.png"
+                    }
+                },
+                State {
+                    name: "off";
+                    PropertyChanges {
+                        target: mg_image
+                        source:"desk_ikoner/button69.png"
+                    }
+                }
+            ]
         }
-        states: [
-            State {
-                name: "on"; when:mg_button.pressed
-                PropertyChanges {
-                    target: mg_image
-                    source:"desk_ikoner/redButton.png"
-                }
-            },
-            State {
-                name: "off";
-                PropertyChanges {
-                    target: mg_image
-                    source:"desk_ikoner/button69.png"
-                }
-            }
-        ]
+
 
     }
 }

@@ -75,3 +75,4 @@ DISTFILES += \
     desk_ikoner/siren6.tif \
     desk_ikoner/yellow.tif \
     desk_ikoner/green.png \
+    desk_ikoner/redButton.png \

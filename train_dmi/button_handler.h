@@ -22,11 +22,16 @@ public slots:
     void pontUpClicked();
 
     void parkBrakeClicked();
+    void electricityBrakeClicked();
+    void magneticBrakeClicked();
+    void magneticBrakeReleased();
+
     void fireClicked();
 
     void pontDownClicked();
     void hBrytClicked();
     void heatingClicked();
+
 };
 
 #endif // BUTTON_HANDLER_H
