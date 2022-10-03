@@ -33,6 +33,9 @@ public slots:
     void heatingClicked();
 
     void nboClicked();
+
+    void leftDoorClicked();
+    void rightDoorClicked();
 };
 
 #endif // BUTTON_HANDLER_H

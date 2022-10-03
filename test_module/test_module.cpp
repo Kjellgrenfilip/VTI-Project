@@ -127,7 +127,6 @@ void Test_Module::receiveUpdate()
                 m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, "off");
         }
 
-
         else if (key == VTI_DMI::FIRE)
         {
             QString currentState = m_jsonState.value(key).toString();
@@ -142,17 +141,7 @@ void Test_Module::receiveUpdate()
                 m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
 
         }
-        else if (key == VTI_DMI::DOOR_LEFT)
-        {
-            QString currentState = m_jsonState.value(key).toString();
 
-            if ( currentState == STATE::DEFAULT )
-                m_jsonState.insert(VTI_DMI::DOOR_LEFT, STATE::ACTIVE);
-        }
-<<<<<<< HEAD
-
-
-=======
         else if (key == VTI_DMI::EMERGENCY_BRAKE)
         {
             QString currentState = m_jsonState.value(key).toString();
@@ -166,7 +155,28 @@ void Test_Module::receiveUpdate()
             else if ( currentState == STATE::ACTIVE )
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
         }
->>>>>>> 2c24a6a2ee78298702dee1cceff6b4ef16fe951b
+         else if (key == VTI_DMI::DOOR_LEFT)
+        {
+            QString currentState = m_jsonState.value(key).toString();
+
+            if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
+            {
+                m_jsonState.insert(VTI_DMI::DOOR_LEFT, STATE::WARNING);
+                m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::INACTIVE);
+            }
+
+
+
+
+        }
+        else if (key == VTI_DMI::DOOR_RIGHT)
+       {
+           QString currentState = m_jsonState.value(key).toString();
+
+           if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
+               m_jsonState.insert(VTI_DMI::DOOR_RIGHT, STATE::WARNING);
+
+       }
     }
 
     m_networkServer->sendUpdate(m_jsonState);

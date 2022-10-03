@@ -85,5 +85,21 @@ void Button_Handler::nboClicked()
     emit sendUpdate(json);
 }
 
+void Button_Handler::leftDoorClicked()
+{
+    qDebug() << "leftdoor button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::DOOR_LEFT, true);
+    emit sendUpdate(json);
+}
+
+void Button_Handler::rightDoorClicked()
+{
+    qDebug() << "rightdoor button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::DOOR_RIGHT, true);
+    emit sendUpdate(json);
+}
+
 //QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
 

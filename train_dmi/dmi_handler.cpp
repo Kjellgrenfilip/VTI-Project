@@ -92,7 +92,7 @@ void DMI_Handler::animationHandler()
         QString currentState = m_jsonState.value(key).toString();
         if ( currentState == STATE::WARNING )
         {
-            //qDebug() << "Setting property";
+            qDebug() << "Setting property";
             obj->setProperty("running", false);
             obj->setProperty("running", true);
         }

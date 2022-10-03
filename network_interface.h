@@ -30,6 +30,9 @@ namespace VTI_DMI
     QString const HEATING = "heating";
     QString const BREAKING = "breaking";
     QString const DOOR_LEFT = "door_left_button";
+    QString const DOOR_RIGHT = "door_right_button";
+    QString const DOOR_CLOSE = "door_close_button";
+    QString const DEPARTURE = "departure_button";
 
     QJsonObject const JSON_TEMPLATE
     {
@@ -47,7 +50,10 @@ namespace VTI_DMI
         { HBRYT,""},
         { SP,""},
         { HEATING,""},
-        { DOOR_LEFT,            STATE::DEFAULT }
+        { DOOR_LEFT,            STATE::DEFAULT },
+        { DOOR_RIGHT,           STATE::DEFAULT },
+        { DOOR_CLOSE,           STATE::DEFAULT },
+        { DEPARTURE,            STATE::DEFAULT }
 
     };
 };
