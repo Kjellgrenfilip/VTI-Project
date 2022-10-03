@@ -27,5 +27,9 @@
         <file>desk_ikoner/siren5.png</file>
         <file>View_Text_Info.qml</file>
         <file>desk_ikoner/redButton.png</file>
+        <file>sounds/S_info.wav</file>
+        <file>sounds/S_info_2.wav</file>
+        <file>sounds/click.wav</file>
+        <file>sounds/click_2.wav</file>
     </qresource>
 </RCC>
