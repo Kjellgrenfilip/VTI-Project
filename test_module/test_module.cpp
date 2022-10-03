@@ -142,6 +142,15 @@ void Test_Module::receiveUpdate()
                 m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
 
         }
+        else if (key == VTI_DMI::DOOR_LEFT)
+        {
+            QString currentState = m_jsonState.value(key).toString();
+
+            if ( currentState == STATE::DEFAULT )
+                m_jsonState.insert(VTI_DMI::DOOR_LEFT, STATE::ACTIVE);
+        }
+
+
     }
 
     m_networkServer->sendUpdate(m_jsonState);

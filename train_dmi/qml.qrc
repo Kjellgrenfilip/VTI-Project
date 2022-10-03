@@ -33,5 +33,8 @@
         <file>desk_ikoner/DownY.png</file>
         <file>desk_ikoner/power2.png</file>
         <file>desk_ikoner/power_green2.png</file>
+        <file>desk_ikoner/doorleftY.png</file>
+        <file>desk_ikoner/doorrightY.png</file>
+        <file>desk_ikoner/closedG.png</file>
     </qresource>
 </RCC>

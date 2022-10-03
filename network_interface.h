@@ -29,6 +29,7 @@ namespace VTI_DMI
     QString const SP = "sp";
     QString const HEATING = "heating";
     QString const BREAKING = "breaking";
+    QString const DOOR_LEFT = "door_left_button";
 
     QJsonObject const JSON_TEMPLATE
     {
@@ -42,10 +43,11 @@ namespace VTI_DMI
         { MAGNETIC_BRAKE,       STATE::DEFAULT },
         { BRAKE_INDICATOR,      STATE::DEFAULT },
         { BREAKING,             QJsonValue::Bool},
-        {PONTOGRAPH_DOWN,""},
-        {HBRYT,""},
-        {SP,""},
-        {HEATING,""}
+        { PONTOGRAPH_DOWN,""},
+        { HBRYT,""},
+        { SP,""},
+        { HEATING,""},
+        { DOOR_LEFT,            STATE::DEFAULT }
 
     };
 };
