@@ -21,6 +21,8 @@ namespace VTI_DMI
     QString const EMERGENCY_BRAKE   = "emergency_brake";
     QString const FIRE              = "fire";
     QString const REVERSE           = "reverse";
+    QString const HORN              = "horn";
+
 
     QJsonObject const JSON_TEMPLATE
     {
