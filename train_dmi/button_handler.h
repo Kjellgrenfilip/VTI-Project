@@ -22,6 +22,7 @@ public slots:
     void pontUpClicked();
     void fireClicked();
     void nboClicked();
+    void hornPressed();
 };
 
 #endif // BUTTON_HANDLER_H

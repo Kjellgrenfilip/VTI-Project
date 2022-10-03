@@ -32,6 +32,7 @@ signals:
 public slots:
     void newConnection();
     void readyRead();
+    void disconnected();
 };
 
 #endif // NETWORK_SERVER_H

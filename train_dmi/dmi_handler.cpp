@@ -53,7 +53,6 @@ void DMI_Handler::receiveUpdate()
 
 void DMI_Handler::animationHandler()
 {
-    //qDebug() << "animation handler";
     foreach(const QString& key, m_jsonState.keys())
     {
         QObject *obj = m_rootObject->findChild<QObject*>(key+"_animation");
@@ -63,7 +62,6 @@ void DMI_Handler::animationHandler()
         QString currentState = m_jsonState.value(key).toString();
         if ( currentState == STATE::WARNING )
         {
-            //qDebug() << "Setting property";
             obj->setProperty("running", false);
             obj->setProperty("running", true);
         }
