@@ -75,6 +75,7 @@ void Test_Module::receiveUpdate()
         }
         else if(key == VTI_DMI::HEATING)
         {
+            qDebug() << "hello world";
             if(m_jsonState.value(VTI_DMI::HEATING)=="on")
             {
                 m_jsonState.insert(VTI_DMI::HEATING,"off");
@@ -83,6 +84,7 @@ void Test_Module::receiveUpdate()
             {
                 if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
                 {
+                    qDebug() << "this is great";
                     m_jsonState.insert(VTI_DMI::HEATING,"on");
                 }
             }

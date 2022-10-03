@@ -30,7 +30,7 @@ namespace VTI_DMI
 
     QJsonObject const JSON_TEMPLATE
     {
-        { PONTOGRAPH_UP,        STATE::DEFAULT },
+        { PONTOGRAPH_UP,        "" },
         { VELOCITY,             QJsonValue::Double },
         { VOLTAGE,              QJsonValue::Double }, // should be a double
         { EMERGENCY_BRAKE,      STATE::DEFAULT },
