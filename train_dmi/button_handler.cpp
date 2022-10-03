@@ -27,4 +27,9 @@ void Button_Handler::nboClicked()
     emit sendUpdate(json);
 }
 
+void Button_Handler::hornPressed()
+{
+
+}
+
 //QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);

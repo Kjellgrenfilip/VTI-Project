@@ -71,7 +71,7 @@ Item{
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*1)/7
                          //Call ButtonGroup qml file here.
-                        View_Back_Horn{}
+                        View_Reverse_Horn{}
                      }
             Rectangle{
                         id: activationButtons

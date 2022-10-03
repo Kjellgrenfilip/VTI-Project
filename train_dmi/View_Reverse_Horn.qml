@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 
 Item {
-    id: back_horn
+    id: reverse_horn
     anchors.fill: parent
     Rectangle
     {
@@ -11,20 +11,20 @@ Item {
 
         Button
         {
-            id: back_button
-            width: (back_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-            height:(back_button.pressed) ? parent.height - 40 : parent.height - 35
+            id: reverse_button
+            width: (reverse_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+            height:(reverse_button.pressed) ? parent.height - 40 : parent.height - 35
             anchors.margins: 5
             anchors.right: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             Image
             {
-                id: back_image
+                id: reverse_image
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
             Text {
-                id: back_text
+                id: reverse_text
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BACK")
@@ -42,13 +42,16 @@ Item {
             anchors.margins: 5
             anchors.left: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+
+            onPressed: buttonHandler.hornPressed()
+
             Image
             {
                 id: horn_image
                 anchors.fill: parent
                 source: "desk_ikoner/siren5.png"
             }
-           }
+        }
     }
 }
 

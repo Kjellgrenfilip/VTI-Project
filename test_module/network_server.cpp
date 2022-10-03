@@ -50,7 +50,9 @@ void Network_Server::newConnection()
     qDebug() << "Connecting";
     m_tcpSocket = m_tcpServer->nextPendingConnection();
     connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+    connect(m_tcpSocket, SIGNAL(disconnected()), this, SLOT(disconnected()));
     m_tcpSocket->waitForBytesWritten(3000);
+
 }
 
 void Network_Server::readyRead()
@@ -59,5 +61,10 @@ void Network_Server::readyRead()
     QByteArray data{m_tcpSocket->readAll()};
     m_jsonUpdate = (QJsonDocument(QJsonDocument::fromJson(data)).object());
     emit updateReceived();
+}
+
+void Network_Server::disconnected()
+{
+    QCoreApplication::exit(0);
 }
 
