@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import QtMultimedia
 
 Item {
     id: reverse_horn
@@ -43,7 +44,13 @@ Item {
             anchors.left: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
 
-            onPressed: buttonHandler.hornPressed()
+//            onPressed: { buttonHandler.hornPressed(); sound.play() }
+            onPressed: { buttonHandler.hornPressed() }
+
+//            SoundEffect {
+//                id: sound
+//                source: "sounds/S_info.wav"
+//            }
 
             Image
             {

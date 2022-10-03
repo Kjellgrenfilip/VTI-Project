@@ -29,7 +29,10 @@ void Button_Handler::nboClicked()
 
 void Button_Handler::hornPressed()
 {
-
+    qDebug() << "HORN button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::HORN, true);
+    emit sendUpdate(json);
 }
 
 //QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
