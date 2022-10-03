@@ -1,4 +1,5 @@
-QT += quick multimedia
+QT += quick
+#QT += multimedia
 
 CONFIG += c++17
 
