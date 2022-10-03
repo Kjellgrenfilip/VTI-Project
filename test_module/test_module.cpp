@@ -4,7 +4,6 @@ Test_Module::Test_Module()
     : QObject(), m_networkServer{new Network_Server{}}, m_jsonState{VTI_DMI::JSON_TEMPLATE}
 {
     connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
-
 }
 
 Test_Module::~Test_Module()

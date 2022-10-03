@@ -31,5 +31,7 @@
         <file>desk_ikoner/indicator_frame_green.png</file>
         <file>desk_ikoner/UpY.png</file>
         <file>desk_ikoner/DownY.png</file>
+        <file>desk_ikoner/power2.png</file>
+        <file>desk_ikoner/power_green2.png</file>
     </qresource>
 </RCC>

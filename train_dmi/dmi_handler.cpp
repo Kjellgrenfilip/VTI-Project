@@ -47,8 +47,12 @@ void DMI_Handler::receiveUpdate()
         }
         else if (key == VTI_DMI::BRAKE_INDICATOR)
         {
+            qDebug() << "BRAKE_INDICATOR dmi handler";
             if(m_jsonState.value(VTI_DMI::BREAKING) == true)
+            {
                 obj->setProperty("state", "on");
+                qDebug() << "BREAKING = true";
+            }
             else
                 obj->setProperty("state", "off");
 
