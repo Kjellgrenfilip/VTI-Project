@@ -27,6 +27,14 @@ void Button_Handler::nboClicked()
     emit sendUpdate(json);
 }
 
+void Button_Handler::reversePressed()
+{
+    qDebug() << "Reverse button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::REVERSE, true);
+    emit sendUpdate(json);
+}
+
 void Button_Handler::hornPressed()
 {
 

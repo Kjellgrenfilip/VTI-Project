@@ -60,6 +60,20 @@ void Test_Module::receiveUpdate()
             else if ( currentState == STATE::ACTIVE )
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
         }
+        else if ( key == VTI_DMI::REVERSE )
+        {
+            QString currentState = m_jsonState.value(key).toString();
+            double currentVelocity = m_jsonState.value(VTI_DMI::VELOCITY).toDouble();
+
+            if ( currentVelocity <= 0.0)
+            {
+                if ( currentState == STATE::DEFAULT )
+                    m_jsonState.insert(VTI_DMI::REVERSE, STATE::WARNING);
+
+                else if ( currentState == STATE::WARNING )
+                    m_jsonState.insert(VTI_DMI::REVERSE, STATE::DEFAULT);
+            }
+        }
     }
 
     m_networkServer->sendUpdate(m_jsonState);

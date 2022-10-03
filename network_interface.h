@@ -20,6 +20,7 @@ namespace VTI_DMI
     QString const VOLTAGE           = "voltage";
     QString const EMERGENCY_BRAKE   = "emergency_brake";
     QString const FIRE              = "fire";
+    QString const REVERSE           = "reverse";
 
     QJsonObject const JSON_TEMPLATE
     {
@@ -27,7 +28,8 @@ namespace VTI_DMI
         { VELOCITY,         QJsonValue::Double },
         { VOLTAGE,          QJsonValue::Double },
         { EMERGENCY_BRAKE,  STATE::DEFAULT },
-        { FIRE,             STATE::DEFAULT }
+        { FIRE,             STATE::DEFAULT },
+        { REVERSE,          STATE::DEFAULT }
     };
 };
 
