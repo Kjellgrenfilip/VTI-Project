@@ -7,7 +7,7 @@
 
 namespace STATE
 {
-    QString const DEFAULT   = "";
+    QString const DEFAULT   = "default";
     QString const ACTIVE    = "active";
     QString const INACTIVE  = "inactive";
     QString const WARNING   = "warning";

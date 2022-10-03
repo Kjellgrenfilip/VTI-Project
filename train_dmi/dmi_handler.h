@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QQmlContext>
+#include <QTimer>
 
 #include "network_client.h"
 #include "button_handler.h"
@@ -18,6 +19,8 @@ private:
     Network_Client *m_client;
     Button_Handler *m_buttonHandler;
     QObject *m_rootObject;
+    QTimer *m_animationTimer;
+
 
     QJsonObject m_jsonState;
 
@@ -25,6 +28,7 @@ signals:
 
 public slots:
     void receiveUpdate();
+    void animationHandler();
 
 };
 

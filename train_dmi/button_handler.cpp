@@ -75,6 +75,13 @@ void Button_Handler::heatingClicked()
     qDebug() << "TAGV pressed!";
     QJsonObject json{};
     json.insert(VTI_DMI::HEATING, true);
+}
+
+void Button_Handler::nboClicked()
+{
+    qDebug() << "NBO button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::EMERGENCY_BRAKE, true);
     emit sendUpdate(json);
 }
 

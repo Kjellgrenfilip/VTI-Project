@@ -32,6 +32,7 @@ public slots:
     void hBrytClicked();
     void heatingClicked();
 
+    void nboClicked();
 };
 
 #endif // BUTTON_HANDLER_H
