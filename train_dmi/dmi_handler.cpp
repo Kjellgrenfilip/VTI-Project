@@ -11,6 +11,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
 
     m_client->connectToServer();
 
+
 }
 
 DMI_Handler::~DMI_Handler()
@@ -57,6 +58,8 @@ void DMI_Handler::receiveUpdate()
         }
     }
 }
+
+
 
 
 

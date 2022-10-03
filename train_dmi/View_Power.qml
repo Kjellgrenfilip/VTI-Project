@@ -95,40 +95,52 @@ Item
                 source: (pont_charge_button.text == "0V") ? "desk_ikoner/indicator_frameR.png" : "desk_ikoner/indicator_frame.png"
             }
 
-            text: "0v"
-            onTextChanged: pont_charge_button.text = pont_charge_button.text + "V"
+            text: "0V"
 //            Text {
-//                id: texttwo
-//                text: "0V"
+//                id: bajs
+//                objectName: "testing"
+//                text: ""
+//                color: "transparent"
 //            }
 
-            states:[
-            State {
-                name: "on"
-                PropertyChanges {
-                    target: pont_charge_button
-                    text:"16kV"
+            onTextChanged: if(pont_charge_button.text.charAt(pont_charge_button.text.length -1) != "V")
+                           {
+                            if(pont_charge_button.text.charAt(0) == "0")
+                            {
+                                pont_charge_button.text = pont_charge_button.text + "V"
+                            }
+                            else
+                            {
+                                pont_charge_button.text = pont_charge_button.text + "kV"
+                            }
+                           }
+//            states:[
+//            State {
+//                name: "on"
+//                PropertyChanges {
+//                    target: pont_charge_button
+//                    text:"16kV"
 
-                }
-                PropertyChanges {
-                    target: pont_charge
-                    source: "desk_ikoner/indicator_frame.png"
+//                }
+//                PropertyChanges {
+//                    target: pont_charge
+//                    source: "desk_ikoner/indicator_frame.png"
 
-                }
+//                }
 
-            },
-                State {
-                    name: "off"
-                    PropertyChanges {
-                        target: pont_charge_button
-                        text: "0V"
-                    }
-                    PropertyChanges {
-                        target: pont_charge
-                        source: "desk_ikoner/indicator_frameR.png"
-                }
-             }
-            ]
+//            },
+//                State {
+//                    name: "off"
+//                    PropertyChanges {
+//                        target: pont_charge_button
+//                        text: "0V"
+//                    }
+//                    PropertyChanges {
+//                        target: pont_charge
+//                        source: "desk_ikoner/indicator_frameR.png"
+//                }
+//             }
+//            ]
         }
         //clickable pantograph down
         Button
@@ -198,6 +210,26 @@ Item
 //                    }
 //                }
 //            ]
+            SequentialAnimation {
+                            id: spWarningAnimation
+                            objectName: "sp_animation"
+                            running: false
+                            loops: Animation.Infinite
+                            PropertyAnimation {
+                                target: sp
+                                property: "source"
+                                to: "desk_ikoner/yellow.png"
+                                duration: MyConst.animation_duration
+                            }
+
+                            PropertyAnimation {
+                                target: sp
+                                property: "source"
+                                to: "desk_ikoner/button69.png"
+                                duration: MyConst.animation_duration
+                            }
+                        }
+
         }
         //clickable main breaker
         Button

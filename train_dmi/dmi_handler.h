@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QQmlContext>
-
 #include "network_client.h"
 #include "button_handler.h"
 
@@ -18,14 +17,12 @@ private:
     Network_Client *m_client;
     Button_Handler *m_buttonHandler;
     QObject *m_rootObject;
-
     QJsonObject m_jsonState;
 
 signals:
 
 public slots:
     void receiveUpdate();
-
 };
 
 #endif // DMI_HANDLER_H
