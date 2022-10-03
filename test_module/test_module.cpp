@@ -62,10 +62,12 @@ void Test_Module::receiveUpdate()
             {
                 m_jsonState.insert(VTI_DMI::HBRYT,"off");
                 m_jsonState.insert(VTI_DMI::VOLTAGE,0);
+                m_jsonState.insert(VTI_DMI::SP,"warning");
             }
             else
             {
                 m_jsonState.insert(VTI_DMI::HBRYT,"on");
+                m_jsonState.insert(VTI_DMI::SP,"off");
                 if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
                 {
                     qDebug() << "should turn on";

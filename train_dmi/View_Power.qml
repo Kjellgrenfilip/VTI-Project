@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.12
+import "Imports" 1.0
 //import power_button_implement 1.0
 
 Item
@@ -189,27 +190,10 @@ Item
             {
                 id:sp
                 anchors.fill: parent
-                source: "desk_ikoner/yellow.png"
+                source: "desk_ikoner/button69.png"
             }
             text: "0-SP"
-//            states:[
-//            State {
-//                name: "on"
-//                PropertyChanges {
-//                    target: sp_button
-//                    text:"16-SP"
 
-//                }
-//            },
-//                State {
-//                    name: "off"
-//                    PropertyChanges {
-//                        target: sp_button
-//                        text:"0-SP"
-
-//                    }
-//                }
-//            ]
             SequentialAnimation {
                             id: spWarningAnimation
                             objectName: "sp_animation"
@@ -229,6 +213,21 @@ Item
                                 duration: MyConst.animation_duration
                             }
                         }
+            states:[
+            State {
+                name: "warning"
+             }
+            ,
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: spWarningAnimation
+                        running : false
+
+
+                    }
+                }
+            ]
 
         }
         //clickable main breaker
