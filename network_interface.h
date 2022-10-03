@@ -39,7 +39,7 @@ namespace VTI_DMI
         { ELECTRICITY_BRAKE,    STATE::DEFAULT },
         {PONTOGRAPH_DOWN,""},
         {HBRYT,""},
-        {SP,""},
+        {SP,STATE::WARNING},
         {HEATING,""}
 
     };

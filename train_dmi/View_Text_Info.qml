@@ -21,7 +21,7 @@ Item {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.margins: 15
-                text: qsTr("")
+                text: qsTr("hello")
                 color:"White"
             }
             Text {
@@ -32,7 +32,7 @@ Item {
                 anchors.leftMargin: 15
                 anchors.topMargin: 3
 
-                text: qsTr("")
+                text: qsTr("world")
                 color:"White"
             }
         }

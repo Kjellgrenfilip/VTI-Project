@@ -194,6 +194,22 @@ Item
             }
             text: "0-SP"
 
+            states:[
+            State {
+                name: "warning"
+             }
+            ,
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: spWarningAnimation
+                        running : false
+
+
+                    }
+                }
+            ]
+
             SequentialAnimation {
                             id: spWarningAnimation
                             objectName: "sp_animation"
@@ -213,21 +229,7 @@ Item
                                 duration: MyConst.animation_duration
                             }
                         }
-            states:[
-            State {
-                name: "warning"
-             }
-            ,
-                State {
-                    name: "off"
-                    PropertyChanges {
-                        target: spWarningAnimation
-                        running : false
 
-
-                    }
-                }
-            ]
 
         }
         //clickable main breaker
