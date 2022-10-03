@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import "Imports" 1.0
 
 Item {
     id: alarm
@@ -57,6 +58,58 @@ Item {
                 font.pointSize: parent.width /8
                 color: "White"
             }
+
+            SequentialAnimation {
+                id: nboWarningAnimation
+                objectName: "emergency_brake_animation"
+                running: false
+                loops: Animation.Infinite
+                PropertyAnimation {
+                    target: nbo_image
+                    property: "source"
+                    to: "desk_ikoner/redButton.png"
+                    duration: MyConst.animation_duration
+                }
+
+                PropertyAnimation {
+                    target: nbo_image
+                    property: "source"
+                    to: "desk_ikoner/button69.png"
+                    duration: MyConst.animation_duration
+                }
+            }
+            states: [
+                State {
+                    name: "default";
+                    PropertyChanges {
+                        target: nbo_image
+                        source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges {
+                        target: nboWarningAnimation
+                        running: false
+                    }
+                },
+                State {
+                    name: "active";
+                    PropertyChanges {
+                        target: nbo_image
+                        source:"desk_ikoner/redButton.png"
+                    }
+                    PropertyChanges {
+                        target: nboWarningAnimation
+                        running: false
+                    }
+                },
+                State {
+                    name: "warning";
+                    PropertyChanges {
+                        target: nbo_image
+                        width: (nbo_image.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+                        height:(nbo_image.pressed) ? parent.height - 40 : parent.height - 35
+                    }
+                }
+            ]
         }
         Button
         {
@@ -69,6 +122,8 @@ Item {
             anchors.margins: 5
 
             onClicked: buttonHandler.fireClicked()
+
+
 
             Image
             {
@@ -85,20 +140,51 @@ Item {
                 color:"White"
             }
 
+            SequentialAnimation {
+                id: fireWarningAnimation
+                objectName: "fire_animation"
+                running: false
+                loops: Animation.Infinite
+                PropertyAnimation {
+                    target: fire_image
+                    property: "source"
+                    to: "desk_ikoner/redButton.png"
+                    duration: MyConst.animation_duration
+                }
+
+                PropertyAnimation {
+                    target: fire_image
+                    property: "source"
+                    to: "desk_ikoner/button69.png"
+                    duration: MyConst.animation_duration
+                }
+            }
             states: [
+                State {
+                    name: "default";
+                    PropertyChanges {
+                        target: fire_image
+                        source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges {
+                        target: fireWarningAnimation
+                        running: false
+                    }
+                },
                 State {
                     name: "active";
                     PropertyChanges {
                         target: fire_image
                         source:"desk_ikoner/redButton.png"
                     }
+
+                    PropertyChanges {
+                        target: fireWarningAnimation
+                        running: false
+                    }
                 },
                 State {
                     name: "warning";
-                    PropertyChanges {
-                        target: fire_image
-                        source:"desk_ikoner/yellow.png"
-                    }
                     PropertyChanges {
                         target: fire_button
                         width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35

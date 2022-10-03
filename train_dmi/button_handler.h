@@ -27,6 +27,9 @@ public slots:
     void pontDownClicked();
     void hBrytClicked();
     void heatingClicked();
+
+    void nboClicked();
+
 };
 
 #endif // BUTTON_HANDLER_H
