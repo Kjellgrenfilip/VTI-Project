@@ -11,4 +11,7 @@ QtObject{
 
     readonly property color backgroundColor: "#041122"
 
+    readonly property int animation_duration: 500
 }
+
+

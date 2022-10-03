@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import "Imports" 1.0
 
 Item {
     id: alarm
@@ -60,20 +61,21 @@ Item {
 
             SequentialAnimation {
                 id: nboWarningAnimation
+                objectName: "emergency_brake_animation"
                 running: false
                 loops: Animation.Infinite
                 PropertyAnimation {
                     target: nbo_image
                     property: "source"
                     to: "desk_ikoner/redButton.png"
-                    duration: 300
+                    duration: MyConst.animation_duration
                 }
 
                 PropertyAnimation {
                     target: nbo_image
                     property: "source"
                     to: "desk_ikoner/button69.png"
-                    duration: 300
+                    duration: MyConst.animation_duration
                 }
             }
             states: [
@@ -83,12 +85,20 @@ Item {
                         target: nbo_image
                         source:"desk_ikoner/button69.png"
                     }
+                    PropertyChanges {
+                        target: nboWarningAnimation
+                        running: false
+                    }
                 },
                 State {
                     name: "active";
                     PropertyChanges {
                         target: nbo_image
                         source:"desk_ikoner/redButton.png"
+                    }
+                    PropertyChanges {
+                        target: nboWarningAnimation
+                        running: false
                     }
                 },
                 State {
@@ -97,11 +107,6 @@ Item {
                         target: nbo_image
                         width: (nbo_image.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
                         height:(nbo_image.pressed) ? parent.height - 40 : parent.height - 35
-                    }
-
-                    PropertyChanges {
-                        target: nboWarningAnimation
-                        running: true
                     }
                 }
             ]
@@ -117,6 +122,8 @@ Item {
             anchors.margins: 5
 
             onClicked: buttonHandler.fireClicked()
+
+
 
             Image
             {
@@ -135,20 +142,21 @@ Item {
 
             SequentialAnimation {
                 id: fireWarningAnimation
+                objectName: "fire_animation"
                 running: false
                 loops: Animation.Infinite
                 PropertyAnimation {
                     target: fire_image
                     property: "source"
                     to: "desk_ikoner/redButton.png"
-                    duration: 300
+                    duration: MyConst.animation_duration
                 }
 
                 PropertyAnimation {
                     target: fire_image
                     property: "source"
                     to: "desk_ikoner/button69.png"
-                    duration: 300
+                    duration: MyConst.animation_duration
                 }
             }
             states: [
@@ -158,12 +166,21 @@ Item {
                         target: fire_image
                         source:"desk_ikoner/button69.png"
                     }
+                    PropertyChanges {
+                        target: fireWarningAnimation
+                        running: false
+                    }
                 },
                 State {
                     name: "active";
                     PropertyChanges {
                         target: fire_image
                         source:"desk_ikoner/redButton.png"
+                    }
+
+                    PropertyChanges {
+                        target: fireWarningAnimation
+                        running: false
                     }
                 },
                 State {
@@ -172,11 +189,6 @@ Item {
                         target: fire_button
                         width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
                         height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
-                    }
-
-                    PropertyChanges {
-                        target: fireWarningAnimation
-                        running: true
                     }
                 }
             ]
