@@ -177,7 +177,41 @@ void Test_Module::receiveUpdate()
                m_jsonState.insert(VTI_DMI::DOOR_RIGHT, STATE::WARNING);
 
        }
+        else if (key == VTI_DMI::DEPARTURE)
+       {
+           QString currentState = m_jsonState.value(key).toString();
+           QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
+           QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
+
+
+           if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
+           {
+                if( leftdoorState == STATE::WARNING  || rightdoorState == STATE::WARNING )
+                {
+                     m_jsonState.insert(VTI_DMI::DEPARTURE, STATE::WARNING);
+                }
+            }
+       }
+        else if( key== VTI_DMI::DOOR_CLOSE)
+        {
+            QString currentState = m_jsonState.value(key).toString();
+            QString departureState = m_jsonState.value(VTI_DMI::DEPARTURE).toString();
+            QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
+            QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
+
+            if (departureState == STATE::WARNING)
+            {
+                //Start timer
+                m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::WARNING);
+                //TIMER FINISHED. CHANGE DOORS TO INACTIVE AND DEPARTURE TO INACTIVE
+            }
+            if( leftdoorState == STATE::WARNING  || rightdoorState == STATE::WARNING )
+            {
+
+            }
+        }
     }
 
     m_networkServer->sendUpdate(m_jsonState);
 }
+
