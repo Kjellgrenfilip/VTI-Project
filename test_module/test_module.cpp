@@ -98,7 +98,7 @@ void Test_Module::receiveUpdate()
         else if(key == VTI_DMI::PARK_BRAKE)
         {
 
-            if(m_jsonState.value(VTI_DMI::PARK_BRAKE) == "" || m_jsonState.value(VTI_DMI::PARK_BRAKE) == "on")
+            if(m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::DEFAULT  || m_jsonState.value(VTI_DMI::PARK_BRAKE) == "on")
                 m_jsonState.insert(VTI_DMI::PARK_BRAKE, "off");
             else if((m_jsonState.value(VTI_DMI::VELOCITY).toDouble() == 0.0) && (m_jsonState.value(VTI_DMI::PARK_BRAKE) == "off"))
                 m_jsonState.insert(VTI_DMI::PARK_BRAKE, "on");
