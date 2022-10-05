@@ -62,6 +62,12 @@ void Button_Handler::nboClicked()
     json.insert(VTI_DMI::EMERGENCY_BRAKE, true);
     emit sendUpdate(json);
 }
-
+void Button_Handler::receiptClicked()
+{
+    qDebug() << "receipt button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::RECEIPT, true);
+    emit sendUpdate(json);
+}
 //QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
 

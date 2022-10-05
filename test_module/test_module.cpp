@@ -144,6 +144,13 @@ void Test_Module::receiveUpdate()
             else if ( currentState == STATE::ACTIVE )
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
         }
+        else if(key == VTI_DMI::RECEIPT)
+        {
+            QString currentState = m_jsonState.value(key).toString();
+
+
+
+        }
     }
 
     m_networkServer->sendUpdate(m_jsonState);

@@ -26,6 +26,7 @@ namespace VTI_DMI
     QString const HBRYT = "h-bryt";
     QString const SP = "sp";
     QString const HEATING = "heating";
+    QString const RECEIPT = "receipt";
 
 
     QJsonObject const JSON_TEMPLATE
@@ -40,7 +41,8 @@ namespace VTI_DMI
         {PONTOGRAPH_DOWN,""},
         {HBRYT,""},
         {SP,STATE::WARNING},
-        {HEATING,""}
+        {HEATING,""},
+        {RECEIPT,STATE::DEFAULT}
 
     };
 };

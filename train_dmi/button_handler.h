@@ -29,6 +29,7 @@ public slots:
     void heatingClicked();
 
     void nboClicked();
+    void receiptClicked();
 
 };
 
