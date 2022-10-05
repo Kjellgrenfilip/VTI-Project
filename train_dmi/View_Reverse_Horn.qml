@@ -23,6 +23,7 @@ Item {
             anchors.margins: 5
             anchors.right: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            enabled: false
 
             onPressed: buttonHandler.reversePressed()
 
@@ -70,9 +71,17 @@ Item {
                         target: reverseAnimation
                         running: false
                     }
+                    PropertyChanges {
+                        target: reverse_button
+                        enabled: true
+                    }
                 },
                 State {
                     name: "warning";
+                    PropertyChanges {
+                        target: reverse_button
+                        enabled: true
+                    }
                 }
             ]
 
@@ -80,11 +89,13 @@ Item {
         Button
         {
             id: horn_button
+            objectName: "horn"
             width: (horn_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
             height:(horn_button.pressed) ? parent.height - 40 : parent.height - 35
             anchors.margins: 5
             anchors.left: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            enabled: false
 
 //          onPressed: { buttonHandler.hornPressed(); sound.play() }
             onPressed: { buttonHandler.hornPressed() }
@@ -101,6 +112,16 @@ Item {
                 anchors.fill: parent
                 source: "desk_ikoner/siren5.png"
             }
+
+            states: [
+                State {
+                    name: "default";
+                    PropertyChanges {
+                        target: horn_button
+                        enabled: true
+                    }
+                }
+            ]
         }
     }
 }

@@ -3,6 +3,14 @@
 Button_Handler::Button_Handler() : QObject()
 {}
 
+void Button_Handler::activatePressed()
+{
+    qDebug() << "Activate";
+    QJsonObject json{};
+    json.insert(VTI_DMI::ACTIVATE, true);
+    emit sendUpdate(json);
+}
+
 void Button_Handler::pontUpClicked()
 {
     qDebug() << "Pontograph Up!";

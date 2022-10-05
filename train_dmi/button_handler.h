@@ -19,6 +19,8 @@ signals:
     void sendUpdate(QJsonObject);
 
 public slots:
+    void activatePressed();
+
     void pontUpClicked();
 
     void parkBrakeClicked();

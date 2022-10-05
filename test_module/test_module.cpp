@@ -14,11 +14,19 @@ Test_Module::~Test_Module()
 
 void Test_Module::receiveUpdate()
 {
-    QJsonObject tmp = m_networkServer->getUpdate();
-
-    foreach(const QString& key, tmp.keys())
+    QJsonObject update = m_networkServer->getUpdate();
+    if ( m_jsonState.value(VTI_DMI::ACTIVATE).toString() == "" )
     {
-        QJsonValue value = tmp.value(key);
+        if ( update.value(VTI_DMI::ACTIVATE).toBool() )
+            m_jsonState.insert(VTI_DMI::ACTIVATE, STATE::ACTIVE);
+        else
+            return;
+    }
+
+    foreach(const QString& key, update.keys())
+    {
+        QJsonValue value = update.value(key);
+
         if(key == VTI_DMI::PONTOGRAPH_UP)
         {
              qDebug() << "PONTOGRAPH_UP update" << value;
@@ -123,9 +131,9 @@ void Test_Module::receiveUpdate()
         else if(key == VTI_DMI::MAGNETIC_BRAKE)
         {
             QString currentState = m_jsonState.value(key).toString();
-            bool tmpvalue = value.toBool();
+            bool updateValue = value.toBool();
 
-            if(tmpvalue == true)
+            if(updateValue == true)
                 m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, "on");
             else
                 m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, "off");

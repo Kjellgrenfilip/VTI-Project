@@ -41,6 +41,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.horizontalCenter
             anchors.margins: 5
+            enabled: false
 
             onClicked: buttonHandler.nboClicked()
 
@@ -60,7 +61,7 @@ Item {
             }
 
             SequentialAnimation {
-                id: nboWarningAnimation
+                id: nbo_warning_animation
                 objectName: "emergency_brake_animation"
                 running: false
                 loops: Animation.Infinite
@@ -86,8 +87,12 @@ Item {
                         source:"desk_ikoner/button69.png"
                     }
                     PropertyChanges {
-                        target: nboWarningAnimation
+                        target: nbo_warning_animation
                         running: false
+                    }
+                    PropertyChanges {
+                        target: nbo_button
+                        enabled: true
                     }
                 },
                 State {
@@ -97,16 +102,21 @@ Item {
                         source:"desk_ikoner/redButton.png"
                     }
                     PropertyChanges {
-                        target: nboWarningAnimation
+                        target: nbo_warning_animation
                         running: false
+                    }
+                    PropertyChanges {
+                        target: nbo_button
+                        enabled: true
                     }
                 },
                 State {
                     name: "warning";
                     PropertyChanges {
-                        target: nbo_image
-                        width: (nbo_image.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-                        height:(nbo_image.pressed) ? parent.height - 40 : parent.height - 35
+                        target: nbo_button
+                        width: (nbo_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+                        height:(nbo_button.pressed) ? parent.height - 40 : parent.height - 35
+                        enabled: true
                     }
                 }
             ]
@@ -120,10 +130,9 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.horizontalCenter
             anchors.margins: 5
+            enabled: false
 
             onClicked: buttonHandler.fireClicked()
-
-
 
             Image
             {
@@ -170,6 +179,10 @@ Item {
                         target: fireWarningAnimation
                         running: false
                     }
+                    PropertyChanges {
+                        target: fire_button
+                        enabled: true
+                    }
                 },
                 State {
                     name: "active";
@@ -182,6 +195,10 @@ Item {
                         target: fireWarningAnimation
                         running: false
                     }
+                    PropertyChanges {
+                        target: fire_button
+                        enabled: true
+                    }
                 },
                 State {
                     name: "warning";
@@ -189,6 +206,7 @@ Item {
                         target: fire_button
                         width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
                         height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
+                        enabled: true
                     }
                 }
             ]

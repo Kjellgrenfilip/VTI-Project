@@ -3,7 +3,7 @@ import QtQuick.Controls 2.0
 import "Imports" 1.0
 /*known bug : text follows when button is pressed. this should not happen*/
 Item {
-    id: brakes
+    id: activate
     anchors.fill: parent
     Rectangle
     {
@@ -12,6 +12,7 @@ Item {
         Button
         {
             id: activate_button
+            objectName: "activate"
             width: (activate_button.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
             height:(activate_button.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.left: parent.left
@@ -27,6 +28,41 @@ Item {
                 anchors.fill: parent
                 source: "desk_ikoner/power_green2.png"
             }
+
+            onPressed: buttonHandler.activatePressed()
+
+            SequentialAnimation {
+                id: activate_animation
+                objectName: "activate_animation"
+                running: true
+                loops: Animation.Infinite
+                PropertyAnimation {
+                    target: activate_image
+                    property: "source"
+                    to: "desk_ikoner/power_green2.png"
+                    duration: MyConst.animation_duration
+                }
+
+                PropertyAnimation {
+                    target: activate_image
+                    property: "source"
+                    to: "desk_ikoner/power2.png"
+                    duration: MyConst.animation_duration
+                }
+            }
+            states: [
+                State {
+                    name: "active";
+                    PropertyChanges {
+                        target: activate_image
+                        source:"desk_ikoner/power_green2.png"
+                    }
+                    PropertyChanges {
+                        target: activate_animation
+                        running: false
+                    }
+                }
+            ]
 
 
 
