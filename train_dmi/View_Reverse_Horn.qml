@@ -86,7 +86,7 @@ Item {
             anchors.left: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
 
- //           onPressed: { buttonHandler.hornPressed(); sound.play() }
+//          onPressed: { buttonHandler.hornPressed(); sound.play() }
             onPressed: { buttonHandler.hornPressed() }
 
 //            SoundEffect {

@@ -40,9 +40,13 @@ Item {
         anchors.margins: 30
         Button
         {
+
             id: park_button
+            objectName: "parking_brake"
             width: (park_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(park_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+
+            onPressed: buttonHandler.parkBrakeClicked()
 
             Image
             {
@@ -69,7 +73,7 @@ Item {
                 }
             },
             State {
-                name: "off"; when:park_button.pressed
+                name: "off";
                 PropertyChanges {
                     target: park_image
                     source:"desk_ikoner/button69.png"
@@ -80,14 +84,15 @@ Item {
 
         Button
         {
-            id: broms_button
+            id: brake_indicator
+            objectName: "brake_indicator"
             width: parent.width / 2 - 5
             height: parent.height / 2 - 5
             Image
             {
                 id: broms_image
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "desk_ikoner/indicator_frame_green.png"
             }
             Text {
                 id: broms_text_a
@@ -106,12 +111,35 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
+            states: [
+                State {
+                    name: "on";
+                    PropertyChanges {
+                        target: broms_image
+                        source:"desk_ikoner/indicator_frameR.png"
+                    }
+                    PropertyChanges {
+                        target: broms_text_b
+                        text: qsTr("TILL")
+                    }
+                },
+                State {
+                    name: "off";
+                    PropertyChanges {
+                        target: broms_image
+                        source:"desk_ikoner/indicator_frame_green.png"
+                    }
+                }
+            ]
         }
         Button
         {
-            id: elbr_button
-            width: (elbr_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(elbr_button.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
+            id: electricity_brake
+            objectName: "electricity_brake"
+            width: (electricity_brake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(electricity_brake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
+
+            onPressed:  buttonHandler.electricityBrakeClicked()
             Image
             {
                 id: elbr_image
@@ -137,9 +165,9 @@ Item {
             }
             states: [
                 State {
-                    name: "on"; when:elbr_button.pressed
+                    name: "on";
                     PropertyChanges {
-                        target: park_image
+                        target: elbr_image
                         source:"desk_ikoner/yellow.png"
                     }
                     PropertyChanges {
@@ -150,7 +178,7 @@ Item {
                 State {
                     name: "off";
                     PropertyChanges {
-                        target: park_image
+                        target: elbr_image
                         source:"desk_ikoner/button69.png"
                     }
                 }
@@ -159,9 +187,15 @@ Item {
         }
         Button
         {
-            id: mg_button
-            width: (mg_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(mg_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id: magnetic_brake
+            objectName: "magnetic_brake"
+            width: (magnetic_brake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(magnetic_brake.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+
+            onPressed:  buttonHandler.magneticBrakeClicked()
+            onReleased:  buttonHandler.magneticBrakeReleased()
+            onCanceled:  buttonHandler.magneticBrakeReleased()
+
             Image
             {
                 id: mg_image
@@ -176,23 +210,24 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
+            states: [
+                State {
+                    name: "on";
+                    PropertyChanges {
+                        target: mg_image
+                        source:"desk_ikoner/redButton.png"
+                    }
+                },
+                State {
+                    name: "off";
+                    PropertyChanges {
+                        target: mg_image
+                        source:"desk_ikoner/button69.png"
+                    }
+                }
+            ]
         }
-        states: [
-            State {
-                name: "on"; when:mg_button.pressed
-                PropertyChanges {
-                    target: mg_image
-                    source:"desk_ikoner/redButton.png"
-                }
-            },
-            State {
-                name: "off";
-                PropertyChanges {
-                    target: mg_image
-                    source:"desk_ikoner/button69.png"
-                }
-            }
-        ]
+
 
     }
 }

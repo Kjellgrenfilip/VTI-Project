@@ -18,9 +18,7 @@ Item{
 
         background: Rectangle{
             anchors.fill: parent;
-            color: MyConst.backgroundColor;
-            border.color: "#bfbfbf";
-            border.width: 2;
+            color: MyConst.backgroundColor
 
             Text{
             text: "Left Desk PANEL";
@@ -40,8 +38,6 @@ Item{
             Rectangle{
                        id: powerButtons
                        color: "transparent";
-                       border.color: "#bfbfbf";
-                       border.width: 2;
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                        Layout.preferredHeight: (parent.height*3)/7
@@ -53,8 +49,6 @@ Item{
             Rectangle{
                         id: doorButtons
                         color: "transparent";
-                        border.color: "#bfbfbf";
-                        border.width: 2;
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*2)/7
@@ -65,8 +59,6 @@ Item{
             Rectangle{
                         id: backhornButtons
                         color: "transparent";
-                        border.color: "#bfbfbf";
-                        border.width: 2;
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*1)/7
@@ -76,8 +68,6 @@ Item{
             Rectangle{
                         id: activationButtons
                         color: "transparent";
-                        border.color: "#bfbfbf";
-                        border.width: 2;
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*1)/7
@@ -100,8 +90,6 @@ Item{
         background: Rectangle{
             anchors.fill: parent;
             color: MyConst.backgroundColor;
-            border.color: "#bfbfbf";
-            border.width: 2;
 
             Text{
             text: "bottom Desk PANEL";
@@ -126,8 +114,6 @@ Item{
         background: Rectangle{
             anchors.fill: parent;
             color: MyConst.backgroundColor;
-            border.color: "#bfbfbf";
-            border.width: 2;
             Text{
             text: "right Desk PANEL";
             color: "white";
@@ -144,10 +130,8 @@ Item{
 
 
             Rectangle{
-                        id: breakButtons
+                       id: breakButtons
                        color: "transparent";
-                       border.color: "#bfbfbf";
-                       border.width: 2;
                        Layout.fillHeight: true
                        Layout.fillWidth: true
 
@@ -157,9 +141,6 @@ Item{
                      }
             Rectangle{
                         color: "transparent";
-                        border.color: "#bfbfbf";
-                        border.width: 2;
-
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
@@ -170,9 +151,6 @@ Item{
             Rectangle{
                         id: lightEmergency
                         color: "transparent";
-                        border.color: "#bfbfbf";
-                        border.width: 2;
-
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
@@ -185,9 +163,6 @@ Item{
             Rectangle{
                         id: alarmButtons
                         color: "transparent";
-                        border.color: "#bfbfbf";
-                        border.width: 2;
-
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 

@@ -47,6 +47,7 @@ Item
         Button
         {
             id:pont_up_button
+            objectName: "pontograph_up"
             width: (pont_up_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pont_up_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             //anchors.fill: parent
@@ -59,12 +60,31 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/Up.png"
             }
+        states:[
+        State {
+            name: "on"
+            PropertyChanges {
+                target: pont_up
+                source: "desk_ikoner/UpY.png"
 
+            }
+
+        },
+            State {
+                name: "off"
+                PropertyChanges {
+                    target: pont_up
+                    source:"desk_ikoner/Up.png"
+
+                }
+            }
+        ]
         }
         // non-clickable power indicator
         Button
         {
             id:pont_charge_button
+            objectName: "voltage";
             width:  parent.width / 2 - 5
             height: parent.height / 3 - 7
 
@@ -75,11 +95,39 @@ Item
                 source: "desk_ikoner/indicator_frameR.png"
             }
             text: "0V"
+            states:[
+            State {
+                name: "on"
+                PropertyChanges {
+                    target: pont_charge_button
+                    text:"16kV"
+
+                }
+                PropertyChanges {
+                    target: pont_charge
+                    source: "desk_ikoner/indicator_frame.png"
+
+                }
+
+            },
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: pont_charge_button
+                        text: "0V"
+                    }
+                    PropertyChanges {
+                        target: pont_charge
+                        source: "desk_ikoner/indicator_frameR.png"
+                }
+             }
+            ]
         }
         //clickable pantograph down
         Button
         {
             id:pont_down_button
+            objectName:  "pontograph_down"
             width: (pont_down_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pont_down_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             Image
@@ -88,13 +136,35 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/Down.png"
             }
+            onClicked: buttonHandler.pontDownClicked()
+            states:[
+            State {
+                name: "on"
+                PropertyChanges {
+                    target: pont_down
+                    source: "desk_ikoner/DownY.png"
+
+                }
+
+            },
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: pont_down
+                        source:"desk_ikoner/Down.png"
+
+                    }
+                }
+            ]
 
         }
         // non-clickable current indicator?
         Button
         {
             id:sp_button
+            objectName: "sp"
             width: parent.width / 2 - 5
+
             height: parent.height / 3 - 7
             Image
             {
@@ -103,11 +173,30 @@ Item
                 source: "desk_ikoner/yellow.png"
             }
             text: "0-SP"
+//            states:[
+//            State {
+//                name: "on"
+//                PropertyChanges {
+//                    target: sp_button
+//                    text:"16-SP"
+
+//                }
+//            },
+//                State {
+//                    name: "off"
+//                    PropertyChanges {
+//                        target: sp_button
+//                        text:"0-SP"
+
+//                    }
+//                }
+//            ]
         }
         //clickable main breaker
         Button
         {
             id:h_bryt_button
+            objectName: "h-bryt"
             width: (h_bryt_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(h_bryt_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
 
@@ -118,11 +207,33 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "H-BRYT"
+            onClicked: buttonHandler.hBrytClicked()
+            states:[
+            State {
+                name: "on"
+                PropertyChanges {
+                    target: h_bryt
+                    source: "desk_ikoner/yellow.png"
+
+                }
+
+            },
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: h_bryt
+                        source:"desk_ikoner/button69.png"
+
+                    }
+                }
+            ]
+
         }
         //clickable heating
         Button
         {
             id:tågv_button
+            objectName: "heating"
             width: (tågv_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(tågv_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
 
@@ -133,6 +244,26 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "TÅGV."
+            onClicked: buttonHandler.heatingClicked()
+            states:[
+            State {
+                name: "on"
+                PropertyChanges {
+                    target: tågv
+                    source: "desk_ikoner/yellow.png"
+
+                }
+
+            },
+                State {
+                    name: "off"
+                    PropertyChanges {
+                        target: tågv
+                        source:"desk_ikoner/button69.png"
+
+                    }
+                }
+            ]
         }
     }
 }

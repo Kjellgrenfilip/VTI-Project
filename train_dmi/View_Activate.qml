@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import "Imports" 1.0
 /*known bug : text follows when button is pressed. this should not happen*/
 Item {
     id: brakes
@@ -14,11 +15,17 @@ Item {
             width: (activate_button.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
             height:(activate_button.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.left: parent.left
+            padding: 0 //the trick
+            background: Rectangle{
+                anchors.fill: parent
+                color: MyConst.backgroundColor
+            }
+
             Image
             {
                 id: activate_image
                 anchors.fill: parent
-                source: "desk_ikoner/power_green.png"
+                source: "desk_ikoner/power_green2.png"
             }
 
 
@@ -30,11 +37,15 @@ Item {
             width: (protection_button.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
             height:(protection_button.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.horizontalCenter: parent.horizontalCenter
+            background: Rectangle{
+                anchors.fill: parent
+                color: MyConst.backgroundColor
+            }
             Image
             {
                 id: protection_image
                 anchors.fill: parent
-                source: "desk_ikoner/power_green.png"
+                source: "desk_ikoner/power_green2.png"
             }
 
 
@@ -45,11 +56,15 @@ Item {
             width: (cart_button.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
             height:(cart_button.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.right: parent.right
+            background: Rectangle{
+                anchors.fill: parent
+                color: MyConst.backgroundColor
+            }
             Image
             {
                 id: cart_image
                 anchors.fill: parent
-                source: "desk_ikoner/power_green.png"
+                source: "desk_ikoner/power_green2.png"
             }
 
 

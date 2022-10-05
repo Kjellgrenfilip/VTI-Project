@@ -11,12 +11,70 @@ void Button_Handler::pontUpClicked()
     emit sendUpdate(json);
 }
 
+
+
+void Button_Handler::parkBrakeClicked()
+{
+    qDebug() << "Park brake pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::PARK_BRAKE, true);
+    emit sendUpdate(json);
+}
+void Button_Handler::electricityBrakeClicked()
+{
+    qDebug() << "Electicity brake button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::ELECTRICITY_BRAKE, true);
+    emit sendUpdate(json);
+}
+void Button_Handler::magneticBrakeClicked()
+{
+    qDebug() << "Magnetic brake button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::MAGNETIC_BRAKE, true);
+    emit sendUpdate(json);
+    qDebug() << "Magnetic brake sent a json file";
+}
+void Button_Handler::magneticBrakeReleased()
+{
+    qDebug() << "Magnetic brake button released!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::MAGNETIC_BRAKE, false);
+    emit sendUpdate(json);
+    qDebug() << "Magnetic brake sent a json file";
+}
+
+//Park_button, true
+
+
 void Button_Handler::fireClicked()
 {
     qDebug() << "Fire button pressed!";
     QJsonObject json{};
     json.insert(VTI_DMI::FIRE, true);
     emit sendUpdate(json);
+}
+
+
+void Button_Handler::pontDownClicked()
+{
+    qDebug() << "Pontograph Down!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::PONTOGRAPH_DOWN, true);
+    emit sendUpdate(json);
+}
+void Button_Handler::hBrytClicked()
+{
+    qDebug() << "Hbryt pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::HBRYT, true);
+    emit sendUpdate(json);
+}
+void Button_Handler::heatingClicked()
+{
+    qDebug() << "TAGV pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::HEATING, true);
 }
 
 void Button_Handler::nboClicked()
@@ -40,7 +98,23 @@ void Button_Handler::hornPressed()
     qDebug() << "HORN button pressed!";
     QJsonObject json{};
     json.insert(VTI_DMI::HORN, true);
+}
+
+void Button_Handler::leftDoorClicked()
+{
+    qDebug() << "leftdoor button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::DOOR_LEFT, true);
+    emit sendUpdate(json);
+}
+
+void Button_Handler::rightDoorClicked()
+{
+    qDebug() << "rightdoor button pressed!";
+    QJsonObject json{};
+    json.insert(VTI_DMI::DOOR_RIGHT, true);
     emit sendUpdate(json);
 }
 
 //QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
+

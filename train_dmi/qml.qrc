@@ -31,5 +31,14 @@
         <file>sounds/S_info_2.wav</file>
         <file>sounds/click.wav</file>
         <file>sounds/click_2.wav</file>
+        <file>desk_ikoner/green.png</file>
+        <file>desk_ikoner/indicator_frame_green.png</file>
+        <file>desk_ikoner/UpY.png</file>
+        <file>desk_ikoner/DownY.png</file>
+        <file>desk_ikoner/power2.png</file>
+        <file>desk_ikoner/power_green2.png</file>
+        <file>desk_ikoner/doorleftY.png</file>
+        <file>desk_ikoner/doorrightY.png</file>
+        <file>desk_ikoner/closedG.png</file>
     </qresource>
 </RCC>
