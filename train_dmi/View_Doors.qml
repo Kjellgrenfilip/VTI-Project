@@ -161,21 +161,44 @@ Item {
         }
         Button
         {
-            id:avgang_button
-            width: (avgang_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(avgang_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id:departure_button
+            objectName: "departure_button"
+            width: (departure_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(departure_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
 
-                id: avgang_image
+                id: departure_image
                 anchors.fill: parent
                 source: "desk_ikoner/avgang.png"
             }
+
+            onPressed: buttonHandler.departureButtonClicked()
+
+            SequentialAnimation {
+                id: departure_animation
+                objectName: "departure_button_animation"
+                running: false
+                loops: Animation.Infinite
+                PropertyAnimation {
+                    target: departure_image
+                    property: "source"
+                    to: "desk_ikoner/green.png"
+                    duration: MyConst.animation_duration
+                }
+
+                PropertyAnimation {
+                    target: departure_image
+                    property: "source"
+                    to: "desk_ikoner/avgang.png"
+                    duration: MyConst.animation_duration
+                }
+            }
             states: [
                  State {
-                     name: "active"; when: avgang_button.pressed
+                     name: "warning";
                      PropertyChanges {
-                         target: avgang_image
+                         target: departure_image
                          source: "desk_ikoner/green.png"
                      }
 
@@ -183,8 +206,12 @@ Item {
                  State {
                      name: "inactive";
                      PropertyChanges {
-                         target: avgang_image
+                         target: departure_image
                          source: "desk_ikoner/avgang.png"
+                     }
+                     PropertyChanges {
+                         target: departure_animation
+                         running: false
                      }
                  }
              ]
@@ -201,6 +228,27 @@ Item {
                 anchors.fill: parent
                 source: "desk_ikoner/closedG.png"
             }
+            onPressed: buttonHandler.closeDoorClicked()
+
+            SequentialAnimation {
+                id: door_close_button_animation
+                objectName: "door_close_button_animation"
+                running: false
+                loops: Animation.Infinite
+                PropertyAnimation {
+                    target: closed_image
+                    property: "source"
+                    to: "desk_ikoner/closedG.png"
+                    duration: MyConst.animation_duration
+                }
+
+                PropertyAnimation {
+                    target: closed_image
+                    property: "source"
+                    to: "desk_ikoner/closed.png"
+                    duration: MyConst.animation_duration
+                }
+            }
 
                states: [
                     State {
@@ -208,6 +256,10 @@ Item {
                         PropertyChanges {
                             target: closed_image
                             source: "desk_ikoner/closedG.png"
+                        }
+                        PropertyChanges {
+                            target: door_close_button_animation
+                            running: false
                         }
 
                        },
@@ -217,7 +269,19 @@ Item {
                             target: closed_image
                             source: "desk_ikoner/closed.png"
                         }
-                    }
+                        PropertyChanges {
+                            target: door_close_button_animation
+                            running: false
+                        }
+                    },
+                   State {
+                       name: "warning"
+                       PropertyChanges {
+                           target: closed_image
+                           source: "desk_ikoner/closedG.png"
+
+                       }
+                   }
                 ]
         }
 
