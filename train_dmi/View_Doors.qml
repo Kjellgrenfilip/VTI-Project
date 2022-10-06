@@ -85,8 +85,6 @@ Item {
                          target: door_left_image
                          source: "desk_ikoner/doorleftY.png"
                      }
-
-
                     },
                  State {
                      name: "inactive";

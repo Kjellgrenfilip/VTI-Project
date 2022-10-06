@@ -19,8 +19,6 @@ void Button_Handler::pontUpClicked()
     emit sendUpdate(json);
 }
 
-
-
 void Button_Handler::parkBrakeClicked()
 {
     qDebug() << "Park brake pressed!";
@@ -28,6 +26,7 @@ void Button_Handler::parkBrakeClicked()
     json.insert(VTI_DMI::PARK_BRAKE, true);
     emit sendUpdate(json);
 }
+
 void Button_Handler::electricityBrakeClicked()
 {
     qDebug() << "Electicity brake button pressed!";
@@ -35,6 +34,7 @@ void Button_Handler::electricityBrakeClicked()
     json.insert(VTI_DMI::ELECTRICITY_BRAKE, true);
     emit sendUpdate(json);
 }
+
 void Button_Handler::magneticBrakeClicked()
 {
     qDebug() << "Magnetic brake button pressed!";
@@ -43,6 +43,7 @@ void Button_Handler::magneticBrakeClicked()
     emit sendUpdate(json);
     qDebug() << "Magnetic brake sent a json file";
 }
+
 void Button_Handler::magneticBrakeReleased()
 {
     qDebug() << "Magnetic brake button released!";
@@ -52,9 +53,6 @@ void Button_Handler::magneticBrakeReleased()
     qDebug() << "Magnetic brake sent a json file";
 }
 
-//Park_button, true
-
-
 void Button_Handler::fireClicked()
 {
     qDebug() << "Fire button pressed!";
@@ -62,7 +60,6 @@ void Button_Handler::fireClicked()
     json.insert(VTI_DMI::FIRE, true);
     emit sendUpdate(json);
 }
-
 
 void Button_Handler::pontDownClicked()
 {
@@ -107,6 +104,7 @@ void Button_Handler::hornPressed()
     qDebug() << "HORN button pressed!";
     QJsonObject json{};
     json.insert(VTI_DMI::HORN, true);
+    emit sendUpdate(json);
 }
 
 void Button_Handler::leftDoorClicked()

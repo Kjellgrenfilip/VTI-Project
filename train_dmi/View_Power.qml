@@ -29,7 +29,6 @@ Item
         color: "#041122"
         Text
         {
-            id: name
             text: qsTr("SPÄNNING")
             font.pointSize: power.width / 25
             color: "white"
@@ -97,12 +96,6 @@ Item
             }
 
             text: "0V"
-//            Text {
-//                id: bajs
-//                objectName: "testing"
-//                text: ""
-//                color: "transparent"
-//            }
 
             onTextChanged: if(pont_charge_button.text.charAt(pont_charge_button.text.length -1) != "V")
                            {
@@ -115,33 +108,6 @@ Item
                                 pont_charge_button.text = pont_charge_button.text + "kV"
                             }
                            }
-//            states:[
-//            State {
-//                name: "on"
-//                PropertyChanges {
-//                    target: pont_charge_button
-//                    text:"16kV"
-
-//                }
-//                PropertyChanges {
-//                    target: pont_charge
-//                    source: "desk_ikoner/indicator_frame.png"
-
-//                }
-
-//            },
-//                State {
-//                    name: "off"
-//                    PropertyChanges {
-//                        target: pont_charge_button
-//                        text: "0V"
-//                    }
-//                    PropertyChanges {
-//                        target: pont_charge
-//                        source: "desk_ikoner/indicator_frameR.png"
-//                }
-//             }
-//            ]
         }
         //clickable pantograph down
         Button
@@ -275,14 +241,14 @@ Item
         //clickable heating
         Button
         {
-            id:tågv_button
+            id:trainHeatButton
             objectName: "heating"
-            width: (tågv_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(tågv_button.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            width: (trainHeatButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(trainHeatButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
 
             Image
             {
-                id:tågv
+                id: trainHeatImage
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
@@ -292,7 +258,7 @@ Item
             State {
                 name: "on"
                 PropertyChanges {
-                    target: tågv
+                    target: trainHeatImage
                     source: "desk_ikoner/yellow.png"
 
                 }
@@ -301,7 +267,7 @@ Item
                 State {
                     name: "off"
                     PropertyChanges {
-                        target: tågv
+                        target: trainHeatImage
                         source:"desk_ikoner/button69.png"
 
                     }

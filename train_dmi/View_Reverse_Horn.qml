@@ -3,7 +3,7 @@ import QtQuick.Controls 2.0
 
 import "Imports" 1.0
 
-//import QtMultimedia
+import QtMultimedia
 
 
 Item {
@@ -82,6 +82,10 @@ Item {
                         target: reverse_button
                         enabled: true
                     }
+                    PropertyChanges {
+                        target: reverseAnimation
+                        running: false
+                    }
                 }
             ]
 
@@ -97,13 +101,13 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             enabled: false
 
-//          onPressed: { buttonHandler.hornPressed(); sound.play() }
-            onPressed: { buttonHandler.hornPressed() }
+            onPressed: { buttonHandler.hornPressed(); sound.play() }
+//            onPressed: { buttonHandler.hornPressed() }
 
-//            SoundEffect {
-//                id: sound
-//                source: "sounds/S_info.wav"
-//            }
+            SoundEffect {
+                id: sound
+                source: "sounds/S_info.wav"
+            }
 
 
             Image

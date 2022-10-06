@@ -21,7 +21,7 @@ Item {
         color: "#041122"
         Text
         {
-            id: name
+            id: brake
             text: qsTr("BROMS")
             font.pointSize: brakes.width / 25 // gives warning
             color: "white"
@@ -227,7 +227,5 @@ Item {
                 }
             ]
         }
-
-
     }
 }

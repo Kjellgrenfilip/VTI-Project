@@ -16,7 +16,7 @@ Item {
             width: (activate_button.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
             height:(activate_button.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.left: parent.left
-            padding: 0 //the trick
+            padding: 0
             background: Rectangle{
                 anchors.fill: parent
                 color: MyConst.backgroundColor
@@ -134,10 +134,6 @@ Item {
                 font.pointSize: parent.width/3
                 color:"White"
             }
-
-
-
-
         }
         TextArea
         {
@@ -152,7 +148,6 @@ Item {
                 font.pointSize: parent.width/3
                 color:"White"
             }
-
        }
     }
 

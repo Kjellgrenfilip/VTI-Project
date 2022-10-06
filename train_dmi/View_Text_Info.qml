@@ -57,20 +57,20 @@ Item {
     }
     Button
     {
-        id: kvitt_button
+        id: receiptButton
         objectName: "receipt"
-        width:(kvitt_button.pressed) ? parent.width / 8 - 10 : parent.width / 8 - 5
-        height: (kvitt_button.pressed) ? parent.height/2 - 10 : parent.height/2 - 5
+        width:(receiptButton.pressed) ? parent.width / 8 - 10 : parent.width / 8 - 5
+        height: (receiptButton.pressed) ? parent.height/2 - 10 : parent.height/2 - 5
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         Image
         {
-            id: fel_kvitt_image
+            id: receiptImage
             anchors.fill: parent
             source: "desk_ikoner/button69.png"
         }
         Text {
-            id: fel_kvitt_a
+            id: receiptA
             anchors.bottom: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("FEL")
@@ -78,7 +78,7 @@ Item {
             color:"White"
         }
         Text {
-            id: fel_kvitt_b
+            id: receiptB
             text: qsTr("KVITT.")
             anchors.top: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter

@@ -16,9 +16,9 @@ class Network_Client : public QObject
 public:
     explicit Network_Client();
     ~Network_Client();
+
     QJsonObject getUpdate();
     void connectToServer();
-
 
 private:
     void delay(int time_to_wait);

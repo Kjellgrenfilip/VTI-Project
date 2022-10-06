@@ -22,18 +22,13 @@ private:
     QObject *m_rootObject;
     QTimer *m_animationTimer;
 
-
-
     QJsonObject m_jsonState;
 
 signals:
 
 public slots:
     void receiveUpdate();
-
     void animationHandler();
-
-
 };
 
 #endif // DMI_HANDLER_H

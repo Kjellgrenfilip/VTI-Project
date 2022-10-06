@@ -43,7 +43,6 @@ Item{
                        Layout.preferredHeight: (parent.height*3)/7
                        //Call ButtonGroup qml file here.
                        View_Power{}
-
                      }
 
             Rectangle{
@@ -74,9 +73,6 @@ Item{
                          //Call ButtonGroup qml file here.
                         View_Activate{}
                      }
-
-
-
         }
     }
 
@@ -94,18 +90,18 @@ Item{
             Text{
             text: "bottom Desk PANEL";
             color: "white";
-
             }
         }
+
         Rectangle{
             id: textInfo
             color: "transparent";
             anchors.fill: parent;
             View_Text_Info{}
-
         }
     }
-    Frame{
+
+    Frame {
         id: rightFrame;
         anchors.right: mainItem.right
         anchors.bottom: mainItem.bottom
@@ -120,7 +116,6 @@ Item{
             }
         }
 
-
         GridLayout{
             anchors.fill: parent;
             columns: 1;
@@ -128,8 +123,7 @@ Item{
             rowSpacing: 4;
             anchors.margins: 10;
 
-
-            Rectangle{
+            Rectangle {
                        id: breakButtons
                        color: "transparent";
                        Layout.fillHeight: true
@@ -138,17 +132,16 @@ Item{
                        Layout.preferredHeight: (parent.height*2)/7
                         View_Brakes{}
 
-                     }
-            Rectangle{
+            }
+            Rectangle {
                         color: "transparent";
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
                         Layout.preferredHeight: (parent.height*3)/7
-
                      }
 
-            Rectangle{
+            Rectangle {
                         id: lightEmergency
                         color: "transparent";
                         Layout.fillHeight: true
