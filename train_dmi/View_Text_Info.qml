@@ -85,6 +85,7 @@ Item {
             //y:broms.y + 30
             font.pointSize: parent.width /8
             color:"White"
+            property string data: " "
         }
         //property string data: " " // should be what is changed in textmodule to update the text
         onClicked: buttonHandler.receiptClicked();

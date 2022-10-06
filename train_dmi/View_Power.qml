@@ -204,7 +204,10 @@ Item
                     PropertyChanges {
                         target: spWarningAnimation
                         running : false
-
+                    }
+                    PropertyChanges {
+                        target: sp
+                        source: "desk_ikoner/button69.png"
 
                     }
                 }
