@@ -31,6 +31,7 @@ namespace VTI_DMI
     QString const HBRYT             = "h-bryt";
     QString const SP                = "sp";
     QString const HEATING           = "heating";
+    QString const RECEIPT           = "receipt";
     QString const BREAKING          = "breaking";
     QString const DOOR_LEFT         = "door_left_button";
     QString const DOOR_RIGHT        = "door_right_button";
@@ -40,9 +41,9 @@ namespace VTI_DMI
     QJsonObject const JSON_TEMPLATE
     {
         { ACTIVATE,             ""},
-        { PONTOGRAPH_UP,        STATE::DEFAULT },
+        { PONTOGRAPH_UP,        "" },
         { VELOCITY,             QJsonValue::Double },
-        { VOLTAGE,              QJsonValue::Double },
+        { VOLTAGE,              QJsonValue::Double }, // should be a double
         { EMERGENCY_BRAKE,      STATE::DEFAULT },
         { FIRE,                 STATE::DEFAULT },
         { PARK_BRAKE,           STATE::DEFAULT },
@@ -50,16 +51,17 @@ namespace VTI_DMI
         { MAGNETIC_BRAKE,       STATE::DEFAULT },
         { BRAKE_INDICATOR,      STATE::DEFAULT },
         { BREAKING,             QJsonValue::Bool },
-        { PONTOGRAPH_DOWN, "" },
-        { HBRYT, "" },
-        { SP, "" },
-        { HEATING, "" },
+        { PONTOGRAPH_DOWN,      "" },
+        { HBRYT,                "" },
+        { SP,                   STATE::WARNING },
+        { HEATING,              "" },
         { DOOR_LEFT,            STATE::DEFAULT },
         { DOOR_RIGHT,           STATE::DEFAULT },
         { DOOR_CLOSE,           STATE::DEFAULT },
         { DEPARTURE,            STATE::DEFAULT },
         { REVERSE,              STATE::DEFAULT },
-        { HORN,                 STATE::DEFAULT }
+        { HORN,                 STATE::DEFAULT },
+        { RECEIPT,              STATE::DEFAULT}
     };
 };
 

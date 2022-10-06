@@ -42,6 +42,8 @@ public slots:
     void rightDoorClicked();
     void departureButtonClicked();
     void closeDoorClicked();
+
+    void receiptClicked();
 };
 
 #endif // BUTTON_HANDLER_H

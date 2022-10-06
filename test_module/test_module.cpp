@@ -30,10 +30,11 @@ void Test_Module::receiveUpdate()
         if(key == VTI_DMI::PONTOGRAPH_UP)
         {
              qDebug() << "PONTOGRAPH_UP update" << value;
+             //m_jsonState.insert(key,value);
              if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
              {
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
-                 m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
+                 m_jsonState.insert(VTI_DMI::VOLTAGE,0);
                  m_jsonState.insert(VTI_DMI::HEATING,"off");
              }
              else
@@ -42,7 +43,7 @@ void Test_Module::receiveUpdate()
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"off");
                  if(m_jsonState.value(VTI_DMI::HBRYT) == "on")
                  {
-                     m_jsonState.insert(VTI_DMI::VOLTAGE,"on");
+                     m_jsonState.insert(VTI_DMI::VOLTAGE,16);
                  }
              }
         }
@@ -57,7 +58,7 @@ void Test_Module::receiveUpdate()
             {
                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"on");
                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
-                m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
+                m_jsonState.insert(VTI_DMI::VOLTAGE,0);
                 m_jsonState.insert(VTI_DMI::HEATING,"off");
             }
         }
@@ -68,14 +69,17 @@ void Test_Module::receiveUpdate()
             if(m_jsonState.value(VTI_DMI::HBRYT)=="on")
             {
                 m_jsonState.insert(VTI_DMI::HBRYT,"off");
-                m_jsonState.insert(VTI_DMI::VOLTAGE,"off");
+                m_jsonState.insert(VTI_DMI::VOLTAGE,0);
+                m_jsonState.insert(VTI_DMI::SP,"warning");
             }
             else
             {
                 m_jsonState.insert(VTI_DMI::HBRYT,"on");
+                m_jsonState.insert(VTI_DMI::SP,"off");
                 if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
                 {
-                    m_jsonState.insert(VTI_DMI::VOLTAGE,"on");
+                    qDebug() << "should turn on";
+                    m_jsonState.insert(VTI_DMI::VOLTAGE,16);
                 }
             }
         }
@@ -167,6 +171,11 @@ void Test_Module::receiveUpdate()
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
         }
 
+        else if(key == VTI_DMI::RECEIPT)
+        {
+            QString currentState = m_jsonState.value(key).toString();
+        }
+
         else if ( key == VTI_DMI::REVERSE )
         {
             QString currentState = m_jsonState.value(key).toString();
@@ -201,12 +210,11 @@ void Test_Module::receiveUpdate()
                m_jsonState.insert(VTI_DMI::DOOR_RIGHT, STATE::WARNING);
        }
 
-        else if (key == VTI_DMI::DEPARTURE)
+       else if (key == VTI_DMI::DEPARTURE)
        {
            QString currentState = m_jsonState.value(key).toString();
            QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
            QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
-
 
            if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
            {
@@ -216,8 +224,9 @@ void Test_Module::receiveUpdate()
                 }
             }
        }
-        else if( key== VTI_DMI::DOOR_CLOSE)
-        {
+
+       else if( key== VTI_DMI::DOOR_CLOSE)
+       {
             QString currentState = m_jsonState.value(key).toString();
             QString departureState = m_jsonState.value(VTI_DMI::DEPARTURE).toString();
             QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();

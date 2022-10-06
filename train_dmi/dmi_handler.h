@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QQmlContext>
+
 #include <QTimer>
 
 #include "network_client.h"
@@ -22,13 +23,16 @@ private:
     QTimer *m_animationTimer;
 
 
+
     QJsonObject m_jsonState;
 
 signals:
 
 public slots:
     void receiveUpdate();
+
     void animationHandler();
+
 
 };
 
