@@ -123,6 +123,7 @@ void Button_Handler::rightDoorClicked()
     json.insert(VTI_DMI::DOOR_RIGHT, true);
     emit sendUpdate(json);
 }
+
 void Button_Handler::departureButtonClicked()
 {
     qDebug() << "departure button pressed!";

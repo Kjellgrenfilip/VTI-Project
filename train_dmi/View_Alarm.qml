@@ -118,6 +118,10 @@ Item {
                         height:(nbo_button.pressed) ? parent.height - 40 : parent.height - 35
                         enabled: true
                     }
+                    PropertyChanges {
+                        target: nbo_warning_animation
+                        running: false
+                    }
                 }
             ]
         }
@@ -207,6 +211,10 @@ Item {
                         width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
                         height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
                         enabled: true
+                    }
+                    PropertyChanges {
+                        target: fireWarningAnimation
+                        running: false
                     }
                 }
             ]

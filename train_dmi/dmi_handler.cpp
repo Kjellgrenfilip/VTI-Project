@@ -1,6 +1,7 @@
 #include "dmi_handler.h"
 
 #include <QJsonObject>
+#include <QElapsedTimer>
 
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
     m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{}
@@ -57,14 +58,14 @@ void DMI_Handler::receiveUpdate()
         }
         else if (key == VTI_DMI::BRAKE_INDICATOR)
         {
-            qDebug() << "BRAKE_INDICATOR dmi handler";
-            if(m_jsonState.value(VTI_DMI::BREAKING) == true)
-            {
-                obj->setProperty("state", "on");
-                qDebug() << "BREAKING = true";
-            }
-            else
-                obj->setProperty("state", "off");
+//            qDebug() << "BRAKE_INDICATOR dmi handler";
+//            if(m_jsonState.value(VTI_DMI::BREAKING) == true)
+//            {
+//                obj->setProperty("state", "on");
+//                qDebug() << "BREAKING = true";
+//            }
+//            else
+//                obj->setProperty("state", "off");
 
         }
         else
@@ -72,8 +73,7 @@ void DMI_Handler::receiveUpdate()
             QString newState = m_jsonState.value(key).toString();
             qDebug() << key << " : " << newState;
             obj->setProperty("state", newState);
-            qDebug() << newState;
-
+            //qDebug() << newState;
         }
     }
 }
@@ -82,6 +82,11 @@ void DMI_Handler::receiveUpdate()
 
 void DMI_Handler::animationHandler()
 {
+    //qDebug() << "Animation handler!";
+
+    //QElapsedTimer timer;
+    //timer.start();
+
     foreach(const QString& key, m_jsonState.keys())
     {
         QObject *obj = m_rootObject->findChild<QObject*>(key+"_animation");
@@ -91,8 +96,9 @@ void DMI_Handler::animationHandler()
         QString currentState = m_jsonState.value(key).toString();
         if ( currentState == STATE::WARNING )
         {
-            obj->setProperty("running", false);
+            // obj->setProperty("running", false);
             obj->setProperty("running", true);
         }
     }
+    //qDebug() << timer.elapsed();
 }
