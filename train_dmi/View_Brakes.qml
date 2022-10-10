@@ -1,7 +1,9 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import "Imports" 1.0
 
-Item {
+Item
+{
     id: brakes
     anchors.fill: parent
 
@@ -13,12 +15,13 @@ Item {
         border.color: "grey"
         radius: 50
     }
+
     Rectangle       //Rectangle to hold the text
     {
         width: parent.width / 2
         height: 30
         x: parent.width / 4
-        color: "#041122"
+        color: MyConst.backgroundColor
         Text
         {
             id: brake
@@ -30,7 +33,7 @@ Item {
     }
     Grid
     {
-        id: grid_brakes
+        id: gridBrakes
         spacing: 10
         transformOrigin: Item.Center
         anchors.fill:parent
@@ -41,21 +44,22 @@ Item {
         Button
         {
 
-            id: park_button
-            objectName: "parking_brake"
-            width: (park_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(park_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id: parkButton
+            objectName: "parkingBrake"
+            width: (parkButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(parkButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
 
             onPressed: buttonHandler.parkBrakeClicked()
 
             Image
             {
-                id: park_image
+                id: parkImage
                 anchors.fill: parent
                 source: "desk_ikoner/yellow.png"
             }
-            Text {
-                id: park_text
+            Text
+            {
+                id: parkText
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("PARK")
@@ -64,18 +68,23 @@ Item {
 
             }
 
-        states: [
-            State {
-                name: "on";
-                PropertyChanges {
-                    target: park_image
+        states:
+            [
+            State
+            {
+                name: "active";
+                PropertyChanges
+                {
+                    target: parkImage
                     source:"desk_ikoner/yellow.png"
                 }
             },
-            State {
-                name: "off";
-                PropertyChanges {
-                    target: park_image
+            State
+            {
+                name: "inactive";
+                PropertyChanges
+                {
+                    target: parkImage
                     source:"desk_ikoner/button69.png"
                 }
             }
@@ -84,26 +93,28 @@ Item {
 
         Button
         {
-            id: brake_indicator
+            id: brakeIndicator
             objectName: "brake_indicator"
             width: parent.width / 2 - 5
             height: parent.height / 2 - 5
             Image
             {
-                id: broms_image
+                id: brakeImage
                 anchors.fill: parent
                 source: "desk_ikoner/indicator_frame_green.png"
             }
-            Text {
-                id: broms_text_a
+            Text
+            {
+                id: brakeTextA
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BROMS")
                 font.pointSize: parent.width /8
                 color:"White"
             }
-            Text {
-                id: broms_text_b
+            Text
+            {
+                id: brakeTextB
                 text: qsTr("FRÅN")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -111,22 +122,28 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
-            states: [
-                State {
-                    name: "on";
-                    PropertyChanges {
-                        target: broms_image
+            states:
+                [
+                State
+                {
+                    name: "active";
+                    PropertyChanges
+                    {
+                        target: brakeImage
                         source:"desk_ikoner/indicator_frameR.png"
                     }
-                    PropertyChanges {
-                        target: broms_text_b
+                    PropertyChanges
+                    {
+                        target: brakeTextB
                         text: qsTr("TILL")
                     }
                 },
-                State {
-                    name: "off";
-                    PropertyChanges {
-                        target: broms_image
+                State
+                {
+                    name: "inactive";
+                    PropertyChanges
+                    {
+                        target: brakeImage
                         source:"desk_ikoner/indicator_frame_green.png"
                     }
                 }
@@ -134,28 +151,30 @@ Item {
         }
         Button
         {
-            id: electricity_brake
-            objectName: "electricity_brake"
-            width: (electricity_brake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(electricity_brake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
+            id: electricityBrake
+            objectName: "electricityBrake"
+            width: (electricityBrake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(electricityBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
 
             onPressed:  buttonHandler.electricityBrakeClicked()
             Image
             {
-                id: elbr_image
+                id: electricityBrakeImage
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
-            Text {
-                id: elbr_text_a
+            Text
+            {
+                id: electricityBrakeTextA
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("ELBR")
                 font.pointSize: parent.width /8
                 color:"White"
             }
-            Text {
-                id: elbr_text_b
+            Text
+            {
+                id: electricityBrakeTextB
                 text: qsTr("TILL")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -163,22 +182,28 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
-            states: [
-                State {
-                    name: "on";
-                    PropertyChanges {
-                        target: elbr_image
+            states:
+                [
+                State
+                {
+                    name: "active";
+                    PropertyChanges
+                    {
+                        target: electricityBrakeImage
                         source:"desk_ikoner/yellow.png"
                     }
-                    PropertyChanges {
-                        target: elbr_text_b
+                    PropertyChanges
+                    {
+                        target: electricityBrakeTextB
                         text: qsTr("FRÅN")
                     }
                 },
-                State {
-                    name: "off";
-                    PropertyChanges {
-                        target: elbr_image
+                State
+                {
+                    name: "inactive";
+                    PropertyChanges
+                    {
+                        target: electricityBrakeImage
                         source:"desk_ikoner/button69.png"
                     }
                 }
@@ -187,10 +212,10 @@ Item {
         }
         Button
         {
-            id: magnetic_brake
-            objectName: "magnetic_brake"
-            width: (magnetic_brake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(magnetic_brake.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id: magneticBrake
+            objectName: "magneticBrake"
+            width: (magneticBrake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(magneticBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
 
             onPressed:  buttonHandler.magneticBrakeClicked()
             onReleased:  buttonHandler.magneticBrakeReleased()
@@ -198,30 +223,34 @@ Item {
 
             Image
             {
-                id: mg_image
+                id: mgImage
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
-            Text {
-                id: mg_text
+            Text
+            {
+                id: mgText
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("MG")
                 font.pointSize: parent.width /8
                 color:"White"
             }
-            states: [
-                State {
-                    name: "on";
+            states:
+                [
+                State
+                {
+                    name: "active";
                     PropertyChanges {
-                        target: mg_image
+                        target: mgImage
                         source:"desk_ikoner/redButton.png"
                     }
                 },
-                State {
-                    name: "off";
+                State
+                {
+                    name: "inactive";
                     PropertyChanges {
-                        target: mg_image
+                        target: mgImage
                         source:"desk_ikoner/button69.png"
                     }
                 }

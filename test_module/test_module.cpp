@@ -14,7 +14,7 @@ Test_Module::~Test_Module()
 void Test_Module::receiveUpdate()
 {
     QJsonObject update = m_networkServer->getUpdate();
-    if ( m_jsonState.value(VTI_DMI::ACTIVATE).toString() == "" )
+    if ( m_jsonState.value(VTI_DMI::ACTIVATE).toString() == STATE::DEFAULT )
     {
         if ( update.value(VTI_DMI::ACTIVATE).toBool() )
             m_jsonState.insert(VTI_DMI::ACTIVATE, STATE::ACTIVE);
@@ -29,18 +29,18 @@ void Test_Module::receiveUpdate()
         if(key == VTI_DMI::PONTOGRAPH_UP)
         {
              qDebug() << "PONTOGRAPH_UP update" << value;
-             //m_jsonState.insert(key,value);
-             if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
+
+             if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
              {
-                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
-                 m_jsonState.insert(VTI_DMI::VOLTAGE,0);
-                 m_jsonState.insert(VTI_DMI::HEATING,"off");
+                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
+                 m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
+                 m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
              }
              else
              {
-                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"on");
-                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"off");
-                 if(m_jsonState.value(VTI_DMI::HBRYT) == "on")
+                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::ACTIVE);
+                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
+                 if(m_jsonState.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
                  {
                      m_jsonState.insert(VTI_DMI::VOLTAGE,16);
                  }
@@ -49,33 +49,33 @@ void Test_Module::receiveUpdate()
 
         else if(key == VTI_DMI::PONTOGRAPH_DOWN)
         {
-            if(m_jsonState.value(VTI_DMI::PONTOGRAPH_DOWN)=="on")
+            if(m_jsonState.value(VTI_DMI::PONTOGRAPH_DOWN) == STATE::ACTIVE)
             {
-                m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"off");
+                m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
             }
             else
             {
-                m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN,"on");
-                m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP,"off");
-                m_jsonState.insert(VTI_DMI::VOLTAGE,0);
-                m_jsonState.insert(VTI_DMI::HEATING,"off");
+                m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::ACTIVE);
+                m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
+                m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
+                m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
             }
         }
 
-        else if(key == VTI_DMI::HBRYT)
+        else if(key == VTI_DMI::MAIN_BREAKER)
         {
-            qDebug() << "H-bryt update" << value;
-            if(m_jsonState.value(VTI_DMI::HBRYT)=="on")
+            qDebug() << "Main breaker update" << value;
+            if(m_jsonState.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
             {
-                m_jsonState.insert(VTI_DMI::HBRYT,"off");
+                m_jsonState.insert(VTI_DMI::MAIN_BREAKER, STATE::INACTIVE);
                 m_jsonState.insert(VTI_DMI::VOLTAGE,0);
-                m_jsonState.insert(VTI_DMI::SP,"warning");
+                m_jsonState.insert(VTI_DMI::VOLTAGE_WARNING, STATE::WARNING);
             }
             else
             {
-                m_jsonState.insert(VTI_DMI::HBRYT,"on");
-                m_jsonState.insert(VTI_DMI::SP,"off");
-                if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
+                m_jsonState.insert(VTI_DMI::MAIN_BREAKER, STATE::ACTIVE);
+                m_jsonState.insert(VTI_DMI::VOLTAGE_WARNING, STATE::INACTIVE);
+                if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
                 {
                     qDebug() << "should turn on";
                     m_jsonState.insert(VTI_DMI::VOLTAGE,16);
@@ -85,15 +85,15 @@ void Test_Module::receiveUpdate()
 
         else if(key == VTI_DMI::HEATING)
         {
-            if(m_jsonState.value(VTI_DMI::HEATING)=="on")
+            if(m_jsonState.value(VTI_DMI::HEATING) == STATE::ACTIVE)
             {
-                m_jsonState.insert(VTI_DMI::HEATING,"off");
+                m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
             }
             else
             {
-                if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP)=="on")
+                if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
                 {
-                    m_jsonState.insert(VTI_DMI::HEATING,"on");
+                    m_jsonState.insert(VTI_DMI::HEATING, STATE::ACTIVE);
                 }
             }
         }
@@ -113,10 +113,10 @@ void Test_Module::receiveUpdate()
         else if(key == VTI_DMI::PARK_BRAKE)
         {
 
-            if(m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::DEFAULT  || m_jsonState.value(VTI_DMI::PARK_BRAKE) == "on")
-                m_jsonState.insert(VTI_DMI::PARK_BRAKE, "off");
-            else if((m_jsonState.value(VTI_DMI::VELOCITY).toDouble() == 0.0) && (m_jsonState.value(VTI_DMI::PARK_BRAKE) == "off"))
-                m_jsonState.insert(VTI_DMI::PARK_BRAKE, "on");
+            if(m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::DEFAULT  || m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::ACTIVE)
+                m_jsonState.insert(VTI_DMI::PARK_BRAKE, STATE::INACTIVE);
+            else if((m_jsonState.value(VTI_DMI::VELOCITY).toDouble() == 0.0) && (m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::INACTIVE))
+                m_jsonState.insert(VTI_DMI::PARK_BRAKE, STATE::ACTIVE);
 
             qDebug() << "PARKING-BRAKE update" << m_jsonState.value(VTI_DMI::VELOCITY).toDouble();
 
@@ -125,10 +125,10 @@ void Test_Module::receiveUpdate()
         {
             QString currentState = m_jsonState.value(key).toString();
 
-            if(currentState == STATE::DEFAULT || currentState == "off")
-                m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, "on");
+            if(currentState == STATE::DEFAULT || currentState == STATE::INACTIVE)
+                m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, STATE::ACTIVE);
             else
-                m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, "off");
+                m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, STATE::INACTIVE);
         }
 
         else if(key == VTI_DMI::MAGNETIC_BRAKE)
@@ -137,9 +137,9 @@ void Test_Module::receiveUpdate()
             bool updateValue = value.toBool();
 
             if(updateValue == true)
-                m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, "on");
+                m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, STATE::ACTIVE);
             else
-                m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, "off");
+                m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, STATE::INACTIVE);
         }
 
         else if (key == VTI_DMI::FIRE)

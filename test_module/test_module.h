@@ -18,6 +18,8 @@ private:
     Network_Server *m_networkServer;
     QJsonObject m_jsonState;
 
+    void pontographUp();
+
 signals:
 
 public slots:

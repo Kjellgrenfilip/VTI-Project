@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
+import "Imports" 1.0
 
 Item {
     anchors.fill: parent
@@ -14,7 +15,7 @@ Item {
         anchors.verticalCenter: etcs.verticalCenter;
         background: Rectangle{
             anchors.fill: parent;
-            color: "#041122";
+            color: MyConst.backgroundColor;
             border.color: "#bfbfbf";
             border.width: 2;
             Text{

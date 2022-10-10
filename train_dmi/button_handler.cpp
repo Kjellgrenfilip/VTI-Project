@@ -41,7 +41,6 @@ void Button_Handler::magneticBrakeClicked()
     QJsonObject json{};
     json.insert(VTI_DMI::MAGNETIC_BRAKE, true);
     emit sendUpdate(json);
-    qDebug() << "Magnetic brake sent a json file";
 }
 
 void Button_Handler::magneticBrakeReleased()
@@ -50,7 +49,6 @@ void Button_Handler::magneticBrakeReleased()
     QJsonObject json{};
     json.insert(VTI_DMI::MAGNETIC_BRAKE, false);
     emit sendUpdate(json);
-    qDebug() << "Magnetic brake sent a json file";
 }
 
 void Button_Handler::fireClicked()
@@ -68,13 +66,15 @@ void Button_Handler::pontDownClicked()
     json.insert(VTI_DMI::PONTOGRAPH_DOWN, true);
     emit sendUpdate(json);
 }
-void Button_Handler::hBrytClicked()
+
+void Button_Handler::mainBreakerClicked()
 {
     qDebug() << "Hbryt pressed!";
     QJsonObject json{};
-    json.insert(VTI_DMI::HBRYT, true);
+    json.insert(VTI_DMI::MAIN_BREAKER, true);
     emit sendUpdate(json);
 }
+
 void Button_Handler::heatingClicked()
 {
     qDebug() << "TAGV pressed!";
@@ -146,5 +146,4 @@ void Button_Handler::receiptClicked()
     json.insert(VTI_DMI::RECEIPT, true);
     emit sendUpdate(json);
 }
-//QObject *obj = rootObject->findChild<QObject*>(VTI_DMI::PONTOGRAPH_UP);
 

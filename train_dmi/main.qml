@@ -8,11 +8,11 @@ import "Imports" 1.0
 Window {
     id: mainWindow
     visible: true
-    minimumWidth: MyConst.window_width
-    minimumHeight: MyConst.window_height
+    minimumWidth: MyConst.windowWidth
+    minimumHeight: MyConst.windowHeight
     color: MyConst.backgroundColor;
 
-    title: qsTr("Hello World")
+    title: qsTr("Train DMI")
     DESK_view{}
     ETCS_view{}
     ATC_view{}

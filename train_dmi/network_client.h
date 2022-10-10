@@ -21,7 +21,7 @@ public:
     void connectToServer();
 
 private:
-    void delay(int time_to_wait);
+    void delay(int timeToWait);
 
     QTcpSocket *m_tcpSocket;
     QJsonObject m_jsonUpdate;

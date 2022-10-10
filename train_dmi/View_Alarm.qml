@@ -23,7 +23,7 @@ Item {
             color: "#041122"
             Text
             {
-                id: alarm_text
+                id: alarmText
                 text: qsTr("LARM")
                 font.pointSize: alarm.width / 25 // gives warning
                 color: "white"
@@ -34,25 +34,27 @@ Item {
         color: "transparent"
         Button
         {
-            id: nbo_button
-            objectName: "emergency_brake"
-            width: (nbo_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-            height:(nbo_button.pressed) ? parent.height - 40 : parent.height - 35
+            id: emergencyBrakeButton
+            objectName: "emergencyBrake"
+            width: (emergencyBrakeButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+            height:(emergencyBrakeButton.pressed) ? parent.height - 40 : parent.height - 35
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.horizontalCenter
             anchors.margins: 5
             enabled: false
 
+            // onClicked: buttonHandler.emergencyBrakeClicked()
             onClicked: buttonHandler.nboClicked()
 
             Image
             {
-                id: nbo_image
+                id: emergencyBrakeImage
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
-            Text {
-                id: nbo_text
+            Text
+            {
+                id: emergencyBrakeText
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("NBÖ")
@@ -60,74 +62,90 @@ Item {
                 color: "White"
             }
 
-            SequentialAnimation {
-                id: nbo_warning_animation
-                objectName: "emergency_brake_animation"
+            SequentialAnimation
+            {
+                id: emergencyBrakeWarningAnimation
+                objectName: "emergencyBrakeAnimation"
                 running: false
                 loops: Animation.Infinite
-                PropertyAnimation {
-                    target: nbo_image
+                PropertyAnimation
+                {
+                    target: emergencyBrakeImage
                     property: "source"
                     to: "desk_ikoner/redButton.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
 
-                PropertyAnimation {
-                    target: nbo_image
+                PropertyAnimation
+                {
+                    target: emergencyBrakeImage
                     property: "source"
                     to: "desk_ikoner/button69.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
             }
-            states: [
-                State {
+            states:
+                [
+                State
+                {
                     name: "default";
-                    PropertyChanges {
-                        target: nbo_image
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeImage
                         source:"desk_ikoner/button69.png"
                     }
-                    PropertyChanges {
-                        target: nbo_warning_animation
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeWarningAnimation
                         running: false
                     }
-                    PropertyChanges {
-                        target: nbo_button
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeButton
                         enabled: true
                     }
                 },
-                State {
+                State
+                {
                     name: "active";
-                    PropertyChanges {
-                        target: nbo_image
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeImage
                         source:"desk_ikoner/redButton.png"
                     }
-                    PropertyChanges {
-                        target: nbo_warning_animation
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeWarningAnimation
                         running: false
                     }
-                    PropertyChanges {
-                        target: nbo_button
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeButton
                         enabled: true
                     }
                 },
-                State {
+                State
+                {
                     name: "warning";
-                    PropertyChanges {
-                        target: nbo_button
-                        width: (nbo_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-                        height:(nbo_button.pressed) ? parent.height - 40 : parent.height - 35
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeButton
+                        width: (emergencyBrakeButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+                        height:(emergencyBrakeButton.pressed) ? parent.height - 40 : parent.height - 35
                         enabled: true
                     }
-                    PropertyChanges {
-                        target: nbo_warning_animation
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeWarningAnimation
                         running: false
                     }
                 }
             ]
         }
+
         Button
         {
-            id: fire_button
+            id: fireButton
             objectName: "fire"
             width: parent.width / 2 - 35
             height: parent.height - 35
@@ -140,12 +158,13 @@ Item {
 
             Image
             {
-                id: fire_image
+                id: fireImage
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
-            Text {
-                id: fire_text
+            Text
+            {
+                id: fireText
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BRAND")
@@ -153,66 +172,81 @@ Item {
                 color:"White"
             }
 
-            SequentialAnimation {
+            SequentialAnimation
+            {
                 id: fireWarningAnimation
-                objectName: "fire_animation"
+                objectName: "fireAnimation"
                 running: false
                 loops: Animation.Infinite
-                PropertyAnimation {
-                    target: fire_image
+                PropertyAnimation
+                {
+                    target: fireImage
                     property: "source"
                     to: "desk_ikoner/redButton.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
 
-                PropertyAnimation {
-                    target: fire_image
+                PropertyAnimation
+                {
+                    target: fireImage
                     property: "source"
                     to: "desk_ikoner/button69.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
             }
-            states: [
-                State {
+            states:
+                [
+                State
+                {
                     name: "default";
-                    PropertyChanges {
-                        target: fire_image
+                    PropertyChanges
+                    {
+                        target: fireImage
                         source:"desk_ikoner/button69.png"
                     }
-                    PropertyChanges {
+                    PropertyChanges
+                    {
                         target: fireWarningAnimation
                         running: false
                     }
-                    PropertyChanges {
-                        target: fire_button
+                    PropertyChanges
+                    {
+                        target: fireButton
                         enabled: true
                     }
                 },
-                State {
+                State
+                {
                     name: "active";
-                    PropertyChanges {
-                        target: fire_image
+                    PropertyChanges
+                    {
+                        target: fireImage
                         source:"desk_ikoner/redButton.png"
                     }
 
-                    PropertyChanges {
+                    PropertyChanges
+                    {
                         target: fireWarningAnimation
                         running: false
                     }
-                    PropertyChanges {
-                        target: fire_button
+                    PropertyChanges
+                    {
+                        target: fireButton
                         enabled: true
                     }
                 },
-                State {
+                State
+                {
                     name: "warning";
-                    PropertyChanges {
-                        target: fire_button
-                        width: (fire_button.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-                        height:(fire_button.pressed) ? parent.height - 40 : parent.height - 35
+                    PropertyChanges
+                    {
+                        target: fireButton
+                        width: (fireButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+                        height:(fireButton.pressed) ? parent.height - 40 : parent.height - 35
                         enabled: true
                     }
-                    PropertyChanges {
+                    PropertyChanges
+                    {
                         target: fireWarningAnimation
                         running: false
                     }

@@ -2,7 +2,8 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import "Imports" 1.0
 
-Item {
+Item
+{
     id: doors
     anchors.fill: parent
     Rectangle
@@ -23,10 +24,9 @@ Item {
         width: parent.width / 2
         height: 30
         x: parent.width / 4
-        color: "#041122"
+        color: MyConst.backgroundColor
         Text
         {
-            id: name
             text: qsTr("DÖRRAR")
             font.pointSize: doors.width / 25 // gives warning
             color: "white"
@@ -35,7 +35,7 @@ Item {
     }
     Grid
     {
-        id: grid_doors
+        id: gridDoors
         spacing: 10
         transformOrigin: Item.Center
         anchors.fill:parent
@@ -45,55 +45,63 @@ Item {
         anchors.margins: 30
         Button
         {
-            id: door_left_button
-            objectName: "door_left_button"
-            width: (door_left_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(door_left_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id: doorLeftButton
+            objectName: "doorLeft"
+            width: (doorLeftButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(doorLeftButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
 
             onPressed: buttonHandler.leftDoorClicked()
             Image
             {
 
-                id: door_left_image
+                id: doorLeftImage
                 anchors.fill: parent
                 source: "desk_ikoner/doorleft.png"
             }
 
-            SequentialAnimation {
-                id: door_left_animation
-                objectName: "door_left_button_animation"
+            SequentialAnimation
+            {
+                id: doorLeftAnimation
+                objectName: "doorLeftAnimation"
                 running: false
                 loops: Animation.Infinite
-                PropertyAnimation {
-                    target: door_left_image
+                PropertyAnimation
+                {
+                    target: doorLeftImage
                     property: "source"
                     to: "desk_ikoner/doorleftY.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
 
-                PropertyAnimation {
-                    target: door_left_image
+                PropertyAnimation
+                {
+                    target: doorLeftImage
                     property: "source"
                     to: "desk_ikoner/doorleft.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
             }
             states: [
-                 State {
-                     name: "warning";
-                     PropertyChanges {
-                         target: door_left_image
-                         source: "desk_ikoner/doorleftY.png"
-                     }
-                    },
-                 State {
+                State
+                {
+                    name: "warning";
+                    PropertyChanges
+                    {
+                        target: doorLeftImage
+                        source: "desk_ikoner/doorleftY.png"
+                    }
+                },
+                State
+                {
                      name: "inactive";
-                     PropertyChanges {
-                         target: door_left_image
+                     PropertyChanges
+                     {
+                         target: doorLeftImage
                          source: "desk_ikoner/doorleft.png"
                      }
-                     PropertyChanges {
-                         target: door_left_animation
+                     PropertyChanges
+                     {
+                         target: doorLeftAnimation
                          running: false
                      }
                  }
@@ -101,57 +109,63 @@ Item {
         }
         Button
         {
-            id:door_right_button
-            objectName: "door_right_button"
-            width: (door_right_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(door_right_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id:doorRightButton
+            objectName: "doorRight"
+            width: (doorRightButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(doorRightButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
 
-                id:door_right_image
+                id:doorRightImage
                 anchors.fill: parent
                 source: "desk_ikoner/doorright.png"
             }
 
             onPressed: buttonHandler.rightDoorClicked()
 
-            SequentialAnimation {
-                id: door_right_animation
+            SequentialAnimation
+            {
+                id: doorRightAnimation
                 objectName: "door_right_button_animation"
                 running: false
                 loops: Animation.Infinite
-                PropertyAnimation {
-                    target: door_right_image
+                PropertyAnimation
+                {
+                    target: doorRightImage
                     property: "source"
                     to: "desk_ikoner/doorrightY.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
 
-                PropertyAnimation {
-                    target: door_right_image
+                PropertyAnimation
+                {
+                    target: doorRightImage
                     property: "source"
                     to: "desk_ikoner/doorright.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
             }
-            states: [
-                 State {
+            states:
+                [
+                 State
+                {
                      name: "warning";
-                     PropertyChanges {
-                         target: door_right_image
+                     PropertyChanges
+                     {
+                         target: doorRightImage
                          source: "desk_ikoner/doorrightY.png"
                      }
-
-
                     },
                  State {
                      name: "inactive";
-                     PropertyChanges {
-                         target: door_right_image
+                     PropertyChanges
+                     {
+                         target: doorRightImage
                          source: "desk_ikoner/doorright.png"
                      }
-                     PropertyChanges {
-                         target: door_right_animation
+                     PropertyChanges
+                     {
+                         target: doorRightAnimation
                          running: false
                      }
                  }
@@ -159,56 +173,64 @@ Item {
         }
         Button
         {
-            id:departure_button
-            objectName: "departure_button"
-            width: (departure_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(departure_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id:departureButton
+            objectName: "departureButton"
+            width: (departureButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(departureButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
 
-                id: departure_image
+                id: departureImage
                 anchors.fill: parent
                 source: "desk_ikoner/avgang.png"
             }
 
             onPressed: buttonHandler.departureButtonClicked()
 
-            SequentialAnimation {
-                id: departure_animation
-                objectName: "departure_button_animation"
+            SequentialAnimation
+            {
+                id: departureAnimation
+                objectName: "departureAnimation"
                 running: false
                 loops: Animation.Infinite
-                PropertyAnimation {
-                    target: departure_image
+                PropertyAnimation
+                {
+                    target: departureImage
                     property: "source"
                     to: "desk_ikoner/green.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
 
-                PropertyAnimation {
-                    target: departure_image
+                PropertyAnimation
+                {
+                    target: departureImage
                     property: "source"
                     to: "desk_ikoner/avgang.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
             }
-            states: [
-                 State {
-                     name: "warning";
-                     PropertyChanges {
-                         target: departure_image
+            states:
+                [
+                State
+                {
+                    name: "warning";
+                    PropertyChanges
+                    {
+                         target: departureImage
                          source: "desk_ikoner/green.png"
-                     }
-
+                    }
                     },
-                 State {
+                State
+                {
                      name: "inactive";
-                     PropertyChanges {
-                         target: departure_image
+                     PropertyChanges
+                     {
+                         target: departureImage
                          source: "desk_ikoner/avgang.png"
                      }
-                     PropertyChanges {
-                         target: departure_animation
+                     PropertyChanges
+                     {
+                         target: departureAnimation
                          running: false
                      }
                  }
@@ -216,72 +238,81 @@ Item {
         }
         Button
         {
-            id:closed_button
-            objectName: "door_close_button"
-            width: (closed_button.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(closed_button.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            id:closedButton
+            objectName: "doorClose"
+            width: (closedButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(closedButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
-                id: closed_image
+                id: closedImage
                 anchors.fill: parent
                 source: "desk_ikoner/closedG.png"
             }
             onPressed: buttonHandler.closeDoorClicked()
 
-            SequentialAnimation {
-                id: door_close_button_animation
-                objectName: "door_close_button_animation"
+            SequentialAnimation
+            {
+                id: doorCloseAnimation
+                objectName: "doorCloseAnimation"
                 running: false
                 loops: Animation.Infinite
-                PropertyAnimation {
-                    target: closed_image
+                PropertyAnimation
+                {
+                    target: closedImage
                     property: "source"
                     to: "desk_ikoner/closedG.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
 
-                PropertyAnimation {
-                    target: closed_image
+                PropertyAnimation
+                {
+                    target: closedImage
                     property: "source"
                     to: "desk_ikoner/closed.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
             }
 
-               states: [
-                    State {
+               states:
+                   [
+                   State
+                   {
                         name: "active"
-                        PropertyChanges {
-                            target: closed_image
+                        PropertyChanges
+                        {
+                            target: closedImage
                             source: "desk_ikoner/closedG.png"
                         }
-                        PropertyChanges {
-                            target: door_close_button_animation
+                        PropertyChanges
+                        {
+                            target: doorCloseAnimation
                             running: false
                         }
-
                        },
-                    State {
+                    State
+                   {
                         name: "inactive";
-                        PropertyChanges {
-                            target: closed_image
+                        PropertyChanges
+                        {
+                            target: closedImage
                             source: "desk_ikoner/closed.png"
                         }
-                        PropertyChanges {
-                            target: door_close_button_animation
+                        PropertyChanges
+                        {
+                            target: doorCloseAnimation
                             running: false
                         }
                     },
-                   State {
+                   State
+                   {
                        name: "warning"
-                       PropertyChanges {
-                           target: closed_image
+                       PropertyChanges
+                       {
+                           target: closedImage
                            source: "desk_ikoner/closedG.png"
-
                        }
                    }
-                ]
+              ]
         }
-
     }
 }

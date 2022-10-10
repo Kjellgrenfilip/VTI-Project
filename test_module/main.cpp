@@ -1,7 +1,6 @@
 #include <QCoreApplication>
 #include <QThread>
 
-#include "network_server.h"
 #include "test_module.h"
 
 int main(int argc, char *argv[])

@@ -24,7 +24,7 @@ QJsonObject Network_Server::getUpdate()
     return m_jsonUpdate;
 }
 
-//Sends data through socket to client and returns true if all data were sent
+// Sends data through socket to client and returns true if all data were sent
 bool Network_Server::sendUpdate(const QJsonObject &obj)
 {
     QByteArray data = QJsonDocument{obj}.toJson();
@@ -38,9 +38,9 @@ bool Network_Server::sendUpdate(const QJsonObject &obj)
     return true;
 }
 
-void Network_Server::delay(int time_to_wait)
+void Network_Server::delay(int timeToWait)
 {
-    QTime dieTime= QTime::currentTime().addMSecs(time_to_wait);
+    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
@@ -52,7 +52,6 @@ void Network_Server::newConnection()
     connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
     connect(m_tcpSocket, SIGNAL(disconnected()), this, SLOT(disconnected()));
     m_tcpSocket->waitForBytesWritten(3000);
-
 }
 
 void Network_Server::readyRead()
@@ -65,6 +64,7 @@ void Network_Server::readyRead()
 
 void Network_Server::disconnected()
 {
+    // Crashes the program
     QCoreApplication::exit(0);
 }
 

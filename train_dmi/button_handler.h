@@ -29,7 +29,7 @@ public slots:
     void magneticBrakeReleased();
 
     void pontDownClicked();
-    void hBrytClicked();
+    void mainBreakerClicked();
     void heatingClicked();
 
     void nboClicked();

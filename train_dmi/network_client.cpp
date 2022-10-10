@@ -28,9 +28,9 @@ void Network_Client::connectToServer()
     m_tcpSocket->waitForConnected(1000);
 }
 
-void Network_Client::delay(int time_to_wait)
+void Network_Client::delay(int timeToWait)
 {
-    QTime dieTime= QTime::currentTime().addMSecs(time_to_wait);
+    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }

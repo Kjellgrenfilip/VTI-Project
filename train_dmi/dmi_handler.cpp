@@ -29,7 +29,6 @@ void DMI_Handler::receiveUpdate()
     m_jsonState = m_client->getUpdate();
     foreach(const QString& key, m_jsonState.keys())
     {
-
         //Update GUI
         QObject *obj = m_rootObject->findChild<QObject*>(key);
 
@@ -38,7 +37,6 @@ void DMI_Handler::receiveUpdate()
             qDebug() << "Unknown object: " << key;
             continue;
         }
-
 
         if ( key == VTI_DMI::VELOCITY )
         {
@@ -56,7 +54,6 @@ void DMI_Handler::receiveUpdate()
             QString newState = m_jsonState.value(key).toString();
             qDebug() << key << " : " << newState;
             obj->setProperty("state", newState);
-            //qDebug() << newState;
         }
     }
 }
@@ -65,12 +62,12 @@ void DMI_Handler::animationHandler()
 {
     foreach(const QString& key, m_jsonState.keys())
     {
-        QObject *obj = m_rootObject->findChild<QObject*>(key+"_animation");
+        QObject *obj = m_rootObject->findChild<QObject*>(key + "Animation");
         if ( obj == nullptr )
             continue;
 
         QString currentState = m_jsonState.value(key).toString();
-        if ( currentState == STATE::WARNING )
+        if ( currentState == STATE::WARNING || currentState == STATE::BLINKING )
         {
             obj->setProperty("running", true);
         }

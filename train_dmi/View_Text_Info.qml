@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import "Imports" 1.0
 Item {
-    id: text_info
+    id: textInfo
     anchors.fill: parent
     Rectangle
     {

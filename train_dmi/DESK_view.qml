@@ -23,10 +23,9 @@ Item{
             Text{
             text: "Left Desk PANEL";
             color: "white";
-
             }
-
         }
+
         GridLayout{
             anchors.fill: parent;
             columns: 1;
@@ -41,7 +40,6 @@ Item{
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                        Layout.preferredHeight: (parent.height*3)/7
-                       //Call ButtonGroup qml file here.
                        View_Power{}
                      }
 
@@ -51,7 +49,6 @@ Item{
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*2)/7
-                        //Call ButtonGroup qml file here.
                         View_Doors{}
                      }
 
@@ -61,16 +58,15 @@ Item{
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*1)/7
-                         //Call ButtonGroup qml file here.
                         View_Reverse_Horn{}
                      }
+
             Rectangle{
                         id: activationButtons
                         color: "transparent";
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                         Layout.preferredHeight: (parent.height*1)/7
-                         //Call ButtonGroup qml file here.
                         View_Activate{}
                      }
         }
@@ -124,15 +120,16 @@ Item{
             anchors.margins: 10;
 
             Rectangle {
-                       id: breakButtons
+                       id: brakeButtons
                        color: "transparent";
                        Layout.fillHeight: true
                        Layout.fillWidth: true
 
                        Layout.preferredHeight: (parent.height*2)/7
-                        View_Brakes{}
+                       View_Brakes{}
 
             }
+
             Rectangle {
                         color: "transparent";
                         Layout.fillHeight: true
@@ -150,9 +147,8 @@ Item{
                         Layout.preferredHeight: (parent.height*1)/7
 
                         View_Light_Emergency{}
-
-
                      }
+
             Rectangle{
                         id: alarmButtons
                         color: "transparent";
@@ -163,11 +159,6 @@ Item{
                         View_Alarm{}
 
                      }
-
-
-
         }
     }
-
 }
-

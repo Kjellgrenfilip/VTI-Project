@@ -1,8 +1,9 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import "Imports" 1.0
-/*known bug : text follows when button is pressed. this should not happen*/
-Item {
+
+Item
+{
     id: activate
     anchors.fill: parent
     Rectangle
@@ -11,105 +12,110 @@ Item {
         color: "transparent"
         Button
         {
-            id: activate_button
+            id: activateButton
             objectName: "activate"
-            width: (activate_button.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
-            height:(activate_button.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
+            width: (activateButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
+            height:(activateButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.left: parent.left
             padding: 0
-            background: Rectangle{
+            background: Rectangle
+            {
                 anchors.fill: parent
                 color: MyConst.backgroundColor
             }
 
             Image
             {
-                id: activate_image
+                id: activateImage
                 anchors.fill: parent
                 source: "desk_ikoner/power_green2.png"
             }
 
             onPressed: buttonHandler.activatePressed()
 
-            SequentialAnimation {
-                id: activate_animation
-                objectName: "activate_animation"
+            SequentialAnimation
+            {
+                id: activateAnimation
+                objectName: "activateAnimation"
                 running: true
                 loops: Animation.Infinite
-                PropertyAnimation {
-                    target: activate_image
+                PropertyAnimation
+                {
+                    target: activateImage
                     property: "source"
                     to: "desk_ikoner/power_green2.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
 
-                PropertyAnimation {
-                    target: activate_image
+                PropertyAnimation
+                {
+                    target: activateImage
                     property: "source"
                     to: "desk_ikoner/power2.png"
-                    duration: MyConst.animation_duration
+                    duration: MyConst.animationDuration
                 }
             }
             states: [
-                State {
+                State
+                {
                     name: "active";
-                    PropertyChanges {
-                        target: activate_image
+                    PropertyChanges
+                    {
+                        target: activateImage
                         source:"desk_ikoner/power_green2.png"
                     }
-                    PropertyChanges {
-                        target: activate_animation
+                    PropertyChanges
+                    {
+                        target: activateAnimation
                         running: false
                     }
                 }
             ]
-
-
-
         }
+
         Button
         {
-            id: protection_button
-            width: (protection_button.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
-            height:(protection_button.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
+            id: protectionButton
+            width: (protectionButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
+            height:(protectionButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.horizontalCenter: parent.horizontalCenter
-            background: Rectangle{
+            background: Rectangle
+            {
                 anchors.fill: parent
                 color: MyConst.backgroundColor
             }
             Image
             {
-                id: protection_image
+                id: protectionImage
                 anchors.fill: parent
                 source: "desk_ikoner/power_green2.png"
             }
+        }
 
-
-           }
         Button
         {
-            id: cart_button
-            width: (cart_button.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
-            height:(cart_button.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
+            id: cartButton
+            width: (cartButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
+            height:(cartButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.right: parent.right
-            background: Rectangle{
+            background: Rectangle
+            {
                 anchors.fill: parent
                 color: MyConst.backgroundColor
             }
             Image
             {
-                id: cart_image
+                id: cartImage
                 anchors.fill: parent
                 source: "desk_ikoner/power_green2.png"
             }
+        }
 
-
-           }
         TextArea
         {
-            id: activate_text
+            id: activateText
             width: parent.width/9
-            anchors.horizontalCenter: activate_button.horizontalCenter
+            anchors.horizontalCenter: activateButton.horizontalCenter
             anchors.bottom:parent.bottom
             Text
             {
@@ -118,15 +124,14 @@ Item {
                 font.pointSize: parent.width/3
                 color: "White"
             }
-
-
         }
+
         TextArea
         {
-            id: protection_text
+            id: protectionText
             width: parent.width/9
             anchors.bottom:parent.bottom
-            anchors.horizontalCenter: protection_button.horizontalCenter
+            anchors.horizontalCenter: protectionButton.horizontalCenter
             Text
             {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -135,11 +140,12 @@ Item {
                 color:"White"
             }
         }
+
         TextArea
         {
-            id: cart_text
+            id: cartText
             anchors.bottom:parent.bottom
-            anchors.horizontalCenter: cart_button.horizontalCenter
+            anchors.horizontalCenter: cartButton.horizontalCenter
             width: parent.width/9
             Text
             {
@@ -148,17 +154,6 @@ Item {
                 font.pointSize: parent.width/3
                 color:"White"
             }
-       }
+        }
     }
-
-
-
-
-
-
 }
-
-
-
-
-
