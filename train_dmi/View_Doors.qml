@@ -49,6 +49,7 @@ Item
             objectName: "doorLeft"
             width: (doorLeftButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(doorLeftButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            enabled: false
 
             onPressed: buttonHandler.leftDoorClicked()
             Image
@@ -90,6 +91,11 @@ Item
                         target: doorLeftImage
                         source: "desk_ikoner/doorleftY.png"
                     }
+                    PropertyChanges
+                    {
+                        target: doorLeftButton
+                        enabled: true
+                    }
                 },
                 State
                 {
@@ -104,6 +110,11 @@ Item
                          target: doorLeftAnimation
                          running: false
                      }
+                     PropertyChanges
+                     {
+                         target: doorLeftButton
+                         enabled: true
+                     }
                  }
              ]
         }
@@ -113,6 +124,8 @@ Item
             objectName: "doorRight"
             width: (doorRightButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(doorRightButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            enabled: false
+
             Image
             {
 
@@ -155,6 +168,11 @@ Item
                          target: doorRightImage
                          source: "desk_ikoner/doorrightY.png"
                      }
+                     PropertyChanges
+                     {
+                         target: doorRightButton
+                         enabled: true
+                     }
                     },
                  State {
                      name: "inactive";
@@ -168,6 +186,11 @@ Item
                          target: doorRightAnimation
                          running: false
                      }
+                     PropertyChanges
+                     {
+                         target: doorRightButton
+                         enabled: true
+                     }
                  }
              ]
         }
@@ -177,6 +200,8 @@ Item
             objectName: "departureButton"
             width: (departureButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(departureButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            enabled: false
+
             Image
             {
 
@@ -219,6 +244,11 @@ Item
                          target: departureImage
                          source: "desk_ikoner/green.png"
                     }
+                    PropertyChanges
+                    {
+                        target: departureButton
+                        enabled: true
+                    }
                     },
                 State
                 {
@@ -233,6 +263,11 @@ Item
                          target: departureAnimation
                          running: false
                      }
+                     PropertyChanges
+                     {
+                         target: departureButton
+                         enabled: true
+                     }
                  }
              ]
         }
@@ -242,6 +277,8 @@ Item
             objectName: "doorClose"
             width: (closedButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(closedButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            enabled: false
+
             Image
             {
                 id: closedImage
@@ -288,6 +325,11 @@ Item
                             target: doorCloseAnimation
                             running: false
                         }
+                        PropertyChanges
+                        {
+                            target: closedButton
+                            enabled: true
+                        }
                        },
                     State
                    {
@@ -302,6 +344,11 @@ Item
                             target: doorCloseAnimation
                             running: false
                         }
+                        PropertyChanges
+                        {
+                            target: closedButton
+                            enabled: true
+                        }
                     },
                    State
                    {
@@ -310,6 +357,11 @@ Item
                        {
                            target: closedImage
                            source: "desk_ikoner/closedG.png"
+                       }
+                       PropertyChanges
+                       {
+                           target: closedButton
+                           enabled: true
                        }
                    }
               ]
