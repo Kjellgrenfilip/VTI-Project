@@ -80,6 +80,8 @@ Item
             width: (protectionButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
             height:(protectionButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.horizontalCenter: parent.horizontalCenter
+            enabled: false
+
             background: Rectangle
             {
                 anchors.fill: parent

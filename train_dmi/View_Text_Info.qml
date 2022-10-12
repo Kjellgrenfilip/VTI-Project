@@ -63,6 +63,8 @@ Item {
         height: (receiptButton.pressed) ? parent.height/2 - 10 : parent.height/2 - 5
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
+        enabled: false
+
         Image
         {
             id: receiptImage

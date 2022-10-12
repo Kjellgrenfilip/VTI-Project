@@ -51,6 +51,7 @@ Item
             width: (pontUpButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pontUpButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             //anchors.fill: parent
+            enabled: false
 
             onClicked: buttonHandler.pontUpClicked()
 
@@ -69,9 +70,12 @@ Item
                 {
                     target: pontUpImage
                     source: "desk_ikoner/UpY.png"
-
                 }
-
+                PropertyChanges
+                {
+                    target: pontUpButton
+                    enabled: true
+                }
             },
             State
             {
@@ -80,7 +84,11 @@ Item
                 {
                     target: pontUpImage
                     source:"desk_ikoner/Up.png"
-
+                }
+                PropertyChanges
+                {
+                    target: pontUpButton
+                    enabled: true
                 }
             }
             ]
@@ -93,6 +101,7 @@ Item
             objectName: "voltage"
             width:  parent.width / 2 - 5
             height: parent.height / 3 - 7
+            enabled: false
 
             Image
             {
@@ -122,6 +131,8 @@ Item
             objectName:  "pontographDown"
             width: (pontDownButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pontDownButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            enabled: false
+
             Image
             {
                 id:pontDownImage
@@ -139,6 +150,11 @@ Item
                         target: pontDownImage
                         source: "desk_ikoner/DownY.png"
                     }
+                    PropertyChanges
+                    {
+                        target: pontDownButton
+                        enabled: true
+                    }
                 },
                 State
                 {
@@ -147,7 +163,11 @@ Item
                     {
                         target: pontDownImage
                         source:"desk_ikoner/Down.png"
-
+                    }
+                    PropertyChanges
+                    {
+                        target: pontDownButton
+                        enabled: true
                     }
                 }
                 ]
@@ -156,11 +176,12 @@ Item
         // non-clickable current indicator?
         Button
         {
-            id:volatageWarningButton
+            id:voltageWarningButton
             objectName: "voltageWarning"
             width: parent.width / 2 - 5
-
             height: parent.height / 3 - 7
+            enabled: false
+
             Image
             {
                 id: volatageWarningImage
@@ -196,6 +217,16 @@ Item
                 State
                 {
                     name: "warning"
+                    PropertyChanges
+                    {
+                        target: voltageWarningButton
+                        enabled: true
+                    }
+                    PropertyChanges
+                    {
+                        target: voltageWarningAnimation
+                        running : false
+                    }
                 },
                 State
                 {
@@ -209,7 +240,11 @@ Item
                     {
                         target: volatageWarningImage
                         source: "desk_ikoner/button69.png"
-
+                    }
+                    PropertyChanges
+                    {
+                        target: voltageWarningButton
+                        enabled: true
                     }
                 }
                 ]
@@ -221,6 +256,7 @@ Item
             objectName: "mainBreaker"
             width: (mainBreakerButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(mainBreakerButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            enabled: false
 
             Image
             {
@@ -240,6 +276,11 @@ Item
                         target: mainBreakerImage
                         source: "desk_ikoner/yellow.png"
                     }
+                    PropertyChanges
+                    {
+                        target: mainBreakerButton
+                        enabled: true
+                    }
                 },
                 State
                 {
@@ -248,6 +289,11 @@ Item
                     {
                         target: mainBreakerImage
                         source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: mainBreakerImage
+                        enabled: true
                     }
                 }
             ]
@@ -260,6 +306,7 @@ Item
             objectName: "heating"
             width: (trainHeatButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(trainHeatButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            enabled: false
 
             Image
             {
@@ -279,6 +326,11 @@ Item
                         target: trainHeatImage
                         source: "desk_ikoner/yellow.png"
                     }
+                    PropertyChanges
+                    {
+                        target: trainHeatButton
+                        enabled: true
+                    }
                 },
                 State
                 {
@@ -287,6 +339,11 @@ Item
                     {
                         target: trainHeatImage
                         source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: trainHeatButton
+                        enabled: true
                     }
                 }
                 ]

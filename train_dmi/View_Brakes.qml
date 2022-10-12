@@ -48,6 +48,7 @@ Item
             objectName: "parkingBrake"
             width: (parkButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(parkButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            enabled: false
 
             onPressed: buttonHandler.parkBrakeClicked()
 
@@ -90,6 +91,11 @@ Item
                     target: parkImage
                     source:"desk_ikoner/yellow.png"
                 }
+                PropertyChanges
+                {
+                    target: parkButton
+                    enabled: true
+                }
             },
             State
             {
@@ -98,6 +104,11 @@ Item
                 {
                     target: parkImage
                     source:"desk_ikoner/button69.png"
+                }
+                PropertyChanges
+                {
+                    target: parkButton
+                    enabled: true
                 }
             }
         ]
@@ -109,6 +120,8 @@ Item
             objectName: "brake_indicator"
             width: parent.width / 2 - 5
             height: parent.height / 2 - 5
+            enabled: false
+
             Image
             {
                 id: brakeImage
@@ -149,6 +162,11 @@ Item
                         target: brakeTextB
                         text: qsTr("TILL")
                     }
+                    PropertyChanges
+                    {
+                        target: brakeIndicator
+                        enabled: true
+                    }
                 },
                 State
                 {
@@ -157,6 +175,11 @@ Item
                     {
                         target: brakeImage
                         source:"desk_ikoner/indicator_frame_green.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: brakeIndicator
+                        enabled: true
                     }
                 }
             ]
@@ -167,6 +190,7 @@ Item
             objectName: "electricityBrake"
             width: (electricityBrake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(electricityBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
+            enabled: false
 
             onPressed:  buttonHandler.electricityBrakeClicked()
             Image
@@ -209,6 +233,11 @@ Item
                         target: electricityBrakeTextB
                         text: qsTr("FRÅN")
                     }
+                    PropertyChanges
+                    {
+                        target: electricityBrake
+                        enabled: true
+                    }
                 },
                 State
                 {
@@ -217,6 +246,11 @@ Item
                     {
                         target: electricityBrakeImage
                         source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: electricityBrake
+                        enabled: true
                     }
                 }
             ]
@@ -228,6 +262,7 @@ Item
             objectName: "magneticBrake"
             width: (magneticBrake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(magneticBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            enabled: false
 
             onPressed:  buttonHandler.magneticBrakeClicked()
             onReleased:  buttonHandler.magneticBrakeReleased()
@@ -257,6 +292,11 @@ Item
                         target: mgImage
                         source:"desk_ikoner/redButton.png"
                     }
+                    PropertyChanges
+                    {
+                        target: magneticBrake
+                        enabled: true
+                    }
                 },
                 State
                 {
@@ -264,6 +304,11 @@ Item
                     PropertyChanges {
                         target: mgImage
                         source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: magneticBrake
+                        enabled: true
                     }
                 }
             ]
