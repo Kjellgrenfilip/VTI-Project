@@ -65,11 +65,19 @@ Item
                 text: qsTr("PARK")
                 font.pointSize: parent.width /8
                 color: "White"
-
             }
 
-        states:
+            states:
             [
+            State
+            {
+                name: "default";
+                PropertyChanges
+                {
+                    target: parkImage
+                    source:"desk_ikoner/button69.png"
+                }
+            },
             State
             {
                 name: "active";
@@ -88,7 +96,7 @@ Item
                     source:"desk_ikoner/button69.png"
                 }
             }
-        ]
+            ]
         }
 
         Button
@@ -124,6 +132,15 @@ Item
             }
             states:
                 [
+                State
+                {
+                    name: "default";
+                    PropertyChanges
+                    {
+                        target: brakeImage
+                        source:"desk_ikoner/indicator_frame_green.png"
+                    }
+                },
                 State
                 {
                     name: "active";
@@ -186,6 +203,15 @@ Item
                 [
                 State
                 {
+                    name: "default";
+                    PropertyChanges
+                    {
+                        target: electricityBrakeImage
+                        source:"desk_ikoner/button69.png"
+                    }
+                },
+                State
+                {                    
                     name: "active";
                     PropertyChanges
                     {
@@ -238,6 +264,14 @@ Item
             }
             states:
                 [
+                State
+                {
+                    name: "default";
+                    PropertyChanges {
+                        target: mgImage
+                        source:"desk_ikoner/button69.png"
+                    }
+                },
                 State
                 {
                     name: "active";

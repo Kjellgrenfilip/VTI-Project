@@ -81,7 +81,22 @@ Item
                     duration: MyConst.animationDuration
                 }
             }
-            states: [
+            states:
+                [
+                State
+                {
+                    name: "default";
+                    PropertyChanges
+                    {
+                        target: doorLeftImage
+                        source: "desk_ikoner/doorleft.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: doorLeftAnimation
+                        running: false
+                    }
+                },
                 State
                 {
                     name: "warning";
@@ -120,7 +135,6 @@ Item
             height:(doorRightButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image
             {
-
                 id:doorRightImage
                 anchors.fill: parent
                 source: "desk_ikoner/doorright.png"
@@ -152,7 +166,21 @@ Item
             }
             states:
                 [
-                 State
+                State
+                {
+                     name: "default";
+                     PropertyChanges
+                     {
+                         target: doorRightImage
+                         source: "desk_ikoner/doorright.png"
+                     }
+                     PropertyChanges
+                     {
+                         target: doorRightAnimation
+                         running: false
+                     }
+                },
+                State
                 {
                      name: "warning";
                      PropertyChanges
@@ -165,8 +193,8 @@ Item
                          target: doorRightAnimation
                          running: false
                      }
-                    },
-                 State {
+                },
+                State {
                      name: "inactive";
                      PropertyChanges
                      {
@@ -178,8 +206,8 @@ Item
                          target: doorRightAnimation
                          running: false
                      }
-                 }
-             ]
+                }
+            ]
         }
         Button
         {
@@ -221,6 +249,20 @@ Item
             }
             states:
                 [
+                State
+                {
+                    name: "default";
+                    PropertyChanges
+                    {
+                         target: departureImage
+                         source: "desk_ikoner/avgang.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: departureAnimation
+                        running: false
+                    }
+                },
                 State
                 {
                     name: "warning";
@@ -287,51 +329,65 @@ Item
                 }
             }
 
-               states:
-                   [
-                   State
-                   {
-                        name: "active"
-                        PropertyChanges
-                        {
-                            target: closedImage
-                            source: "desk_ikoner/closedG.png"
-                        }
-                        PropertyChanges
-                        {
-                            target: doorCloseAnimation
-                            running: false
-                        }
-                       },
-                    State
-                   {
-                        name: "inactive";
-                        PropertyChanges
-                        {
-                            target: closedImage
-                            source: "desk_ikoner/closed.png"
-                        }
-                        PropertyChanges
-                        {
-                            target: doorCloseAnimation
-                            running: false
-                        }
-                   },
-                   State
-                   {
-                       name: "warning"
-                       PropertyChanges
-                       {
-                           target: closedImage
-                           source: "desk_ikoner/closedG.png"
-                       }
-                       PropertyChanges
-                       {
-                           target: doorCloseAnimation
-                           running: false
-                       }
-                   }
-              ]
+            states:
+                [
+                State
+                {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: closedImage
+                        source: "desk_ikoner/closed.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: doorCloseAnimation
+                        running: false
+                    }
+                },
+                State
+                {
+                    name: "active"
+                    PropertyChanges
+                    {
+                        target: closedImage
+                        source: "desk_ikoner/closedG.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: doorCloseAnimation
+                        running: false
+                    }
+                },
+                State
+                {
+                    name: "inactive";
+                    PropertyChanges
+                    {
+                        target: closedImage
+                        source: "desk_ikoner/closed.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: doorCloseAnimation
+                        running: false
+                    }
+                },
+                State
+                {
+                    name: "warning"
+                    PropertyChanges
+                    {
+                        target: closedImage
+                        source: "desk_ikoner/closedG.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: doorCloseAnimation
+                        running: false
+                    }
+                }
+            ]
         }
     }
 }

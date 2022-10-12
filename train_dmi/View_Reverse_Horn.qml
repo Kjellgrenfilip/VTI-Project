@@ -5,7 +5,6 @@ import "Imports" 1.0
 
 import QtMultimedia
 
-
 Item
 {
     id: reverseHorn

@@ -63,7 +63,17 @@ Item
 
         states:
             [
-            State {
+            State
+            {
+                name: "default"
+                PropertyChanges
+                {
+                    target: pontUpImage
+                    source:"desk_ikoner/Up.png"
+                }
+            },
+            State
+            {
                 name: "active"
                 PropertyChanges
                 {
@@ -129,7 +139,16 @@ Item
             states:
                 [
                 State
+                {
+                    name: "default"
+                    PropertyChanges
                     {
+                        target: pontDownImage
+                        source:"desk_ikoner/Down.png"
+                    }
+                },
+                State
+                {
                     name: "active"
                     PropertyChanges
                     {
@@ -144,7 +163,6 @@ Item
                     {
                         target: pontDownImage
                         source:"desk_ikoner/Down.png"
-
                     }
                 }
                 ]
@@ -192,6 +210,20 @@ Item
                 [
                 State
                 {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: voltageWarningAnimation
+                        running: false
+                    }
+                    PropertyChanges
+                    {
+                        target: volatageWarningImage
+                        source: "desk_ikoner/button69.png"
+                    }
+                },
+                State
+                {
                     name: "warning"
                     PropertyChanges
                     {
@@ -211,7 +243,6 @@ Item
                     {
                         target: volatageWarningImage
                         source: "desk_ikoner/button69.png"
-
                     }
                 }
                 ]
@@ -234,6 +265,15 @@ Item
             onClicked: buttonHandler.mainBreakerClicked()
             states:
                 [
+                State
+                {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: mainBreakerImage
+                        source:"desk_ikoner/button69.png"
+                    }
+                },
                 State
                 {
                     name: "active"
@@ -273,6 +313,15 @@ Item
             onClicked: buttonHandler.heatingClicked()
             states:
                 [
+                State
+                {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: trainHeatImage
+                        source:"desk_ikoner/button69.png"
+                    }
+                },
                 State
                 {
                     name: "active"
