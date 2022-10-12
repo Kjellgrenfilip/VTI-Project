@@ -126,7 +126,7 @@ Item
             {
                 id: brakeImage
                 anchors.fill: parent
-                source: "desk_ikoner/indicator_frame_green.png"
+                source: "desk_ikoner/indicator_frame.png"
             }
             Text
             {

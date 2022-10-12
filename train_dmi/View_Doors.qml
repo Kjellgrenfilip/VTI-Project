@@ -355,7 +355,7 @@ Item
             {
                 id: closedImage
                 anchors.fill: parent
-                source: "desk_ikoner/closedG.png"
+                source: "desk_ikoner/closed.png"
             }
             onPressed: buttonHandler.closeDoorClicked()
 

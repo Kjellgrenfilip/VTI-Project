@@ -51,6 +51,8 @@ Item {
             anchors.left: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             anchors.margins: 5
+            enabled: false
+
             Image
             {
                 id: emergencyImage
