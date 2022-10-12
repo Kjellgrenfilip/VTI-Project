@@ -69,9 +69,7 @@ Item
                 {
                     target: pontUpImage
                     source: "desk_ikoner/UpY.png"
-
                 }
-
             },
             State
             {
@@ -80,7 +78,6 @@ Item
                 {
                     target: pontUpImage
                     source:"desk_ikoner/Up.png"
-
                 }
             }
             ]
@@ -196,6 +193,11 @@ Item
                 State
                 {
                     name: "warning"
+                    PropertyChanges
+                    {
+                        target: voltageWarningAnimation
+                        running : false
+                    }
                 },
                 State
                 {

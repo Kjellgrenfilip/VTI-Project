@@ -90,6 +90,11 @@ Item
                         target: doorLeftImage
                         source: "desk_ikoner/doorleftY.png"
                     }
+                    PropertyChanges
+                    {
+                        target: doorLeftAnimation
+                        running: false
+                    }
                 },
                 State
                 {
@@ -155,6 +160,11 @@ Item
                          target: doorRightImage
                          source: "desk_ikoner/doorrightY.png"
                      }
+                     PropertyChanges
+                     {
+                         target: doorRightAnimation
+                         running: false
+                     }
                     },
                  State {
                      name: "inactive";
@@ -219,7 +229,12 @@ Item
                          target: departureImage
                          source: "desk_ikoner/green.png"
                     }
-                    },
+                    PropertyChanges
+                    {
+                        target: departureAnimation
+                        running: false
+                    }
+                },
                 State
                 {
                      name: "inactive";
@@ -263,7 +278,6 @@ Item
                     to: "desk_ikoner/closedG.png"
                     duration: MyConst.animationDuration
                 }
-
                 PropertyAnimation
                 {
                     target: closedImage
@@ -302,7 +316,7 @@ Item
                             target: doorCloseAnimation
                             running: false
                         }
-                    },
+                   },
                    State
                    {
                        name: "warning"
@@ -310,6 +324,11 @@ Item
                        {
                            target: closedImage
                            source: "desk_ikoner/closedG.png"
+                       }
+                       PropertyChanges
+                       {
+                           target: doorCloseAnimation
+                           running: false
                        }
                    }
               ]
