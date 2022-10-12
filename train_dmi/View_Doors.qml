@@ -126,7 +126,7 @@ Item
             SequentialAnimation
             {
                 id: doorRightAnimation
-                objectName: "door_right_button_animation"
+                objectName: "doorRightAnimation"
                 running: false
                 loops: Animation.Infinite
                 PropertyAnimation
@@ -149,7 +149,7 @@ Item
                 [
                  State
                 {
-                     name: "warning";
+                     name: "warning"
                      PropertyChanges
                      {
                          target: doorRightImage
@@ -174,7 +174,7 @@ Item
         Button
         {
             id:departureButton
-            objectName: "departureButton"
+            objectName: "departure"
             width: (departureButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(departureButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             Image

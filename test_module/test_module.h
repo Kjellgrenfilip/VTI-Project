@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QDebug>
-
+#include <QTimer>
 #include <network_server.h>
 #include "../network_interface.h"
 
@@ -17,13 +17,15 @@ public:
 private:
     Network_Server *m_networkServer;
     QJsonObject m_jsonState;
-
+    QTimer *m_doorTimer;
     void pontographUp();
+
 
 signals:
 
 public slots:
     void receiveUpdate();
+    void doorHandler();
 };
 
 #endif // TEST_MODULE_H
