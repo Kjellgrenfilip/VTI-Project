@@ -222,6 +222,11 @@ Item
                         target: voltageWarningButton
                         enabled: true
                     }
+                    PropertyChanges
+                    {
+                        target: voltageWarningAnimation
+                        running : false
+                    }
                 },
                 State
                 {

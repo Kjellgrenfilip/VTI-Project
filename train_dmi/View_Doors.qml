@@ -96,6 +96,11 @@ Item
                         target: doorLeftButton
                         enabled: true
                     }
+                    PropertyChanges
+                    {
+                        target: doorLeftAnimation
+                        running: false
+                    }
                 },
                 State
                 {
@@ -173,7 +178,12 @@ Item
                          target: doorRightButton
                          enabled: true
                      }
-                    },
+                     PropertyChanges
+                     {
+                         target: doorRightAnimation
+                         running: false
+                     }
+                 },
                  State {
                      name: "inactive";
                      PropertyChanges
@@ -249,7 +259,12 @@ Item
                         target: departureButton
                         enabled: true
                     }
-                    },
+                    PropertyChanges
+                    {
+                        target: departureAnimation
+                        running: false
+                    }
+                },
                 State
                 {
                      name: "inactive";
@@ -300,7 +315,6 @@ Item
                     to: "desk_ikoner/closedG.png"
                     duration: MyConst.animationDuration
                 }
-
                 PropertyAnimation
                 {
                     target: closedImage
@@ -331,7 +345,7 @@ Item
                             enabled: true
                         }
                        },
-                    State
+                   State
                    {
                         name: "inactive";
                         PropertyChanges
@@ -357,6 +371,11 @@ Item
                        {
                            target: closedImage
                            source: "desk_ikoner/closedG.png"
+                       }
+                       PropertyChanges
+                       {
+                           target: doorCloseAnimation
+                           running: false
                        }
                        PropertyChanges
                        {
