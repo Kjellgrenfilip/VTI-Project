@@ -76,28 +76,74 @@ Item
         Button
         {
             id: protectionButton
+            objectName: "protection"
             width: (protectionButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
             height:(protectionButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.horizontalCenter: parent.horizontalCenter
+            enabled: false
+
             background: Rectangle
             {
                 anchors.fill: parent
                 color: MyConst.backgroundColor
             }
+
             Image
             {
                 id: protectionImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_green2.png"
+                source: "desk_ikoner/power2.png"
             }
+            SequentialAnimation
+            {
+                id: protectionAnimation
+                objectName: "protectionAnimation"
+                running: false
+                loops: Animation.Infinite
+                PropertyAnimation
+                {
+                    target: protectionImage
+                    property: "source"
+                    to: "desk_ikoner/power_green2.png"
+                    duration: MyConst.animationDuration
+                }
+
+                PropertyAnimation
+                {
+                    target: protectionImage
+                    property: "source"
+                    to: "desk_ikoner/power2.png"
+                    duration: MyConst.animationDuration
+                }
+            }
+
+            states:
+             [
+                State
+                {
+                    name: "blinking";
+                    PropertyChanges
+                    {
+                        target: protectionAnimation
+                        running: false
+                    }
+                    PropertyChanges
+                    {
+                        target: protectionButton
+                        enabled: true
+                    }
+                }
+            ]
         }
 
         Button
         {
             id: cartButton
+            objectName: "cart"
             width: (cartButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
             height:(cartButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.right: parent.right
+            enabled: true
             background: Rectangle
             {
                 anchors.fill: parent
@@ -109,6 +155,38 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/power_green2.png"
             }
+
+            states:
+                [
+                State
+                {
+                    name: "active";
+                    PropertyChanges
+                    {
+                        target: cartButton
+                        enabled: true
+                    }
+                    PropertyChanges
+                    {
+                        target: cartImage
+                        source: "desk_ikoner/power_green2.png"
+                    }
+                },
+                State
+                {
+                    name: "inactive";
+                    PropertyChanges
+                    {
+                        target: cartButton
+                        enabled: false
+                    }
+                    PropertyChanges
+                    {
+                        target: cartImage
+                        source: "desk_ikoner/power2.png"
+                    }
+                }
+            ]
         }
 
         TextArea
