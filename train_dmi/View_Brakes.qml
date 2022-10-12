@@ -55,7 +55,7 @@ Item
             {
                 id: parkImage
                 anchors.fill: parent
-                source: "desk_ikoner/yellow.png"
+                source: "desk_ikoner/button69.png"
             }
             Text
             {
@@ -65,11 +65,23 @@ Item
                 text: qsTr("PARK")
                 font.pointSize: parent.width /8
                 color: "White"
-
             }
 
         states:
             [
+            State
+            {
+                name: "default";
+                PropertyChanges
+                {
+                    target: parkImage
+                    source: "desk_ikoner/yellow.png"
+                }
+                PropertyChanges {
+                    target: parkButton
+                    enabled: false
+                }
+            },
             State
             {
                 name: "active";
