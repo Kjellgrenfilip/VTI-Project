@@ -35,6 +35,7 @@ void Test_Module::receiveUpdate()
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
                  m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
                  m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
+                 m_jsonState.insert(VTI_DMI::TEXTINFO,"hello world");
              }
              else
              {
@@ -173,6 +174,7 @@ void Test_Module::receiveUpdate()
         else if(key == VTI_DMI::RECEIPT)
         {
             QString currentState = m_jsonState.value(key).toString();
+            m_jsonState.insert(VTI_DMI::TEXTINFO,"");
         }
 
         else if ( key == VTI_DMI::REVERSE )

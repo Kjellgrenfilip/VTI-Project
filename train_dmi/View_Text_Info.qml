@@ -37,17 +37,27 @@ Item {
 //            }
 
         }
-//        TextArea
-//        {
-//            id: text_area_info
-//            anchors.fill: parent
-//            readOnly: true
-//            color: "White"
-//            text: qsTr("\n  Try to edit me!")
+        TextArea // should be textinput
+        {
+            id: textAreaInfo
+            objectName: "textInfo"
+            anchors.fill: parent
+            anchors.margins: 20
+            readOnly: true
+            color: "White"
+            text: data
+            property string data: " hello";
+            //            onTextChange : if(textAreaInfo.text != data)
+            //            {
+            //                textAreaInfo.text = data +
+            //            }
 
+//            onDisplayChanged: {
+//                textAreaInfo.text = data + "\n" +textAreaInfo.text
+//            }
 
+        }
 
-//        }
 //        Text {
 //            id: hello
 //            text: qsTr("")
