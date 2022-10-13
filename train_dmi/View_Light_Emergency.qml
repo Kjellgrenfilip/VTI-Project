@@ -11,6 +11,7 @@ Item {
         Button
         {
             id: lightButton
+            objectName: "light"
             width: (lightButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
             height:(lightButton.pressed) ? parent.height - 40 : parent.height - 35
             anchors.right: parent.horizontalCenter
@@ -51,7 +52,7 @@ Item {
                         souce: "desk_ikoner/button69.png"
                     }
                     PropertyChanges {
-                        target: lightWarningAnimation
+                        target: lightAnimation
                         running: false
 
                     }
@@ -66,8 +67,8 @@ Item {
             ]
             SequentialAnimation
             {
-                id: lightWarningAnimation
-                objectName: "lightWarningAnimation"
+                id: lightAnimation
+                objectName: "lightAnimation"
                 running: false
                 loops: Animation.Infinite
                 PropertyAnimation

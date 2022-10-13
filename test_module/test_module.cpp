@@ -259,6 +259,19 @@ void Test_Module::receiveUpdate()
 
             }
         }
+
+        else if ( key == VTI_DMI::LIGHT)
+        {
+             QString currentState = m_jsonState.value(key).toString();
+             if (currentState == STATE::DEFAULT)
+             {
+                 m_jsonState.insert(VTI_DMI::LIGHT, STATE::WARNING);
+             }
+             else if (currentState == STATE::WARNING)
+             {
+                 m_jsonState.insert(VTI_DMI::LIGHT, STATE::DEFAULT);
+             }
+        }
     }
     m_networkServer->sendUpdate(m_jsonState);
 }
