@@ -11,6 +11,247 @@ Test_Module::~Test_Module()
     delete m_networkServer;
 }
 
+void Test_Module::updatePontographUp(QJsonValue const & value)
+{
+    qDebug() << "PONTOGRAPH_UP update" << value;
+
+    if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
+    {
+        m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
+        m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
+        m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
+    }
+    else
+    {
+        m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::ACTIVE);
+        m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
+        if(m_jsonState.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
+        {
+            m_jsonState.insert(VTI_DMI::VOLTAGE,16);
+        }
+    }
+}
+
+void Test_Module::updatePontographDown(QJsonValue const & value)
+{
+    qDebug() << "Pontograph down update " << value;
+
+    if(m_jsonState.value(VTI_DMI::PONTOGRAPH_DOWN) == STATE::ACTIVE)
+    {
+        m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
+    }
+    else
+    {
+        m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::ACTIVE);
+        m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
+        m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
+        m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
+    }
+}
+
+void Test_Module::updateMainBreaker(QJsonValue const & value)
+{
+    qDebug() << "Main breaker update" << value;
+    if(m_jsonState.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
+    {
+        m_jsonState.insert(VTI_DMI::MAIN_BREAKER, STATE::INACTIVE);
+        m_jsonState.insert(VTI_DMI::VOLTAGE,0);
+        m_jsonState.insert(VTI_DMI::VOLTAGE_WARNING, STATE::WARNING);
+    }
+    else
+    {
+        m_jsonState.insert(VTI_DMI::MAIN_BREAKER, STATE::ACTIVE);
+        m_jsonState.insert(VTI_DMI::VOLTAGE_WARNING, STATE::INACTIVE);
+        if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
+        {
+            qDebug() << "should turn on";
+            m_jsonState.insert(VTI_DMI::VOLTAGE,16);
+        }
+    }
+}
+
+void Test_Module::updateHeating(QJsonValue const & value)
+{
+    qDebug() << "Heating update" << value;
+
+    if(m_jsonState.value(VTI_DMI::HEATING) == STATE::ACTIVE)
+    {
+        m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
+    }
+    else
+    {
+        if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
+        {
+            m_jsonState.insert(VTI_DMI::HEATING, STATE::ACTIVE);
+        }
+    }
+}
+
+void Test_Module::updateVelocity(QJsonValue const & value)
+{
+    qDebug() << "VELOCITY update: " << value;
+    m_jsonState.insert(VTI_DMI::VELOCITY, value);
+}
+
+void Test_Module::updateVoltage(QJsonValue const & value)
+{
+    qDebug() << "VOLTAGE update" << value;
+    m_jsonState.insert(VTI_DMI::VOLTAGE, value);
+}
+
+void Test_Module::updateParkBrake(QJsonValue const & value)
+{
+    qDebug() << "PARKING-BRAKE update" << m_jsonState.value(VTI_DMI::VELOCITY).toDouble();
+
+    if(m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::DEFAULT  || m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::ACTIVE)
+        m_jsonState.insert(VTI_DMI::PARK_BRAKE, STATE::INACTIVE);
+    else if((m_jsonState.value(VTI_DMI::VELOCITY).toDouble() == 0.0) && (m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::INACTIVE))
+        m_jsonState.insert(VTI_DMI::PARK_BRAKE, STATE::ACTIVE);
+}
+
+
+void Test_Module::updateElectrictyBrake(QJsonValue const & value)
+{
+    qDebug() << "Electricity brake update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::ELECTRICITY_BRAKE).toString();
+
+    if(currentState == STATE::DEFAULT || currentState == STATE::INACTIVE)
+        m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, STATE::ACTIVE);
+    else
+        m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, STATE::INACTIVE);
+}
+
+void Test_Module::updateMagneticBrake(QJsonValue const & value)
+{
+    qDebug() << "Magnetic brake update" << value;
+
+    bool updateValue = value.toBool();
+
+    if(updateValue == true)
+        m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, STATE::ACTIVE);
+    else
+        m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, STATE::INACTIVE);
+}
+
+void Test_Module::updateEmergencyBrake(QJsonValue const & value)
+{
+    qDebug() << "Emergency brake update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::EMERGENCY_BRAKE).toString();
+
+    if ( currentState == STATE::DEFAULT )
+        m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::WARNING);
+
+    else if ( currentState == STATE::WARNING )
+        m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::ACTIVE);
+
+    else if ( currentState == STATE::ACTIVE )
+        m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
+}
+
+void Test_Module::updateFire(QJsonValue const & value)
+{
+    qDebug() << "Fire update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::FIRE).toString();
+
+    if ( currentState == STATE::DEFAULT )
+        m_jsonState.insert(VTI_DMI::FIRE, STATE::WARNING);
+
+    else if ( currentState == STATE::WARNING )
+        m_jsonState.insert(VTI_DMI::FIRE, STATE::ACTIVE);
+
+    else if ( currentState == STATE::ACTIVE )
+        m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
+}
+
+void Test_Module::updateReceipt(QJsonValue const & value)
+{
+    qDebug() << "Receipt update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::RECEIPT).toString();
+}
+
+void Test_Module::updateReverse(QJsonValue const & value)
+{
+    qDebug() << "Reverse update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::REVERSE).toString();
+    double currentVelocity = m_jsonState.value(VTI_DMI::VELOCITY).toDouble();
+
+    if ( currentVelocity <= 0.0)
+    {
+        if ( currentState == STATE::DEFAULT )
+            m_jsonState.insert(VTI_DMI::REVERSE, STATE::WARNING);
+
+        else if ( currentState == STATE::WARNING )
+            m_jsonState.insert(VTI_DMI::REVERSE, STATE::DEFAULT);
+    }
+}
+
+void Test_Module::updateDoorLeft(QJsonValue const & value)
+{
+    qDebug() << "Door left update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
+
+    if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
+    {
+        m_jsonState.insert(VTI_DMI::DOOR_LEFT, STATE::WARNING);
+        m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::INACTIVE);
+    }
+}
+
+void Test_Module::updateDoorRight(QJsonValue const & value)
+{
+    qDebug() << "Door right update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
+
+    if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
+        m_jsonState.insert(VTI_DMI::DOOR_RIGHT, STATE::WARNING);
+}
+
+void Test_Module::updateDeparture(QJsonValue const & value)
+{
+    qDebug() << "Departure update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::DEPARTURE).toString();
+    QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
+    QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
+
+    if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
+    {
+         if( leftdoorState == STATE::WARNING  || rightdoorState == STATE::WARNING )
+         {
+              m_jsonState.insert(VTI_DMI::DEPARTURE, STATE::WARNING);
+         }
+     }
+}
+
+void Test_Module::updateDoorClose(QJsonValue const & value)
+{
+    qDebug() << "Door close update" << value;
+
+    QString currentState = m_jsonState.value(VTI_DMI::DOOR_CLOSE).toString();
+    QString departureState = m_jsonState.value(VTI_DMI::DEPARTURE).toString();
+    QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
+    QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
+
+    if (departureState == STATE::WARNING)
+    {
+        //Start timer
+        m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::WARNING);
+        //TIMER FINISHED. CHANGE DOORS TO INACTIVE AND DEPARTURE TO INACTIVE
+    }
+    if( leftdoorState == STATE::WARNING  || rightdoorState == STATE::WARNING )
+    {
+
+    }
+}
+
+
 void Test_Module::receiveUpdate()
 {
     QJsonObject update = m_networkServer->getUpdate();
@@ -27,222 +268,57 @@ void Test_Module::receiveUpdate()
         QJsonValue value = update.value(key);
 
         if(key == VTI_DMI::PONTOGRAPH_UP)
-        {
-             qDebug() << "PONTOGRAPH_UP update" << value;
-
-             if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
-             {
-                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
-                 m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
-                 m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
-             }
-             else
-             {
-                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::ACTIVE);
-                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
-                 if(m_jsonState.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
-                 {
-                     m_jsonState.insert(VTI_DMI::VOLTAGE,16);
-                 }
-             }
-        }
+             updatePontographUp(value);
 
         else if(key == VTI_DMI::PONTOGRAPH_DOWN)
-        {
-            if(m_jsonState.value(VTI_DMI::PONTOGRAPH_DOWN) == STATE::ACTIVE)
-            {
-                m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
-            }
-            else
-            {
-                m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::ACTIVE);
-                m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
-                m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
-                m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
-            }
-        }
+            updatePontographDown(value);
 
         else if(key == VTI_DMI::MAIN_BREAKER)
-        {
-            qDebug() << "Main breaker update" << value;
-            if(m_jsonState.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
-            {
-                m_jsonState.insert(VTI_DMI::MAIN_BREAKER, STATE::INACTIVE);
-                m_jsonState.insert(VTI_DMI::VOLTAGE,0);
-                m_jsonState.insert(VTI_DMI::VOLTAGE_WARNING, STATE::WARNING);
-            }
-            else
-            {
-                m_jsonState.insert(VTI_DMI::MAIN_BREAKER, STATE::ACTIVE);
-                m_jsonState.insert(VTI_DMI::VOLTAGE_WARNING, STATE::INACTIVE);
-                if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
-                {
-                    qDebug() << "should turn on";
-                    m_jsonState.insert(VTI_DMI::VOLTAGE,16);
-                }
-            }
-        }
+            updateMainBreaker(value);
 
         else if(key == VTI_DMI::HEATING)
-        {
-            if(m_jsonState.value(VTI_DMI::HEATING) == STATE::ACTIVE)
-            {
-                m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
-            }
-            else
-            {
-                if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
-                {
-                    m_jsonState.insert(VTI_DMI::HEATING, STATE::ACTIVE);
-                }
-            }
-        }
+            updateHeating(value);
 
         else if(key == VTI_DMI::VELOCITY)
-        {
-             qDebug() << "VELOCITY update: " << value;
-             m_jsonState.insert(key, value);
-        }
+            updateVelocity(value);
 
         else if(key == VTI_DMI::VOLTAGE)
-        {
-            qDebug() << "VOLTAGE update" << value;
-            m_jsonState.insert(key, value);
-        }
+            updateVoltage(value);
 
         else if(key == VTI_DMI::PARK_BRAKE)
-        {
+            updateParkBrake(value);
 
-            if(m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::DEFAULT  || m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::ACTIVE)
-                m_jsonState.insert(VTI_DMI::PARK_BRAKE, STATE::INACTIVE);
-            else if((m_jsonState.value(VTI_DMI::VELOCITY).toDouble() == 0.0) && (m_jsonState.value(VTI_DMI::PARK_BRAKE) == STATE::INACTIVE))
-                m_jsonState.insert(VTI_DMI::PARK_BRAKE, STATE::ACTIVE);
-
-            qDebug() << "PARKING-BRAKE update" << m_jsonState.value(VTI_DMI::VELOCITY).toDouble();
-
-        }
         else if(key == VTI_DMI::ELECTRICITY_BRAKE)
-        {
-            QString currentState = m_jsonState.value(key).toString();
-
-            if(currentState == STATE::DEFAULT || currentState == STATE::INACTIVE)
-                m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, STATE::ACTIVE);
-            else
-                m_jsonState.insert(VTI_DMI::ELECTRICITY_BRAKE, STATE::INACTIVE);
-        }
+            updateElectrictyBrake(value);
 
         else if(key == VTI_DMI::MAGNETIC_BRAKE)
-        {
-            QString currentState = m_jsonState.value(key).toString();
-            bool updateValue = value.toBool();
-
-            if(updateValue == true)
-                m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, STATE::ACTIVE);
-            else
-                m_jsonState.insert(VTI_DMI::MAGNETIC_BRAKE, STATE::INACTIVE);
-        }
-
-        else if (key == VTI_DMI::FIRE)
-        {
-            QString currentState = m_jsonState.value(key).toString();
-
-            if ( currentState == STATE::DEFAULT )
-                m_jsonState.insert(VTI_DMI::FIRE, STATE::WARNING);
-
-            else if ( currentState == STATE::WARNING )
-                m_jsonState.insert(VTI_DMI::FIRE, STATE::ACTIVE);
-
-            else if ( currentState == STATE::ACTIVE )
-                m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
-        }
+            updateMagneticBrake(value);
 
         else if (key == VTI_DMI::EMERGENCY_BRAKE)
-        {
-            QString currentState = m_jsonState.value(key).toString();
+            updateEmergencyBrake(value);
 
-            if ( currentState == STATE::DEFAULT )
-                m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::WARNING);
-
-            else if ( currentState == STATE::WARNING )
-                m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::ACTIVE);
-
-            else if ( currentState == STATE::ACTIVE )
-                m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
-        }
+        else if (key == VTI_DMI::FIRE)
+            updateFire(value);
 
         else if(key == VTI_DMI::RECEIPT)
-        {
-            QString currentState = m_jsonState.value(key).toString();
-        }
+            updateReceipt(value);
 
         else if ( key == VTI_DMI::REVERSE )
-        {
-            QString currentState = m_jsonState.value(key).toString();
-            double currentVelocity = m_jsonState.value(VTI_DMI::VELOCITY).toDouble();
-
-            if ( currentVelocity <= 0.0)
-            {
-                if ( currentState == STATE::DEFAULT )
-                    m_jsonState.insert(VTI_DMI::REVERSE, STATE::WARNING);
-
-                else if ( currentState == STATE::WARNING )
-                    m_jsonState.insert(VTI_DMI::REVERSE, STATE::DEFAULT);
-            }
-        }
+            updateReverse(value);
 
         else if (key == VTI_DMI::DOOR_LEFT)
-        {
-            QString currentState = m_jsonState.value(key).toString();
-
-            if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
-            {
-                m_jsonState.insert(VTI_DMI::DOOR_LEFT, STATE::WARNING);
-                m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::INACTIVE);
-            }
-        }
+            updateDoorLeft(value);
 
         else if (key == VTI_DMI::DOOR_RIGHT)
-        {
-           QString currentState = m_jsonState.value(key).toString();
-
-           if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
-               m_jsonState.insert(VTI_DMI::DOOR_RIGHT, STATE::WARNING);
-       }
+            updateDoorRight(value);
 
        else if (key == VTI_DMI::DEPARTURE)
-       {
-           QString currentState = m_jsonState.value(key).toString();
-           QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
-           QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
-
-           if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
-           {
-                if( leftdoorState == STATE::WARNING  || rightdoorState == STATE::WARNING )
-                {
-                     m_jsonState.insert(VTI_DMI::DEPARTURE, STATE::WARNING);
-                }
-            }
-       }
+            updateDeparture(value);
 
        else if( key== VTI_DMI::DOOR_CLOSE)
-       {
-            QString currentState = m_jsonState.value(key).toString();
-            QString departureState = m_jsonState.value(VTI_DMI::DEPARTURE).toString();
-            QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
-            QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
-
-            if (departureState == STATE::WARNING)
-            {
-                //Start timer
-                m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::WARNING);
-                //TIMER FINISHED. CHANGE DOORS TO INACTIVE AND DEPARTURE TO INACTIVE
-            }
-            if( leftdoorState == STATE::WARNING  || rightdoorState == STATE::WARNING )
-            {
-
-            }
-        }
+            updateDoorClose(value);
     }
+
     m_networkServer->sendUpdate(m_jsonState);
 }
 
