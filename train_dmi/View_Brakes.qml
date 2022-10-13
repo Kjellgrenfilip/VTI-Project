@@ -118,7 +118,7 @@ Item
         Button
         {
             id: brakeIndicator
-            objectName: "brake_indicator"
+            objectName: "brakeIndicator"
             width: parent.width / 2 - 5
             height: parent.height / 2 - 5
 
@@ -143,7 +143,6 @@ Item
                 text: qsTr("FRÅN")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                //y:broms.y + 30
                 font.pointSize: parent.width /8
                 color:"White"
             }

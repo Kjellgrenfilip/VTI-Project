@@ -33,7 +33,7 @@ void Test_Module::receiveUpdate()
              if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
              {
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
-                 m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
+                 m_jsonState.insert(VTI_DMI::VOLTAGE, STATE::DEFAULT);
                  m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
              }
              else
@@ -42,7 +42,7 @@ void Test_Module::receiveUpdate()
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
                  if(m_jsonState.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
                  {
-                     m_jsonState.insert(VTI_DMI::VOLTAGE,16);
+                     m_jsonState.insert(VTI_DMI::VOLTAGE, STATE::ACTIVE);
                  }
              }
         }
@@ -57,7 +57,7 @@ void Test_Module::receiveUpdate()
             {
                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::ACTIVE);
                 m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
-                m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
+                m_jsonState.insert(VTI_DMI::VOLTAGE, STATE::DEFAULT);
                 m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
             }
         }
@@ -68,7 +68,7 @@ void Test_Module::receiveUpdate()
             if(m_jsonState.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
             {
                 m_jsonState.insert(VTI_DMI::MAIN_BREAKER, STATE::INACTIVE);
-                m_jsonState.insert(VTI_DMI::VOLTAGE,0);
+                m_jsonState.insert(VTI_DMI::VOLTAGE, STATE::DEFAULT);
                 m_jsonState.insert(VTI_DMI::VOLTAGE_WARNING, STATE::WARNING);
             }
             else
@@ -78,7 +78,7 @@ void Test_Module::receiveUpdate()
                 if(m_jsonState.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
                 {
                     qDebug() << "should turn on";
-                    m_jsonState.insert(VTI_DMI::VOLTAGE,16);
+                    m_jsonState.insert(VTI_DMI::VOLTAGE, STATE::ACTIVE);
                 }
             }
         }
