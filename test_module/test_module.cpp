@@ -250,18 +250,10 @@ void Test_Module::receiveUpdate()
             QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
             QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
 
-
             if (departureState == STATE::WARNING)
             {
-
-                m_doorTimer->start(3000);
-
                 m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::WARNING);
-                //TIMER FINISHED. CHANGE DOORS TO INACTIVE AND DEPARTURE TO INACTIVE
-            }
-            if( leftdoorState == STATE::WARNING  || rightdoorState == STATE::WARNING )
-            {
-
+                m_doorTimer->start(3000);
             }
         }
     }

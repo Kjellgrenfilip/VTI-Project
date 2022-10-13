@@ -64,6 +64,7 @@ Item
                 id: doorLeftAnimation
                 objectName: "doorLeftAnimation"
                 running: false
+                alwaysRunToEnd: true
                 loops: Animation.Infinite
                 PropertyAnimation
                 {
@@ -129,6 +130,7 @@ Item
                 objectName: "doorRightAnimation"
                 running: false
                 loops: Animation.Infinite
+                alwaysRunToEnd: true
                 PropertyAnimation
                 {
                     target: doorRightImage
@@ -193,6 +195,7 @@ Item
                 objectName: "departureAnimation"
                 running: false
                 loops: Animation.Infinite
+                alwaysRunToEnd: true
                 PropertyAnimation
                 {
                     target: departureImage
@@ -255,7 +258,8 @@ Item
                 id: doorCloseAnimation
                 objectName: "doorCloseAnimation"
                 running: false
-                loops: Animation.Infinite
+                loops: 3
+                alwaysRunToEnd: true
                 PropertyAnimation
                 {
                     target: closedImage
