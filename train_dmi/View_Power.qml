@@ -53,7 +53,7 @@ Item
             //anchors.fill: parent
             enabled: false
 
-            onClicked: buttonHandler.pontUpClicked()
+            onPressed: buttonHandler.pontUpPressed()
 
             Image
             {
@@ -181,7 +181,7 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/Down.png"
             }
-            onClicked: buttonHandler.pontDownClicked()
+            onPressed: buttonHandler.pontDownPressed()
             states:
                 [
                 State
@@ -340,7 +340,7 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "H-BRYT"
-            onClicked: buttonHandler.mainBreakerClicked()
+            onPressed: buttonHandler.mainBreakerPressed()
             states:
                 [
                 State
@@ -404,7 +404,7 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "TÅGV."
-            onClicked: buttonHandler.heatingClicked()
+            onPressed: buttonHandler.heatingPressed()
             states:
                 [
                 State

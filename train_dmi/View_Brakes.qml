@@ -50,7 +50,7 @@ Item
             height:(parkButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             enabled: false
 
-            onPressed: buttonHandler.parkBrakeClicked()
+            onPressed: buttonHandler.parkBrakePressed()
 
             Image
             {
@@ -190,7 +190,7 @@ Item
             height:(electricityBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
             enabled: false
 
-            onPressed:  buttonHandler.electricityBrakeClicked()
+            onPressed:  buttonHandler.electricityBrakePressed()
             Image
             {
                 id: electricityBrakeImage
@@ -276,7 +276,7 @@ Item
             height:(magneticBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             enabled: false
 
-            onPressed:  buttonHandler.magneticBrakeClicked()
+            onPressed:  buttonHandler.magneticBrakePressed()
             onReleased:  buttonHandler.magneticBrakeReleased()
             onCanceled:  buttonHandler.magneticBrakeReleased()
 
