@@ -90,7 +90,7 @@ Item {
             property string data: " "
         }
         //property string data: " " // should be what is changed in textmodule to update the text
-        onPressed: buttonHandler.receiptClicked();
+        onPressed: buttonHandler.receiptPressed();
 //            data: ""
 //            states:[
 //            State {
