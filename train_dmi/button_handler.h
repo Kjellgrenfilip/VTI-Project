@@ -14,6 +14,7 @@ public:
     explicit Button_Handler();
 
 private:
+    void sendSignal(QString const& object, bool const value);
 
 signals:
     void sendUpdate(QJsonObject);
