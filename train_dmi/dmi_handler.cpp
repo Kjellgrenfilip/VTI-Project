@@ -45,7 +45,7 @@ void DMI_Handler::receiveUpdate()
         else if( key == VTI_DMI::TEXTINFO)
         {
          QString newState = m_jsonState.value(key).toString();
-         obj->setProperty("data",newState);
+         obj->setProperty("text",newState);
         }
         else if ( key == VTI_DMI::VOLTAGE )
         {

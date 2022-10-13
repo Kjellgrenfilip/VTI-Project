@@ -35,7 +35,6 @@ void Test_Module::receiveUpdate()
                  m_jsonState.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
                  m_jsonState.insert(VTI_DMI::VOLTAGE, 0);
                  m_jsonState.insert(VTI_DMI::HEATING, STATE::INACTIVE);
-                 m_jsonState.insert(VTI_DMI::TEXTINFO,"hello world");
              }
              else
              {
@@ -148,7 +147,10 @@ void Test_Module::receiveUpdate()
             QString currentState = m_jsonState.value(key).toString();
 
             if ( currentState == STATE::DEFAULT )
+            {
                 m_jsonState.insert(VTI_DMI::FIRE, STATE::WARNING);
+                m_jsonState.insert(VTI_DMI::TEXTINFO,"Brand i tågsätt");
+            }
 
             else if ( currentState == STATE::WARNING )
                 m_jsonState.insert(VTI_DMI::FIRE, STATE::ACTIVE);
@@ -162,8 +164,10 @@ void Test_Module::receiveUpdate()
             QString currentState = m_jsonState.value(key).toString();
 
             if ( currentState == STATE::DEFAULT )
+            {
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::WARNING);
-
+                m_jsonState.insert(VTI_DMI::TEXTINFO,"Nödbroms aktiverad");
+            }
             else if ( currentState == STATE::WARNING )
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::ACTIVE);
 
@@ -173,8 +177,16 @@ void Test_Module::receiveUpdate()
 
         else if(key == VTI_DMI::RECEIPT)
         {
-            QString currentState = m_jsonState.value(key).toString();
             m_jsonState.insert(VTI_DMI::TEXTINFO,"");
+            if(m_jsonState.value(VTI_DMI::FIRE) == STATE::WARNING)
+            {
+                m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
+            }
+            if(m_jsonState.value(VTI_DMI::EMERGENCY_BRAKE) == STATE::WARNING)
+            {
+                m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
+            }
+
         }
 
         else if ( key == VTI_DMI::REVERSE )

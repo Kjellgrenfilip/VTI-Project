@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Controls 2.0
 import "Imports" 1.0
 Item {
@@ -16,26 +16,6 @@ Item {
             border.width: 10
             border.color: "grey"
             radius: 25
-//            Text {
-//                id: text_info_a
-//                anchors.left: parent.left
-//                anchors.top: parent.top
-//                anchors.margins: 15
-//                text: qsTr("hello")
-//                color:"White"
-//            }
-//            Text {
-//                id: text_info_b
-//                //anchors.fill: parent
-//                anchors.top: text_info_a.bottom
-//                anchors.left: parent.left
-//                anchors.leftMargin: 15
-//                anchors.topMargin: 3
-
-//                text: qsTr("world")
-//                color:"White"
-//            }
-
         }
         TextArea // should be textinput
         {
@@ -45,25 +25,9 @@ Item {
             anchors.margins: 20
             readOnly: true
             color: "White"
-            text: data
-            property string data: " hello";
-            //            onTextChange : if(textAreaInfo.text != data)
-            //            {
-            //                textAreaInfo.text = data +
-            //            }
-
-//            onDisplayChanged: {
-//                textAreaInfo.text = data + "\n" +textAreaInfo.text
-//            }
-
+            text: "ipsum torem sdf testing really cool test to fit text"
+            font.pointSize: parent.width/42
         }
-
-//        Text {
-//            id: hello
-//            text: qsTr("")
-//        }
-
-
     }
     Button
     {
@@ -79,7 +43,8 @@ Item {
             anchors.fill: parent
             source: "desk_ikoner/button69.png"
         }
-        Text {
+        Text
+        {
             id: receiptA
             anchors.bottom: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
@@ -87,35 +52,16 @@ Item {
             font.pointSize: parent.width /8
             color:"White"
         }
-        Text {
+        Text
+        {
             id: receiptB
             text: qsTr("KVITT.")
             anchors.top: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            //y:broms.y + 30
             font.pointSize: parent.width /8
             color:"White"
-            property string data: " "
         }
-        //property string data: " " // should be what is changed in textmodule to update the text
         onClicked: buttonHandler.receiptClicked();
-//            data: ""
-//            states:[
-//            State {
-//                name: "on"
-//                hello.text: qstr("hello")
-//                }
-
-//            },
-//                State {
-//                    name: "off"
-//                    PropertyChanges {
-//                        target: pont_down
-//                        source:"desk_ikoner/Down.png"
-
-//                    }
-//                }
-//            ]
     }
 }
 
