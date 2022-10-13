@@ -146,4 +146,9 @@ void Button_Handler::receiptClicked()
     json.insert(VTI_DMI::RECEIPT, true);
     emit sendUpdate(json);
 }
-
+void Button_Handler::lightPressed()
+{
+    QJsonObject json{};
+    json.insert(VTI_DMI::LI, true);
+    emit sendUpdate(json);
+}
