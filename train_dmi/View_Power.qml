@@ -51,8 +51,9 @@ Item
             width: (pontUpButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pontUpButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             //anchors.fill: parent
+            enabled: false
 
-            onClicked: buttonHandler.pontUpClicked()
+            onPressed: buttonHandler.pontUpPressed()
 
             Image
             {
@@ -61,17 +62,35 @@ Item
                 source: "desk_ikoner/Up.png"
             }
 
-        states:
+            states:
             [
-            State {
+            State
+            {
+                name: "default"
+                PropertyChanges
+                {
+                    target: pontUpImage
+                    source:"desk_ikoner/Up.png"
+                }
+                PropertyChanges
+                {
+                    target: pontUpButton
+                    enabled: true
+                }
+            },
+            State
+            {
                 name: "active"
                 PropertyChanges
                 {
                     target: pontUpImage
                     source: "desk_ikoner/UpY.png"
-
                 }
-
+                PropertyChanges
+                {
+                    target: pontUpButton
+                    enabled: true
+                }
             },
             State
             {
@@ -80,7 +99,11 @@ Item
                 {
                     target: pontUpImage
                     source:"desk_ikoner/Up.png"
-
+                }
+                PropertyChanges
+                {
+                    target: pontUpButton
+                    enabled: true
                 }
             }
             ]
@@ -93,27 +116,55 @@ Item
             objectName: "voltage"
             width:  parent.width / 2 - 5
             height: parent.height / 3 - 7
+            enabled: false
 
             Image
             {
                 id:pontChargeImage
                 anchors.fill: parent
-                source: (pontChargeButton.text == "0V") ? "desk_ikoner/indicator_frameR.png" : "desk_ikoner/indicator_frame.png"
+                source: "desk_ikoner/indicator_frame.png"
             }
 
-            text: "0V"
+            Text
+            {
+                id: pontChargeText
+                text: qsTr("0V")
+                color: "white"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+            }
 
-            onTextChanged:  if(pontChargeButton.text.charAt(pontChargeButton.text.length -1) != "V")
-                            {
-                                if(pontChargeButton.text.charAt(0) == "0")
-                                {
-                                    pontChargeButton.text = pontChargeButton.text + "V"
-                                }
-                                else
-                                {
-                                    pontChargeButton.text = pontChargeButton.text + "kV"
-                                }
-                            }
+            states:
+            [
+                State
+                {
+                    name: "active"
+                    PropertyChanges
+                    {
+                        target: pontChargeText
+                        text: qsTr("16kV")
+                    }
+                    PropertyChanges
+                    {
+                        target: pontChargeImage
+                        source: "desk_ikoner/indicator_frame.png"
+                    }
+                },
+                State
+                {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: pontChargeText
+                        text: qsTr("0V")
+                    }
+                    PropertyChanges
+                    {
+                        target: pontChargeImage
+                        source: "desk_ikoner/indicator_frameR.png"
+                    }
+                }
+            ]
         }
         //clickable pantograph down
         Button
@@ -122,22 +173,43 @@ Item
             objectName:  "pontographDown"
             width: (pontDownButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pontDownButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            enabled: false
+
             Image
             {
                 id:pontDownImage
                 anchors.fill: parent
                 source: "desk_ikoner/Down.png"
             }
-            onClicked: buttonHandler.pontDownClicked()
+            onPressed: buttonHandler.pontDownPressed()
             states:
                 [
                 State
+                {
+                    name: "default"
+                    PropertyChanges
                     {
+                        target: pontDownImage
+                        source:"desk_ikoner/Down.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: pontDownButton
+                        enabled: true
+                    }
+                },
+                State
+                {
                     name: "active"
                     PropertyChanges
                     {
                         target: pontDownImage
                         source: "desk_ikoner/DownY.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: pontDownButton
+                        enabled: true
                     }
                 },
                 State
@@ -147,7 +219,11 @@ Item
                     {
                         target: pontDownImage
                         source:"desk_ikoner/Down.png"
-
+                    }
+                    PropertyChanges
+                    {
+                        target: pontDownButton
+                        enabled: true
                     }
                 }
                 ]
@@ -156,11 +232,12 @@ Item
         // non-clickable current indicator?
         Button
         {
-            id:volatageWarningButton
+            id:voltageWarningButton
             objectName: "voltageWarning"
             width: parent.width / 2 - 5
-
             height: parent.height / 3 - 7
+            enabled: false
+
             Image
             {
                 id: volatageWarningImage
@@ -195,7 +272,36 @@ Item
                 [
                 State
                 {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: voltageWarningAnimation
+                        running: false
+                    }
+                    PropertyChanges
+                    {
+                        target: volatageWarningImage
+                        source: "desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: voltageWarningButton
+                        enabled: true
+                    }
+                },
+                State
+                {
                     name: "warning"
+                    PropertyChanges
+                    {
+                        target: voltageWarningButton
+                        enabled: true
+                    }
+                    PropertyChanges
+                    {
+                        target: voltageWarningAnimation
+                        running : false
+                    }
                 },
                 State
                 {
@@ -209,7 +315,11 @@ Item
                     {
                         target: volatageWarningImage
                         source: "desk_ikoner/button69.png"
-
+                    }
+                    PropertyChanges
+                    {
+                        target: voltageWarningButton
+                        enabled: true
                     }
                 }
                 ]
@@ -221,6 +331,7 @@ Item
             objectName: "mainBreaker"
             width: (mainBreakerButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(mainBreakerButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            enabled: false
 
             Image
             {
@@ -229,9 +340,23 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "H-BRYT"
-            onClicked: buttonHandler.mainBreakerClicked()
+            onPressed: buttonHandler.mainBreakerPressed()
             states:
                 [
+                State
+                {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: mainBreakerImage
+                        source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: mainBreakerButton
+                        enabled: true
+                    }
+                },
                 State
                 {
                     name: "active"
@@ -239,6 +364,11 @@ Item
                     {
                         target: mainBreakerImage
                         source: "desk_ikoner/yellow.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: mainBreakerButton
+                        enabled: true
                     }
                 },
                 State
@@ -248,6 +378,11 @@ Item
                     {
                         target: mainBreakerImage
                         source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: mainBreakerButton
+                        enabled: true
                     }
                 }
             ]
@@ -260,6 +395,7 @@ Item
             objectName: "heating"
             width: (trainHeatButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(trainHeatButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            enabled: false
 
             Image
             {
@@ -268,9 +404,23 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "TÅGV."
-            onClicked: buttonHandler.heatingClicked()
+            onPressed: buttonHandler.heatingPressed()
             states:
                 [
+                State
+                {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: trainHeatImage
+                        source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: trainHeatButton
+                        enabled: true
+                    }
+                },
                 State
                 {
                     name: "active"
@@ -278,6 +428,11 @@ Item
                     {
                         target: trainHeatImage
                         source: "desk_ikoner/yellow.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: trainHeatButton
+                        enabled: true
                     }
                 },
                 State
@@ -287,6 +442,11 @@ Item
                     {
                         target: trainHeatImage
                         source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: trainHeatButton
+                        enabled: true
                     }
                 }
                 ]

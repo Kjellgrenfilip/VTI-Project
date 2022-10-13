@@ -17,6 +17,8 @@ namespace STATE
 namespace VTI_DMI
 {
     QString const ACTIVATE          = "activate";
+    QString const PROTECTION        = "protection";
+    QString const CART              = "cart";
     QString const PONTOGRAPH_UP     = "pontographUp";
     QString const PONTOGRAPH_DOWN   = "pontographDown";
     QString const VELOCITY          = "velocity";
@@ -42,9 +44,11 @@ namespace VTI_DMI
     QJsonObject const JSON_TEMPLATE
     {
         { ACTIVATE,             STATE::DEFAULT },
+        { PROTECTION,           STATE::BLINKING },
+        { CART,                 STATE::INACTIVE },
         { PONTOGRAPH_UP,        STATE::DEFAULT },
         { VELOCITY,             QJsonValue::Double },
-        { VOLTAGE,              QJsonValue::Double },
+        { VOLTAGE,              STATE::DEFAULT },
         { EMERGENCY_BRAKE,      STATE::DEFAULT },
         { FIRE,                 STATE::DEFAULT },
         { PARK_BRAKE,           STATE::DEFAULT },

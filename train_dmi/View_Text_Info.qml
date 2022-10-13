@@ -63,6 +63,8 @@ Item {
         height: (receiptButton.pressed) ? parent.height/2 - 10 : parent.height/2 - 5
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
+        enabled: false
+
         Image
         {
             id: receiptImage
@@ -88,7 +90,7 @@ Item {
             property string data: " "
         }
         //property string data: " " // should be what is changed in textmodule to update the text
-        onClicked: buttonHandler.receiptClicked();
+        onPressed: buttonHandler.receiptPressed();
 //            data: ""
 //            states:[
 //            State {

@@ -48,14 +48,15 @@ Item
             objectName: "parkingBrake"
             width: (parkButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(parkButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            enabled: false
 
-            onPressed: buttonHandler.parkBrakeClicked()
+            onPressed: buttonHandler.parkBrakePressed()
 
             Image
             {
                 id: parkImage
                 anchors.fill: parent
-                source: "desk_ikoner/yellow.png"
+                source: "desk_ikoner/button69.png"
             }
             Text
             {
@@ -65,11 +66,24 @@ Item
                 text: qsTr("PARK")
                 font.pointSize: parent.width /8
                 color: "White"
-
             }
 
-        states:
+            states:
             [
+            State
+            {
+                name: "default";
+                PropertyChanges
+                {
+                    target: parkImage
+                    source:"desk_ikoner/yellow.png"
+                }
+                PropertyChanges
+                {
+                    target: parkButton
+                    enabled: true
+                }
+            },
             State
             {
                 name: "active";
@@ -77,6 +91,11 @@ Item
                 {
                     target: parkImage
                     source:"desk_ikoner/yellow.png"
+                }
+                PropertyChanges
+                {
+                    target: parkButton
+                    enabled: true
                 }
             },
             State
@@ -87,21 +106,27 @@ Item
                     target: parkImage
                     source:"desk_ikoner/button69.png"
                 }
+                PropertyChanges
+                {
+                    target: parkButton
+                    enabled: true
+                }
             }
-        ]
+            ]
         }
 
         Button
         {
             id: brakeIndicator
-            objectName: "brake_indicator"
+            objectName: "brakeIndicator"
             width: parent.width / 2 - 5
             height: parent.height / 2 - 5
+
             Image
             {
                 id: brakeImage
                 anchors.fill: parent
-                source: "desk_ikoner/indicator_frame_green.png"
+                source: "desk_ikoner/indicator_frame.png"
             }
             Text
             {
@@ -118,12 +143,20 @@ Item
                 text: qsTr("FRÅN")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                //y:broms.y + 30
                 font.pointSize: parent.width /8
                 color:"White"
             }
             states:
                 [
+                State
+                {
+                    name: "default";
+                    PropertyChanges
+                    {
+                        target: brakeImage
+                        source:"desk_ikoner/indicator_frame_green.png"
+                    }
+                },
                 State
                 {
                     name: "active";
@@ -155,8 +188,9 @@ Item
             objectName: "electricityBrake"
             width: (electricityBrake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(electricityBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
+            enabled: false
 
-            onPressed:  buttonHandler.electricityBrakeClicked()
+            onPressed:  buttonHandler.electricityBrakePressed()
             Image
             {
                 id: electricityBrakeImage
@@ -186,6 +220,20 @@ Item
                 [
                 State
                 {
+                    name: "default";
+                    PropertyChanges
+                    {
+                        target: electricityBrakeImage
+                        source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: electricityBrake
+                        enabled: true
+                    }
+                },
+                State
+                {                    
                     name: "active";
                     PropertyChanges
                     {
@@ -197,6 +245,11 @@ Item
                         target: electricityBrakeTextB
                         text: qsTr("FRÅN")
                     }
+                    PropertyChanges
+                    {
+                        target: electricityBrake
+                        enabled: true
+                    }
                 },
                 State
                 {
@@ -205,6 +258,11 @@ Item
                     {
                         target: electricityBrakeImage
                         source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: electricityBrake
+                        enabled: true
                     }
                 }
             ]
@@ -216,8 +274,9 @@ Item
             objectName: "magneticBrake"
             width: (magneticBrake.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(magneticBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
+            enabled: false
 
-            onPressed:  buttonHandler.magneticBrakeClicked()
+            onPressed:  buttonHandler.magneticBrakePressed()
             onReleased:  buttonHandler.magneticBrakeReleased()
             onCanceled:  buttonHandler.magneticBrakeReleased()
 
@@ -240,10 +299,28 @@ Item
                 [
                 State
                 {
+                    name: "default";
+                    PropertyChanges {
+                        target: mgImage
+                        source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: magneticBrake
+                        enabled: true
+                    }
+                },
+                State
+                {
                     name: "active";
                     PropertyChanges {
                         target: mgImage
                         source:"desk_ikoner/redButton.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: magneticBrake
+                        enabled: true
                     }
                 },
                 State
@@ -252,6 +329,11 @@ Item
                     PropertyChanges {
                         target: mgImage
                         source:"desk_ikoner/button69.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: magneticBrake
+                        enabled: true
                     }
                 }
             ]

@@ -11,7 +11,7 @@ void Button_Handler::activatePressed()
     emit sendUpdate(json);
 }
 
-void Button_Handler::pontUpClicked()
+void Button_Handler::pontUpPressed()
 {
     qDebug() << "Pontograph Up!";
     QJsonObject json{};
@@ -19,7 +19,7 @@ void Button_Handler::pontUpClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::parkBrakeClicked()
+void Button_Handler::parkBrakePressed()
 {
     qDebug() << "Park brake pressed!";
     QJsonObject json{};
@@ -27,7 +27,7 @@ void Button_Handler::parkBrakeClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::electricityBrakeClicked()
+void Button_Handler::electricityBrakePressed()
 {
     qDebug() << "Electicity brake button pressed!";
     QJsonObject json{};
@@ -35,7 +35,7 @@ void Button_Handler::electricityBrakeClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::magneticBrakeClicked()
+void Button_Handler::magneticBrakePressed()
 {
     qDebug() << "Magnetic brake button pressed!";
     QJsonObject json{};
@@ -51,7 +51,7 @@ void Button_Handler::magneticBrakeReleased()
     emit sendUpdate(json);
 }
 
-void Button_Handler::fireClicked()
+void Button_Handler::firePressed()
 {
     qDebug() << "Fire button pressed!";
     QJsonObject json{};
@@ -59,7 +59,7 @@ void Button_Handler::fireClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::pontDownClicked()
+void Button_Handler::pontDownPressed()
 {
     qDebug() << "Pontograph Down!";
     QJsonObject json{};
@@ -67,7 +67,7 @@ void Button_Handler::pontDownClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::mainBreakerClicked()
+void Button_Handler::mainBreakerPressed()
 {
     qDebug() << "Hbryt pressed!";
     QJsonObject json{};
@@ -75,7 +75,7 @@ void Button_Handler::mainBreakerClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::heatingClicked()
+void Button_Handler::heatingPressed()
 {
     qDebug() << "TAGV pressed!";
     QJsonObject json{};
@@ -83,7 +83,7 @@ void Button_Handler::heatingClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::nboClicked()
+void Button_Handler::nboPressed()
 {
     qDebug() << "NBO button pressed!";
     QJsonObject json{};
@@ -107,7 +107,7 @@ void Button_Handler::hornPressed()
     emit sendUpdate(json);
 }
 
-void Button_Handler::leftDoorClicked()
+void Button_Handler::leftDoorPressed()
 {
     qDebug() << "leftdoor button pressed!";
     QJsonObject json{};
@@ -115,7 +115,7 @@ void Button_Handler::leftDoorClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::rightDoorClicked()
+void Button_Handler::rightDoorPressed()
 {
     qDebug() << "rightdoor button pressed!";
     QJsonObject json{};
@@ -123,7 +123,7 @@ void Button_Handler::rightDoorClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::departureButtonClicked()
+void Button_Handler::departureButtonPressed()
 {
     qDebug() << "departure button pressed!";
     QJsonObject json{};
@@ -131,7 +131,7 @@ void Button_Handler::departureButtonClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::closeDoorClicked()
+void Button_Handler::closeDoorPressed()
 {
     qDebug() << "close door button pressed!";
     QJsonObject json{};
@@ -139,7 +139,7 @@ void Button_Handler::closeDoorClicked()
     emit sendUpdate(json);
 }
 
-void Button_Handler::receiptClicked()
+void Button_Handler::receiptPressed()
 {
     qDebug() << "receipt button pressed!";
     QJsonObject json{};
