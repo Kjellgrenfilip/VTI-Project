@@ -44,7 +44,7 @@ Item {
             enabled: false
 
             // onClicked: buttonHandler.emergencyBrakeClicked()
-            onClicked: buttonHandler.nboClicked()
+            onPressed: buttonHandler.nboClicked()
 
             Image
             {
@@ -154,7 +154,7 @@ Item {
             anchors.margins: 5
             enabled: false
 
-            onClicked: buttonHandler.fireClicked()
+            onPressed: buttonHandler.fireClicked()
 
             Image
             {
