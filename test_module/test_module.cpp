@@ -166,7 +166,10 @@ void Test_Module::receiveUpdate()
             if ( currentState == STATE::DEFAULT )
             {
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::WARNING);
-                m_jsonState.insert(VTI_DMI::TEXTINFO,"Nödbroms aktiverad");
+                if(m_jsonState.value(VTI_DMI::FIRE) != STATE::WARNING)
+                {
+                    m_jsonState.insert(VTI_DMI::TEXTINFO,"Nödbroms aktiverad");
+                }
             }
             else if ( currentState == STATE::WARNING )
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::ACTIVE);
