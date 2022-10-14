@@ -1,14 +1,28 @@
 #include "test_module.h"
 
 Test_Module::Test_Module()
-    : QObject(), m_networkServer{new Network_Server{}}, m_jsonState{VTI_DMI::JSON_TEMPLATE}
+    : QObject(), m_networkServer{new Network_Server{}}, m_jsonState{VTI_DMI::JSON_TEMPLATE}, m_doorTimer{new QTimer{this}}
 {
     connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
+    connect(m_doorTimer, SIGNAL(timeout()), this, SLOT(doorHandler()));
+
+    m_doorTimer->setSingleShot(true);
 }
 
 Test_Module::~Test_Module()
 {
     delete m_networkServer;
+    delete m_doorTimer;
+}
+
+void Test_Module::doorHandler()
+{
+    qDebug() << "TIMER PÅ TRE SEKUNDER KLAR";
+    m_jsonState.insert(VTI_DMI::DEPARTURE, STATE::INACTIVE);
+    m_jsonState.insert(VTI_DMI::DOOR_RIGHT, STATE::INACTIVE);
+    m_jsonState.insert(VTI_DMI::DOOR_LEFT, STATE::INACTIVE);
+    m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::ACTIVE);
+    m_networkServer->sendUpdate(m_jsonState);
 }
 
 void Test_Module::updatePontographUp(QJsonValue const & value)
@@ -210,7 +224,10 @@ void Test_Module::updateDoorRight(QJsonValue const & value)
     QString currentState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
 
     if ( currentState == STATE::DEFAULT || currentState == STATE::INACTIVE )
+    {
         m_jsonState.insert(VTI_DMI::DOOR_RIGHT, STATE::WARNING);
+        m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::INACTIVE);
+    }
 }
 
 void Test_Module::updateDeparture(QJsonValue const & value)
@@ -234,23 +251,14 @@ void Test_Module::updateDoorClose(QJsonValue const & value)
 {
     qDebug() << "Door close update" << value;
 
-    QString currentState = m_jsonState.value(VTI_DMI::DOOR_CLOSE).toString();
-    QString departureState = m_jsonState.value(VTI_DMI::DEPARTURE).toString();
-    QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
-    QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
+     QString departureState = m_jsonState.value(VTI_DMI::DEPARTURE).toString();
 
-    if (departureState == STATE::WARNING)
-    {
-        //Start timer
-        m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::WARNING);
-        //TIMER FINISHED. CHANGE DOORS TO INACTIVE AND DEPARTURE TO INACTIVE
-    }
-    if( leftdoorState == STATE::WARNING  || rightdoorState == STATE::WARNING )
-    {
-
-    }
+     if (departureState == STATE::WARNING)
+     {
+         m_jsonState.insert(VTI_DMI::DOOR_CLOSE, STATE::WARNING);
+         m_doorTimer->start(3000);
+     }
 }
-
 
 void Test_Module::receiveUpdate()
 {
@@ -318,7 +326,6 @@ void Test_Module::receiveUpdate()
        else if( key== VTI_DMI::DOOR_CLOSE)
             updateDoorClose(value);
     }
-
     m_networkServer->sendUpdate(m_jsonState);
 }
 

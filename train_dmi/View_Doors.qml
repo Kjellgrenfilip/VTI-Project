@@ -66,6 +66,7 @@ Item
                 objectName: "doorLeftAnimation"
                 running: false
                 loops: Animation.Infinite
+                alwaysRunToEnd: true
                 PropertyAnimation
                 {
                     target: doorLeftImage
@@ -163,9 +164,10 @@ Item
             SequentialAnimation
             {
                 id: doorRightAnimation
-                objectName: "door_right_button_animation"
+                objectName: "doorRightAnimation"
                 running: false
                 loops: Animation.Infinite
+                alwaysRunToEnd: true
                 PropertyAnimation
                 {
                     target: doorRightImage
@@ -205,7 +207,7 @@ Item
                 },
                 State
                 {
-                     name: "warning";
+                     name: "warning"
                      PropertyChanges
                      {
                          target: doorRightImage
@@ -266,6 +268,7 @@ Item
                 objectName: "departureAnimation"
                 running: false
                 loops: Animation.Infinite
+                alwaysRunToEnd: true
                 PropertyAnimation
                 {
                     target: departureImage
@@ -364,7 +367,11 @@ Item
                 id: doorCloseAnimation
                 objectName: "doorCloseAnimation"
                 running: false
-                loops: Animation.Infinite
+                loops: 3
+                //alwaysRunToEnd: true
+
+
+
                 PropertyAnimation
                 {
                     target: closedImage
@@ -388,7 +395,7 @@ Item
                     PropertyChanges
                     {
                         target: closedImage
-                        source: "desk_ikoner/closed.png"
+                        source: "desk_ikoner/closedG.png"
                     }
                     PropertyChanges
                     {
@@ -414,6 +421,8 @@ Item
                         target: doorCloseAnimation
                         running: false
                     }
+
+
                     PropertyChanges
                     {
                         target: closedButton
@@ -442,11 +451,6 @@ Item
                 State
                 {
                     name: "warning"
-                    PropertyChanges
-                    {
-                        target: closedImage
-                        source: "desk_ikoner/closedG.png"
-                    }
                     PropertyChanges
                     {
                         target: doorCloseAnimation
