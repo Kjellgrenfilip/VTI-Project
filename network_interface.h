@@ -40,6 +40,8 @@ namespace VTI_DMI
     QString const DOOR_RIGHT        = "doorRight";
     QString const DOOR_CLOSE        = "doorClose";
     QString const DEPARTURE         = "departure";
+    QString const TEXTINFO          = "textAreaInfoText";
+    QString const LIGHT             = "light";
 
     QJsonObject const JSON_TEMPLATE
     {
@@ -66,7 +68,8 @@ namespace VTI_DMI
         { DEPARTURE,            STATE::DEFAULT },
         { REVERSE,              STATE::DEFAULT },
         { HORN,                 STATE::DEFAULT },
-        { RECEIPT,              STATE::DEFAULT }
+        { RECEIPT,              STATE::DEFAULT },
+        { LIGHT,                STATE::DEFAULT }
     };
 };
 

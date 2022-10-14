@@ -154,7 +154,7 @@ Item {
             anchors.margins: 5
             enabled: false
 
-            onPressed: buttonHandler.firePressed()
+            onPressed:  buttonHandler.firePressed()
 
             Image
             {

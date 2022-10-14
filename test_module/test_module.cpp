@@ -155,8 +155,13 @@ void Test_Module::updateEmergencyBrake(QJsonValue const & value)
     QString currentState = m_jsonState.value(VTI_DMI::EMERGENCY_BRAKE).toString();
 
     if ( currentState == STATE::DEFAULT )
+    {
         m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::WARNING);
-
+        if(m_jsonState.value(VTI_DMI::FIRE) != STATE::WARNING)
+        {
+            m_jsonState.insert(VTI_DMI::TEXTINFO,"Nödbroms aktiverad");
+        }
+    }
     else if ( currentState == STATE::WARNING )
         m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::ACTIVE);
 
@@ -171,7 +176,10 @@ void Test_Module::updateFire(QJsonValue const & value)
     QString currentState = m_jsonState.value(VTI_DMI::FIRE).toString();
 
     if ( currentState == STATE::DEFAULT )
+    {
         m_jsonState.insert(VTI_DMI::FIRE, STATE::WARNING);
+        m_jsonState.insert(VTI_DMI::TEXTINFO,"Brand i tågsätt");
+    }
 
     else if ( currentState == STATE::WARNING )
         m_jsonState.insert(VTI_DMI::FIRE, STATE::ACTIVE);
@@ -183,8 +191,15 @@ void Test_Module::updateFire(QJsonValue const & value)
 void Test_Module::updateReceipt(QJsonValue const & value)
 {
     qDebug() << "Receipt update" << value;
-
-    QString currentState = m_jsonState.value(VTI_DMI::RECEIPT).toString();
+    m_jsonState.insert(VTI_DMI::TEXTINFO,"");
+    if(m_jsonState.value(VTI_DMI::FIRE) == STATE::WARNING || m_jsonState.value(VTI_DMI::FIRE) == STATE::ACTIVE )
+    {
+        m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
+    }
+    if(m_jsonState.value(VTI_DMI::EMERGENCY_BRAKE) == STATE::WARNING ||m_jsonState.value(VTI_DMI::EMERGENCY_BRAKE) == STATE::ACTIVE)
+    {
+        m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
+    }
 }
 
 void Test_Module::updateReverse(QJsonValue const & value)
@@ -260,6 +275,21 @@ void Test_Module::updateDoorClose(QJsonValue const & value)
      }
 }
 
+void Test_Module::updateLight(QJsonValue const & value)
+{
+    QString currentState = m_jsonState.value(VTI_DMI::LIGHT).toString();
+    if (currentState == STATE::DEFAULT)
+    {
+        m_jsonState.insert(VTI_DMI::LIGHT, STATE::WARNING);
+    }
+    else if (currentState == STATE::WARNING)
+    {
+        m_jsonState.insert(VTI_DMI::LIGHT, STATE::DEFAULT);
+    }
+}
+
+
+
 void Test_Module::receiveUpdate()
 {
     QJsonObject update = m_networkServer->getUpdate();
@@ -325,6 +355,9 @@ void Test_Module::receiveUpdate()
 
        else if( key== VTI_DMI::DOOR_CLOSE)
             updateDoorClose(value);
+
+        else if ( key == VTI_DMI::LIGHT)
+            updateLight(value);
     }
     m_networkServer->sendUpdate(m_jsonState);
 }

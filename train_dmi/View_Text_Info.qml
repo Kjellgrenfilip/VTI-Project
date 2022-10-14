@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Controls 2.0
 import "Imports" 1.0
 Item {
@@ -16,45 +16,27 @@ Item {
             border.width: 10
             border.color: "grey"
             radius: 25
-//            Text {
-//                id: text_info_a
-//                anchors.left: parent.left
-//                anchors.top: parent.top
-//                anchors.margins: 15
-//                text: qsTr("hello")
-//                color:"White"
-//            }
-//            Text {
-//                id: text_info_b
-//                //anchors.fill: parent
-//                anchors.top: text_info_a.bottom
-//                anchors.left: parent.left
-//                anchors.leftMargin: 15
-//                anchors.topMargin: 3
-
-//                text: qsTr("world")
-//                color:"White"
-//            }
-
+            TextArea // should be textinput
+            {
+                id: textAreaInfo
+                objectName: "textInfo"
+                anchors.fill: parent
+                anchors.margins: 20
+                readOnly: true
+                Text
+                {
+                    id: textAreaInfoText
+                    objectName: "textAreaInfoText"
+                    anchors.fill: parent
+                    color: "White"
+                    text: qsTr("hello")
+                    font.pointSize: parent.width/24
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
         }
-//        TextArea
-//        {
-//            id: text_area_info
-//            anchors.fill: parent
-//            readOnly: true
-//            color: "White"
-//            text: qsTr("\n  Try to edit me!")
-
-
-
-//        }
-//        Text {
-//            id: hello
-//            text: qsTr("")
-//        }
-
-
-    }
+           }
     Button
     {
         id: receiptButton
@@ -71,7 +53,8 @@ Item {
             anchors.fill: parent
             source: "desk_ikoner/button69.png"
         }
-        Text {
+        Text
+        {
             id: receiptA
             anchors.bottom: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
@@ -79,35 +62,27 @@ Item {
             font.pointSize: parent.width /8
             color:"White"
         }
-        Text {
+        Text
+        {
             id: receiptB
             text: qsTr("KVITT.")
             anchors.top: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            //y:broms.y + 30
             font.pointSize: parent.width /8
             color:"White"
-            property string data: " "
         }
-        //property string data: " " // should be what is changed in textmodule to update the text
-        onPressed: buttonHandler.receiptPressed();
-//            data: ""
-//            states:[
-//            State {
-//                name: "on"
-//                hello.text: qstr("hello")
-//                }
+        onPressed: buttonHandler.receiptPressed()
 
-//            },
-//                State {
-//                    name: "off"
-//                    PropertyChanges {
-//                        target: pont_down
-//                        source:"desk_ikoner/Down.png"
-
-//                    }
-//                }
-//            ]
+        states:
+        [
+            State {
+                name: "default"
+                PropertyChanges {
+                    target: receiptButton
+                    enabled: true
+                }
+            }
+        ]
     }
 }
 

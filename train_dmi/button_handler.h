@@ -45,6 +45,7 @@ public slots:
     void closeDoorPressed();
 
     void receiptPressed();
+    void lightPressed();
 };
 
 #endif // BUTTON_HANDLER_H

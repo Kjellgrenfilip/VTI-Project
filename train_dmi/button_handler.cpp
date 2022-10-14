@@ -117,4 +117,9 @@ void Button_Handler::receiptPressed()
     qDebug() << "receipt button pressed!";
     sendSignal(VTI_DMI::RECEIPT, true);
 }
-
+void Button_Handler::lightPressed()
+{
+    QJsonObject json{};
+    json.insert(VTI_DMI::LIGHT, true);
+    emit sendUpdate(json);
+}

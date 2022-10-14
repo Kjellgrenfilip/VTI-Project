@@ -37,6 +37,7 @@ private:
     void updateDoorRight(QJsonValue const & value);
     void updateDeparture(QJsonValue const & value);
     void updateDoorClose(QJsonValue const & value);
+    void updateLight(QJsonValue const & value);
 
 signals:
 
