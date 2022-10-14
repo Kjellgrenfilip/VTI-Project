@@ -25,6 +25,7 @@ private:
 
     QTcpSocket *m_tcpSocket;
     QJsonObject m_jsonUpdate;
+
 signals:
     void updateReceived();
 

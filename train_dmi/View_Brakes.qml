@@ -50,7 +50,7 @@ Item
             height:(parkButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             enabled: false
 
-            onPressed: buttonHandler.parkBrakeClicked()
+            onPressed: buttonHandler.parkBrakePressed()
 
             Image
             {
@@ -118,7 +118,7 @@ Item
         Button
         {
             id: brakeIndicator
-            objectName: "brake_indicator"
+            objectName: "brakeIndicator"
             width: parent.width / 2 - 5
             height: parent.height / 2 - 5
 
@@ -143,7 +143,6 @@ Item
                 text: qsTr("FRÅN")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                //y:broms.y + 30
                 font.pointSize: parent.width /8
                 color:"White"
             }
@@ -191,7 +190,7 @@ Item
             height:(electricityBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2- 5
             enabled: false
 
-            onPressed:  buttonHandler.electricityBrakeClicked()
+            onPressed:  buttonHandler.electricityBrakePressed()
             Image
             {
                 id: electricityBrakeImage
@@ -277,7 +276,7 @@ Item
             height:(magneticBrake.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             enabled: false
 
-            onPressed:  buttonHandler.magneticBrakeClicked()
+            onPressed:  buttonHandler.magneticBrakePressed()
             onReleased:  buttonHandler.magneticBrakeReleased()
             onCanceled:  buttonHandler.magneticBrakeReleased()
 

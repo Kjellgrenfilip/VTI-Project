@@ -14,6 +14,7 @@ public:
     explicit Button_Handler();
 
 private:
+    void sendSignal(QString const& object, bool const value);
 
 signals:
     void sendUpdate(QJsonObject);
@@ -21,29 +22,29 @@ signals:
 public slots:
     void activatePressed();
 
-    void pontUpClicked();
+    void pontUpPressed();
 
-    void parkBrakeClicked();
-    void electricityBrakeClicked();
-    void magneticBrakeClicked();
+    void parkBrakePressed();
+    void electricityBrakePressed();
+    void magneticBrakePressed();
     void magneticBrakeReleased();
 
-    void pontDownClicked();
-    void mainBreakerClicked();
-    void heatingClicked();
+    void pontDownPressed();
+    void mainBreakerPressed();
+    void heatingPressed();
 
-    void nboClicked();
-    void fireClicked();
+    void nboPressed();
+    void firePressed();
 
     void reversePressed();
     void hornPressed();
 
-    void leftDoorClicked();
-    void rightDoorClicked();
-    void departureButtonClicked();
-    void closeDoorClicked();
+    void leftDoorPressed();
+    void rightDoorPressed();
+    void departureButtonPressed();
+    void closeDoorPressed();
 
-    void receiptClicked();
+    void receiptPressed();
 };
 
 #endif // BUTTON_HANDLER_H

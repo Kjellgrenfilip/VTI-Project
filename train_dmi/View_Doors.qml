@@ -51,7 +51,7 @@ Item
             height:(doorLeftButton.pressed) ? parent.height / 2 - 10 : parent.height / 2 - 5
             enabled: false
 
-            onPressed: buttonHandler.leftDoorClicked()
+            onPressed: buttonHandler.leftDoorPressed()
             Image
             {
 
@@ -158,7 +158,7 @@ Item
                 source: "desk_ikoner/doorright.png"
             }
 
-            onPressed: buttonHandler.rightDoorClicked()
+            onPressed: buttonHandler.rightDoorPressed()
 
             SequentialAnimation
             {
@@ -258,7 +258,7 @@ Item
                 source: "desk_ikoner/avgang.png"
             }
 
-            onPressed: buttonHandler.departureButtonClicked()
+            onPressed: buttonHandler.departureButtonPressed()
 
             SequentialAnimation
             {
@@ -357,7 +357,7 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/closed.png"
             }
-            onPressed: buttonHandler.closeDoorClicked()
+            onPressed: buttonHandler.closeDoorPressed()
 
             SequentialAnimation
             {

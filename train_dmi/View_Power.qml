@@ -53,7 +53,7 @@ Item
             //anchors.fill: parent
             enabled: false
 
-            onClicked: buttonHandler.pontUpClicked()
+            onPressed: buttonHandler.pontUpPressed()
 
             Image
             {
@@ -122,22 +122,49 @@ Item
             {
                 id:pontChargeImage
                 anchors.fill: parent
-                source: (pontChargeButton.text == "0V") ? "desk_ikoner/indicator_frameR.png" : "desk_ikoner/indicator_frame.png"
+                source: "desk_ikoner/indicator_frame.png"
             }
 
-            text: "0V"
+            Text
+            {
+                id: pontChargeText
+                text: qsTr("0V")
+                color: "white"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+            }
 
-            onTextChanged:  if(pontChargeButton.text.charAt(pontChargeButton.text.length -1) != "V")
-                            {
-                                if(pontChargeButton.text.charAt(0) == "0")
-                                {
-                                    pontChargeButton.text = pontChargeButton.text + "V"
-                                }
-                                else
-                                {
-                                    pontChargeButton.text = pontChargeButton.text + "kV"
-                                }
-                            }
+            states:
+            [
+                State
+                {
+                    name: "active"
+                    PropertyChanges
+                    {
+                        target: pontChargeText
+                        text: qsTr("16kV")
+                    }
+                    PropertyChanges
+                    {
+                        target: pontChargeImage
+                        source: "desk_ikoner/indicator_frame.png"
+                    }
+                },
+                State
+                {
+                    name: "default"
+                    PropertyChanges
+                    {
+                        target: pontChargeText
+                        text: qsTr("0V")
+                    }
+                    PropertyChanges
+                    {
+                        target: pontChargeImage
+                        source: "desk_ikoner/indicator_frameR.png"
+                    }
+                }
+            ]
         }
         //clickable pantograph down
         Button
@@ -154,7 +181,7 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/Down.png"
             }
-            onClicked: buttonHandler.pontDownClicked()
+            onPressed: buttonHandler.pontDownPressed()
             states:
                 [
                 State
@@ -313,7 +340,7 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "H-BRYT"
-            onClicked: buttonHandler.mainBreakerClicked()
+            onPressed: buttonHandler.mainBreakerPressed()
             states:
                 [
                 State
@@ -377,7 +404,7 @@ Item
                 source: "desk_ikoner/button69.png"
             }
             text: "TÅGV."
-            onClicked: buttonHandler.heatingClicked()
+            onPressed: buttonHandler.heatingPressed()
             states:
                 [
                 State
