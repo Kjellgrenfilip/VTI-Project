@@ -16,19 +16,28 @@ Item {
             border.width: 10
             border.color: "grey"
             radius: 25
+            TextArea // should be textinput
+            {
+                id: textAreaInfo
+                objectName: "textInfo"
+                anchors.fill: parent
+                anchors.margins: 20
+                readOnly: true
+
+                Text
+                {
+                    id: textAreaInfoText
+                    objectName: "textAreInfoText"
+                    anchors.fill: parent
+                    color: "White"
+                    text: qsTr("hello")
+                    font.pointSize: parent.width/24
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
         }
-        TextArea // should be textinput
-        {
-            id: textAreaInfo
-            objectName: "textInfo"
-            anchors.fill: parent
-            anchors.margins: 20
-            readOnly: true
-            color: "White"
-            text: "ipsum torem sdf testing really cool test to fit text"
-            font.pointSize: parent.width/42
-        }
-    }
+           }
     Button
     {
         id: receiptButton

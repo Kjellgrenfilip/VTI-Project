@@ -38,7 +38,7 @@ namespace VTI_DMI
     QString const DOOR_RIGHT        = "doorRight";
     QString const DOOR_CLOSE        = "doorClose";
     QString const DEPARTURE         = "departure";
-    QString const TEXTINFO          = "textInfo";
+    QString const TEXTINFO          = "textAreInfoText";
     QString const LIGHT             = "light";
 
     QJsonObject const JSON_TEMPLATE
