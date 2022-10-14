@@ -189,12 +189,14 @@ Item
             ]
         }
 
-        TextArea
+        Rectangle
         {
             id: activateText
             width: parent.width/9
             anchors.horizontalCenter: activateButton.horizontalCenter
             anchors.bottom:parent.bottom
+            color: "orange"
+
             Text
             {
                 anchors.horizontalCenter: parent.horizontalCenter

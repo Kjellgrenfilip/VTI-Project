@@ -245,10 +245,7 @@ void Test_Module::receiveUpdate()
 
        else if( key== VTI_DMI::DOOR_CLOSE)
        {
-            QString currentState = m_jsonState.value(key).toString();
             QString departureState = m_jsonState.value(VTI_DMI::DEPARTURE).toString();
-            QString leftdoorState = m_jsonState.value(VTI_DMI::DOOR_LEFT).toString();
-            QString rightdoorState = m_jsonState.value(VTI_DMI::DOOR_RIGHT).toString();
 
             if (departureState == STATE::WARNING)
             {
