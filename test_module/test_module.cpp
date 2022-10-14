@@ -181,11 +181,11 @@ void Test_Module::receiveUpdate()
         else if(key == VTI_DMI::RECEIPT)
         {
             m_jsonState.insert(VTI_DMI::TEXTINFO,"");
-            if(m_jsonState.value(VTI_DMI::FIRE) == STATE::WARNING)
+            if(m_jsonState.value(VTI_DMI::FIRE) == STATE::WARNING || m_jsonState.value(VTI_DMI::FIRE) == STATE::ACTIVE )
             {
                 m_jsonState.insert(VTI_DMI::FIRE, STATE::DEFAULT);
             }
-            if(m_jsonState.value(VTI_DMI::EMERGENCY_BRAKE) == STATE::WARNING)
+            if(m_jsonState.value(VTI_DMI::EMERGENCY_BRAKE) == STATE::WARNING ||m_jsonState.value(VTI_DMI::EMERGENCY_BRAKE) == STATE::ACTIVE)
             {
                 m_jsonState.insert(VTI_DMI::EMERGENCY_BRAKE, STATE::DEFAULT);
             }

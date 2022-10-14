@@ -23,11 +23,10 @@ Item {
                 anchors.fill: parent
                 anchors.margins: 20
                 readOnly: true
-
                 Text
                 {
                     id: textAreaInfoText
-                    objectName: "textAreInfoText"
+                    objectName: "textAreaInfoText"
                     anchors.fill: parent
                     color: "White"
                     text: qsTr("hello")
