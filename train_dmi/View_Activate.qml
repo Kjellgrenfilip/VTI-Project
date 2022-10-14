@@ -189,7 +189,7 @@ Item
             ]
         }
 
-        Rectangle
+        TextArea
         {
             id: activateText
             width: parent.width/9
