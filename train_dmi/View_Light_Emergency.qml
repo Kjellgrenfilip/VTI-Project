@@ -58,13 +58,19 @@ Item {
                         running: false
 
                     }
+                    PropertyChanges {
+                        target: lightButton
+                        enabled:true
+
+                    }
                 },
                 State {
                     name: "warning"
-//                    PropertyChanges {
-//                        target: object
+                    PropertyChanges {
+                        target: lightAnimation
+                        running: true
 
-//                    }
+                    }
                 }
             ]
             SequentialAnimation
@@ -124,6 +130,16 @@ Item {
                 font.pointSize: parent.width /8
                 color:"White"
             }
+            states: [
+                State {
+                    name: "default"
+                    PropertyChanges {
+                        target: emergencyButton
+                        enabled:true
+                    }
+                }
+
+            ]
         }
     }
 }
