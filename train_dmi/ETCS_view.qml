@@ -35,8 +35,8 @@ Item {
                 id: rectangleA
                 anchors.left: parent.left
                 anchors.top:rectangleZ.bottom
-                width:54
-                height:300
+                width:(54/MyConst.etcsWidth) * parent.width
+                height:(300/MyConst.etcsHeight) * parent.height
                 color: "blue"
             }
             Rectangle
@@ -44,8 +44,8 @@ Item {
                 id:rectangleB
                 anchors.left: rectangleA.right
                 anchors.top: rectangleZ.bottom
-                width:280
-                height:300
+                width:(280/MyConst.etcsWidth) * parent.width
+                height:(300/MyConst.etcsHeight) * parent.height
                 color:"red"
             }
             Rectangle
@@ -53,8 +53,8 @@ Item {
                 id:rectangleD
                 anchors.left: rectangleB.right
                 anchors.top:  rectangleZ.bottom
-                width:246
-                height:300
+                width:(246/MyConst.etcsWidth) * parent.width
+                height:(300/MyConst.etcsHeight) * parent.height
                 color:"white"
             }
             Rectangle
@@ -62,8 +62,8 @@ Item {
                 id: rectangleC
                 anchors.left:parent.left
                 anchors.top: rectangleB.bottom
-                width:334
-                height:50
+                width:(334/MyConst.etcsWidth) * parent.width
+                height:(50/MyConst.etcsHeight) * parent.height
                 color: "grey"
             }
             Rectangle
@@ -71,8 +71,8 @@ Item {
                 id:rectangleE
                 anchors.left: parent.left
                 anchors.top: rectangleC.bottom
-                width: 334
-                height: 100
+                width: (334/MyConst.etcsWidth) * parent.width
+                height: (100/MyConst.etcsHeight) * parent.height
                 color: "red"
 
             }
@@ -81,8 +81,8 @@ Item {
                 id:rectangleY
                 anchors.left: parent.left
                 anchors.bottom: parent.bottom
-                width:640
-                height:15
+                width:(640/MyConst.etcsWidth) * parent.width
+                height:(15/MyConst.etcsHeight) * parent.height
                 color:"green"
             }
             Rectangle
@@ -90,8 +90,8 @@ Item {
                 id:rectangleG
                 anchors.left:rectangleC.right
                 anchors.top:rectangleD.bottom
-                width: 246
-                height: 150
+                width: (246/MyConst.etcsWidth) * parent.width
+                height: (150/MyConst.etcsHeight) * parent.height
                 color: "orange"
             }
             Rectangle
@@ -100,10 +100,9 @@ Item {
                 anchors.left:rectangleD.right
                 anchors.right: parent.right
                 anchors.bottom: rectangleY.top
-                width: 60
-                height:450
+                width: (60/MyConst.etcsWidth) * parent.width
+                height: (450/MyConst.etcsHeight) * parent.height
                 color: "blue"
-
             }
         }
     }

@@ -12,6 +12,22 @@ Window {
     minimumHeight: MyConst.windowHeight
     color: MyConst.backgroundColor;
 
+    onHeightChanged:
+    {
+        var properWidth = Math.round(height * (16/9));
+        if ( width !== properWidth ) {
+            width = properWidth
+        }
+    }
+
+    onWidthChanged:
+    {
+        var properHeight = Math.round(width * (9/16));
+        if ( height !== properHeight ) {
+            height = properHeight
+        }
+    }
+
     title: qsTr("Train DMI")
     DESK_view{}
     ETCS_view{}
