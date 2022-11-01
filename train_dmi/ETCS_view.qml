@@ -85,6 +85,26 @@ Item {
                 height:15
                 color:"green"
             }
+            Rectangle
+            {
+                id:rectangleG
+                anchors.left:rectangleC.right
+                anchors.top:rectangleD.bottom
+                width: 246
+                height: 150
+                color: "orange"
+            }
+            Rectangle
+            {
+                id:rectangleF
+                anchors.left:rectangleD.right
+                anchors.right: parent.right
+                anchors.bottom: rectangleY.top
+                width: 60
+                height:450
+                color: "blue"
+
+            }
         }
     }
 }
