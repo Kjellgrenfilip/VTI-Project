@@ -20,8 +20,8 @@ QtObject{
     readonly property color yellow: "#DFDF00"
     readonly property color orange: "#EA9100"
     readonly property color red: "#BF0002"
-    readonly property color PASPDark: "#21314A"
-    readonly property color PASPLight: "#294A6B"
+    readonly property color paspDark: "#21314A"
+    readonly property color paspLight: "#294A6B"
 
     readonly property int animationDuration: 500
 }
