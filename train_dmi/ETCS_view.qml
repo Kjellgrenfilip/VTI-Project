@@ -25,8 +25,8 @@ Item {
             Rectangle
             {
                 id: rectangleZ
-                width:640
-                height:15
+                width: parent.width
+                height: (15/MyConst.etcsHeight) * parent.height
                 color:"purple"
             }
 
@@ -85,7 +85,6 @@ Item {
                 height:15
                 color:"green"
             }
-
         }
     }
 }
