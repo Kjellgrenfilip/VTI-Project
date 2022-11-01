@@ -22,6 +22,70 @@ Item {
                 text: "ETCS_Panel";
                 color:"white";
             }
+            Rectangle
+            {
+                id: rectangleZ
+                width:640
+                height:15
+                color:"purple"
+            }
+
+            Rectangle
+            {
+                id: rectangleA
+                anchors.left: parent.left
+                anchors.top:rectangleZ.bottom
+                width:54
+                height:300
+                color: "blue"
+            }
+            Rectangle
+            {
+                id:rectangleB
+                anchors.left: rectangleA.right
+                anchors.top: rectangleZ.bottom
+                width:280
+                height:300
+                color:"red"
+            }
+            Rectangle
+            {
+                id:rectangleD
+                anchors.left: rectangleB.right
+                anchors.top:  rectangleZ.bottom
+                width:246
+                height:300
+                color:"white"
+            }
+            Rectangle
+            {
+                id: rectangleC
+                anchors.left:parent.left
+                anchors.top: rectangleB.bottom
+                width:334
+                height:50
+                color: "grey"
+            }
+            Rectangle
+            {
+                id:rectangleE
+                anchors.left: parent.left
+                anchors.top: rectangleC.bottom
+                width: 334
+                height: 100
+                color: "red"
+
+            }
+            Rectangle
+            {
+                id:rectangleY
+                anchors.left: parent.left
+                anchors.bottom: parent.bottom
+                width:640
+                height:15
+                color:"green"
+            }
+
         }
     }
 }
