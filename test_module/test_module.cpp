@@ -332,6 +332,7 @@ void Test_Module::receiveUpdate()
     {
         if ( update.value(VTI_DMI::ACTIVATE).toBool() )
         {
+            qDebug() << "HELLO I AM HERE";
             m_jsonActivation.insert(VTI_DMI::ACTIVATE, STATE::ACTIVE);
             m_networkServer->sendUpdate(m_jsonBrakes);
             m_networkServer->sendUpdate(m_jsonDoors);
