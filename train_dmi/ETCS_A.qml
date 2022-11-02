@@ -25,12 +25,33 @@ Item {
             Text {
                 id: lssmaText
                 objectName: "LSSMAText"
-                text: qsTr("120")
+                text: qsTr("")
                 anchors.fill: parent
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 color:MyConst.grey
             }
+            states: [
+                State {
+                    name: "default"
+                    PropertyChanges {
+                        target: lssmaImage
+                        source: ""
+                    }
+                    PropertyChanges {
+                        target: lssmaText
+                        text: ""
+                    }
+                },
+                State {
+                    name: "active"
+                    PropertyChanges {
+                        target: lssmaImage
+                        source: "ETCS_icons/MO_21.bmp"
+                    }
+                }
+
+            ]
         }
         Rectangle
         {
