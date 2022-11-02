@@ -16,10 +16,18 @@ Item {
             height: width
             Image {
                 id: lssmaImage
-                //anchors.fill: parent
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.fill: parent
+                //anchors.verticalCenter: parent.verticalCenter
+                //anchors.horizontalCenter: parent.horizontalCenter
                 source: "ETCS_icons/MO_21.bmp"
+            }
+            Text {
+                id: lssmaText
+                text: qsTr("120")
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                color:MyConst.grey
             }
         }
         Rectangle
