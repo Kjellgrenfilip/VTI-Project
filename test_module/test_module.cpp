@@ -8,6 +8,7 @@ Test_Module::Test_Module()
       m_jsonAlarm{VTI_DMI::JSON_ALARM},
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
+      m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
       m_doorTimer{new QTimer{this}}
 {
     connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
@@ -339,6 +340,7 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonAlarm);
             m_networkServer->sendUpdate(m_jsonExtras);
             m_networkServer->sendUpdate(m_jsonActivation);
+            m_networkServer->sendUpdate(m_jsonETCS_A);
         }
         else
             return;
