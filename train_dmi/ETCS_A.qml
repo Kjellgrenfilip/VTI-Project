@@ -25,7 +25,7 @@ Item {
             Text {
                 id: lssmaText
                 objectName: "LSSMAText"
-                text: qsTr("")
+                text: qsTr("120")
                 anchors.fill: parent
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -41,6 +41,7 @@ Item {
                     PropertyChanges {
                         target: lssmaText
                         text: ""
+                        color: "transparent"
                     }
                 },
                 State {
@@ -48,6 +49,11 @@ Item {
                     PropertyChanges {
                         target: lssmaImage
                         source: "ETCS_icons/MO_21.bmp"
+                    }
+                    PropertyChanges {
+                        target: lssmaText
+                        color: MyConst.grey
+
                     }
                 }
 
@@ -57,7 +63,35 @@ Item {
         {
             width:parent.width
             height: parent.height/10
+            objectName: "distance"
             color:"red"
+            Text {
+                id: distanceText
+                objectName: "distanceText"
+                text: qsTr("12345")
+                anchors.fill: parent
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignRight
+                color: MyConst.grey
+            }
+            states: [
+                State {
+                    name: "default"
+                    PropertyChanges {
+                        target: distanceText
+                        text:""
+                        color: "transparent"
+                    }
+                },
+                State {
+                    name: "active"
+                    PropertyChanges {
+                        target: distanceText
+                        color: MyConst.grey
+                    }
+                }
+            ]
+
         }
         Rectangle
         {

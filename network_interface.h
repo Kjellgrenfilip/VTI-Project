@@ -44,6 +44,9 @@ namespace VTI_DMI
     QString const LIGHT             = "light";
     QString const EMERGENCY_CALL    = "emergencyCall";
     QString const SPEEDLIMIT        = "LSSMAText";
+    QString const SPEEDLIMIT_STATE  = "LSSMA";
+    QString const DISTANCE          = "distanceText";
+    QString const DISTANCE_STATE    = "distance";
 
     QJsonObject const JSON_BRAKES
     {
@@ -98,11 +101,10 @@ namespace VTI_DMI
 
     QJsonObject const JSON_ETCS_A
     {
-<<<<<<< HEAD
-        { SPEEDLIMIT,           QJsonValue::String }
-=======
-        { SPEEDLIMIT,           "80" }
->>>>>>> dd2f0c2d2807cbf69a8452c8ef3779cfa2513900
+        { SPEEDLIMIT,           "80" },
+        { SPEEDLIMIT_STATE,     STATE::DEFAULT},
+        { DISTANCE,             "12345" },
+        { DISTANCE_STATE,       STATE::DEFAULT}
     };
 };
 

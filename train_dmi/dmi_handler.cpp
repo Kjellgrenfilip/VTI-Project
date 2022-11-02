@@ -50,7 +50,7 @@ void DMI_Handler::receiveUpdate()
          obj->setProperty("text", newText);
         }
 
-        else if ( key == VTI_DMI::SPEEDLIMIT )
+        else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE)
         {
             QString newValue = update.value(key).toString();
             obj->setProperty("text", newValue);
