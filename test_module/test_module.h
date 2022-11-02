@@ -23,6 +23,7 @@ private:
     QJsonObject m_jsonAlarm;
     QJsonObject m_jsonExtras;
     QJsonObject m_jsonActivation;
+    QJsonObject m_jsonETCS_A;
 
     QTimer *m_doorTimer;
 

@@ -98,7 +98,11 @@ namespace VTI_DMI
 
     QJsonObject const JSON_ETCS_A
     {
+<<<<<<< HEAD
         { SPEEDLIMIT,           QJsonValue::String }
+=======
+        { SPEEDLIMIT,           "80" }
+>>>>>>> dd2f0c2d2807cbf69a8452c8ef3779cfa2513900
     };
 };
 
