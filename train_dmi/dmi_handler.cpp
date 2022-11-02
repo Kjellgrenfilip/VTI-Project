@@ -26,9 +26,10 @@ DMI_Handler::~DMI_Handler()
 
 void DMI_Handler::receiveUpdate()
 {
-    m_jsonState = m_client->getUpdate();
-    foreach(const QString& key, m_jsonState.keys())
+    QJsonObject update = m_client->getUpdate();
+    foreach(const QString& key, update.keys())
     {
+        m_jsonState.insert(key, update.value(key));
         //Update GUI
         QObject *obj = m_rootObject->findChild<QObject*>(key);
 
@@ -45,13 +46,13 @@ void DMI_Handler::receiveUpdate()
 
         else if( key == VTI_DMI::TEXTINFO)
         {
-         QString newText = m_jsonState.value(key).toString();
+         QString newText = update.value(key).toString();
          obj->setProperty("text", newText);
         }
 
         else
         {
-            QString newState = m_jsonState.value(key).toString();
+            QString newState = update.value(key).toString();
             qDebug() << key << " : " << newState;
             obj->setProperty("state", newState);
         }

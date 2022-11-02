@@ -16,7 +16,13 @@ public:
 
 private:
     Network_Server *m_networkServer;
-    QJsonObject m_jsonState;
+
+    QJsonObject m_jsonBrakes;
+    QJsonObject m_jsonDoors;
+    QJsonObject m_jsonVoltage;
+    QJsonObject m_jsonAlarm;
+    QJsonObject m_jsonExtras;
+    QJsonObject m_jsonActivation;
 
     QTimer *m_doorTimer;
 
