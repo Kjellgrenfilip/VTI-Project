@@ -43,6 +43,7 @@ namespace VTI_DMI
     QString const TEXTINFO          = "textAreaInfoText";
     QString const LIGHT             = "light";
     QString const EMERGENCY_CALL    = "emergencyCall";
+    QString const SPEEDLIMIT        = "LSSMAText";
 
     QJsonObject const JSON_BRAKES
     {
@@ -94,6 +95,11 @@ namespace VTI_DMI
         { PROTECTION,           STATE::BLINKING },
         { CART,                 STATE::INACTIVE }
     };
+
+    QJsonObject const JSON_ETCS_A
+    {
+        { SPEEDLIMIT,           QJsonValue::String }
+    }
 };
 
 #endif // NETWORK_INTERFACE_H

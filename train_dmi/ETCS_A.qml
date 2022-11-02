@@ -14,6 +14,7 @@ Item {
         {
             width:parent.width
             height: width
+            objectName: "LSSMA"
             Image {
                 id: lssmaImage
                 anchors.fill: parent
@@ -23,6 +24,7 @@ Item {
             }
             Text {
                 id: lssmaText
+                objectName: "LSSMAText"
                 text: qsTr("120")
                 anchors.fill: parent
                 horizontalAlignment: Text.AlignHCenter
