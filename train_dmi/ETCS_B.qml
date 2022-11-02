@@ -22,7 +22,14 @@ Item
             id: etcsB6
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
-            source:
+            Text
+            {
+                id: b6Text
+                text: qsTr("25")
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
         }
         Rectangle
         {
