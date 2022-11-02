@@ -14,7 +14,13 @@ Item {
         {
             width:parent.width
             height: width
-            color:"blue"
+            Image {
+                id: lssmaImage
+                //anchors.fill: parent
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: "ETCS_icons/MO_21.bmp"
+            }
         }
         Rectangle
         {
