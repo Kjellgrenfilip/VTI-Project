@@ -42,35 +42,64 @@ namespace VTI_DMI
     QString const DEPARTURE         = "departure";
     QString const TEXTINFO          = "textAreaInfoText";
     QString const LIGHT             = "light";
+    QString const EMERGENCY_CALL    = "emergencyCall";
+    QString const SPEEDLIMIT        = "LSSMAText";
 
-    QJsonObject const JSON_TEMPLATE
+    QJsonObject const JSON_BRAKES
     {
-        { ACTIVATE,             STATE::DEFAULT },
-        { PROTECTION,           STATE::BLINKING },
-        { CART,                 STATE::INACTIVE },
-        { PONTOGRAPH_UP,        STATE::DEFAULT },
-        { VELOCITY,             QJsonValue::Double },
-        { VOLTAGE,              STATE::DEFAULT },
-        { EMERGENCY_BRAKE,      STATE::DEFAULT },
-        { FIRE,                 STATE::DEFAULT },
         { PARK_BRAKE,           STATE::DEFAULT },
         { ELECTRICITY_BRAKE,    STATE::DEFAULT },
         { MAGNETIC_BRAKE,       STATE::DEFAULT },
         { BRAKE_INDICATOR,      STATE::DEFAULT },
-        { BRAKING,              QJsonValue::Bool },
-        { PONTOGRAPH_DOWN,      STATE::DEFAULT },
-        { MAIN_BREAKER,         STATE::DEFAULT },
-        { VOLTAGE_WARNING,      STATE::WARNING },
-        { HEATING,              STATE::DEFAULT },
+        { BRAKING,              QJsonValue::Bool }
+    };
+
+    QJsonObject const JSON_DOORS
+    {
         { DOOR_LEFT,            STATE::DEFAULT },
         { DOOR_RIGHT,           STATE::DEFAULT },
         { DOOR_CLOSE,           STATE::DEFAULT },
-        { DEPARTURE,            STATE::DEFAULT },
+        { DEPARTURE,            STATE::DEFAULT }
+    };
+
+    QJsonObject const JSON_VOLTAGE
+    {
+        { VOLTAGE,              STATE::DEFAULT },
+        { PONTOGRAPH_UP,        STATE::DEFAULT },
+        { PONTOGRAPH_DOWN,      STATE::DEFAULT },
+        { MAIN_BREAKER,         STATE::DEFAULT },
+        { VOLTAGE_WARNING,      STATE::WARNING },
+        { HEATING,              STATE::DEFAULT }
+    };
+
+    QJsonObject const JSON_ALARM
+    {
+        { EMERGENCY_BRAKE,      STATE::DEFAULT },
+        { FIRE,                 STATE::DEFAULT },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             QJsonValue::String }
+    };
+
+    QJsonObject const JSON_EXTRAS
+    {
         { REVERSE,              STATE::DEFAULT },
         { HORN,                 STATE::DEFAULT },
-        { RECEIPT,              STATE::DEFAULT },
-        { LIGHT,                STATE::DEFAULT }
+        { LIGHT,                STATE::DEFAULT },
+        { EMERGENCY_CALL,       STATE::DEFAULT },
+        { VELOCITY,             QJsonValue::Double }
     };
+
+    QJsonObject const JSON_ACTIVATION
+    {
+        { ACTIVATE,             STATE::DEFAULT },
+        { PROTECTION,           STATE::BLINKING },
+        { CART,                 STATE::INACTIVE }
+    };
+
+    QJsonObject const JSON_ETCS_A
+    {
+        { SPEEDLIMIT,           QJsonValue::String }
+    }
 };
 
 #endif // NETWORK_INTERFACE_H
