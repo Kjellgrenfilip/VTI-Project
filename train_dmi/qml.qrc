@@ -41,5 +41,6 @@
         <file>desk_ikoner/doorrightY.png</file>
         <file>desk_ikoner/closedG.png</file>
         <file>ETCS_A.qml</file>
+        <file>ETCS_icons/MO_21.bmp</file>
     </qresource>
 </RCC>
