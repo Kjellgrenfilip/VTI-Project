@@ -26,5 +26,9 @@ int main(int argc, char *argv[])
 
     DMI_Handler dmiHandler{engine.rootContext(), engine.rootObjects().at(0)};
 
+  /*  QSizePolicy p = app.devicePixelRatio();
+    p.setHeightForWidth(true);
+    this->setSizePolicy(p);*/
+
     return app.exec();
 }

@@ -47,6 +47,7 @@ Item {
                 width:280
                 height:300
                 color:"red"
+                ETCS_B{}
             }
             Rectangle
             {
