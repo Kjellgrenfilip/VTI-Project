@@ -326,6 +326,24 @@ void Test_Module::updateLight(QJsonValue const & value)
     m_networkServer->sendUpdate(m_jsonExtras);
 }
 
+void Test_Module::updateDistanceBar(double newValue)
+{
+    double scaleLength = 186;
+    double linearLength = 33;
+    double logLength = scaleLength - linearLength;
+    double log100 = 2;
+    double log1000 = 3;
+
+    if ( newValue <= 100 )
+        newValue = newValue * (linearLength/100);
+    else if ( newValue <= 1000 )
+        newValue = linearLength + (log10(newValue) - log100) / (log1000 - log100) * logLength;
+    else
+        newValue = 186;
+
+    m_jsonETCS_A.insert(VTI_DMI::DISTANCE_BAR, newValue);
+}
+
 void Test_Module::receiveUpdate()
 {
     QJsonObject update = m_networkServer->getUpdate();

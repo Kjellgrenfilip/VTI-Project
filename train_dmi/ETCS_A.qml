@@ -97,7 +97,120 @@ Item {
         {
             width:parent.width
             height: parent.height*(191/300)
-            color:"purple"
+            color: MyConst.backgroundColor
+            objectName: "distanceBar"
+
+            // 1000
+            Rectangle
+            {
+                x: (12/54) * parent.width
+                y: (-1/191) * parent.height
+                width: (13/54) * parent.width
+                height: (2/191) * parent.height
+                color: MyConst.grey
+            }
+            // 900
+            Rectangle
+            {
+                x: (16/54) * parent.width
+                y: (6/191) * parent.height
+                width: (9/54) * parent.width
+                height: (1/191) * parent.height
+                color: MyConst.grey
+            }
+            // 800
+            Rectangle
+            {
+                x: (16/54) * parent.width
+                y: (13/191) * parent.height
+                width: (9/54) * parent.width
+                height: (1/191) * parent.height
+                color: MyConst.grey
+            }
+            // 700
+            Rectangle
+            {
+                x: (16/54) * parent.width
+                y: (22/191) * parent.height
+                width: (9/54) * parent.width
+                height: (1/191) * parent.height
+                color: MyConst.grey
+            }
+            // 600
+            Rectangle
+            {
+                x: (16/54) * parent.width
+                y: (32/191) * parent.height
+                width: (9/54) * parent.width
+                height: (1/191) * parent.height
+                color: MyConst.grey
+            }
+            // 500
+            Rectangle
+            {
+                x: (12/54) * parent.width
+                y: (45/191) * parent.height
+                width: (13/54) * parent.width
+                height: (2/191) * parent.height
+                color: MyConst.grey
+            }
+            // 400
+            Rectangle
+            {
+                x: (16/54) * parent.width
+                y: (59/191) * parent.height
+                width: (9/54) * parent.width
+                height: (1/191) * parent.height
+                color: MyConst.grey
+            }
+            // 300
+            Rectangle
+            {
+                x: (16/54) * parent.width
+                y: (79/191) * parent.height
+                width: (9/54) * parent.width
+                height: (1/191) * parent.height
+                color: MyConst.grey
+            }
+            // 200
+            Rectangle
+            {
+                x: (16/54) * parent.width
+                y: (105/191) * parent.height
+                width: (9/54) * parent.width
+                height: (1/191) * parent.height
+                color: MyConst.grey
+            }
+            // 100
+            Rectangle
+            {
+                x: (16/54) * parent.width
+                y: (152/191) * parent.height
+                width: (9/54) * parent.width
+                height: (1/191) * parent.height
+                color: MyConst.grey
+            }
+            // 0
+            Rectangle
+            {
+                x: (12/54) * parent.width
+                y: (185/191) * parent.height
+                width: (13/54) * parent.width
+                height: (2/191) * parent.height
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                objectName: "distanceBarValue"
+                property int barValue: 0
+                x: (29/54) * parent.width
+                y: (186/191) * parent.height
+                width: (10/54) * parent.width
+                height: (barValue/191) * parent.height
+                anchors.bottom: parent.bottom
+                anchors.margins: (5/191) * parent.height
+                color: MyConst.grey
+            }
         }
         Rectangle
         {

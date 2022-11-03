@@ -27,6 +27,8 @@ private:
 
     QTimer *m_doorTimer;
 
+    double x{};
+
     void updatePontographUp(QJsonValue const & value);
     void updatePontographDown(QJsonValue const & value);
     void updateMainBreaker(QJsonValue const & value);
@@ -45,6 +47,8 @@ private:
     void updateDeparture(QJsonValue const & value);
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
+
+    void updateDistanceBar(double newValue);
 
 signals:
 

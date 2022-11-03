@@ -47,6 +47,8 @@ namespace VTI_DMI
     QString const SPEEDLIMIT_STATE  = "LSSMA";
     QString const DISTANCE          = "distanceText";
     QString const DISTANCE_STATE    = "distance";
+    QString const DISTANCE_BAR      = "distanceBarValue";
+    QString const DISTANCE_BAR_STATE= "distanceBar";
 
     QJsonObject const JSON_BRAKES
     {
@@ -104,7 +106,9 @@ namespace VTI_DMI
         { SPEEDLIMIT,           "80" },
         { SPEEDLIMIT_STATE,     STATE::DEFAULT},
         { DISTANCE,             "12345" },
-        { DISTANCE_STATE,       STATE::DEFAULT}
+        { DISTANCE_STATE,       STATE::DEFAULT},
+        { DISTANCE_BAR,         0},
+        { DISTANCE_BAR_STATE,   STATE::DEFAULT}
     };
 };
 

@@ -56,6 +56,13 @@ void DMI_Handler::receiveUpdate()
             obj->setProperty("text", newValue);
         }
 
+        else if ( key == VTI_DMI::DISTANCE_BAR )
+        {
+            int newValue = update.value(key).toDouble();
+            qDebug() << "DISTANCE: " << newValue;
+            obj->setProperty("barValue", newValue);
+        }
+
         else
         {
             QString newState = update.value(key).toString();
