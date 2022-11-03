@@ -95,10 +95,12 @@ Item {
         }
         Rectangle
         {
+            id: distanceBar
             width:parent.width
             height: parent.height*(191/300)
             color: MyConst.backgroundColor
             objectName: "distanceBar"
+            visible: false
 
             // 1000
             Rectangle
@@ -211,6 +213,25 @@ Item {
                 anchors.margins: (5/191) * parent.height
                 color: MyConst.grey
             }
+            states: [
+                State {
+                    name: "default"
+                    PropertyChanges {
+                        target: distanceBar
+                        visible: false
+
+                    }
+                },
+                State {
+                    name: "active"
+                    PropertyChanges {
+                        target: distanceBar
+                        visible: true
+
+                    }
+                }
+            ]
+
         }
         Rectangle
         {
