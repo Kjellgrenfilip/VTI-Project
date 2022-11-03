@@ -174,7 +174,18 @@ void test::testDoors()
 
 }
 
+void test::testReverse()
+{
+    TestConf tc{};
 
+    tc.dmiHandler->m_buttonHandler->reversePressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::REVERSE_ACTIVATED);
+    tc.dmiHandler->m_buttonHandler->reversePressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::REVERSE_DEACTIVATED);
+
+}
 
 QTEST_MAIN(test)
 

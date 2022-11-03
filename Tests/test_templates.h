@@ -175,6 +175,24 @@ namespace VTI_TESTCASE
         { DEPARTURE,            STATE::INACTIVE }
     };
 
+    QJsonObject const REVERSE_ACTIVATED
+    {
+        { REVERSE,              STATE::WARNING },
+        { HORN,                 STATE::DEFAULT },
+        { LIGHT,                STATE::DEFAULT },
+        { EMERGENCY_CALL,       STATE::DEFAULT },
+        { VELOCITY,             0 }
+    };
+    QJsonObject const REVERSE_DEACTIVATED
+    {
+        { REVERSE,              STATE::DEFAULT },
+        { HORN,                 STATE::DEFAULT },
+        { LIGHT,                STATE::DEFAULT },
+        { EMERGENCY_CALL,       STATE::DEFAULT },
+        { VELOCITY,             0 }
+    };
+
+
 
 
 
