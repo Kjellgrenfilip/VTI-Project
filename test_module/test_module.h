@@ -44,6 +44,7 @@ public:
     void updateDeparture(QJsonValue const & value);
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
+    void resetStates();
 
 signals:
 

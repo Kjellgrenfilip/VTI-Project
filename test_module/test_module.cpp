@@ -411,3 +411,12 @@ void Test_Module::receiveUpdate()
     }
 }
 
+ void Test_Module::resetStates()
+ {
+     m_jsonBrakes = VTI_DMI::JSON_BRAKES;
+     m_jsonDoors = VTI_DMI::JSON_DOORS;
+     m_jsonVoltage = VTI_DMI::JSON_VOLTAGE;
+     m_jsonAlarm = VTI_DMI::JSON_ALARM;
+     m_jsonExtras = VTI_DMI::JSON_EXTRAS;
+ }
+
