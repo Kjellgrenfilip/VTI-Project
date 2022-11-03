@@ -56,6 +56,18 @@ void DMI_Handler::receiveUpdate()
             obj->setProperty("text", newValue);
         }
 
+        else if ( key == VTI_DMI::ETCSBImage )
+        {
+            double value = update.value(key).toDouble();
+            QString newValue{};
+            if(value < 10)
+                newValue = "0";
+            newValue += QString::number(value);
+            //qDebug() << newValue;
+            QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
+            obj->setProperty("source", s);
+        }
+
         else
         {
             QString newState = update.value(key).toString();

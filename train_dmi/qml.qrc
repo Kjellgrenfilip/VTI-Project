@@ -195,5 +195,6 @@
         <file>symbols/Track Conditions/TC_37.bmp</file>
         <file>ETCS_A.qml</file>
         <file>ETCS_icons/MO_21.bmp</file>
+        <file>ETCS_Box3DEffect.qml</file>
     </qresource>
 </RCC>

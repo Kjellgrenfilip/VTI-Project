@@ -44,6 +44,12 @@ namespace VTI_DMI
     QString const LIGHT             = "light";
     QString const EMERGENCY_CALL    = "emergencyCall";
     QString const SPEEDLIMIT        = "LSSMAText";
+    QString const ETCSB3            = "etcsB3";
+    QString const ETCSB4            = "etcsB4";
+    QString const ETCSB5            = "etcsB5";
+    QString const ETCSB6            = "etcsB6";
+    QString const ETCSB7            = "etcsB7";
+    QString static ETCSBImage              = "etcsB3Image";
 
     QJsonObject const JSON_BRAKES
     {
@@ -99,6 +105,16 @@ namespace VTI_DMI
     QJsonObject const JSON_ETCS_A
     {
         { SPEEDLIMIT,           QJsonValue::String }
+    };
+
+    QJsonObject const JSON_ETCS_B
+    {
+        { ETCSB3,               STATE::INACTIVE },
+        { ETCSB4,               STATE::INACTIVE },
+        { ETCSB5,               STATE::INACTIVE },
+        { ETCSB6,               STATE::INACTIVE },
+        { ETCSB6,               STATE::INACTIVE },
+        { ETCSBImage,           QJsonValue::Double }
     };
 };
 

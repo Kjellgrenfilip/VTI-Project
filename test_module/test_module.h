@@ -23,8 +23,10 @@ private:
     QJsonObject m_jsonAlarm;
     QJsonObject m_jsonExtras;
     QJsonObject m_jsonActivation;
+    QJsonObject m_jsonETCSB;
 
     QTimer *m_doorTimer;
+    QTimer *m_testTimer;
 
     void updatePontographUp(QJsonValue const & value);
     void updatePontographDown(QJsonValue const & value);
@@ -44,6 +46,8 @@ private:
     void updateDeparture(QJsonValue const & value);
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
+
+    void updateETCSB(QJsonValue const & value);
 
 signals:
 
