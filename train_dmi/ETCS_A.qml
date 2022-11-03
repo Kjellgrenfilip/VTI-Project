@@ -15,6 +15,7 @@ Item {
             width:parent.width
             height: width
             objectName: "LSSMA"
+            color: "transparent"
             Image {
                 id: lssmaImage
                 anchors.fill: parent
@@ -64,7 +65,7 @@ Item {
             width:parent.width
             height: parent.height/10
             objectName: "distance"
-            color:"red"
+            color:"transparent"
             Text {
                 id: distanceText
                 objectName: "distanceText"
@@ -237,7 +238,7 @@ Item {
         {
             width:parent.width
             height: parent.height/12
-            color:"white"
+            color:"transparent"
         }
     }
 }
