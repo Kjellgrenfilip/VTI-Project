@@ -17,7 +17,7 @@ public:
 
 private slots:
     void test_case1();
-    void test_case2();
+    void testPontUp();
 };
 
 test::test()
@@ -37,27 +37,42 @@ void delay(int timeToWait)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
+struct TestConf
+{
+    TestConf()
+    {
+        testModule = new Test_Module{};
+        delay(100);
+        dmiHandler = new DMI_Handler{};
+        delay(100);
+        dmiHandler->m_buttonHandler->activatePressed();
+        delay(100);
+    };
+
+    ~TestConf()
+    {
+        delete dmiHandler;
+        delete testModule;
+    }
+
+    Test_Module* testModule;
+    DMI_Handler* dmiHandler{};
+};
+
 void test::test_case1()
 {
     QString str = "Hello";
     QVERIFY(str.toUpper() == "HELLO");
 }
 
-void test::test_case2()
+void test::testPontUp()
 {
-    Test_Module testModule{};
-    delay(100);
-    DMI_Handler dmiHandler{};
+    TestConf tc{};
 
-    delay(100);
-
-    dmiHandler.m_buttonHandler->activatePressed();
+    tc.dmiHandler->m_buttonHandler->pontUpPressed();
     delay(100);
 
-    dmiHandler.m_buttonHandler->pontUpPressed();
-    delay(100);
-
-    QCOMPARE(dmiHandler.m_latestUpdate, JSON_TESTS::JSON_PONTUP_TEST);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, JSON_TESTS::JSON_PONTUP_TEST);
 }
 
 QTEST_MAIN(test)
