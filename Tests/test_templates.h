@@ -102,13 +102,79 @@ namespace VTI_TESTCASE
 
     QJsonObject const DOORS_OPEN_LEFT
     {
-        { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE },
-        { MAIN_BREAKER,         STATE::DEFAULT  },
-        { VOLTAGE_WARNING,      STATE::WARNING  },
-        { HEATING,              STATE::INACTIVE }
+        { DOOR_LEFT,            STATE::WARNING  },
+        { DOOR_RIGHT,           STATE::DEFAULT  },
+        { DOOR_CLOSE,           STATE::INACTIVE },
+        { DEPARTURE,            STATE::DEFAULT  }
     };
+
+    QJsonObject const DOORS_OPEN_RIGHT
+    {
+        { DOOR_LEFT,            STATE::DEFAULT  },
+        { DOOR_RIGHT,           STATE::WARNING  },
+        { DOOR_CLOSE,           STATE::INACTIVE },
+        { DEPARTURE,            STATE::DEFAULT  }
+    };
+
+    QJsonObject const DOORS_OPEN_LEFT_RIGHT
+    {
+        { DOOR_LEFT,            STATE::WARNING  },
+        { DOOR_RIGHT,           STATE::WARNING  },
+        { DOOR_CLOSE,           STATE::INACTIVE },
+        { DEPARTURE,            STATE::DEFAULT  }
+    };
+
+    QJsonObject const DOORS_DEPARTURE_RIGHT
+    {
+        { DOOR_LEFT,            STATE::DEFAULT  },
+        { DOOR_RIGHT,           STATE::WARNING  },
+        { DOOR_CLOSE,           STATE::INACTIVE },
+        { DEPARTURE,            STATE::WARNING  }
+    };
+    QJsonObject const DOORS_DEPARTURE_LEFT
+    {
+        { DOOR_LEFT,            STATE::WARNING  },
+        { DOOR_RIGHT,           STATE::DEFAULT  },
+        { DOOR_CLOSE,           STATE::INACTIVE },
+        { DEPARTURE,            STATE::WARNING  }
+    };
+    QJsonObject const DOORS_DEPARTURE_RIGHT_LEFT
+    {
+        { DOOR_LEFT,            STATE::WARNING  },
+        { DOOR_RIGHT,           STATE::WARNING  },
+        { DOOR_CLOSE,           STATE::INACTIVE },
+        { DEPARTURE,            STATE::WARNING  }
+    };
+    QJsonObject const DOORS_CLOSE_LEFT_RIGHT
+    {
+        { DOOR_LEFT,            STATE::WARNING },
+        { DOOR_RIGHT,           STATE::WARNING },
+        { DOOR_CLOSE,           STATE::WARNING },
+        { DEPARTURE,            STATE::WARNING }
+    };
+    QJsonObject const DOORS_CLOSED
+    {
+        { DOOR_LEFT,            STATE::INACTIVE },
+        { DOOR_RIGHT,           STATE::INACTIVE },
+        { DOOR_CLOSE,           STATE::ACTIVE   },
+        { DEPARTURE,            STATE::INACTIVE }
+    };
+
+    QJsonObject const DOORS_CLOSE_RIGHT
+    {
+        { DOOR_LEFT,            STATE::DEFAULT },
+        { DOOR_RIGHT,           STATE::WARNING  },
+        { DOOR_CLOSE,           STATE::WARNING  },
+        { DEPARTURE,            STATE::WARNING  }
+    };
+    QJsonObject const DOORS_CLOSED_RIGHT
+    {
+        { DOOR_LEFT,            STATE::INACTIVE },
+        { DOOR_RIGHT,           STATE::INACTIVE },
+        { DOOR_CLOSE,           STATE::ACTIVE   },
+        { DEPARTURE,            STATE::INACTIVE }
+    };
+
 
 
 

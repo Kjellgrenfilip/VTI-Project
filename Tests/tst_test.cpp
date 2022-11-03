@@ -21,6 +21,8 @@ private slots:
     void testPontDown();
     void testMainBreaker();
     void testHeating();
+    void testDoors();
+    void testReverse();
 };
 
 test::test()
@@ -142,8 +144,38 @@ void test::testDoors()
 {
     TestConf tc{};
 
+    tc.dmiHandler->m_buttonHandler->leftDoorPressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_OPEN_LEFT);
+    tc.dmiHandler->m_buttonHandler->rightDoorPressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_OPEN_LEFT_RIGHT);
+    tc.dmiHandler->m_buttonHandler->departureButtonPressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_DEPARTURE_RIGHT_LEFT);
+    tc.dmiHandler->m_buttonHandler->closeDoorPressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_CLOSE_LEFT_RIGHT);
+    delay(3500);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_CLOSED);
+
+    tc.testModule->resetStates();
+    tc.dmiHandler->m_buttonHandler->rightDoorPressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_OPEN_RIGHT);
+    tc.dmiHandler->m_buttonHandler->departureButtonPressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_DEPARTURE_RIGHT);
+    tc.dmiHandler->m_buttonHandler->closeDoorPressed();
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_CLOSE_RIGHT);
+    delay(3500);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_CLOSED_RIGHT);
 
 }
+
+
+
 QTEST_MAIN(test)
 
 #include "tst_test.moc"
