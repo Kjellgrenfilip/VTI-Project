@@ -104,7 +104,7 @@ namespace VTI_DMI
     QJsonObject const JSON_ETCS_A
     {
         { SPEEDLIMIT,           QJsonValue::String },
-        { SPEEDLIMIT_STATE,     STATE::DEFAULT},
+        { SPEEDLIMIT_STATE,     STATE::ACTIVE},
         { DISTANCE,             QJsonValue::String },
         { DISTANCE_STATE,       STATE::ACTIVE},
         { DISTANCE_BAR,         QJsonValue::Double},

@@ -50,6 +50,8 @@ private:
 
     void updateDistance(double newValue);
     void updateDistanceBar(double newValue);
+    //void updateTimeToIndication();
+    void updateSpeedLimit(double newValue);
 
 signals:
 

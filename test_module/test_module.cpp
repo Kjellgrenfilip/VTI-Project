@@ -325,9 +325,16 @@ void Test_Module::updateLight(QJsonValue const & value)
     }
     m_networkServer->sendUpdate(m_jsonExtras);
 }
+void Test_Module::updateSpeedLimit(double newValue)
+{
+    m_jsonETCS_A.insert(VTI_DMI::SPEEDLIMIT,QString::number(newValue));
+}
 
 void Test_Module::updateDistance(double newValue)
 {
+    newValue = newValue/10;
+    newValue = round(newValue);
+    newValue *= 10;
     m_jsonETCS_A.insert(VTI_DMI::DISTANCE, QString::number(newValue));
     updateDistanceBar(newValue);
 }
@@ -383,7 +390,7 @@ void Test_Module::receiveUpdate()
         else if(key == VTI_DMI::MAIN_BREAKER)
         {
             // Only for test. Remove from here
-            x += 50;
+            x += 58;
             updateDistance(x);
             m_networkServer->sendUpdate(m_jsonETCS_A);
             // to here.
