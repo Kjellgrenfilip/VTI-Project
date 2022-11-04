@@ -326,6 +326,12 @@ void Test_Module::updateLight(QJsonValue const & value)
     m_networkServer->sendUpdate(m_jsonExtras);
 }
 
+void Test_Module::updateDistance(double newValue)
+{
+    m_jsonETCS_A.insert(VTI_DMI::DISTANCE, QString::number(newValue));
+    updateDistanceBar(newValue);
+}
+
 void Test_Module::updateDistanceBar(double newValue)
 {
     double scaleLength = 186;
@@ -375,8 +381,14 @@ void Test_Module::receiveUpdate()
             updatePontographDown(value);
 
         else if(key == VTI_DMI::MAIN_BREAKER)
+        {
+            // Only for test. Remove from here
+            x += 50;
+            updateDistance(x);
+            m_networkServer->sendUpdate(m_jsonETCS_A);
+            // to here.
             updateMainBreaker(value);
-
+        }
         else if(key == VTI_DMI::HEATING)
             updateHeating(value);
 

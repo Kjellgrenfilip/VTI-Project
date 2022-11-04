@@ -48,6 +48,7 @@ private:
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
 
+    void updateDistance(double newValue);
     void updateDistanceBar(double newValue);
 
 signals:

@@ -69,7 +69,7 @@ Item {
             Text {
                 id: distanceText
                 objectName: "distanceText"
-                text: qsTr("12345")
+                text: qsTr("")
                 anchors.fill: parent
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
