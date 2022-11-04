@@ -85,11 +85,7 @@ void Test_Module::updatePontographDown(QJsonValue const & value)
 {
     qDebug() << "Pontograph down update " << value;
 
-    if(m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_DOWN) == STATE::ACTIVE)
-    {
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
-    }
-    else
+    if(m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_DOWN) != STATE::ACTIVE)
     {
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::ACTIVE);
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
