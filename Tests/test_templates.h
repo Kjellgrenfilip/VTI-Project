@@ -19,7 +19,7 @@ namespace VTI_TESTCASE
     QJsonObject const VOLTAGE_PONTUP_ACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
+        { PONTOGRAPH_UP,        STATE::WARNING   },
         { PONTOGRAPH_DOWN,      STATE::INACTIVE  },
         { MAIN_BREAKER,         STATE::DEFAULT },
         { VOLTAGE_WARNING,      STATE::WARNING  },
