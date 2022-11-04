@@ -47,6 +47,8 @@ public:
     void updateLight(QJsonValue const & value);
     void resetStates();
 
+    void checkVoltage(QString const& key);
+
 signals:
 
 public slots:

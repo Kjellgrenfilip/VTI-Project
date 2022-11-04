@@ -47,7 +47,17 @@ void Test_Module::pontHandler()
     if (m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_UP) == STATE::WARNING)
     {
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::ACTIVE);
+        checkVoltage(VTI_DMI::MAIN_BREAKER);
         m_networkServer->sendUpdate(m_jsonVoltage);
+    }
+}
+
+void Test_Module::checkVoltage(QString const& key)
+{
+    if(m_jsonVoltage.value(key) == STATE::ACTIVE)
+    {
+        m_jsonVoltage.insert(VTI_DMI::VOLTAGE_WARNING, STATE::INACTIVE);
+        m_jsonVoltage.insert(VTI_DMI::VOLTAGE, STATE::ACTIVE);
     }
 }
 
@@ -65,11 +75,7 @@ void Test_Module::updatePontographUp(QJsonValue const & value)
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::WARNING);
         m_pontUpTimer->start(3000); // ACTIVE
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
-        if(m_jsonVoltage.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
-        {
-            qDebug() << "main breaker";
-            m_jsonVoltage.insert(VTI_DMI::VOLTAGE, STATE::ACTIVE);
-        }
+        //checkVoltage(VTI_DMI::MAIN_BREAKER);
     }
 
      m_networkServer->sendUpdate(m_jsonVoltage);
@@ -88,6 +94,7 @@ void Test_Module::updatePontographDown(QJsonValue const & value)
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::ACTIVE);
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
         m_jsonVoltage.insert(VTI_DMI::VOLTAGE, STATE::DEFAULT);
+        m_jsonVoltage.insert(VTI_DMI::VOLTAGE_WARNING, STATE::WARNING);
         m_jsonVoltage.insert(VTI_DMI::HEATING, STATE::INACTIVE);
     }
 
@@ -106,12 +113,7 @@ void Test_Module::updateMainBreaker(QJsonValue const & value)
     else
     {
         m_jsonVoltage.insert(VTI_DMI::MAIN_BREAKER, STATE::ACTIVE);
-        m_jsonVoltage.insert(VTI_DMI::VOLTAGE_WARNING, STATE::INACTIVE);
-        if(m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
-        {
-            qDebug() << "should turn on";
-            m_jsonVoltage.insert(VTI_DMI::VOLTAGE, STATE::ACTIVE);
-        }
+        checkVoltage(VTI_DMI::PONTOGRAPH_UP);
     }
 
     m_networkServer->sendUpdate(m_jsonVoltage);

@@ -132,11 +132,6 @@ Item
                 PropertyChanges
                 {
                     target: pontUpButton
-                    source: "desk_ikoner/doorleftY.png"
-                }
-                PropertyChanges
-                {
-                    target: pontUpButton
                     enabled: true
                 }
                 PropertyChanges
