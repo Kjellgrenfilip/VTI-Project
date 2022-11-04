@@ -192,6 +192,56 @@ namespace VTI_TESTCASE
         { VELOCITY,             0 }
     };
 
+    QJsonObject const BRAKES_PARK_DEACTIVATE
+    {
+        { PARK_BRAKE,           STATE::INACTIVE },
+        { ELECTRICITY_BRAKE,    STATE::DEFAULT },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT },
+        { BRAKE_INDICATOR,      STATE::DEFAULT },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_PARK_ACTIVATE
+    {
+        { PARK_BRAKE,           STATE::ACTIVE },
+        { ELECTRICITY_BRAKE,    STATE::DEFAULT },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT },
+        { BRAKE_INDICATOR,      STATE::DEFAULT },
+        { BRAKING,              QJsonValue::Bool }
+    };
+
+    QJsonObject const BRAKES_EBRAKE_ACTIVATED
+    {
+        { PARK_BRAKE,           STATE::ACTIVE    },
+        { ELECTRICITY_BRAKE,    STATE::ACTIVE    },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT   },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_EBRAKE_DEACTIVATED
+    {
+        { PARK_BRAKE,           STATE::ACTIVE    },
+        { ELECTRICITY_BRAKE,    STATE::INACTIVE  },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT   },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_MGBRAKE_PRESSED
+    {
+        { PARK_BRAKE,           STATE::ACTIVE    },
+        { ELECTRICITY_BRAKE,    STATE::INACTIVE  },
+        { MAGNETIC_BRAKE,       STATE::ACTIVE },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_MGBRAKE_RELEASED
+    {
+        { PARK_BRAKE,           STATE::ACTIVE    },
+        { ELECTRICITY_BRAKE,    STATE::INACTIVE  },
+        { MAGNETIC_BRAKE,       STATE::INACTIVE  },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+
 
 
 
