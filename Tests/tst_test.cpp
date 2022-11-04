@@ -12,11 +12,10 @@ class test : public QObject
     Q_OBJECT
 
 public:
-    test();
-    ~test();
+    test(){};
+    ~test(){};
 
 private slots:
-    void test_case1();
     void testPontUp();
     void testPontDown();
     void testMainBreaker();
@@ -24,16 +23,6 @@ private slots:
     void testDoors();
     void testReverse();
 };
-
-test::test()
-{
-
-}
-
-test::~test()
-{
-
-}
 
 void delay(int timeToWait)
 {
@@ -64,12 +53,6 @@ struct TestConf
     DMI_Handler* dmiHandler;
 };
 
-void test::test_case1()
-{
-    QString str = "Hello";
-    QVERIFY(str.toUpper() == "HELLO");
-}
-
 void test::testPontUp()
 {
     TestConf tc{};
@@ -85,7 +68,6 @@ void test::testPontUp()
     tc.dmiHandler->m_buttonHandler->pontUpPressed();
     delay(100);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PONTUP_ACTIVATION_MAINBREAKER);
-
 }
 
 void test::testPontDown()
@@ -96,7 +78,6 @@ void test::testPontDown()
     delay(100);
 
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PONTDOWN_ACTIVATION);
-
 }
 
 void test::testMainBreaker()
@@ -118,7 +99,6 @@ void test::testMainBreaker()
     tc.dmiHandler->m_buttonHandler->mainBreakerPressed();
     delay(100);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_MAINBREAKER_ACTIVATION_PONTUP);
-
 }
 
 void test::testHeating()
@@ -171,7 +151,6 @@ void test::testDoors()
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_CLOSE_RIGHT);
     delay(3500);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::DOORS_CLOSED_RIGHT);
-
 }
 
 void test::testReverse()
@@ -184,7 +163,6 @@ void test::testReverse()
     tc.dmiHandler->m_buttonHandler->reversePressed();
     delay(100);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::REVERSE_DEACTIVATED);
-
 }
 
 QTEST_MAIN(test)
