@@ -68,8 +68,9 @@ void test::testPontUp()
     tc.dmiHandler->m_buttonHandler->mainBreakerPressed();
     delay(100);
     tc.dmiHandler->m_buttonHandler->pontUpPressed();
-    delay(100);
+    delay(3000);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PONTUP_ACTIVATION_MAINBREAKER);
+
 }
 
 void test::testPontDown()
@@ -97,7 +98,7 @@ void test::testMainBreaker()
 
     tc.testModule->resetStates();
     tc.dmiHandler->m_buttonHandler->pontUpPressed();
-    delay(100);
+    delay(3500);
     tc.dmiHandler->m_buttonHandler->mainBreakerPressed();
     delay(100);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_MAINBREAKER_ACTIVATION_PONTUP);
@@ -113,7 +114,7 @@ void test::testHeating()
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_HEAT_ACTIVATION_NOPONT);
 
     tc.dmiHandler->m_buttonHandler->pontUpPressed();
-    delay(100);
+    delay(3300);
     tc.dmiHandler->m_buttonHandler->heatingPressed();
     delay(100);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_HEAT_ACTIVATION_PONT);
