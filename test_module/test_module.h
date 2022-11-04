@@ -25,6 +25,7 @@ public:
     QJsonObject m_jsonActivation;
 
     QTimer *m_doorTimer;
+    QTimer *m_pontUpTimer;
 
     void updatePontographUp(QJsonValue const & value);
     void updatePontographDown(QJsonValue const & value);
@@ -51,6 +52,7 @@ signals:
 public slots:
     void receiveUpdate();
     void doorHandler();
+    void pontHandler();
 };
 
 #endif // TEST_MODULE_H

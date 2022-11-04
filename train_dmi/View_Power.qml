@@ -54,13 +54,37 @@ Item
             enabled: false
 
             onPressed: buttonHandler.pontUpPressed()
-
             Image
             {
                 id: pontUpImage
                 anchors.fill: parent
                 source: "desk_ikoner/Up.png"
             }
+
+            SequentialAnimation
+            {
+                id: pontographUpAnimation
+                objectName: "pontographUpAnimation"
+                running: false
+                loops: Animation.Infinite
+                alwaysRunToEnd: false
+                PropertyAnimation
+                {
+                    target: pontUpImage
+                    property: "source"
+                    to: "desk_ikoner/UpY.png"
+                    duration: MyConst.animationDuration
+                }
+
+                PropertyAnimation
+                {
+                    target: pontUpImage
+                    property: "source"
+                    to: "desk_ikoner/Up.png"
+                    duration: MyConst.animationDuration
+                }
+            }
+
 
             states:
             [
@@ -77,6 +101,11 @@ Item
                     target: pontUpButton
                     enabled: true
                 }
+                PropertyChanges
+                {
+                    target: pontographUpAnimation
+                    running: false
+                }
             },
             State
             {
@@ -91,6 +120,30 @@ Item
                     target: pontUpButton
                     enabled: true
                 }
+                PropertyChanges
+                {
+                    target: pontographUpAnimation
+                    running: false
+                }
+            },
+            State
+            {
+                name: "warning";
+                PropertyChanges
+                {
+                    target: pontUpButton
+                    source: "desk_ikoner/doorleftY.png"
+                }
+                PropertyChanges
+                {
+                    target: pontUpButton
+                    enabled: true
+                }
+                PropertyChanges
+                {
+                    target: pontographUpAnimation
+                    running: false
+                }
             },
             State
             {
@@ -104,6 +157,11 @@ Item
                 {
                     target: pontUpButton
                     enabled: true
+                }
+                PropertyChanges
+                {
+                    target: pontographUpAnimation
+                    running: false
                 }
             }
             ]

@@ -8,7 +8,8 @@ Test_Module::Test_Module(bool connection)
       m_jsonAlarm{VTI_DMI::JSON_ALARM},
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
-      m_doorTimer{new QTimer{this}}
+      m_doorTimer{new QTimer{this}},
+      m_pontUpTimer{new QTimer{this}}
 {
     if(connection)
     {
@@ -17,6 +18,10 @@ Test_Module::Test_Module(bool connection)
         connect(m_doorTimer, SIGNAL(timeout()), this, SLOT(doorHandler()));
 
         m_doorTimer->setSingleShot(true);
+
+        connect(m_pontUpTimer, SIGNAL(timeout()), this, SLOT(pontHandler()));
+
+        m_pontUpTimer->setSingleShot(true);
     }
 }
 
@@ -37,19 +42,28 @@ void Test_Module::doorHandler()
     m_networkServer->sendUpdate(m_jsonDoors);
 }
 
+void Test_Module::pontHandler()
+{
+    if (m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_UP) == STATE::WARNING)
+    {
+        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::ACTIVE);
+        m_networkServer->sendUpdate(m_jsonVoltage);
+    }
+}
+
 void Test_Module::updatePontographUp(QJsonValue const & value)
 {
     qDebug() << "PONTOGRAPH_UP update" << value;
 
     if(m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
     {
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
-        m_jsonVoltage.insert(VTI_DMI::VOLTAGE, STATE::DEFAULT);
-        m_jsonVoltage.insert(VTI_DMI::HEATING, STATE::INACTIVE);
+        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::WARNING);
+        m_pontUpTimer->start(3000); // ACTIVE
     }
     else
     {
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::ACTIVE);
+        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::WARNING);
+        m_pontUpTimer->start(3000); // ACTIVE
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
         if(m_jsonVoltage.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
         {

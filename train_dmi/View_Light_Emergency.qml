@@ -51,7 +51,7 @@ Item {
                     PropertyChanges
                     {
                         target: lightImage
-                        souce: "desk_ikoner/button69.png"
+                        source: "desk_ikoner/button69.png"
                     }
                     PropertyChanges {
                         target: lightAnimation
