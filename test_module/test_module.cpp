@@ -9,6 +9,8 @@ Test_Module::Test_Module(bool connection)
       m_jsonAlarm{VTI_DMI::JSON_ALARM},
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
+      m_jsonETCSB{VTI_DMI::JSON_ETCS_B},
+
       m_doorTimer{new QTimer{this}}
       //m_testTimer{new QTimer{this}}
 {
