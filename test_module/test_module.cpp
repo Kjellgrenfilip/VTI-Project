@@ -356,7 +356,10 @@ void Test_Module::updateSpeedLimit(double newValue)
 void Test_Module::updateDistance(double newValue)
 {
     if ( newValue < 0 )
+    {
         m_jsonETCS_A.insert(VTI_DMI::DISTANCE, "");
+        m_jsonETCS_A.insert(VTI_DMI::DISTANCE_BAR, 0);
+    }
     else
     {
         newValue = newValue/10;
@@ -376,9 +379,7 @@ void Test_Module::updateDistanceBar(double newValue)
     double log100 = 2;
     double log1000 = 3;
 
-    if ( newValue <= 0 )
-        newValue = 0;
-    else if ( newValue <= 100 )
+    if ( newValue <= 100 )
         newValue = newValue * (linearLength/100);
     else if ( newValue <= 1000 )
         newValue = linearLength + (log10(newValue) - log100) / (log1000 - log100) * logLength;
