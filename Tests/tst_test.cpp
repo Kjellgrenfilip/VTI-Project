@@ -23,8 +23,13 @@ private slots:
     void testDoors();
     void testReverse();
     void testActivation();
+
     void testParking();
     void testETCS_A();
+
+    void testBreaks();
+    void testEmergencyInfo();
+
 };
 
 void delay(int timeToWait)
@@ -173,7 +178,7 @@ void test::testActivation()
     TestConf tc{};
 }
 
-void test::testParking()
+void test::testBreaks()
 {
     TestConf tc{};
     tc.dmiHandler->m_buttonHandler->parkBrakePressed();
@@ -189,6 +194,39 @@ void test::testParking()
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_MGBRAKE_PRESSED);
     tc.dmiHandler->m_buttonHandler->magneticBrakeReleased();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_MGBRAKE_RELEASED);
+
+    /*tc.dmiHandler->m_buttonHandler->parkBrakePressed(); //Deactivate park_brake
+    tc.testModule->m_jsonEx(VTI_DMI::VELOCITY, 15); //Set velocity > 0
+    tc.dmiHandler->m_buttonHandler->parkBrakePressed(); //Activate park_brake. Should not be possible
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_PARK_VELOCITY);*/
+
+
+}
+
+void test::testEmergencyInfo()
+{
+    TestConf tc{};
+
+    tc.dmiHandler->m_buttonHandler->nboPressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::NBO_BUTTON_PRESSED);
+
+    tc.dmiHandler->m_buttonHandler->firePressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::FIRE_BUTTON_PRESSED);
+
+    tc.dmiHandler->m_buttonHandler->nboPressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::SOLID_NBO_BUTTON_PRESSED);
+
+    tc.dmiHandler->m_buttonHandler->firePressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::SOLID_FIRE_BUTTON_PRESSED);
+
+    tc.dmiHandler->m_buttonHandler->receiptPressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::RECIEPT_BUTTON_PRESSED);
+
+    // Press reciept in warning states
+    tc.dmiHandler->m_buttonHandler->firePressed();
+    tc.dmiHandler->m_buttonHandler->nboPressed();
+    tc.dmiHandler->m_buttonHandler->receiptPressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::RECIEPT_BUTTON_PRESSED);
 }
 
 void test::testETCS_A()
