@@ -337,13 +337,13 @@ void Test_Module::updateETCSB(QJsonValue const & value)
         VTI_DMI::ETCSBImage = "etcsB3Image";
         m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
-    if(m_jsonETCSB.value(VTI_DMI::ETCSB4).toString() == STATE::INACTIVE)
+    else if(m_jsonETCSB.value(VTI_DMI::ETCSB4).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
         VTI_DMI::ETCSBImage = "etcsB4Image";
         m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
-     if(m_jsonETCSB.value(VTI_DMI::ETCSB5).toString() == STATE::INACTIVE)
+    else if(m_jsonETCSB.value(VTI_DMI::ETCSB5).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
         VTI_DMI::ETCSBImage = "etcsB5Image";
@@ -362,7 +362,6 @@ void Test_Module::receiveUpdate()
     {
         if ( update.value(VTI_DMI::ACTIVATE).toBool() )
         {
-            qDebug() << "HELLO I AM HERE";
             m_jsonActivation.insert(VTI_DMI::ACTIVATE, STATE::ACTIVE);
             m_networkServer->sendUpdate(m_jsonBrakes);
             m_networkServer->sendUpdate(m_jsonDoors);
