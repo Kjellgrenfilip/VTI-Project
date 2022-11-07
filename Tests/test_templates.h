@@ -249,6 +249,42 @@ namespace VTI_TESTCASE
         { BRAKE_INDICATOR,      STATE::DEFAULT   },
         { BRAKING,              QJsonValue::Bool }
     };
+    QJsonObject const NBO_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::WARNING },
+        { FIRE,                 STATE::DEFAULT },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "Nödbroms aktiverad" }
+    };
+    QJsonObject const FIRE_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::WARNING },
+        { FIRE,                 STATE::WARNING },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "Brand i tågsätt" }
+    };
+    QJsonObject const SOLID_NBO_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::ACTIVE },
+        { FIRE,                 STATE::WARNING },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "Brand i tågsätt" }
+    };
+    QJsonObject const SOLID_FIRE_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::ACTIVE },
+        { FIRE,                 STATE::ACTIVE },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "Brand i tågsätt" }
+    };
+    QJsonObject const RECIEPT_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::DEFAULT },
+        { FIRE,                 STATE::DEFAULT },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "" }
+    };
+
 
 
 

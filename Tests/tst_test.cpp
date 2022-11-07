@@ -24,6 +24,7 @@ private slots:
     void testReverse();
     void testActivation();
     void testBreaks();
+    void testEmergencyInfo();
 };
 
 void delay(int timeToWait)
@@ -195,6 +196,32 @@ void test::testBreaks()
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_PARK_VELOCITY);*/
 
 
+}
+
+void test::testEmergencyInfo()
+{
+    TestConf tc{};
+
+    tc.dmiHandler->m_buttonHandler->nboPressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::NBO_BUTTON_PRESSED);
+
+    tc.dmiHandler->m_buttonHandler->firePressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::FIRE_BUTTON_PRESSED);
+
+    tc.dmiHandler->m_buttonHandler->nboPressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::SOLID_NBO_BUTTON_PRESSED);
+
+    tc.dmiHandler->m_buttonHandler->firePressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::SOLID_FIRE_BUTTON_PRESSED);
+
+    tc.dmiHandler->m_buttonHandler->receiptPressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::RECIEPT_BUTTON_PRESSED);
+
+    // Press reciept in warning states
+    tc.dmiHandler->m_buttonHandler->firePressed();
+    tc.dmiHandler->m_buttonHandler->nboPressed();
+    tc.dmiHandler->m_buttonHandler->receiptPressed();
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::RECIEPT_BUTTON_PRESSED);
 }
 
 QTEST_MAIN(test)
