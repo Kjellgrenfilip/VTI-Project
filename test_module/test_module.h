@@ -4,14 +4,14 @@
 #include <QObject>
 #include <QDebug>
 #include <QTimer>
-#include <network_server.h>
+#include "network_server.h"
 #include "../network_interface.h"
 
 class Test_Module : public QObject
 {
     Q_OBJECT
 public:
-    explicit Test_Module();
+    explicit Test_Module(bool connection = true);
     ~Test_Module();
 
 private:
@@ -26,7 +26,9 @@ private:
     QJsonObject m_jsonETCS_A;
 
     QTimer *m_doorTimer;
+    QTimer *m_pontUpTimer;
 
+    // test variable for distance bar
     double x{};
 
     void updatePontographUp(QJsonValue const & value);
@@ -47,6 +49,11 @@ private:
     void updateDeparture(QJsonValue const & value);
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
+    void checkVoltage(QString const& key);
+
+public:
+    void resetStates();
+
 
     void updateDistance(double newValue);
     void updateDistanceBar(double newValue);
@@ -58,6 +65,7 @@ signals:
 public slots:
     void receiveUpdate();
     void doorHandler();
+    void pontHandler();
 };
 
 #endif // TEST_MODULE_H
