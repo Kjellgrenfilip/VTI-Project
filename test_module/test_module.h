@@ -14,7 +14,7 @@ public:
     explicit Test_Module(bool connection = true);
     ~Test_Module();
 
-public:
+private:
     Network_Server *m_networkServer;
 
     QJsonObject m_jsonBrakes;
@@ -45,9 +45,11 @@ public:
     void updateDeparture(QJsonValue const & value);
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
+    void checkVoltage(QString const& key);
+
+public:
     void resetStates();
 
-    void checkVoltage(QString const& key);
 
 signals:
 

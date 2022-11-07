@@ -68,7 +68,7 @@ void test::testPontUp()
     tc.dmiHandler->m_buttonHandler->mainBreakerPressed();
     delay(100);
     tc.dmiHandler->m_buttonHandler->pontUpPressed();
-    delay(3000);
+    delay(3500);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PONTUP_ACTIVATION_MAINBREAKER);
 
 }
@@ -188,7 +188,6 @@ void test::testParking()
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_MGBRAKE_PRESSED);
     tc.dmiHandler->m_buttonHandler->magneticBrakeReleased();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_MGBRAKE_RELEASED);
-
 }
 
 QTEST_MAIN(test)
