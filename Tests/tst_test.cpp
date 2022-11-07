@@ -23,7 +23,7 @@ private slots:
     void testDoors();
     void testReverse();
     void testActivation();
-    void testParking();
+    void testBreaks();
 };
 
 void delay(int timeToWait)
@@ -172,7 +172,7 @@ void test::testActivation()
     TestConf tc{};
 }
 
-void test::testParking()
+void test::testBreaks()
 {
     TestConf tc{};
     tc.dmiHandler->m_buttonHandler->parkBrakePressed();
@@ -188,6 +188,13 @@ void test::testParking()
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_MGBRAKE_PRESSED);
     tc.dmiHandler->m_buttonHandler->magneticBrakeReleased();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_MGBRAKE_RELEASED);
+
+    /*tc.dmiHandler->m_buttonHandler->parkBrakePressed(); //Deactivate park_brake
+    tc.testModule->m_jsonEx(VTI_DMI::VELOCITY, 15); //Set velocity > 0
+    tc.dmiHandler->m_buttonHandler->parkBrakePressed(); //Activate park_brake. Should not be possible
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_PARK_VELOCITY);*/
+
+
 }
 
 QTEST_MAIN(test)

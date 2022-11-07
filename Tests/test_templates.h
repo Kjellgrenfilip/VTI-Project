@@ -241,6 +241,14 @@ namespace VTI_TESTCASE
         { BRAKE_INDICATOR,      STATE::DEFAULT   },
         { BRAKING,              QJsonValue::Bool }
     };
+    QJsonObject const BRAKES_PARK_VELOCITY
+    {
+        { PARK_BRAKE,           STATE::INACTIVE  },
+        { ELECTRICITY_BRAKE,    STATE::INACTIVE  },
+        { MAGNETIC_BRAKE,       STATE::INACTIVE  },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
 
 
 
