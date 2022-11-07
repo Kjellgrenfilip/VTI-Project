@@ -123,3 +123,7 @@ void Button_Handler::lightPressed()
     json.insert(VTI_DMI::LIGHT, true);
     emit sendUpdate(json);
 }
+void Button_Handler::emergencyPressed()
+{
+    qDebug() << "emergency button pressed!";
+}

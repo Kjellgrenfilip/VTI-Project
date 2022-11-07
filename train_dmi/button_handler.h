@@ -46,6 +46,7 @@ public slots:
 
     void receiptPressed();
     void lightPressed();
+    void emergencyPressed();
 };
 
 #endif // BUTTON_HANDLER_H

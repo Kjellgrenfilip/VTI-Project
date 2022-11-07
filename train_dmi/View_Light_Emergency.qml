@@ -110,7 +110,7 @@ Item {
             {
                 id: emergencyImage
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "desk_ikoner/redButton.png"
             }
             Text
             {
@@ -140,6 +140,7 @@ Item {
                 }
 
             ]
+            onPressed: buttonHandler.emergencyPressed()
         }
     }
 }
