@@ -40,6 +40,7 @@ void DMI_Handler::receiveUpdate()
     foreach(const QString& key, m_latestUpdate.keys())
     {
             m_jsonState.insert(key, m_latestUpdate.value(key));
+            qDebug() << key;
             //Update GUI
             if(!testStart)
             {
@@ -69,17 +70,8 @@ void DMI_Handler::receiveUpdate()
                 obj->setProperty("text", newText);
             }
 
-            else if ( key == VTI_DMI::ETCSBImage )
-            {
-                double value = m_latestUpdate.value(key).toDouble();
-                QString newValue{};
-                if(value < 10)
-                    newValue = "0";
-                newValue += QString::number(value);
-                //qDebug() << newValue;
-                QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
-                obj->setProperty("source", s);
-            }
+
+
 
             else
             {
@@ -87,6 +79,20 @@ void DMI_Handler::receiveUpdate()
                 qDebug() << key << " : " << newState;
                 obj->setProperty("state", newState);
 
+
+                if ( key == VTI_DMI::ETCSB3 || key == VTI_DMI::ETCSB4 || key == VTI_DMI::ETCSB5 )
+                {
+                    double value = m_latestUpdate.value(key).toDouble();
+                    QString newValue{};
+                    if(value < 10)
+                        newValue = "0";
+                    newValue += QString::number(value);
+                    qDebug() << "IM HEEREER!";
+                    QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
+                    QString s2 = key + "Image";
+                    obj->setProperty("target", s2);
+                    obj->setProperty("source", s);
+                }
 
             }
         }

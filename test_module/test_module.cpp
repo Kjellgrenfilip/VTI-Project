@@ -1,4 +1,5 @@
 #include "test_module.h"
+#include <QCoreApplication>
 
 Test_Module::Test_Module(bool connection)
     : QObject(), m_networkServer{},
@@ -336,30 +337,34 @@ void Test_Module::updateETCSB(QJsonValue const & value)
 {
     //QString currentState = m_jsonETCSB.value(VTI_DMI::ETCSB3).toString();
 
+
     if(m_jsonETCSB.value(VTI_DMI::ETCSB3).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
-        VTI_DMI::ETCSBImage = "etcsB3Image";
+        //VTI_DMI::ETCSBImage = "etcsB3Image";
         m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB4).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
-        VTI_DMI::ETCSBImage = "etcsB4Image";
+        //VTI_DMI::ETCSBImage = "etcsB4Image";
         m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB5).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
-        VTI_DMI::ETCSBImage = "etcsB5Image";
+       // VTI_DMI::ETCSBImage = "etcsB5Image";
         m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
 
-
-
     m_networkServer->sendUpdate(m_jsonETCSB);
 }
-
+void delay(int timeToWait)
+{
+    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
 void Test_Module::receiveUpdate()
 {
     qDebug() << "TESTING";
@@ -376,14 +381,24 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonAlarm);
             m_networkServer->sendUpdate(m_jsonExtras);
             m_networkServer->sendUpdate(m_jsonActivation);
-            m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 5);
-            m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 7);
-            m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 26);
 
-            m_networkServer->sendUpdate(m_jsonETCSB);
+
+            ///m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
+            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 5);
+            updateETCSB(VTI_DMI::ETCSBImage);
+
+            delay(500);
+
+           // m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
+            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 7);
+            updateETCSB(VTI_DMI::ETCSBImage);
+            delay(500);
+           // m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
+            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 26);
+            updateETCSB(VTI_DMI::ETCSBImage);
+            delay(500);
+
+
 
         }
         else
