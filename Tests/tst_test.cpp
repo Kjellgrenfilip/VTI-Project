@@ -24,6 +24,7 @@ private slots:
     void testReverse();
     void testActivation();
     void testParking();
+    void testETCS_A();
 };
 
 void delay(int timeToWait)
@@ -188,6 +189,50 @@ void test::testParking()
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_MGBRAKE_PRESSED);
     tc.dmiHandler->m_buttonHandler->magneticBrakeReleased();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::BRAKES_MGBRAKE_RELEASED);
+}
+
+void test::testETCS_A()
+{
+    TestConf tc{};
+    tc.testModule->updateSpeedLimit(-1);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::SPEEDLIMIT), "");
+
+    tc.testModule->updateSpeedLimit(120);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::SPEEDLIMIT), "120");
+
+    tc.testModule->updateDistance(104);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE), "100");
+
+    tc.testModule->updateDistance(105);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE), "110");
+
+    tc.testModule->updateDistance(-10);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE), "");
+
+    tc.testModule->updateDistance(0);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 0);
+
+    tc.testModule->updateDistance(100);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 33);
+
+    tc.testModule->updateDistance(1000);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 186);
+
+    tc.testModule->updateDistance(3000);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 186);
+
+    tc.testModule->updateDistance(-100);
+    delay(5000);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 0);
 }
 
 QTEST_MAIN(test)

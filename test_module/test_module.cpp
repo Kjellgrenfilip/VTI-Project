@@ -345,16 +345,27 @@ void Test_Module::updateLight(QJsonValue const & value)
 }
 void Test_Module::updateSpeedLimit(double newValue)
 {
-    m_jsonETCS_A.insert(VTI_DMI::SPEEDLIMIT,QString::number(newValue));
+    if ( newValue < 0 )
+        m_jsonETCS_A.insert(VTI_DMI::SPEEDLIMIT, "");
+    else
+        m_jsonETCS_A.insert(VTI_DMI::SPEEDLIMIT,QString::number(newValue));
+
+    m_networkServer->sendUpdate(m_jsonETCS_A);
 }
 
 void Test_Module::updateDistance(double newValue)
 {
-    newValue = newValue/10;
-    newValue = round(newValue);
-    newValue *= 10;
-    m_jsonETCS_A.insert(VTI_DMI::DISTANCE, QString::number(newValue));
-    updateDistanceBar(newValue);
+    if ( newValue < 0 )
+        m_jsonETCS_A.insert(VTI_DMI::DISTANCE, "");
+    else
+    {
+        newValue = newValue/10;
+        newValue = round(newValue);
+        newValue *= 10;
+        m_jsonETCS_A.insert(VTI_DMI::DISTANCE, QString::number(newValue));
+        updateDistanceBar(newValue);
+    }
+    m_networkServer->sendUpdate(m_jsonETCS_A);
 }
 
 void Test_Module::updateDistanceBar(double newValue)
@@ -365,7 +376,9 @@ void Test_Module::updateDistanceBar(double newValue)
     double log100 = 2;
     double log1000 = 3;
 
-    if ( newValue <= 100 )
+    if ( newValue <= 0 )
+        newValue = 0;
+    else if ( newValue <= 100 )
         newValue = newValue * (linearLength/100);
     else if ( newValue <= 1000 )
         newValue = linearLength + (log10(newValue) - log100) / (log1000 - log100) * logLength;
@@ -412,7 +425,6 @@ void Test_Module::receiveUpdate()
             // Only for test. Remove from here
             x += 58;
             updateDistance(x);
-            m_networkServer->sendUpdate(m_jsonETCS_A);
             // to here.
             updateMainBreaker(value);
         }

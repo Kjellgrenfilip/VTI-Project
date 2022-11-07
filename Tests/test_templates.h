@@ -242,6 +242,15 @@ namespace VTI_TESTCASE
         { BRAKING,              QJsonValue::Bool }
     };
 
+    QJsonObject const ETCS_A_SPEED_LIMIT
+    {
+        { SPEEDLIMIT,           "120" },
+        { SPEEDLIMIT_STATE,     STATE::ACTIVE },
+        { DISTANCE,             "" },
+        { DISTANCE_STATE,       STATE::ACTIVE },
+        { DISTANCE_BAR,         0.0 },
+        { DISTANCE_BAR_STATE,   STATE::ACTIVE}
+    };
 
 
 
