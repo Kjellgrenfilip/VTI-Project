@@ -14,15 +14,19 @@ class DMI_Handler : public QObject
     Q_OBJECT
 public:
     explicit DMI_Handler(QQmlContext *rootContext, QObject *obj);
+    DMI_Handler(bool testStart = true);
     ~DMI_Handler();
 
-private:
+public:
     Network_Client *m_client;
     Button_Handler *m_buttonHandler;
     QObject *m_rootObject;
     QTimer *m_animationTimer;
 
     QJsonObject m_jsonState;
+    QJsonObject m_latestUpdate{};
+
+    bool testStart = false;
 
 signals:
 

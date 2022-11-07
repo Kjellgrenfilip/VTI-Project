@@ -1,7 +1,7 @@
 #include "test_module.h"
 
-Test_Module::Test_Module()
-    : QObject(), m_networkServer{new Network_Server{}},
+Test_Module::Test_Module(bool connection)
+    : QObject(), m_networkServer{},
       m_jsonBrakes{VTI_DMI::JSON_BRAKES},
       m_jsonDoors{VTI_DMI::JSON_DOORS},
       m_jsonVoltage{VTI_DMI::JSON_VOLTAGE},
@@ -11,10 +11,14 @@ Test_Module::Test_Module()
       m_doorTimer{new QTimer{this}}
       //m_testTimer{new QTimer{this}}
 {
-    connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
-    connect(m_doorTimer, SIGNAL(timeout()), this, SLOT(doorHandler()));
+    if(connection)
+    {
+        m_networkServer = new Network_Server();
+        connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
+        connect(m_doorTimer, SIGNAL(timeout()), this, SLOT(doorHandler()));
 
-    m_doorTimer->setSingleShot(true);
+        m_doorTimer->setSingleShot(true);
+    }
 }
 
 Test_Module::~Test_Module()
@@ -51,6 +55,7 @@ void Test_Module::updatePontographUp(QJsonValue const & value)
         m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
         if(m_jsonVoltage.value(VTI_DMI::MAIN_BREAKER) == STATE::ACTIVE)
         {
+            qDebug() << "main breaker";
             m_jsonVoltage.insert(VTI_DMI::VOLTAGE, STATE::ACTIVE);
         }
     }
@@ -357,11 +362,13 @@ void Test_Module::updateETCSB(QJsonValue const & value)
 
 void Test_Module::receiveUpdate()
 {
+    qDebug() << "TESTING";
     QJsonObject update = m_networkServer->getUpdate();
     if ( m_jsonActivation.value(VTI_DMI::ACTIVATE).toString() == STATE::DEFAULT )
     {
         if ( update.value(VTI_DMI::ACTIVATE).toBool() )
         {
+            qDebug() << "Activation";
             m_jsonActivation.insert(VTI_DMI::ACTIVATE, STATE::ACTIVE);
             m_networkServer->sendUpdate(m_jsonBrakes);
             m_networkServer->sendUpdate(m_jsonDoors);
@@ -432,14 +439,23 @@ void Test_Module::receiveUpdate()
         else if (key == VTI_DMI::DOOR_RIGHT)
             updateDoorRight(value);
 
-       else if (key == VTI_DMI::DEPARTURE)
+        else if (key == VTI_DMI::DEPARTURE)
             updateDeparture(value);
 
-       else if( key== VTI_DMI::DOOR_CLOSE)
+        else if( key== VTI_DMI::DOOR_CLOSE)
             updateDoorClose(value);
 
         else if ( key == VTI_DMI::LIGHT)
             updateLight(value);
     }
 }
+
+ void Test_Module::resetStates()
+ {
+     m_jsonBrakes = VTI_DMI::JSON_BRAKES;
+     m_jsonDoors = VTI_DMI::JSON_DOORS;
+     m_jsonVoltage = VTI_DMI::JSON_VOLTAGE;
+     m_jsonAlarm = VTI_DMI::JSON_ALARM;
+     m_jsonExtras = VTI_DMI::JSON_EXTRAS;
+ }
 

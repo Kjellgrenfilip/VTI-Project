@@ -27,4 +27,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     network_server.h \
-    test_module.h
+    test_module.h \

@@ -1,5 +1,4 @@
 #include <QCoreApplication>
-#include <QThread>
 
 #include "test_module.h"
 

@@ -4,17 +4,17 @@
 #include <QObject>
 #include <QDebug>
 #include <QTimer>
-#include <network_server.h>
+#include "network_server.h"
 #include "../network_interface.h"
 
 class Test_Module : public QObject
 {
     Q_OBJECT
 public:
-    explicit Test_Module();
+    explicit Test_Module(bool connection = true);
     ~Test_Module();
 
-private:
+public:
     Network_Server *m_networkServer;
 
     QJsonObject m_jsonBrakes;
@@ -46,6 +46,7 @@ private:
     void updateDeparture(QJsonValue const & value);
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
+    void resetStates();
 
     void updateETCSB(QJsonValue const & value);
 

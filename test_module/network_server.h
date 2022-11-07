@@ -6,8 +6,6 @@
 #include <QTcpSocket>
 #include <QJsonObject>
 #include <QJsonDocument>
-#include <QTime>
-#include <QCoreApplication>
 
 class Network_Server : public QObject
 {
@@ -17,6 +15,8 @@ public:
     ~Network_Server();
 
     QJsonObject getUpdate();
+    void setUpdate(QJsonObject update);
+
     bool sendUpdate(QJsonObject const& obj);
 
 private:

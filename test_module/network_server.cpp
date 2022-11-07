@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include <QString>
+#include <QCoreApplication>
 
 Network_Server::Network_Server() : QObject(), m_tcpServer{new QTcpServer{this}}
 {
@@ -15,13 +16,18 @@ Network_Server::Network_Server() : QObject(), m_tcpServer{new QTcpServer{this}}
 
 Network_Server::~Network_Server()
 {
-    delete m_tcpServer;
     delete m_tcpSocket;
+    delete m_tcpServer;
 }
 
 QJsonObject Network_Server::getUpdate()
 {
     return m_jsonUpdate;
+}
+
+void Network_Server::setUpdate(QJsonObject update)
+{
+    m_jsonUpdate = update;
 }
 
 // Sends data through socket to client and returns true if all data were sent

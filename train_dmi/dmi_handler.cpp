@@ -17,6 +17,16 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
     m_animationTimer->start();
 }
 
+DMI_Handler::DMI_Handler(bool testStart) : QObject(), m_client{new Network_Client{}},
+    m_buttonHandler{new Button_Handler{}}, m_rootObject{}, m_animationTimer{new QTimer{this}},
+    m_jsonState{}, testStart(testStart)
+{
+    connect(m_buttonHandler, SIGNAL(sendUpdate(QJsonObject)), m_client, SLOT(sendUpdate(QJsonObject)));
+    connect(m_client, SIGNAL(updateReceived()),this, SLOT(receiveUpdate()));
+
+    m_client->connectToServer();
+}
+
 DMI_Handler::~DMI_Handler()
 {
     delete m_client;
@@ -26,53 +36,59 @@ DMI_Handler::~DMI_Handler()
 
 void DMI_Handler::receiveUpdate()
 {
-    QJsonObject update = m_client->getUpdate();
-    foreach(const QString& key, update.keys())
+    m_latestUpdate = m_client->getUpdate();
+    foreach(const QString& key, m_latestUpdate.keys())
     {
-        m_jsonState.insert(key, update.value(key));
-        //Update GUI
-        QObject *obj = m_rootObject->findChild<QObject*>(key);
+            m_jsonState.insert(key, m_latestUpdate.value(key));
+            //Update GUI
+            if(!testStart)
+            {
+                QObject *obj = m_rootObject->findChild<QObject*>(key);
 
-        if(!obj)
-        {
-            qDebug() << "Unknown object: " << key;
-            continue;
-        }
+                if(!obj)
+                {
+                    qDebug() << "Unknown object: " << key;
+                    continue;
+                }
 
-        if ( key == VTI_DMI::VELOCITY )
-        {
-            // Special case example
-        }
+                if ( key == VTI_DMI::VELOCITY )
+                {
+                    // Special case example
+                }
 
-        else if( key == VTI_DMI::TEXTINFO)
-        {
-         QString newText = update.value(key).toString();
-         obj->setProperty("text", newText);
-        }
 
-        else if ( key == VTI_DMI::SPEEDLIMIT )
-        {
-            QString newValue = update.value(key).toString();
-            obj->setProperty("text", newValue);
-        }
+            else if ( key == VTI_DMI::SPEEDLIMIT )
+            {
+                QString newValue = m_latestUpdate.value(key).toString();
+                obj->setProperty("text", newValue);
+            }
 
-        else if ( key == VTI_DMI::ETCSBImage )
-        {
-            double value = update.value(key).toDouble();
-            QString newValue{};
-            if(value < 10)
-                newValue = "0";
-            newValue += QString::number(value);
-            //qDebug() << newValue;
-            QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
-            obj->setProperty("source", s);
-        }
+            else if( key == VTI_DMI::TEXTINFO)
+            {
+                QString newText = m_latestUpdate.value(key).toString();
+                obj->setProperty("text", newText);
+            }
 
-        else
-        {
-            QString newState = update.value(key).toString();
-            qDebug() << key << " : " << newState;
-            obj->setProperty("state", newState);
+            else if ( key == VTI_DMI::ETCSBImage )
+            {
+                double value = m_latestUpdate.value(key).toDouble();
+                QString newValue{};
+                if(value < 10)
+                    newValue = "0";
+                newValue += QString::number(value);
+                //qDebug() << newValue;
+                QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
+                obj->setProperty("source", s);
+            }
+
+            else
+            {
+                QString newState = m_latestUpdate.value(key).toString();
+                qDebug() << key << " : " << newState;
+                obj->setProperty("state", newState);
+
+
+            }
         }
     }
 }
