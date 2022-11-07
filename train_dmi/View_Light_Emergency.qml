@@ -99,6 +99,7 @@ Item {
         Button
         {
             id: emergencyButton
+            objectName: "emergencyCall"
             width: (emergencyButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
             height:(emergencyButton.pressed) ? parent.height - 40 : parent.height - 35
             anchors.left: parent.horizontalCenter
