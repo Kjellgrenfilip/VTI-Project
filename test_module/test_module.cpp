@@ -336,16 +336,19 @@ void Test_Module::updateLight(QJsonValue const & value)
 void Test_Module::updateETCSB(QJsonValue const & value)
 {
     //QString currentState = m_jsonETCSB.value(VTI_DMI::ETCSB3).toString();
+    qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB3).toString();
+    qDebug() << STATE::INACTIVE;
 
-
-    if(m_jsonETCSB.value(VTI_DMI::ETCSB3).toString() == STATE::INACTIVE)
+    if(m_jsonETCSB.value(VTI_DMI::ETCSB3) == STATE::INACTIVE)
     {
+        qDebug() << "HERe";
         m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
         //VTI_DMI::ETCSBImage = "etcsB3Image";
         m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB4).toString() == STATE::INACTIVE)
     {
+        qDebug() << "HERe";
         m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
         //VTI_DMI::ETCSBImage = "etcsB4Image";
         m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
@@ -381,7 +384,7 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonAlarm);
             m_networkServer->sendUpdate(m_jsonExtras);
             m_networkServer->sendUpdate(m_jsonActivation);
-
+            m_networkServer->sendUpdate(m_jsonETCSB);
 
             ///m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
             m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 5);
