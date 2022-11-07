@@ -231,7 +231,7 @@ void test::testETCS_A()
     QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 186);
 
     tc.testModule->updateDistance(-100);
-    delay(5000);
+    delay(100);
     QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 0);
 }
 

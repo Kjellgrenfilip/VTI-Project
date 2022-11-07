@@ -71,6 +71,11 @@ Item {
                         running: true
 
                     }
+                    PropertyChanges {
+                        target: lightButton
+                        enabled: true
+
+                    }
                 }
             ]
             SequentialAnimation
