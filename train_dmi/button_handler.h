@@ -22,14 +22,14 @@ signals:
 public slots:
     void activatePressed();
 
-    void pontUpPressed();
+    void pantUpPressed();
 
     void parkBrakePressed();
     void electricityBrakePressed();
     void magneticBrakePressed();
     void magneticBrakeReleased();
 
-    void pontDownPressed();
+    void pantDownPressed();
     void mainBreakerPressed();
     void heatingPressed();
 

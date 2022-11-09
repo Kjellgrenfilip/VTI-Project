@@ -46,31 +46,31 @@ Item
 
         Button
         {
-            id:pontUpButton
-            objectName: "pontographUp"
-            width: (pontUpButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(pontUpButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            id:pantUpButton
+            objectName: "pantographUp"
+            width: (pantUpButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(pantUpButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             //anchors.fill: parent
             enabled: false
 
-            onPressed: buttonHandler.pontUpPressed()
+            onPressed: buttonHandler.pantUpPressed()
             Image
             {
-                id: pontUpImage
+                id: pantUpImage
                 anchors.fill: parent
                 source: "desk_ikoner/Up.png"
             }
 
             SequentialAnimation
             {
-                id: pontographUpAnimation
-                objectName: "pontographUpAnimation"
+                id: pantographUpAnimation
+                objectName: "pantographUpAnimation"
                 running: false
                 loops: Animation.Infinite
                 alwaysRunToEnd: false
                 PropertyAnimation
                 {
-                    target: pontUpImage
+                    target: pantUpImage
                     property: "source"
                     to: "desk_ikoner/UpY.png"
                     duration: MyConst.animationDuration
@@ -78,7 +78,7 @@ Item
 
                 PropertyAnimation
                 {
-                    target: pontUpImage
+                    target: pantUpImage
                     property: "source"
                     to: "desk_ikoner/Up.png"
                     duration: MyConst.animationDuration
@@ -93,17 +93,17 @@ Item
                 name: "default"
                 PropertyChanges
                 {
-                    target: pontUpImage
+                    target: pantUpImage
                     source:"desk_ikoner/Up.png"
                 }
                 PropertyChanges
                 {
-                    target: pontUpButton
+                    target: pantUpButton
                     enabled: true
                 }
                 PropertyChanges
                 {
-                    target: pontographUpAnimation
+                    target: pantographUpAnimation
                     running: false
                 }
             },
@@ -112,17 +112,17 @@ Item
                 name: "active"
                 PropertyChanges
                 {
-                    target: pontUpImage
+                    target: pantUpImage
                     source: "desk_ikoner/UpY.png"
                 }
                 PropertyChanges
                 {
-                    target: pontUpButton
+                    target: pantUpButton
                     enabled: true
                 }
                 PropertyChanges
                 {
-                    target: pontographUpAnimation
+                    target: pantographUpAnimation
                     running: false
                 }
             },
@@ -131,12 +131,12 @@ Item
                 name: "warning";
                 PropertyChanges
                 {
-                    target: pontUpButton
+                    target: pantUpButton
                     enabled: true
                 }
                 PropertyChanges
                 {
-                    target: pontographUpAnimation
+                    target: pantographUpAnimation
                     running: false
                 }
             },
@@ -145,17 +145,17 @@ Item
                 name: "inactive"
                 PropertyChanges
                 {
-                    target: pontUpImage
+                    target: pantUpImage
                     source:"desk_ikoner/Up.png"
                 }
                 PropertyChanges
                 {
-                    target: pontUpButton
+                    target: pantUpButton
                     enabled: true
                 }
                 PropertyChanges
                 {
-                    target: pontographUpAnimation
+                    target: pantographUpAnimation
                     running: false
                 }
             }
@@ -165,7 +165,7 @@ Item
         // non-clickable power indicator
         Button
         {
-            id:pontChargeButton
+            id:pantChargeButton
             objectName: "voltage"
             width:  parent.width / 2 - 5
             height: parent.height / 3 - 7
@@ -173,14 +173,14 @@ Item
 
             Image
             {
-                id:pontChargeImage
+                id:pantChargeImage
                 anchors.fill: parent
                 source: "desk_ikoner/indicator_frame.png"
             }
 
             Text
             {
-                id: pontChargeText
+                id: pantChargeText
                 text: qsTr("0V")
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -194,12 +194,12 @@ Item
                     name: "active"
                     PropertyChanges
                     {
-                        target: pontChargeText
+                        target: pantChargeText
                         text: qsTr("16kV")
                     }
                     PropertyChanges
                     {
-                        target: pontChargeImage
+                        target: pantChargeImage
                         source: "desk_ikoner/indicator_frame.png"
                     }
                 },
@@ -208,12 +208,12 @@ Item
                     name: "default"
                     PropertyChanges
                     {
-                        target: pontChargeText
+                        target: pantChargeText
                         text: qsTr("0V")
                     }
                     PropertyChanges
                     {
-                        target: pontChargeImage
+                        target: pantChargeImage
                         source: "desk_ikoner/indicator_frameR.png"
                     }
                 }
@@ -222,19 +222,19 @@ Item
         //clickable pantograph down
         Button
         {
-            id:pontDownButton
-            objectName:  "pontographDown"
-            width: (pontDownButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
-            height:(pontDownButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
+            id:pantDownButton
+            objectName:  "pantographDown"
+            width: (pantDownButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
+            height:(pantDownButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
             enabled: false
 
             Image
             {
-                id:pontDownImage
+                id:pantDownImage
                 anchors.fill: parent
                 source: "desk_ikoner/Down.png"
             }
-            onPressed: buttonHandler.pontDownPressed()
+            onPressed: buttonHandler.pantDownPressed()
             states:
                 [
                 State
@@ -242,12 +242,12 @@ Item
                     name: "default"
                     PropertyChanges
                     {
-                        target: pontDownImage
+                        target: pantDownImage
                         source:"desk_ikoner/Down.png"
                     }
                     PropertyChanges
                     {
-                        target: pontDownButton
+                        target: pantDownButton
                         enabled: true
                     }
                 },
@@ -256,12 +256,12 @@ Item
                     name: "active"
                     PropertyChanges
                     {
-                        target: pontDownImage
+                        target: pantDownImage
                         source: "desk_ikoner/DownY.png"
                     }
                     PropertyChanges
                     {
-                        target: pontDownButton
+                        target: pantDownButton
                         enabled: true
                     }
                 },
@@ -270,12 +270,12 @@ Item
                     name: "inactive"
                     PropertyChanges
                     {
-                        target: pontDownImage
+                        target: pantDownImage
                         source:"desk_ikoner/Down.png"
                     }
                     PropertyChanges
                     {
-                        target: pontDownButton
+                        target: pantDownButton
                         enabled: true
                     }
                 }
@@ -293,7 +293,7 @@ Item
 
             Image
             {
-                id: volatageWarningImage
+                id: voltageWarningImage
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
@@ -307,14 +307,14 @@ Item
                 loops: Animation.Infinite
                 PropertyAnimation
                 {
-                    target: volatageWarningImage
+                    target: voltageWarningImage
                     property: "source"
                     to: "desk_ikoner/yellow.png"
                     duration: MyConst.animationDuration
                 }
                 PropertyAnimation
                 {
-                    target: volatageWarningImage
+                    target: voltageWarningImage
                     property: "source"
                     to: "desk_ikoner/button69.png"
                     duration: MyConst.animationDuration
@@ -333,7 +333,7 @@ Item
                     }
                     PropertyChanges
                     {
-                        target: volatageWarningImage
+                        target: voltageWarningImage
                         source: "desk_ikoner/button69.png"
                     }
                     PropertyChanges
@@ -366,7 +366,7 @@ Item
                     }
                     PropertyChanges
                     {
-                        target: volatageWarningImage
+                        target: voltageWarningImage
                         source: "desk_ikoner/button69.png"
                     }
                     PropertyChanges

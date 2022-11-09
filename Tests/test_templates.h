@@ -16,29 +16,29 @@ namespace VTI_TESTCASE
 
     //Activation
     //TESTCASES FOR VOLTAGAE GROUP
-    QJsonObject const VOLTAGE_PONTUP_ACTIVATION
+    QJsonObject const VOLTAGE_PANTUP_ACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::WARNING   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE  },
+        { PANTOGRAPH_UP,        STATE::WARNING   },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE  },
         { MAIN_BREAKER,         STATE::DEFAULT },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::DEFAULT  }
     };
-    QJsonObject const VOLTAGE_PONTUP_ACTIVATION_MAINBREAKER
+    QJsonObject const VOLTAGE_PANTUP_ACTIVATION_MAINBREAKER
     {
         { VOLTAGE,              STATE::ACTIVE   },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE },
+        { PANTOGRAPH_UP,        STATE::ACTIVE   },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE },
         { MAIN_BREAKER,         STATE::ACTIVE   },
         { VOLTAGE_WARNING,      STATE::INACTIVE },
         { HEATING,              STATE::DEFAULT  }
     };
-    QJsonObject const VOLTAGE_PONTDOWN_ACTIVATION
+    QJsonObject const VOLTAGE_PANTDOWN_ACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::INACTIVE },
-        { PONTOGRAPH_DOWN,      STATE::ACTIVE   },
+        { PANTOGRAPH_UP,        STATE::INACTIVE },
+        { PANTOGRAPH_DOWN,      STATE::ACTIVE   },
         { MAIN_BREAKER,         STATE::DEFAULT  },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::INACTIVE }
@@ -47,17 +47,17 @@ namespace VTI_TESTCASE
     QJsonObject const VOLTAGE_MAINBREAKER_ACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::DEFAULT  },
-        { PONTOGRAPH_DOWN,      STATE::DEFAULT  },
+        { PANTOGRAPH_UP,        STATE::DEFAULT  },
+        { PANTOGRAPH_DOWN,      STATE::DEFAULT  },
         { MAIN_BREAKER,         STATE::ACTIVE   },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::DEFAULT  }
     };
-    QJsonObject const VOLTAGE_MAINBREAKER_ACTIVATION_PONTUP
+    QJsonObject const VOLTAGE_MAINBREAKER_ACTIVATION_PANTUP
     {
         { VOLTAGE,              STATE::ACTIVE  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE  },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE  },
+        { PANTOGRAPH_UP,        STATE::ACTIVE  },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE  },
         { MAIN_BREAKER,         STATE::ACTIVE   },
         { VOLTAGE_WARNING,      STATE::INACTIVE },
         { HEATING,              STATE::DEFAULT }
@@ -65,27 +65,27 @@ namespace VTI_TESTCASE
     QJsonObject const VOLTAGE_MAINBREAKER_DEACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::DEFAULT  },
-        { PONTOGRAPH_DOWN,      STATE::DEFAULT  },
+        { PANTOGRAPH_UP,        STATE::DEFAULT  },
+        { PANTOGRAPH_DOWN,      STATE::DEFAULT  },
         { MAIN_BREAKER,         STATE::INACTIVE },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::DEFAULT  }
     };
 
-    QJsonObject const VOLTAGE_HEAT_ACTIVATION_NOPONT
+    QJsonObject const VOLTAGE_HEAT_ACTIVATION_NOPANT
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::DEFAULT  },
-        { PONTOGRAPH_DOWN,      STATE::DEFAULT  },
+        { PANTOGRAPH_UP,        STATE::DEFAULT  },
+        { PANTOGRAPH_DOWN,      STATE::DEFAULT  },
         { MAIN_BREAKER,         STATE::DEFAULT  },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::DEFAULT  }
     };
-    QJsonObject const VOLTAGE_HEAT_ACTIVATION_PONT
+    QJsonObject const VOLTAGE_HEAT_ACTIVATION_PANT
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE },
+        { PANTOGRAPH_UP,        STATE::ACTIVE   },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE },
         { MAIN_BREAKER,         STATE::DEFAULT  },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::ACTIVE   }
@@ -93,8 +93,8 @@ namespace VTI_TESTCASE
     QJsonObject const VOLTAGE_HEAT_DEACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE },
+        { PANTOGRAPH_UP,        STATE::ACTIVE   },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE },
         { MAIN_BREAKER,         STATE::DEFAULT  },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::INACTIVE }

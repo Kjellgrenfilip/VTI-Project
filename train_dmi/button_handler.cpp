@@ -16,10 +16,10 @@ void Button_Handler::activatePressed()
     sendSignal(VTI_DMI::ACTIVATE, true);
 }
 
-void Button_Handler::pontUpPressed()
+void Button_Handler::pantUpPressed()
 {
-    qDebug() << "Pontograph Up!";
-    sendSignal(VTI_DMI::PONTOGRAPH_UP, true);
+    qDebug() << "Pantograph Up!";
+    sendSignal(VTI_DMI::PANTOGRAPH_UP, true);
 }
 
 void Button_Handler::parkBrakePressed()
@@ -52,10 +52,10 @@ void Button_Handler::firePressed()
     sendSignal(VTI_DMI::FIRE, true);
 }
 
-void Button_Handler::pontDownPressed()
+void Button_Handler::pantDownPressed()
 {
-    qDebug() << "Pontograph Down!";
-    sendSignal(VTI_DMI::PONTOGRAPH_DOWN, true);
+    qDebug() << "Pantograph Down!";
+    sendSignal(VTI_DMI::PANTOGRAPH_DOWN, true);
 }
 
 void Button_Handler::mainBreakerPressed()
