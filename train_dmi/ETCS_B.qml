@@ -14,16 +14,20 @@ Item
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: parent.height/50
+        width:  36*7/parent.width
+        height: 36*parent.height
 
         Rectangle
         {
             id: etcsB6
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
-            width: 36 / MyConst.etcsWidth * parent.width
-            height: 36 / MyConst.etcsHeight * parent.height
+
+            width: parent.width
+            height: parent.height
             color: MyConst.backgroundColor
             objectName: "etcsB6"
+
 
             ETCS_Box3DEffect{}
 
@@ -69,6 +73,8 @@ Item
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
             color: "transparent"
+            width: parent.width
+            height: parent.height
         }
 
         Rectangle
@@ -78,6 +84,8 @@ Item
             Layout.minimumWidth: 36
             objectName: "etcsB3"
             color: MyConst.backgroundColor
+            width: parent.width
+            height: parent.height
 
             ETCS_Box3DEffect{}
 
@@ -122,6 +130,8 @@ Item
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
             color: MyConst.backgroundColor
+            width: parent.width
+            height: parent.height
 
             ETCS_Box3DEffect{}
 
@@ -166,6 +176,8 @@ Item
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
             color: MyConst.backgroundColor
+            width: parent.width
+            height: parent.height
 
             ETCS_Box3DEffect{}
 
@@ -209,6 +221,8 @@ Item
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
             color: "transparent"
+            width: parent.width
+            height: parent.height
         }
 
         Rectangle
@@ -218,6 +232,8 @@ Item
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
             color: MyConst.backgroundColor
+            width: parent.width
+            height: parent.height
 
             ETCS_Box3DEffect{}
 
