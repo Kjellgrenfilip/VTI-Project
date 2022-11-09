@@ -24,6 +24,7 @@ Item
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
             color: MyConst.backgroundColor
+            objectName: "etcsB6"
 
             ETCS_Box3DEffect{}
 
@@ -116,7 +117,7 @@ Item
                     PropertyChanges
                     {
                         target: etscB4Image
-                        source: ""
+                       // source: "symbols/Track Conditions/TC_07.bmp"
                     }
                 },
                 State

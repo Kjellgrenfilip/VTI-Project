@@ -342,21 +342,17 @@ void Test_Module::updateETCSB(QJsonValue const & value)
     if(m_jsonETCSB.value(VTI_DMI::ETCSB3) == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
-        //VTI_DMI::ETCSBImage = "etcsB3Image";
-        //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
-        qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB3Image).toDouble();
+
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB4).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
-        //VTI_DMI::ETCSBImage = "etcsB4Image";
-        //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
+
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB5).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
-       // VTI_DMI::ETCSBImage = "etcsB5Image";
-        //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
+
     }
     else
         etcsBImageQueue.enqueue(value);
@@ -423,7 +419,9 @@ delay(500);
             removeImage();
             delay(500);
             removeImage();
-
+            removeImage();
+            removeImage();
+            qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB4).toString();
 
         }
         else
