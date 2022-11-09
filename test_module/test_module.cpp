@@ -341,8 +341,6 @@ void Test_Module::updateETCSB(QJsonValue const & value)
 
     if(m_jsonETCSB.value(VTI_DMI::ETCSB3) == STATE::INACTIVE)
     {
-        qDebug() << "HERe";
-
         m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
         //VTI_DMI::ETCSBImage = "etcsB3Image";
         //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
@@ -350,7 +348,6 @@ void Test_Module::updateETCSB(QJsonValue const & value)
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB4).toString() == STATE::INACTIVE)
     {
-        qDebug() << "HERe";
         m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
         //VTI_DMI::ETCSBImage = "etcsB4Image";
         //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
@@ -361,9 +358,26 @@ void Test_Module::updateETCSB(QJsonValue const & value)
        // VTI_DMI::ETCSBImage = "etcsB5Image";
         //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
+    else
+        etcsBImageQueue.enqueue(value);
 
     m_networkServer->sendUpdate(m_jsonETCSB);
 }
+
+void Test_Module::removeImage()
+{
+    m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::INACTIVE);
+    m_networkServer->sendUpdate(m_jsonETCSB);
+
+    if(!etcsBImageQueue.isEmpty())
+    {
+
+        m_jsonETCSB.insert(VTI_DMI::ETCSB4Image, etcsBImageQueue.dequeue());
+        updateETCSB(VTI_DMI::ETCSB4Image);
+    }
+
+}
+
 void delay(int timeToWait)
 {
     QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
@@ -404,6 +418,11 @@ void Test_Module::receiveUpdate()
             updateETCSB(VTI_DMI::ETCSB5Image);
             delay(500);
 
+            m_jsonETCSB.insert(VTI_DMI::ETCSB4Image, 19);
+delay(500);
+            removeImage();
+            delay(500);
+            removeImage();
 
 
         }

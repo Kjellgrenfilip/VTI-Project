@@ -6,6 +6,7 @@
 #include <QTimer>
 #include "network_server.h"
 #include "../network_interface.h"
+#include <QQueue>
 
 class Test_Module : public QObject
 {
@@ -28,6 +29,8 @@ public:
     QTimer *m_doorTimer;
     QTimer *m_testTimer;
 
+    QQueue<QJsonValue> etcsBImageQueue;
+
     void updatePontographUp(QJsonValue const & value);
     void updatePontographDown(QJsonValue const & value);
     void updateMainBreaker(QJsonValue const & value);
@@ -47,6 +50,7 @@ public:
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
     void resetStates();
+    void removeImage();
 
     void updateETCSB(QJsonValue const & value);
 
