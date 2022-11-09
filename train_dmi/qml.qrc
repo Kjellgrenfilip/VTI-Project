@@ -40,5 +40,7 @@
         <file>desk_ikoner/doorleftY.png</file>
         <file>desk_ikoner/doorrightY.png</file>
         <file>desk_ikoner/closedG.png</file>
+        <file>Speedometer.qml</file>
+        <file>Temp_Speed.qml</file>
     </qresource>
 </RCC>
