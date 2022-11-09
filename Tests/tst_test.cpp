@@ -16,15 +16,19 @@ public:
     ~test(){};
 
 private slots:
-    void testPontUp();
-    void testPontDown();
+    void testPantUp();
+    void testPantDown();
     void testMainBreaker();
     void testHeating();
     void testDoors();
     void testReverse();
     void testActivation();
+
+    void testETCS_A();
+
     void testBreaks();
     void testEmergencyInfo();
+
 };
 
 void delay(int timeToWait)
@@ -56,31 +60,31 @@ struct TestConf
     DMI_Handler* dmiHandler;
 };
 
-void test::testPontUp()
+void test::testPantUp()
 {
     TestConf tc{};
 
-    tc.dmiHandler->m_buttonHandler->pontUpPressed();
+    tc.dmiHandler->m_buttonHandler->pantUpPressed();
     delay(100);
 
-    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PONTUP_ACTIVATION);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PANTUP_ACTIVATION);
 
     tc.testModule->resetStates();
     tc.dmiHandler->m_buttonHandler->mainBreakerPressed();
     delay(100);
-    tc.dmiHandler->m_buttonHandler->pontUpPressed();
+    tc.dmiHandler->m_buttonHandler->pantUpPressed();
     delay(3500);
-    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PONTUP_ACTIVATION_MAINBREAKER);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PANTUP_ACTIVATION_MAINBREAKER);
 
 }
 
-void test::testPontDown()
+void test::testPantDown()
 {
     TestConf tc{};
 
-    tc.dmiHandler->m_buttonHandler->pontDownPressed();
+    tc.dmiHandler->m_buttonHandler->pantDownPressed();
     delay(100);
-    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PONTDOWN_ACTIVATION);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PANTDOWN_ACTIVATION);
 }
 
 void test::testMainBreaker()
@@ -97,11 +101,11 @@ void test::testMainBreaker()
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_MAINBREAKER_DEACTIVATION);
 
     tc.testModule->resetStates();
-    tc.dmiHandler->m_buttonHandler->pontUpPressed();
+    tc.dmiHandler->m_buttonHandler->pantUpPressed();
     delay(3500);
     tc.dmiHandler->m_buttonHandler->mainBreakerPressed();
     delay(100);
-    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_MAINBREAKER_ACTIVATION_PONTUP);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_MAINBREAKER_ACTIVATION_PANTUP);
 }
 
 void test::testHeating()
@@ -111,13 +115,13 @@ void test::testHeating()
     tc.dmiHandler->m_buttonHandler->heatingPressed();
     delay(100);
 
-    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_HEAT_ACTIVATION_NOPONT);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_HEAT_ACTIVATION_NOPANT);
 
-    tc.dmiHandler->m_buttonHandler->pontUpPressed();
+    tc.dmiHandler->m_buttonHandler->pantUpPressed();
     delay(3300);
     tc.dmiHandler->m_buttonHandler->heatingPressed();
     delay(100);
-    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_HEAT_ACTIVATION_PONT);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_HEAT_ACTIVATION_PANT);
     tc.dmiHandler->m_buttonHandler->heatingPressed();
     delay(100);
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_HEAT_DEACTIVATION);
@@ -222,6 +226,50 @@ void test::testEmergencyInfo()
     tc.dmiHandler->m_buttonHandler->nboPressed();
     tc.dmiHandler->m_buttonHandler->receiptPressed();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::RECIEPT_BUTTON_PRESSED);
+}
+
+void test::testETCS_A()
+{
+    TestConf tc{};
+    tc.testModule->updateSpeedLimit(-1);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::SPEEDLIMIT), "");
+
+    tc.testModule->updateSpeedLimit(120);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::SPEEDLIMIT), "120");
+
+    tc.testModule->updateDistance(104);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE), "100");
+
+    tc.testModule->updateDistance(105);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE), "110");
+
+    tc.testModule->updateDistance(-10);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE), "");
+
+    tc.testModule->updateDistance(0);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 0);
+
+    tc.testModule->updateDistance(100);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 33);
+
+    tc.testModule->updateDistance(1000);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 186);
+
+    tc.testModule->updateDistance(3000);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 186);
+
+    tc.testModule->updateDistance(-100);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 0);
 }
 
 QTEST_MAIN(test)

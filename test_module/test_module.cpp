@@ -8,8 +8,10 @@ Test_Module::Test_Module(bool connection)
       m_jsonAlarm{VTI_DMI::JSON_ALARM},
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
+      m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
       m_doorTimer{new QTimer{this}},
-      m_pontUpTimer{new QTimer{this}}
+      m_pantUpTimer{new QTimer{this}}
+
 {
     if(connection)
     {
@@ -19,9 +21,9 @@ Test_Module::Test_Module(bool connection)
 
         m_doorTimer->setSingleShot(true);
 
-        connect(m_pontUpTimer, SIGNAL(timeout()), this, SLOT(pontHandler()));
+        connect(m_pantUpTimer, SIGNAL(timeout()), this, SLOT(pantHandler()));
 
-        m_pontUpTimer->setSingleShot(true);
+        m_pantUpTimer->setSingleShot(true);
     }
 }
 
@@ -42,11 +44,11 @@ void Test_Module::doorHandler()
     m_networkServer->sendUpdate(m_jsonDoors);
 }
 
-void Test_Module::pontHandler()
+void Test_Module::pantHandler()
 {
-    if (m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_UP) == STATE::WARNING)
+    if (m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::WARNING)
     {
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::ACTIVE);
+        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::ACTIVE);
         checkVoltage(VTI_DMI::MAIN_BREAKER);
         m_networkServer->sendUpdate(m_jsonVoltage);
     }
@@ -61,34 +63,34 @@ void Test_Module::checkVoltage(QString const& key)
     }
 }
 
-void Test_Module::updatePontographUp(QJsonValue const & value)
+void Test_Module::updatePantographUp(QJsonValue const & value)
 {
-    qDebug() << "PONTOGRAPH_UP update" << value;
+    qDebug() << "PANTOGRAPH_UP update" << value;
 
-    if(m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
+    if(m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::ACTIVE)
     {
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::WARNING);
-        m_pontUpTimer->start(3000); // ACTIVE
+        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::WARNING);
+        m_pantUpTimer->start(3000); // ACTIVE
     }
     else
     {
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::WARNING);
-        m_pontUpTimer->start(3000); // ACTIVE
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::INACTIVE);
+        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::WARNING);
+        m_pantUpTimer->start(3000); // ACTIVE
+        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_DOWN, STATE::INACTIVE);
         //checkVoltage(VTI_DMI::MAIN_BREAKER);
     }
 
      m_networkServer->sendUpdate(m_jsonVoltage);
 }
 
-void Test_Module::updatePontographDown(QJsonValue const & value)
+void Test_Module::updatePantographDown(QJsonValue const & value)
 {
-    qDebug() << "Pontograph down update " << value;
+    qDebug() << "Pantograph down update " << value;
 
-    if(m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_DOWN) != STATE::ACTIVE)
+    if(m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_DOWN) != STATE::ACTIVE)
     {
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_DOWN, STATE::ACTIVE);
-        m_jsonVoltage.insert(VTI_DMI::PONTOGRAPH_UP, STATE::INACTIVE);
+        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_DOWN, STATE::ACTIVE);
+        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::INACTIVE);
         m_jsonVoltage.insert(VTI_DMI::VOLTAGE, STATE::DEFAULT);
         m_jsonVoltage.insert(VTI_DMI::VOLTAGE_WARNING, STATE::WARNING);
         m_jsonVoltage.insert(VTI_DMI::HEATING, STATE::INACTIVE);
@@ -109,7 +111,7 @@ void Test_Module::updateMainBreaker(QJsonValue const & value)
     else
     {
         m_jsonVoltage.insert(VTI_DMI::MAIN_BREAKER, STATE::ACTIVE);
-        checkVoltage(VTI_DMI::PONTOGRAPH_UP);
+        checkVoltage(VTI_DMI::PANTOGRAPH_UP);
     }
 
     m_networkServer->sendUpdate(m_jsonVoltage);
@@ -125,7 +127,7 @@ void Test_Module::updateHeating(QJsonValue const & value)
     }
     else
     {
-        if(m_jsonVoltage.value(VTI_DMI::PONTOGRAPH_UP) == STATE::ACTIVE)
+        if(m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::ACTIVE)
         {
             m_jsonVoltage.insert(VTI_DMI::HEATING, STATE::ACTIVE);
         }
@@ -341,6 +343,51 @@ void Test_Module::updateLight(QJsonValue const & value)
     }
     m_networkServer->sendUpdate(m_jsonExtras);
 }
+void Test_Module::updateSpeedLimit(double newValue)
+{
+    if ( newValue < 0 )
+        m_jsonETCS_A.insert(VTI_DMI::SPEEDLIMIT, "");
+    else
+        m_jsonETCS_A.insert(VTI_DMI::SPEEDLIMIT,QString::number(newValue));
+
+    m_networkServer->sendUpdate(m_jsonETCS_A);
+}
+
+void Test_Module::updateDistance(double newValue)
+{
+    if ( newValue < 0 )
+    {
+        m_jsonETCS_A.insert(VTI_DMI::DISTANCE, "");
+        m_jsonETCS_A.insert(VTI_DMI::DISTANCE_BAR, 0);
+    }
+    else
+    {
+        newValue = newValue/10;
+        newValue = round(newValue);
+        newValue *= 10;
+        m_jsonETCS_A.insert(VTI_DMI::DISTANCE, QString::number(newValue));
+        updateDistanceBar(newValue);
+    }
+    m_networkServer->sendUpdate(m_jsonETCS_A);
+}
+
+void Test_Module::updateDistanceBar(double newValue)
+{
+    double scaleLength = 186;
+    double linearLength = 33;
+    double logLength = scaleLength - linearLength;
+    double log100 = 2;
+    double log1000 = 3;
+
+    if ( newValue <= 100 )
+        newValue = newValue * (linearLength/100);
+    else if ( newValue <= 1000 )
+        newValue = linearLength + (log10(newValue) - log100) / (log1000 - log100) * logLength;
+    else
+        newValue = 186;
+
+    m_jsonETCS_A.insert(VTI_DMI::DISTANCE_BAR, newValue);
+}
 
 void Test_Module::receiveUpdate()
 {
@@ -358,6 +405,7 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonAlarm);
             m_networkServer->sendUpdate(m_jsonExtras);
             m_networkServer->sendUpdate(m_jsonActivation);
+            m_networkServer->sendUpdate(m_jsonETCS_A);
         }
         else
             return;
@@ -367,15 +415,20 @@ void Test_Module::receiveUpdate()
     {
         QJsonValue value = update.value(key);
 
-        if(key == VTI_DMI::PONTOGRAPH_UP)
-             updatePontographUp(value);
+        if(key == VTI_DMI::PANTOGRAPH_UP)
+             updatePantographUp(value);
 
-        else if(key == VTI_DMI::PONTOGRAPH_DOWN)
-            updatePontographDown(value);
+        else if(key == VTI_DMI::PANTOGRAPH_DOWN)
+            updatePantographDown(value);
 
         else if(key == VTI_DMI::MAIN_BREAKER)
+        {
+            // Only for test. Remove from here
+            x += 58;
+            updateDistance(x);
+            // to here.
             updateMainBreaker(value);
-
+        }
         else if(key == VTI_DMI::HEATING)
             updateHeating(value);
 

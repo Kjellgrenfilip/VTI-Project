@@ -42,5 +42,8 @@
         <file>desk_ikoner/closedG.png</file>
         <file>Speedometer.qml</file>
         <file>Temp_Speed.qml</file>
+        <file>ETCS_A.qml</file>
+        <file>ETCS_icons/MO_21.bmp</file>
+        <file>sounds/mlg-airhorn.wav</file>
     </qresource>
 </RCC>

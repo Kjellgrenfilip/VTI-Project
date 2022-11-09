@@ -56,7 +56,20 @@ void DMI_Handler::receiveUpdate()
                 // Special case example
             }
 
-            else if( key == VTI_DMI::TEXTINFO)
+            else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE)
+            {
+                QString newValue = m_latestUpdate.value(key).toString();
+                obj->setProperty("text", newValue);
+            }
+
+            else if ( key == VTI_DMI::DISTANCE_BAR )
+            {
+                int newValue = m_latestUpdate.value(key).toDouble();
+                qDebug() << "DISTANCE: " << newValue;
+                obj->setProperty("barValue", newValue);
+            }
+
+            else if( key == VTI_DMI::TEXTINFO )
             {
                 QString newText = m_latestUpdate.value(key).toString();
                 obj->setProperty("text", newText);

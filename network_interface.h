@@ -19,8 +19,8 @@ namespace VTI_DMI
     QString const ACTIVATE          = "activate";
     QString const PROTECTION        = "protection";
     QString const CART              = "cart";
-    QString const PONTOGRAPH_UP     = "pontographUp";
-    QString const PONTOGRAPH_DOWN   = "pontographDown";
+    QString const PANTOGRAPH_UP     = "pantographUp";
+    QString const PANTOGRAPH_DOWN   = "pantographDown";
     QString const VELOCITY          = "velocity";
     QString const VOLTAGE           = "voltage";
     QString const EMERGENCY_BRAKE   = "emergencyBrake";
@@ -43,6 +43,12 @@ namespace VTI_DMI
     QString const TEXTINFO          = "textAreaInfoText";
     QString const LIGHT             = "light";
     QString const EMERGENCY_CALL    = "emergencyCall";
+    QString const SPEEDLIMIT        = "LSSMAText";
+    QString const SPEEDLIMIT_STATE  = "LSSMA";
+    QString const DISTANCE          = "distanceText";
+    QString const DISTANCE_STATE    = "distance";
+    QString const DISTANCE_BAR      = "distanceBarValue";
+    QString const DISTANCE_BAR_STATE= "distanceBar";
 
     QJsonObject const JSON_BRAKES
     {
@@ -64,8 +70,8 @@ namespace VTI_DMI
     QJsonObject const JSON_VOLTAGE
     {
         { VOLTAGE,              STATE::DEFAULT },
-        { PONTOGRAPH_UP,        STATE::DEFAULT },
-        { PONTOGRAPH_DOWN,      STATE::DEFAULT },
+        { PANTOGRAPH_UP,        STATE::DEFAULT },
+        { PANTOGRAPH_DOWN,      STATE::DEFAULT },
         { MAIN_BREAKER,         STATE::DEFAULT },
         { VOLTAGE_WARNING,      STATE::WARNING },
         { HEATING,              STATE::DEFAULT }
@@ -93,6 +99,16 @@ namespace VTI_DMI
         { ACTIVATE,             STATE::DEFAULT },
         { PROTECTION,           STATE::BLINKING },
         { CART,                 STATE::INACTIVE }
+    };
+
+    QJsonObject const JSON_ETCS_A
+    {
+        { SPEEDLIMIT,           QJsonValue::String },
+        { SPEEDLIMIT_STATE,     STATE::ACTIVE},
+        { DISTANCE,             QJsonValue::String },
+        { DISTANCE_STATE,       STATE::ACTIVE},
+        { DISTANCE_BAR,         QJsonValue::Double},
+        { DISTANCE_BAR_STATE,   STATE::ACTIVE}
     };
 };
 
