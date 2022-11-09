@@ -24,7 +24,6 @@ private slots:
     void testReverse();
     void testActivation();
 
-    void testParking();
     void testETCS_A();
 
     void testBreaks();
