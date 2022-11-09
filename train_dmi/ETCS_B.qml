@@ -13,9 +13,6 @@ Item
         spacing: 0
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-       // anchors.right: parent.right
-       // anchors.left: parent.left
-        //anchors.verticalCenter: parent.verticalCenter
         anchors.margins: parent.height/50
 
         Rectangle
@@ -23,6 +20,8 @@ Item
             id: etcsB6
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
+            width: 36 / MyConst.etcsWidth * parent.width
+            height: 36 / MyConst.etcsHeight * parent.height
             color: MyConst.backgroundColor
             objectName: "etcsB6"
 
@@ -60,7 +59,7 @@ Item
 
             Image
             {
-                id: etscB3Image
+                id: etcsB3Image
                 objectName: "etcsB3Image"
                 source: ""
                 anchors.fill: parent
@@ -74,7 +73,7 @@ Item
                     name: "inactive"
                     PropertyChanges
                     {
-                        target: etscB3Image
+                        target: etcsB3Image
                         source: ""
                     }
                 },
@@ -83,7 +82,7 @@ Item
                     name: "active"
                     PropertyChanges
                     {
-                        target: etscB3Image
+                        target: etcsB3Image
                         source: ""
                     }
                 }
@@ -102,7 +101,7 @@ Item
 
             Image
             {
-                id: etscB4Image
+                id: etcsB4Image
                 objectName: "etcsB4Image"
                 source: ""
                 anchors.fill: parent
@@ -116,7 +115,7 @@ Item
                     name: "inactive"
                     PropertyChanges
                     {
-                        target: etscB4Image
+                        target: etcsB4Image
                        // source: "symbols/Track Conditions/TC_07.bmp"
                     }
                 },
@@ -125,7 +124,7 @@ Item
                     name: "active"
                     PropertyChanges
                     {
-                        target: etscB4Image
+                        target: etcsB4Image
                         //source: ""
                     }
                 }
@@ -144,7 +143,7 @@ Item
 
             Image
             {
-                id: etscB5Image
+                id: etcsB5Image
                 objectName: "etcsB5Image"
                 source: ""
                 anchors.fill: parent
@@ -158,7 +157,7 @@ Item
                     name: "inactive"
                     PropertyChanges
                     {
-                        target: etscB5Image
+                        target: etcsB5Image
                         source: ""
                     }
                 },
@@ -167,7 +166,7 @@ Item
                     name: "active"
                     PropertyChanges
                     {
-                        target: etscB5Image
+                        target: etcsB5Image
                         source: ""
                     }
                 }
@@ -193,7 +192,7 @@ Item
 
             Image
             {
-                id: etscB7Image
+                id: etcsB7Image
                 source: "symbols/Mode/MO_09.bmp"
                 anchors.fill: parent
                 anchors.margins: 2
@@ -206,7 +205,7 @@ Item
                     name: "inactive"
                     PropertyChanges
                     {
-                        target: etscB3Image
+                        target: etcsB3Image
                         source: ""
                     }
                 },
@@ -215,7 +214,7 @@ Item
                     name: "active"
                     PropertyChanges
                     {
-                        target: etscB3Image
+                        target: etcsB3Image
                         source: "symbols/Mode/MO_09.bmp"
                     }
                 }
