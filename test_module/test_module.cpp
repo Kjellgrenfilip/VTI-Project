@@ -342,17 +342,17 @@ void Test_Module::updateETCSB(QJsonValue const & value)
     if(m_jsonETCSB.value(VTI_DMI::ETCSB3) == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
-
+        m_jsonETCSB.insert(VTI_DMI::ETCSB3Image, value);
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB4).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
-
+        m_jsonETCSB.insert(VTI_DMI::ETCSB4Image, value);
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB5).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
-
+        m_jsonETCSB.insert(VTI_DMI::ETCSB5Image, value);
     }
     else
         etcsBImageQueue.enqueue(value);
@@ -360,16 +360,16 @@ void Test_Module::updateETCSB(QJsonValue const & value)
     m_networkServer->sendUpdate(m_jsonETCSB);
 }
 
-void Test_Module::removeImage()
+void Test_Module::removeImage(QString const & key)
 {
-    m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::INACTIVE);
+    m_jsonETCSB.insert(key, STATE::INACTIVE);
     m_networkServer->sendUpdate(m_jsonETCSB);
 
     if(!etcsBImageQueue.isEmpty())
     {
 
-        m_jsonETCSB.insert(VTI_DMI::ETCSB4Image, etcsBImageQueue.dequeue());
-        updateETCSB(VTI_DMI::ETCSB4Image);
+        QJsonValue value = etcsBImageQueue.dequeue();
+        updateETCSB(value);
     }
 
 }
@@ -399,29 +399,41 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCSB);
 
             ///m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSB3Image,8);
+          //  m_jsonETCSB.insert(VTI_DMI::ETCSB3Image,"08");
             //qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSBImage).toDouble();
-            updateETCSB(VTI_DMI::ETCSB3Image);
+            updateETCSB("08");
 
             delay(500);
 
            // m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSB4Image, 7);
-            updateETCSB(VTI_DMI::ETCSB4Image);
+
+            updateETCSB("07");
             delay(500);
            // m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSB5Image, 26);
-            updateETCSB(VTI_DMI::ETCSB5Image);
+
+            updateETCSB("26");
             delay(500);
 
-            m_jsonETCSB.insert(VTI_DMI::ETCSB4Image, 19);
-delay(500);
-            removeImage();
+            updateETCSB("33");
+            updateETCSB("32");
+            updateETCSB("36");
             delay(500);
-            removeImage();
-            removeImage();
-            removeImage();
-            qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB4).toString();
+            removeImage(VTI_DMI::ETCSB4);
+
+        delay(500);
+           // qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB3).toString();
+
+
+            removeImage(VTI_DMI::ETCSB5);
+            delay(500);
+
+           // qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB3).toString()
+
+
+            removeImage(VTI_DMI::ETCSB3);
+            delay(500);
+
+           // qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB4).toString();
 
         }
         else

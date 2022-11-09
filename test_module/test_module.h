@@ -50,7 +50,7 @@ public:
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
     void resetStates();
-    void removeImage();
+    void removeImage(QString const & key);
 
     void updateETCSB(QJsonValue const & value);
 

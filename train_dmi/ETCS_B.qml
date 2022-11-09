@@ -36,6 +36,30 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
             }
 
+            states :
+            [
+                State
+                {
+                    name: "inactive";
+                    PropertyChanges
+                    {
+                        target: b6Text
+                        visible: false
+                    }
+                },
+                State
+                {
+                    name: "active";
+                    PropertyChanges
+                    {
+                        target: b6Text
+                        visible: true
+                    }
+                }
+
+            ]
+
+
 
         }
 
@@ -75,6 +99,7 @@ Item
                     {
                         target: etcsB3Image
                         source: ""
+                        visible: false
                     }
                 },
                 State
@@ -84,6 +109,7 @@ Item
                     {
                         target: etcsB3Image
                         source: ""
+                        visible: true
                     }
                 }
             ]
@@ -116,7 +142,8 @@ Item
                     PropertyChanges
                     {
                         target: etcsB4Image
-                       // source: "symbols/Track Conditions/TC_07.bmp"
+                        source: ""
+                        visible: false
                     }
                 },
                 State
@@ -125,7 +152,8 @@ Item
                     PropertyChanges
                     {
                         target: etcsB4Image
-                        //source: ""
+                        source: ""
+                        visible: true
                     }
                 }
             ]
@@ -159,6 +187,7 @@ Item
                     {
                         target: etcsB5Image
                         source: ""
+                        visible: false
                     }
                 },
                 State
@@ -168,6 +197,7 @@ Item
                     {
                         target: etcsB5Image
                         source: ""
+                        visible: true
                     }
                 }
             ]
@@ -184,6 +214,7 @@ Item
         Rectangle
         {
             id: etcsB7
+            objectName: "etcsB7"
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
             color: MyConst.backgroundColor
@@ -193,7 +224,8 @@ Item
             Image
             {
                 id: etcsB7Image
-                source: "symbols/Mode/MO_09.bmp"
+                objectName: "etcsB7Image"
+                source: ""
                 anchors.fill: parent
                 anchors.margins: 2
             }
@@ -205,8 +237,9 @@ Item
                     name: "inactive"
                     PropertyChanges
                     {
-                        target: etcsB3Image
+                        target: etcsB7Image
                         source: ""
+                        visible: false
                     }
                 },
                 State
@@ -214,8 +247,9 @@ Item
                     name: "active"
                     PropertyChanges
                     {
-                        target: etcsB3Image
-                        source: "symbols/Mode/MO_09.bmp"
+                        target: etcsB7Image
+                        source: ""
+                        visible: true
                     }
                 }
             ]
