@@ -338,28 +338,28 @@ void Test_Module::updateLight(QJsonValue const & value)
 void Test_Module::updateETCSB(QJsonValue const & value)
 {
     //QString currentState = m_jsonETCSB.value(VTI_DMI::ETCSB3).toString();
-    qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB3).toString();
-    qDebug() << STATE::INACTIVE;
 
     if(m_jsonETCSB.value(VTI_DMI::ETCSB3) == STATE::INACTIVE)
     {
         qDebug() << "HERe";
+
         m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
         //VTI_DMI::ETCSBImage = "etcsB3Image";
-        m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
+        //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
+        qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB3Image).toDouble();
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB4).toString() == STATE::INACTIVE)
     {
         qDebug() << "HERe";
         m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
         //VTI_DMI::ETCSBImage = "etcsB4Image";
-        m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
+        //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
     else if(m_jsonETCSB.value(VTI_DMI::ETCSB5).toString() == STATE::INACTIVE)
     {
         m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
        // VTI_DMI::ETCSBImage = "etcsB5Image";
-        m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
+        //m_jsonETCSB.insert(VTI_DMI::ETCSBImage, value);
     }
 
     m_networkServer->sendUpdate(m_jsonETCSB);
@@ -389,18 +389,19 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCSB);
 
             ///m_jsonETCSB.insert(VTI_DMI::ETCSB3, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 5);
-            updateETCSB(VTI_DMI::ETCSBImage);
+            m_jsonETCSB.insert(VTI_DMI::ETCSB3Image,8);
+            //qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSBImage).toDouble();
+            updateETCSB(VTI_DMI::ETCSB3Image);
 
             delay(500);
 
            // m_jsonETCSB.insert(VTI_DMI::ETCSB4, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 7);
-            updateETCSB(VTI_DMI::ETCSBImage);
+            m_jsonETCSB.insert(VTI_DMI::ETCSB4Image, 7);
+            updateETCSB(VTI_DMI::ETCSB4Image);
             delay(500);
            // m_jsonETCSB.insert(VTI_DMI::ETCSB5, STATE::ACTIVE);
-            m_jsonETCSB.insert(VTI_DMI::ETCSBImage, 26);
-            updateETCSB(VTI_DMI::ETCSBImage);
+            m_jsonETCSB.insert(VTI_DMI::ETCSB5Image, 26);
+            updateETCSB(VTI_DMI::ETCSB5Image);
             delay(500);
 
 

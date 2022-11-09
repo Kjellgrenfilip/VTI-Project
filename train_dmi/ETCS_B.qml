@@ -23,6 +23,7 @@ Item
             id: etcsB6
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
+            color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
 
@@ -36,16 +37,6 @@ Item
             }
 
 
-
-
-
-            /*Image
-            {
-                id: etscB6Image
-                source: "symbols/Mode/MO_01.bmp"
-                anchors.fill: parent
-                anchors.margins: 2
-            }*/
         }
 
         Rectangle
@@ -62,6 +53,7 @@ Item
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
             objectName: "etcsB3"
+            color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
 
@@ -103,6 +95,7 @@ Item
             objectName: "etcsB4"
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
+            color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
 
@@ -144,13 +137,14 @@ Item
             objectName: "etcsB5"
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
+            color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
 
             Image
             {
                 id: etscB5Image
-                objectName: "etscB5Image"
+                objectName: "etcsB5Image"
                 source: ""
                 anchors.fill: parent
                 anchors.margins: 2
@@ -192,6 +186,7 @@ Item
             id: etcsB7
             Layout.minimumHeight: 36
             Layout.minimumWidth: 36
+            color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
 

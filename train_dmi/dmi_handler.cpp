@@ -70,7 +70,22 @@ void DMI_Handler::receiveUpdate()
                 obj->setProperty("text", newText);
             }
 
+            if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image || key == VTI_DMI::ETCSB5Image )
+            {
 
+
+                double value = m_latestUpdate.value(key).toDouble();
+                qDebug() << value;
+                QString newValue{};
+                if(value < 10)
+                    newValue = "0";
+                newValue += QString::number(value);
+
+
+                QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
+                qDebug() << s;
+                obj->setProperty("source", s);
+            }
 
 
             else
@@ -80,19 +95,7 @@ void DMI_Handler::receiveUpdate()
                 obj->setProperty("state", newState);
 
 
-                if ( key == VTI_DMI::ETCSB3 || key == VTI_DMI::ETCSB4 || key == VTI_DMI::ETCSB5 )
-                {
-                    double value = m_latestUpdate.value(key).toDouble();
-                    QString newValue{};
-                    if(value < 10)
-                        newValue = "0";
-                    newValue += QString::number(value);
-                    qDebug() << "IM HEEREER!";
-                    QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
-                    QString s2 = key + "Image";
-                    obj->setProperty("target", s2);
-                    obj->setProperty("source", s);
-                }
+
 
             }
         }

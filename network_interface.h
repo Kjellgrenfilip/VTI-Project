@@ -49,7 +49,9 @@ namespace VTI_DMI
     QString const ETCSB5            = "etcsB5";
     QString const ETCSB6            = "etcsB6";
     QString const ETCSB7            = "etcsB7";
-    QString const ETCSBImage        = "etcsBImage";
+    QString const ETCSB3Image        = "etcsB3Image";
+    QString const ETCSB4Image        = "etcsB4Image";
+    QString const ETCSB5Image        = "etcsB5Image";
 
     QJsonObject const JSON_BRAKES
     {
@@ -114,7 +116,9 @@ namespace VTI_DMI
         { ETCSB5,               STATE::INACTIVE },
         { ETCSB6,               STATE::INACTIVE },
         { ETCSB6,               STATE::INACTIVE },
-        { ETCSBImage,           QJsonValue::Double }
+        { ETCSB3Image,          QJsonValue::Double },
+        { ETCSB4Image,          QJsonValue::Double },
+        { ETCSB5Image,          QJsonValue::Double }
     };
 };
 
