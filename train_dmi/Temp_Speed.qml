@@ -13,7 +13,7 @@ Rectangle {
 
     //! [the dial in use]
     // Dial with a slider to adjust it
-    Dial {
+    Speedometer {
         id: dial
         anchors.centerIn: parent
         value: slider.x * 100 / (container.width - 32)

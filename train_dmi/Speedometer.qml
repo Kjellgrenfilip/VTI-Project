@@ -1,6 +1,3 @@
-// Copyright (C) 2017 The Qt Company Ltd.
-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
-
 import QtQuick
 
 Item {
@@ -8,6 +5,12 @@ Item {
     property real value : 0
 
     width: 250; height: 250
+
+    Rectangle
+    {
+        anchors.fill:  parent
+        color: "#041122"
+    }
 
     Rectangle{
         anchors.fill:  parent
@@ -46,6 +49,43 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             radius: 25
             color: "lightgrey"
+        }
+
+        Rectangle {
+            height: 10
+            width: 10
+            radius: 5
+            color: "orange"
+
+            x: 125 * Math.cos(0) + 115
+            y: 125 * Math.sin(0) + 120
+        }
+        Rectangle {
+            height: 10
+            width: 10
+            radius: 5
+            color: "blue"
+
+            x: 125 * Math.cos(Math.PI/2) + 120
+            y: 125 * Math.sin(Math.PI/2) + 115
+        }
+        Rectangle {
+            height: 10
+            width: 10
+            radius: 5
+            color: "red"
+
+            x: 125 * Math.cos(Math.PI) + 125
+            y: 125 * Math.sin(Math.PI) + 120
+        }
+        Rectangle {
+            height: 10
+            width: 10
+            radius: 5
+            color: "white"
+
+            x: 125 * Math.cos(3*Math.PI/2) + 120
+            y: 125 * Math.sin(3*Math.PI/2) + 125
         }
     }
 }

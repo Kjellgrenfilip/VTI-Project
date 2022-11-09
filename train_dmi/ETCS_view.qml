@@ -23,6 +23,7 @@ Item {
                 color:"white";
             }
         }
+        Temp_Speed{}
     }
 }
 
