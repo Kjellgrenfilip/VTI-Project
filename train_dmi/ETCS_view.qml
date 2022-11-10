@@ -48,7 +48,7 @@ Item {
                 anchors.top: rectangleZ.bottom
                 width:(280/MyConst.etcsWidth) * parent.width
                 height:(300/MyConst.etcsHeight) * parent.height
-                color:  MyConst.orange
+                color:  MyConst.backgroundColor
                 ETCS_B{}
             }
             Rectangle

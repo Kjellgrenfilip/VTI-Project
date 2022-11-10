@@ -7,38 +7,44 @@ Item
     id: etcsB
     anchors.fill: parent
 
-    RowLayout
+    Grid
     {
-        id: etcsBRow
-        spacing: 0
+        id: grid
+        columnSpacing: 0
+        //anchors.fill: parent
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.margins: parent.height/50
-        width:  36*7/parent.width
-        height: 36*parent.height
+        anchors.margins: 14//(parent.width - (childrenRect.width*7))/2
+        //scale: parent.width/sourceSize.width
+       // //height: 36
+        ////width: 36*7
+        width: parent.width*0.9
+        height: parent.height/8.333
+        rows: 1
+        columns: 7
+        //scale: parent.width/parent.height
 
         Rectangle
         {
             id: etcsB6
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
-
-            width: parent.width
+            ////height: 36
+            ////width: 36
+            width: parent.width/7
             height: parent.height
             color: MyConst.backgroundColor
             objectName: "etcsB6"
-
-
-            ETCS_Box3DEffect{}
+            //scale: (parent.width*0.9)/(parent.height/8.333)
 
             Text
             {
                 id: b6Text
-                text: qsTr("25")
+                //text: qsTr("25")
                 color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
+
+            ETCS_Box3DEffect{}
 
             states :
             [
@@ -57,6 +63,7 @@ Item
                     PropertyChanges
                     {
                         target: b6Text
+                        text: qsTr("25")
                         visible: true
                     }
                 }
@@ -70,24 +77,22 @@ Item
         Rectangle
         {
             id: etcsinactive0
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
+            ////height: 36
+            ////width: 36
             color: "transparent"
-            width: parent.width
+            width: parent.width/7
             height: parent.height
         }
 
         Rectangle
         {
             id: etcsB3
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
+            ////height: 36
+            ////width: 36
             objectName: "etcsB3"
             color: MyConst.backgroundColor
-            width: parent.width
+            width: parent.width/7
             height: parent.height
-
-            ETCS_Box3DEffect{}
 
             Image
             {
@@ -95,8 +100,10 @@ Item
                 objectName: "etcsB3Image"
                 source: ""
                 anchors.fill: parent
-                anchors.margins: 2
+               // anchors.margins: 2
             }
+
+            ETCS_Box3DEffect{}
 
             states:
             [
@@ -127,13 +134,11 @@ Item
         {
             id: etcsB4
             objectName: "etcsB4"
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
+            ////height: 36
+            ////width: 36
             color: MyConst.backgroundColor
-            width: parent.width
+            width: parent.width/7
             height: parent.height
-
-            ETCS_Box3DEffect{}
 
             Image
             {
@@ -141,8 +146,10 @@ Item
                 objectName: "etcsB4Image"
                 source: ""
                 anchors.fill: parent
-                anchors.margins: 2
+              //  anchors.margins: 2
             }
+
+            ETCS_Box3DEffect{}
 
             states:
             [
@@ -173,13 +180,11 @@ Item
         {
             id: etcsB5
             objectName: "etcsB5"
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
+            //height: 36
+            //width: 36
             color: MyConst.backgroundColor
-            width: parent.width
+            width: parent.width/7
             height: parent.height
-
-            ETCS_Box3DEffect{}
 
             Image
             {
@@ -187,8 +192,10 @@ Item
                 objectName: "etcsB5Image"
                 source: ""
                 anchors.fill: parent
-                anchors.margins: 2
+               // anchors.margins: 2
             }
+
+            ETCS_Box3DEffect{}
 
             states:
             [
@@ -218,10 +225,10 @@ Item
         Rectangle
         {
             id: etcsinactive1
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
+            //height: 36
+            //width: 36
             color: "transparent"
-            width: parent.width
+            width: parent.width/7
             height: parent.height
         }
 
@@ -229,13 +236,11 @@ Item
         {
             id: etcsB7
             objectName: "etcsB7"
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
+            //height: 36
+            //width: 36
             color: MyConst.backgroundColor
-            width: parent.width
+            width: parent.width/7
             height: parent.height
-
-            ETCS_Box3DEffect{}
 
             Image
             {
@@ -243,8 +248,10 @@ Item
                 objectName: "etcsB7Image"
                 source: ""
                 anchors.fill: parent
-                anchors.margins: 2
+                //anchors.margins: 2
             }
+
+            ETCS_Box3DEffect{}
 
             states:
             [

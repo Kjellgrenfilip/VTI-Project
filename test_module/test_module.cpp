@@ -418,19 +418,19 @@ void Test_Module::receiveUpdate()
             updateETCSB("32");
             updateETCSB("36");
             delay(500);
-            removeImage(VTI_DMI::ETCSB4);
+            //removeImage(VTI_DMI::ETCSB4);
 
         delay(500);
            // qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB3).toString();
 
 
-            removeImage(VTI_DMI::ETCSB5);
+           // removeImage(VTI_DMI::ETCSB5);
             delay(500);
 
            // qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB3).toString()
 
 
-            removeImage(VTI_DMI::ETCSB3);
+           // removeImage(VTI_DMI::ETCSB3);
             delay(500);
 
            // qDebug() << m_jsonETCSB.value(VTI_DMI::ETCSB4).toString();
