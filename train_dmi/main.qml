@@ -12,6 +12,7 @@ Window {
     minimumHeight: MyConst.windowHeight
     color: MyConst.backgroundColor;
 
+
     title: qsTr("Train DMI")
     DESK_view{}
     ETCS_view{}

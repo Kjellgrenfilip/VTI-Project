@@ -6,6 +6,7 @@
 #include <QTimer>
 #include "network_server.h"
 #include "../network_interface.h"
+#include <QQueue>
 
 class Test_Module : public QObject
 {
@@ -30,6 +31,11 @@ private:
 
     // test variable for distance bar
     double x{};
+    QJsonObject m_jsonETCSB;
+
+    QTimer *m_testTimer;
+
+    QQueue<QJsonValue> etcsBImageQueue;
 
     void updatePantographUp(QJsonValue const & value);
     void updatePantographDown(QJsonValue const & value);
@@ -53,6 +59,9 @@ private:
 
 public:
     void resetStates();
+    void removeImage();
+
+    void updateETCSB(QJsonValue const & value);
 
 
     void updateDistance(double newValue);

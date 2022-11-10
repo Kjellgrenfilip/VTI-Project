@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import QtQuick.Shapes 1.15
 
 import "Imports" 1.0
 
@@ -47,7 +48,8 @@ Item {
                 anchors.top: rectangleZ.bottom
                 width:(280/MyConst.etcsWidth) * parent.width
                 height:(300/MyConst.etcsHeight) * parent.height
-                color:"red"
+                color:  MyConst.backgroundColor
+                ETCS_B{}
             }
             Rectangle
             {
@@ -106,7 +108,7 @@ Item {
                 color: "blue"
             }
         }
-        Temp_Speed{}
     }
 }
+
 

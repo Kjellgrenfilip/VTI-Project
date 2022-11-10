@@ -40,6 +40,7 @@ void DMI_Handler::receiveUpdate()
     foreach(const QString& key, m_latestUpdate.keys())
     {
         m_jsonState.insert(key, m_latestUpdate.value(key));
+        qDebug() << key;
         //Update GUI
         if(!testStart)
         {
@@ -69,12 +70,25 @@ void DMI_Handler::receiveUpdate()
                 obj->setProperty("barValue", newValue);
             }
 
-            else if( key == VTI_DMI::TEXTINFO )
+            else if( key == VTI_DMI::TEXTINFO)
             {
                 QString newText = m_latestUpdate.value(key).toString();
                 obj->setProperty("text", newText);
             }
 
+            if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image || key == VTI_DMI::ETCSB5Image )
+            {
+                double value = m_latestUpdate.value(key).toDouble();
+
+                QString newValue{};
+                if(value < 10)
+                    newValue = "0";
+                newValue += QString::number(value);
+
+                QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
+                qDebug() << s;
+                obj->setProperty("source", s);
+            }
             else
             {
                 QString newState = m_latestUpdate.value(key).toString();

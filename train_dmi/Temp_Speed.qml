@@ -8,8 +8,8 @@ import QtQuick.Window
 
 //! [0]
 Rectangle {
-    color: "#545454"
-    width: 300; height: 300
+    color: "#041122"
+    anchors.fill: parent
 
     //! [the dial in use]
     // Dial with a slider to adjust it

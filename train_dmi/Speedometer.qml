@@ -9,7 +9,7 @@ Item {
     Rectangle
     {
         anchors.fill:  parent
-        color: "#041122"
+        color: "white"
     }
 
     Rectangle{
@@ -51,42 +51,25 @@ Item {
             color: "lightgrey"
         }
 
-        Rectangle {
-            height: 10
-            width: 10
-            radius: 5
-            color: "orange"
+//        Repeater {
+//            id: tickMarkCreator
+//            model: 3
+//            Tick_Mark {
+//                //id: tickMark1
+//                alpha: (144 + (tickMarkCreator.index * 9.6))
+//            }
+//        }
 
-            x: 125 * Math.cos(0) + 115
-            y: 125 * Math.sin(0) + 120
+        Tick_Mark {
+            id: tickMark1
+            alpha: (144)
         }
-        Rectangle {
-            height: 10
-            width: 10
-            radius: 5
-            color: "blue"
+        Tick_Mark {
+            id: tickMark2
+            alpha: (144 + 9.6)
+        }
 
-            x: 125 * Math.cos(Math.PI/2) + 120
-            y: 125 * Math.sin(Math.PI/2) + 115
-        }
-        Rectangle {
-            height: 10
-            width: 10
-            radius: 5
-            color: "red"
 
-            x: 125 * Math.cos(Math.PI) + 125
-            y: 125 * Math.sin(Math.PI) + 120
-        }
-        Rectangle {
-            height: 10
-            width: 10
-            radius: 5
-            color: "white"
-
-            x: 125 * Math.cos(3*Math.PI/2) + 120
-            y: 125 * Math.sin(3*Math.PI/2) + 125
-        }
     }
 }
 
