@@ -4,7 +4,7 @@ import QtCharts 2.15
 Item {
     id: root
     property real value : 0
-    property real currentSpeed : 100
+    property real currentSpeed : 200
     property real angleBetweenTickmarks : 9.7
     property real startAngle : 144
 
@@ -68,7 +68,7 @@ Item {
             Text {
                 id: speedText
                 text: qsTr(currentSpeed.toString())
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 color: "black"
                 font.bold: true
