@@ -118,7 +118,7 @@ Item
             SoundEffect
             {
                 id: sound
-                source: "sounds/S_info.wav"
+                source: "sounds/mlg-airhorn.wav"
             }
 
             Image
