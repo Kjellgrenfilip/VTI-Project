@@ -7,6 +7,7 @@ Item
     id: etcsB
     anchors.fill: parent
 
+    Speedometer{}
     RowLayout
     {
         id: etcsBRow
@@ -221,5 +222,4 @@ Item
             ]
         }
     }
-    Speedometer{}
 }

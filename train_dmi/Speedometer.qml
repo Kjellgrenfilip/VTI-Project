@@ -1,14 +1,16 @@
 import QtQuick
-import QtCharts 2.15
+import QtQuick.Shapes 1.15
 
 Item {
-    id: root
+    id: speedometer
     property real value : 0
     property real currentSpeed : 200
-    property real angleBetweenTickmarks : 9.7
-    property real startAngle : 144
+    property real angleBetweenTickmarks : 9.6
+    property real startAngle : 126
+    property string needleColor : "lightgrey"
+    property real indicationAngle : 180+54+54
 
-    width: 270; height: 270
+    width: 280; height: 300
 
     // Sets the background color behind the Speedometer!
     Rectangle
@@ -17,12 +19,26 @@ Item {
         color: "#041122"
     }
 
-    // Somehow create a arc around the Speedometer
-//    Rectangle {
-//        anchors.fill: parent
-//        color: "yellow"
-//        radius: parent.width / 2
-//    }
+    // Somehow create a arc around the Speedometer89
+    Shape {
+        anchors.fill: parent
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        anchors.verticalCenter : parent.verticalCenter
+
+        ShapePath {
+            fillColor: "transparent"
+            strokeColor: "grey"
+            strokeWidth: 9
+
+
+            PathAngleArc {
+                centerX: parent.width/2; centerY: parent.height/2
+                radiusX: 132.5; radiusY: 132.5
+                startAngle: 126
+                sweepAngle: indicationAngle
+            }
+        }
+    }
 
     // Creates the Speedometer!
     Rectangle{
@@ -32,21 +48,42 @@ Item {
         color: "#041122"
         radius:  125
 
-        // Creates the needle!
+        // Creates the thick part of the needle!
         Rectangle {
-            id: needle
+            id: needleThick
             x: (parent.width/2) - width/2
             y: parent.height/2
             antialiasing: true
             width: 9
-            height: 80
-            color: "lightgrey"
+            height: 82
+            color: needleColor
             transform: Rotation {
-                id: needleRotation
                 origin.x: 4.5; origin.y: 0
                 //Min = 54, Max = 306
                 // Map the angle between min/max angle values and the speed min/max values
-                angle: Math.min(Math.max(54, root.value*2.6 +54), 306)
+                angle: Math.min(Math.max(36, speedometer.value*2.6 + 36), 324)
+                Behavior on angle {
+                    SpringAnimation {
+                        spring: 1.0
+                        damping: 1.0
+                    }
+                }
+            }
+        }
+        // Creates the thin part of the needle
+        Rectangle {
+            id: needleThin
+            x: (parent.width/2) - width/2
+            y: parent.height/2
+            antialiasing: true
+            width: 3
+            height: 105
+            color: needleColor
+            transform: Rotation {
+                origin.x: 4.5; origin.y: 0
+                //Min = 54, Max = 306
+                // Map the angle between min/max angle values and the speed min/max values
+                angle: Math.min(Math.max(36, speedometer.value*2.6 + 36), 324)
                 Behavior on angle {
                     SpringAnimation {
                         spring: 1.0
@@ -63,7 +100,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             radius: 25
-            color: "lightgrey"
+            color: needleColor
             // Creates the text that show the speed
             Text {
                 id: speedText
@@ -79,10 +116,11 @@ Item {
         // Creates the tickmarks!
         Repeater {
             id: tickmarkCreator
-            model: 27
+            model: 31
             Tick_Mark {
                 alpha: (startAngle + (index * angleBetweenTickmarks))
-                length: (index % 5 == 0) ? 25 : 15 // Makes every 5:th tickmark long.
+                length: (index % 2 == 0) ? 25 : 15 // Makes every 5:th tickmark long.
+                visibility: (index % 5 == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
             }
         }
     }
