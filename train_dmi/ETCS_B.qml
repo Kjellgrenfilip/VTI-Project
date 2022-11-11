@@ -11,24 +11,20 @@ Item
     {
         id: grid
         columnSpacing: 0
-        //anchors.fill: parent
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.margins: 14//(parent.width - (childrenRect.width*7))/2
-        //scale: parent.width/sourceSize.width
-       // //height: 36
-        ////width: 36*7
+        anchors.margins: 14
+
         width: parent.width*0.9
         height: parent.height/8.333
         rows: 1
         columns: 7
-        //scale: parent.width/parent.height
 
         Rectangle
         {
             id: etcsB6
-            ////height: 36
-            ////width: 36
+
+
             width: parent.width/7
             height: parent.height
             color: MyConst.backgroundColor
@@ -77,8 +73,6 @@ Item
         Rectangle
         {
             id: etcsinactive0
-            ////height: 36
-            ////width: 36
             color: "transparent"
             width: parent.width/7
             height: parent.height
@@ -87,8 +81,8 @@ Item
         Rectangle
         {
             id: etcsB3
-            ////height: 36
-            ////width: 36
+
+
             objectName: "etcsB3"
             color: MyConst.backgroundColor
             width: parent.width/7
@@ -134,8 +128,8 @@ Item
         {
             id: etcsB4
             objectName: "etcsB4"
-            ////height: 36
-            ////width: 36
+
+
             color: MyConst.backgroundColor
             width: parent.width/7
             height: parent.height
