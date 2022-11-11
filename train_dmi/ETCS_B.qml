@@ -14,7 +14,6 @@ Item
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: 14
-
         width: parent.width*0.9
         height: parent.height/8.333
         rows: 1
@@ -23,13 +22,10 @@ Item
         Rectangle
         {
             id: etcsB6
-
-
             width: parent.width/7
             height: parent.height
             color: MyConst.backgroundColor
             objectName: "etcsB6"
-            //scale: (parent.width*0.9)/(parent.height/8.333)
 
             Text
             {
@@ -42,7 +38,7 @@ Item
 
             ETCS_Box3DEffect{}
 
-            states :
+            states:
             [
                 State
                 {
@@ -81,8 +77,6 @@ Item
         Rectangle
         {
             id: etcsB3
-
-
             objectName: "etcsB3"
             color: MyConst.backgroundColor
             width: parent.width/7
@@ -94,7 +88,7 @@ Item
                 objectName: "etcsB3Image"
                 source: ""
                 anchors.fill: parent
-               // anchors.margins: 2
+                anchors.margins: 2
             }
 
             ETCS_Box3DEffect{}
@@ -140,7 +134,7 @@ Item
                 objectName: "etcsB4Image"
                 source: ""
                 anchors.fill: parent
-              //  anchors.margins: 2
+                anchors.margins: 2
             }
 
             ETCS_Box3DEffect{}
@@ -174,8 +168,6 @@ Item
         {
             id: etcsB5
             objectName: "etcsB5"
-            //height: 36
-            //width: 36
             color: MyConst.backgroundColor
             width: parent.width/7
             height: parent.height
@@ -186,7 +178,7 @@ Item
                 objectName: "etcsB5Image"
                 source: ""
                 anchors.fill: parent
-               // anchors.margins: 2
+                anchors.margins: 2
             }
 
             ETCS_Box3DEffect{}
@@ -219,8 +211,6 @@ Item
         Rectangle
         {
             id: etcsinactive1
-            //height: 36
-            //width: 36
             color: "transparent"
             width: parent.width/7
             height: parent.height
@@ -230,8 +220,6 @@ Item
         {
             id: etcsB7
             objectName: "etcsB7"
-            //height: 36
-            //width: 36
             color: MyConst.backgroundColor
             width: parent.width/7
             height: parent.height
@@ -240,9 +228,9 @@ Item
             {
                 id: etcsB7Image
                 objectName: "etcsB7Image"
-                source: ""
+                source: "symbols/Mode/MO_09.bmp"
                 anchors.fill: parent
-                //anchors.margins: 2
+                anchors.margins: 2
             }
 
             ETCS_Box3DEffect{}
@@ -255,7 +243,7 @@ Item
                     PropertyChanges
                     {
                         target: etcsB7Image
-                        source: ""
+                        source: "symbols/Mode/MO_09.bmp"
                         //visible: false
                     }
                 },
