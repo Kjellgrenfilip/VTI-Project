@@ -29,6 +29,7 @@ private slots:
     void testBreaks();
     void testEmergencyInfo();
 
+    void testETCS_B();
 };
 
 void delay(int timeToWait)
@@ -270,6 +271,47 @@ void test::testETCS_A()
     tc.testModule->updateDistance(-100);
     delay(100);
     QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::DISTANCE_BAR), 0);
+}
+
+void test::testETCS_B()
+{
+    TestConf tc{};
+    tc.testModule->updateETCSB("37");
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::ETCSB3Image).toString(), "37");
+
+    tc.testModule->updateETCSB("01");
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::ETCSB4Image).toString(), "01");
+
+    tc.testModule->updateETCSB("02");
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::ETCSB5Image).toString(), "02");
+
+    tc.testModule->updateETCSB("03");
+    delay(100);
+    QCOMPARE(tc.testModule->etcsBImageQueue.size(), 1);
+    tc.testModule->updateETCSB("07");
+    delay(100);
+    QCOMPARE(tc.testModule->etcsBImageQueue.size(), 2);
+    tc.testModule->updateETCSB("27");
+    delay(100);
+    QCOMPARE(tc.testModule->etcsBImageQueue.size(), 3);
+
+    tc.testModule->removeImage(VTI_DMI::ETCSB4);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::ETCSB4Image).toString(), "03");
+    QCOMPARE(tc.testModule->etcsBImageQueue.size(), 2);
+
+    tc.testModule->removeImage(VTI_DMI::ETCSB3);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::ETCSB3Image).toString(), "07");
+    QCOMPARE(tc.testModule->etcsBImageQueue.size(), 1);
+
+    tc.testModule->removeImage(VTI_DMI::ETCSB5);
+    delay(100);
+    QCOMPARE(tc.dmiHandler->m_latestUpdate.value(VTI_DMI::ETCSB5Image).toString(), "27");
+    QCOMPARE(tc.testModule->etcsBImageQueue.size(), 0);
 }
 
 QTEST_MAIN(test)

@@ -35,7 +35,7 @@ private:
 
     QTimer *m_testTimer;
 
-    QQueue<QJsonValue> etcsBImageQueue;
+
 
     void updatePantographUp(QJsonValue const & value);
     void updatePantographDown(QJsonValue const & value);
@@ -60,10 +60,10 @@ private:
 
 public:
     void resetStates();
-    void removeImage();
+    void removeImage(QString const & key);
 
     void updateETCSB(QJsonValue const & value);
-
+    QQueue<QJsonValue> etcsBImageQueue;
 
     void updateDistance(double newValue);
     void updateDistanceBar(double newValue);

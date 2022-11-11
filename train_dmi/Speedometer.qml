@@ -21,9 +21,9 @@ Item {
 
     // Somehow create a arc around the Speedometer89
     Shape {
-        anchors.fill: parent
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        anchors.verticalCenter : parent.verticalCenter
+        width: 280; height: 300
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
 
         ShapePath {
             fillColor: "transparent"
@@ -32,7 +32,7 @@ Item {
 
 
             PathAngleArc {
-                centerX: parent.width/2; centerY: parent.height/2
+                centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 132.5; radiusY: 132.5
                 startAngle: 126
                 sweepAngle: indicationAngle
@@ -44,7 +44,8 @@ Item {
     Rectangle{
         width: 250; height: 250
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.margins: 20
         color: "#041122"
         radius:  125
 

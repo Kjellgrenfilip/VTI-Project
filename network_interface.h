@@ -126,9 +126,9 @@ namespace VTI_DMI
         { ETCSB5,               STATE::INACTIVE },
         { ETCSB6,               STATE::INACTIVE },
         { ETCSB6,               STATE::INACTIVE },
-        { ETCSB3Image,          QJsonValue::Double },
-        { ETCSB4Image,          QJsonValue::Double },
-        { ETCSB5Image,          QJsonValue::Double }
+        { ETCSB3Image,          QJsonValue::String },
+        { ETCSB4Image,          QJsonValue::String },
+        { ETCSB5Image,          QJsonValue::String }
     };
 };
 

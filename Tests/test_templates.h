@@ -296,14 +296,12 @@ namespace VTI_TESTCASE
         { DISTANCE_BAR_STATE,   STATE::ACTIVE}
     };
 
-
-
-
-
-
-
-
-
+    QJsonObject const ETCS_B_QUEUESIZE3
+    {
+        { ETCSB3,               STATE::INACTIVE },
+        { ETCSB4,               STATE::INACTIVE },
+        { ETCSB3,               STATE::INACTIVE },
+    };
 }
 
 

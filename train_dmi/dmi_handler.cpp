@@ -78,14 +78,9 @@ void DMI_Handler::receiveUpdate()
 
             if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image || key == VTI_DMI::ETCSB5Image )
             {
-                double value = m_latestUpdate.value(key).toDouble();
+                QString value = m_latestUpdate.value(key).toString();
 
-                QString newValue{};
-                if(value < 10)
-                    newValue = "0";
-                newValue += QString::number(value);
-
-                QString s = "symbols/Track Conditions/TC_" + newValue + ".bmp";
+                QString s = "symbols/Track Conditions/TC_" + value + ".bmp";
                 qDebug() << s;
                 obj->setProperty("source", s);
             }

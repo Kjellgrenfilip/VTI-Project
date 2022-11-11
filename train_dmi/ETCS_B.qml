@@ -8,25 +8,25 @@ Item
     anchors.fill: parent
 
     Speedometer{}
-    RowLayout
+    Grid
     {
-        id: etcsBRow
-        spacing: 0
+        id: grid
+        columnSpacing: 0
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.margins: parent.height/50
+        anchors.margins: 14
+        width: parent.width*0.9
+        height: parent.height/8.333
+        rows: 1
+        columns: 7
 
         Rectangle
         {
             id: etcsB6
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
-            width: 36 / MyConst.etcsWidth * parent.width
-            height: 36 / MyConst.etcsHeight * parent.height
+            width: parent.width/7
+            height: parent.height
             color: MyConst.backgroundColor
             objectName: "etcsB6"
-
-            ETCS_Box3DEffect{}
 
             Text
             {
@@ -37,26 +37,51 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
             }
 
+            ETCS_Box3DEffect{}
+
+            states:
+            [
+                State
+                {
+                    name: "inactive";
+                    PropertyChanges
+                    {
+                        target: b6Text
+                        //visible: false
+                    }
+                },
+                State
+                {
+                    name: "active";
+                    PropertyChanges
+                    {
+                        target: b6Text
+                        text: qsTr("25")
+                        visible: true
+                    }
+                }
+
+            ]
+
+
 
         }
 
         Rectangle
         {
             id: etcsinactive0
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
             color: "transparent"
+            width: parent.width/7
+            height: parent.height
         }
 
         Rectangle
         {
             id: etcsB3
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
             objectName: "etcsB3"
             color: MyConst.backgroundColor
-
-            ETCS_Box3DEffect{}
+            width: parent.width/7
+            height: parent.height
 
             Image
             {
@@ -67,6 +92,8 @@ Item
                 anchors.margins: 2
             }
 
+            ETCS_Box3DEffect{}
+
             states:
             [
                 State
@@ -76,6 +103,7 @@ Item
                     {
                         target: etcsB3Image
                         source: ""
+                        visible: false
                     }
                 },
                 State
@@ -85,6 +113,7 @@ Item
                     {
                         target: etcsB3Image
                         source: ""
+                        visible: true
                     }
                 }
             ]
@@ -94,11 +123,11 @@ Item
         {
             id: etcsB4
             objectName: "etcsB4"
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
-            color: MyConst.backgroundColor
 
-            ETCS_Box3DEffect{}
+
+            color: MyConst.backgroundColor
+            width: parent.width/7
+            height: parent.height
 
             Image
             {
@@ -109,6 +138,8 @@ Item
                 anchors.margins: 2
             }
 
+            ETCS_Box3DEffect{}
+
             states:
             [
                 State
@@ -117,7 +148,8 @@ Item
                     PropertyChanges
                     {
                         target: etcsB4Image
-                       // source: "symbols/Track Conditions/TC_07.bmp"
+                        source: ""
+                        visible: false
                     }
                 },
                 State
@@ -126,7 +158,8 @@ Item
                     PropertyChanges
                     {
                         target: etcsB4Image
-                        //source: ""
+                        source: ""
+                        visible: true
                     }
                 }
             ]
@@ -136,11 +169,9 @@ Item
         {
             id: etcsB5
             objectName: "etcsB5"
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
             color: MyConst.backgroundColor
-
-            ETCS_Box3DEffect{}
+            width: parent.width/7
+            height: parent.height
 
             Image
             {
@@ -151,6 +182,8 @@ Item
                 anchors.margins: 2
             }
 
+            ETCS_Box3DEffect{}
+
             states:
             [
                 State
@@ -160,6 +193,7 @@ Item
                     {
                         target: etcsB5Image
                         source: ""
+                        visible: false
                     }
                 },
                 State
@@ -169,6 +203,7 @@ Item
                     {
                         target: etcsB5Image
                         source: ""
+                        visible: true
                     }
                 }
             ]
@@ -177,27 +212,29 @@ Item
         Rectangle
         {
             id: etcsinactive1
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
             color: "transparent"
+            width: parent.width/7
+            height: parent.height
         }
 
         Rectangle
         {
             id: etcsB7
-            Layout.minimumHeight: 36
-            Layout.minimumWidth: 36
+            objectName: "etcsB7"
             color: MyConst.backgroundColor
-
-            ETCS_Box3DEffect{}
+            width: parent.width/7
+            height: parent.height
 
             Image
             {
                 id: etcsB7Image
+                objectName: "etcsB7Image"
                 source: "symbols/Mode/MO_09.bmp"
                 anchors.fill: parent
                 anchors.margins: 2
             }
+
+            ETCS_Box3DEffect{}
 
             states:
             [
@@ -206,8 +243,9 @@ Item
                     name: "inactive"
                     PropertyChanges
                     {
-                        target: etcsB3Image
-                        source: ""
+                        target: etcsB7Image
+                        source: "symbols/Mode/MO_09.bmp"
+                        //visible: false
                     }
                 },
                 State
@@ -215,8 +253,9 @@ Item
                     name: "active"
                     PropertyChanges
                     {
-                        target: etcsB3Image
-                        source: "symbols/Mode/MO_09.bmp"
+                        target: etcsB7Image
+                        source: ""
+                        visible: true
                     }
                 }
             ]
