@@ -35,6 +35,7 @@ Item
                 color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
+                font.pointSize: parent.height/1.8
             }
 
             ETCS_Box3DEffect{}

@@ -418,7 +418,7 @@ void Test_Module::updateDistanceBar(double newValue)
     m_jsonETCS_A.insert(VTI_DMI::DISTANCE_BAR, newValue);
 }
 
-void Test_Module::updateETCSB(QJsonValue const & value)
+void Test_Module::updateETCSB345(QJsonValue const & value)
 {
     //QString currentState = m_jsonETCSB.value(VTI_DMI::ETCSB3).toString();
 
@@ -443,6 +443,14 @@ void Test_Module::updateETCSB(QJsonValue const & value)
     m_networkServer->sendUpdate(m_jsonETCSB);
 }
 
+void Test_Module::updateETCSB7(QJsonValue const & value)
+{
+    if (m_jsonETCSB.value(VTI_DMI::ETCSB7).toString() == STATE::INACTIVE)
+        m_jsonETCSB.insert(VTI_DMI::ETCSB7, STATE::ACTIVE);
+    m_jsonETCSB.insert(VTI_DMI::ETCSB7Image, value);
+
+}
+
 void Test_Module::removeImage(QString const & key)
 {
     m_jsonETCSB.insert(key, STATE::INACTIVE);
@@ -452,7 +460,7 @@ void Test_Module::removeImage(QString const & key)
     {
 
         QJsonValue value = etcsBImageQueue.dequeue();
-        updateETCSB(value);
+        updateETCSB345(value);
     }
 
 }
@@ -482,18 +490,18 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->sendUpdate(m_jsonETCSB);
 
-            updateETCSB("08");
+            updateETCSB345("08");
             delay(500);
 
-            updateETCSB("07");
+            updateETCSB345("07");
             delay(500);
 
-            updateETCSB("26");
+            updateETCSB345("26");
             delay(500);
 
-            updateETCSB("33");
-            updateETCSB("32");
-            updateETCSB("36");
+            updateETCSB345("33");
+            updateETCSB345("32");
+            updateETCSB345("36");
 
             delay(500);
             removeImage(VTI_DMI::ETCSB4);
