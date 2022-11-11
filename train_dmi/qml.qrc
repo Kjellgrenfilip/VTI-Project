@@ -40,6 +40,11 @@
         <file>desk_ikoner/doorleftY.png</file>
         <file>desk_ikoner/doorrightY.png</file>
         <file>desk_ikoner/closedG.png</file>
+        <file>Speedometer.qml</file>
+        <file>Temp_Speed.qml</file>
+        <file>ETCS_A.qml</file>
+        <file>ETCS_icons/MO_21.bmp</file>
+        <file>sounds/mlg-airhorn.wav</file>
         <file>ETCS_B.qml</file>
         <file>symbols/Driver Request/DR_01.bmp</file>
         <file>symbols/Driver Request/DR_02.bmp</file>
@@ -196,5 +201,6 @@
         <file>ETCS_A.qml</file>
         <file>ETCS_icons/MO_21.bmp</file>
         <file>ETCS_Box3DEffect.qml</file>
+        <file>Tick_Mark.qml</file>
     </qresource>
 </RCC>

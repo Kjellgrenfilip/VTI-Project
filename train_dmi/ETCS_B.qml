@@ -6,7 +6,7 @@ Item
 {
     id: etcsB
     anchors.fill: parent
-
+    Speedometer{}
     Grid
     {
         id: grid
@@ -34,7 +34,7 @@ Item
             Text
             {
                 id: b6Text
-                //text: qsTr("25")
+                text: qsTr("25")
                 color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
@@ -50,7 +50,7 @@ Item
                     PropertyChanges
                     {
                         target: b6Text
-                        visible: false
+                        //visible: false
                     }
                 },
                 State
@@ -256,7 +256,7 @@ Item
                     {
                         target: etcsB7Image
                         source: ""
-                        visible: false
+                        //visible: false
                     }
                 },
                 State

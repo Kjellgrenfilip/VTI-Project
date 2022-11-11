@@ -71,6 +71,11 @@ Item {
                         running: true
 
                     }
+                    PropertyChanges {
+                        target: lightButton
+                        enabled: true
+
+                    }
                 }
             ]
             SequentialAnimation
@@ -99,6 +104,7 @@ Item {
         Button
         {
             id: emergencyButton
+            objectName: "emergencyCall"
             width: (emergencyButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
             height:(emergencyButton.pressed) ? parent.height - 40 : parent.height - 35
             anchors.left: parent.horizontalCenter
@@ -137,9 +143,14 @@ Item {
                         target: emergencyButton
                         enabled:true
                     }
+                    PropertyChanges {
+                        target: emergencyImage
+                        source: "desk_ikoner/redButton.png"
+                    }
                 }
 
             ]
+            onPressed: buttonHandler.emergencyPressed()
         }
     }
 }

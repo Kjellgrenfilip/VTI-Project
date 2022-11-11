@@ -39,29 +39,35 @@ void DMI_Handler::receiveUpdate()
     m_latestUpdate = m_client->getUpdate();
     foreach(const QString& key, m_latestUpdate.keys())
     {
-            m_jsonState.insert(key, m_latestUpdate.value(key));
-            qDebug() << key;
-            //Update GUI
-            if(!testStart)
+        m_jsonState.insert(key, m_latestUpdate.value(key));
+        qDebug() << key;
+        //Update GUI
+        if(!testStart)
+        {
+            QObject *obj = m_rootObject->findChild<QObject*>(key);
+
+            if(!obj)
             {
-                QObject *obj = m_rootObject->findChild<QObject*>(key);
+                qDebug() << "Unknown object: " << key;
+                continue;
+            }
 
-                if(!obj)
-                {
-                    qDebug() << "Unknown object: " << key;
-                    continue;
-                }
+            if ( key == VTI_DMI::VELOCITY )
+            {
+                // Special case example
+            }
 
-                if ( key == VTI_DMI::VELOCITY )
-                {
-                    // Special case example
-                }
-
-
-            else if ( key == VTI_DMI::SPEEDLIMIT )
+            else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE)
             {
                 QString newValue = m_latestUpdate.value(key).toString();
                 obj->setProperty("text", newValue);
+            }
+
+            else if ( key == VTI_DMI::DISTANCE_BAR )
+            {
+                int newValue = m_latestUpdate.value(key).toDouble();
+                qDebug() << "DISTANCE: " << newValue;
+                obj->setProperty("barValue", newValue);
             }
 
             else if( key == VTI_DMI::TEXTINFO)
@@ -78,17 +84,11 @@ void DMI_Handler::receiveUpdate()
                 qDebug() << s;
                 obj->setProperty("source", s);
             }
-
-
             else
             {
                 QString newState = m_latestUpdate.value(key).toString();
                 qDebug() << key << " : " << newState;
                 obj->setProperty("state", newState);
-
-
-
-
             }
         }
     }

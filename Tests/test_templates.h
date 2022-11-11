@@ -16,29 +16,29 @@ namespace VTI_TESTCASE
 
     //Activation
     //TESTCASES FOR VOLTAGAE GROUP
-    QJsonObject const VOLTAGE_PONTUP_ACTIVATION
+    QJsonObject const VOLTAGE_PANTUP_ACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE  },
+        { PANTOGRAPH_UP,        STATE::WARNING   },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE  },
         { MAIN_BREAKER,         STATE::DEFAULT },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::DEFAULT  }
     };
-    QJsonObject const VOLTAGE_PONTUP_ACTIVATION_MAINBREAKER
+    QJsonObject const VOLTAGE_PANTUP_ACTIVATION_MAINBREAKER
     {
         { VOLTAGE,              STATE::ACTIVE   },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE },
+        { PANTOGRAPH_UP,        STATE::ACTIVE   },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE },
         { MAIN_BREAKER,         STATE::ACTIVE   },
         { VOLTAGE_WARNING,      STATE::INACTIVE },
         { HEATING,              STATE::DEFAULT  }
     };
-    QJsonObject const VOLTAGE_PONTDOWN_ACTIVATION
+    QJsonObject const VOLTAGE_PANTDOWN_ACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::INACTIVE },
-        { PONTOGRAPH_DOWN,      STATE::ACTIVE   },
+        { PANTOGRAPH_UP,        STATE::INACTIVE },
+        { PANTOGRAPH_DOWN,      STATE::ACTIVE   },
         { MAIN_BREAKER,         STATE::DEFAULT  },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::INACTIVE }
@@ -47,17 +47,17 @@ namespace VTI_TESTCASE
     QJsonObject const VOLTAGE_MAINBREAKER_ACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::DEFAULT  },
-        { PONTOGRAPH_DOWN,      STATE::DEFAULT  },
+        { PANTOGRAPH_UP,        STATE::DEFAULT  },
+        { PANTOGRAPH_DOWN,      STATE::DEFAULT  },
         { MAIN_BREAKER,         STATE::ACTIVE   },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::DEFAULT  }
     };
-    QJsonObject const VOLTAGE_MAINBREAKER_ACTIVATION_PONTUP
+    QJsonObject const VOLTAGE_MAINBREAKER_ACTIVATION_PANTUP
     {
         { VOLTAGE,              STATE::ACTIVE  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE  },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE  },
+        { PANTOGRAPH_UP,        STATE::ACTIVE  },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE  },
         { MAIN_BREAKER,         STATE::ACTIVE   },
         { VOLTAGE_WARNING,      STATE::INACTIVE },
         { HEATING,              STATE::DEFAULT }
@@ -65,27 +65,27 @@ namespace VTI_TESTCASE
     QJsonObject const VOLTAGE_MAINBREAKER_DEACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::DEFAULT  },
-        { PONTOGRAPH_DOWN,      STATE::DEFAULT  },
+        { PANTOGRAPH_UP,        STATE::DEFAULT  },
+        { PANTOGRAPH_DOWN,      STATE::DEFAULT  },
         { MAIN_BREAKER,         STATE::INACTIVE },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::DEFAULT  }
     };
 
-    QJsonObject const VOLTAGE_HEAT_ACTIVATION_NOPONT
+    QJsonObject const VOLTAGE_HEAT_ACTIVATION_NOPANT
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::DEFAULT  },
-        { PONTOGRAPH_DOWN,      STATE::DEFAULT  },
+        { PANTOGRAPH_UP,        STATE::DEFAULT  },
+        { PANTOGRAPH_DOWN,      STATE::DEFAULT  },
         { MAIN_BREAKER,         STATE::DEFAULT  },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::DEFAULT  }
     };
-    QJsonObject const VOLTAGE_HEAT_ACTIVATION_PONT
+    QJsonObject const VOLTAGE_HEAT_ACTIVATION_PANT
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE },
+        { PANTOGRAPH_UP,        STATE::ACTIVE   },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE },
         { MAIN_BREAKER,         STATE::DEFAULT  },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::ACTIVE   }
@@ -93,8 +93,8 @@ namespace VTI_TESTCASE
     QJsonObject const VOLTAGE_HEAT_DEACTIVATION
     {
         { VOLTAGE,              STATE::DEFAULT  },
-        { PONTOGRAPH_UP,        STATE::ACTIVE   },
-        { PONTOGRAPH_DOWN,      STATE::INACTIVE },
+        { PANTOGRAPH_UP,        STATE::ACTIVE   },
+        { PANTOGRAPH_DOWN,      STATE::INACTIVE },
         { MAIN_BREAKER,         STATE::DEFAULT  },
         { VOLTAGE_WARNING,      STATE::WARNING  },
         { HEATING,              STATE::INACTIVE }
@@ -192,6 +192,109 @@ namespace VTI_TESTCASE
         { VELOCITY,             0 }
     };
 
+    QJsonObject const BRAKES_PARK_DEACTIVATE
+    {
+        { PARK_BRAKE,           STATE::INACTIVE },
+        { ELECTRICITY_BRAKE,    STATE::DEFAULT },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT },
+        { BRAKE_INDICATOR,      STATE::DEFAULT },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_PARK_ACTIVATE
+    {
+        { PARK_BRAKE,           STATE::ACTIVE },
+        { ELECTRICITY_BRAKE,    STATE::DEFAULT },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT },
+        { BRAKE_INDICATOR,      STATE::DEFAULT },
+        { BRAKING,              QJsonValue::Bool }
+    };
+
+    QJsonObject const BRAKES_EBRAKE_ACTIVATED
+    {
+        { PARK_BRAKE,           STATE::ACTIVE    },
+        { ELECTRICITY_BRAKE,    STATE::ACTIVE    },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT   },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_EBRAKE_DEACTIVATED
+    {
+        { PARK_BRAKE,           STATE::ACTIVE    },
+        { ELECTRICITY_BRAKE,    STATE::INACTIVE  },
+        { MAGNETIC_BRAKE,       STATE::DEFAULT   },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_MGBRAKE_PRESSED
+    {
+        { PARK_BRAKE,           STATE::ACTIVE    },
+        { ELECTRICITY_BRAKE,    STATE::INACTIVE  },
+        { MAGNETIC_BRAKE,       STATE::ACTIVE },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_MGBRAKE_RELEASED
+    {
+        { PARK_BRAKE,           STATE::ACTIVE    },
+        { ELECTRICITY_BRAKE,    STATE::INACTIVE  },
+        { MAGNETIC_BRAKE,       STATE::INACTIVE  },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const BRAKES_PARK_VELOCITY
+    {
+        { PARK_BRAKE,           STATE::INACTIVE  },
+        { ELECTRICITY_BRAKE,    STATE::INACTIVE  },
+        { MAGNETIC_BRAKE,       STATE::INACTIVE  },
+        { BRAKE_INDICATOR,      STATE::DEFAULT   },
+        { BRAKING,              QJsonValue::Bool }
+    };
+    QJsonObject const NBO_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::WARNING },
+        { FIRE,                 STATE::DEFAULT },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "Nödbroms aktiverad" }
+    };
+    QJsonObject const FIRE_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::WARNING },
+        { FIRE,                 STATE::WARNING },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "Brand i tågsätt" }
+    };
+    QJsonObject const SOLID_NBO_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::ACTIVE },
+        { FIRE,                 STATE::WARNING },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "Brand i tågsätt" }
+    };
+    QJsonObject const SOLID_FIRE_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::ACTIVE },
+        { FIRE,                 STATE::ACTIVE },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "Brand i tågsätt" }
+    };
+    QJsonObject const RECIEPT_BUTTON_PRESSED
+    {
+        { EMERGENCY_BRAKE,      STATE::DEFAULT },
+        { FIRE,                 STATE::DEFAULT },
+        { RECEIPT,              STATE::DEFAULT },
+        { TEXTINFO,             "" }
+    };
+
+
+    QJsonObject const ETCS_A_SPEED_LIMIT
+    {
+        { SPEEDLIMIT,           "120" },
+        { SPEEDLIMIT_STATE,     STATE::ACTIVE },
+        { DISTANCE,             "" },
+        { DISTANCE_STATE,       STATE::ACTIVE },
+        { DISTANCE_BAR,         0.0 },
+        { DISTANCE_BAR_STATE,   STATE::ACTIVE}
+    };
 
 
 

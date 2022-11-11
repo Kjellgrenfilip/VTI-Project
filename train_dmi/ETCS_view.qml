@@ -38,7 +38,7 @@ Item {
                 anchors.top:rectangleZ.bottom
                 width:(54/MyConst.etcsWidth) * parent.width
                 height:(300/MyConst.etcsHeight) * parent.height
-                color: "blue"
+                color: "transparent"
                 ETCS_A{}
             }
             Rectangle
@@ -109,9 +109,6 @@ Item {
             }
         }
     }
-
-
-
 }
 
 
