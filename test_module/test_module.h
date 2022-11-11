@@ -50,6 +50,7 @@ private:
     void updateDoorClose(QJsonValue const & value);
     void updateLight(QJsonValue const & value);
     void checkVoltage(QString const& key);
+    int testDistance();
 
 public:
     void resetStates();

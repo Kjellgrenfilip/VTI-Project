@@ -213,6 +213,13 @@ Item {
                 anchors.bottom: parent.bottom
                 anchors.margins: (5/191) * parent.height
                 color: MyConst.grey
+                Behavior on barValue {
+                    SpringAnimation
+                    {
+                        spring: 2.0
+                        damping: 0.2
+                    }
+                }
             }
             states: [
                 State {

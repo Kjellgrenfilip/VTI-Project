@@ -257,9 +257,18 @@ Item
 
                 id: departureImage
                 anchors.fill: parent
-                source: "desk_ikoner/avgang.png"
+                source: "desk_ikoner/button69.png"
             }
-
+            Text {
+                id: departureText
+                text: "KLART FÖR \n AVGÅNG"
+                anchors.fill: parent
+                anchors.margins:10
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                color: "white"
+                font.pointSize: parent.width /9
+            }
             onPressed: buttonHandler.departureButtonPressed()
 
             SequentialAnimation
@@ -281,7 +290,7 @@ Item
                 {
                     target: departureImage
                     property: "source"
-                    to: "desk_ikoner/avgang.png"
+                    to: "desk_ikoner/button69.png"
                     duration: MyConst.animationDuration
                 }
             }
@@ -293,7 +302,7 @@ Item
                     PropertyChanges
                     {
                          target: departureImage
-                         source: "desk_ikoner/avgang.png"
+                         source: "desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -322,7 +331,7 @@ Item
                     PropertyChanges
                     {
                         target: departureAnimation
-                        running: false
+                        running: true
                     }
                 },
                 State
@@ -341,7 +350,7 @@ Item
                      PropertyChanges
                      {
                          target: departureButton
-                         enabled: true
+                         enabled: false
                      }
                  }
              ]

@@ -1,5 +1,4 @@
 #include "test_module.h"
-
 Test_Module::Test_Module(bool connection)
     : QObject(), m_networkServer{},
       m_jsonBrakes{VTI_DMI::JSON_BRAKES},
@@ -352,6 +351,32 @@ void Test_Module::updateSpeedLimit(double newValue)
 
     m_networkServer->sendUpdate(m_jsonETCS_A);
 }
+int Test_Module::testDistance()
+{
+    bool up{true};
+    double val{0};
+    while(true)
+    {
+        updateDistance(val);
+        if(val>1000)
+        {
+            up = false;
+        }
+        else if(val<=0)
+        {
+            up = true;
+        }
+        if(up)
+            val += 10;
+        else
+            val -= 10;
+
+        m_networkServer->delay(50);
+
+
+    }
+    return 0;
+}
 
 void Test_Module::updateDistance(double newValue)
 {
@@ -424,10 +449,11 @@ void Test_Module::receiveUpdate()
         else if(key == VTI_DMI::MAIN_BREAKER)
         {
             // Only for test. Remove from here
-            x += 58;
-            updateDistance(x);
+//            x += 58;
+//            updateDistance(x);
             // to here.
-            updateMainBreaker(value);
+           testDistance(); // for testing only
+           updateMainBreaker(value);
         }
         else if(key == VTI_DMI::HEATING)
             updateHeating(value);
