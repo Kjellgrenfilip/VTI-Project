@@ -18,10 +18,9 @@ public:
     void setUpdate(QJsonObject update);
 
     bool sendUpdate(QJsonObject const& obj);
-     void delay(int timeToWait);
+    void delay(int timeToWait);
+
 private:
-
-
     QTcpServer *m_tcpServer;
     QTcpSocket *m_tcpSocket;
     QJsonObject m_jsonUpdate;

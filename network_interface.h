@@ -49,6 +49,14 @@ namespace VTI_DMI
     QString const DISTANCE_STATE    = "distance";
     QString const DISTANCE_BAR      = "distanceBarValue";
     QString const DISTANCE_BAR_STATE= "distanceBar";
+    QString const ETCSB3            = "etcsB3";
+    QString const ETCSB4            = "etcsB4";
+    QString const ETCSB5            = "etcsB5";
+    QString const ETCSB6            = "etcsB6";
+    QString const ETCSB7            = "etcsB7";
+    QString const ETCSB3Image        = "etcsB3Image";
+    QString const ETCSB4Image        = "etcsB4Image";
+    QString const ETCSB5Image        = "etcsB5Image";
 
     QJsonObject const JSON_BRAKES
     {
@@ -109,6 +117,18 @@ namespace VTI_DMI
         { DISTANCE_STATE,       STATE::ACTIVE},
         { DISTANCE_BAR,         QJsonValue::Double},
         { DISTANCE_BAR_STATE,   STATE::ACTIVE}
+    };
+
+    QJsonObject const JSON_ETCS_B
+    {
+        { ETCSB3,               STATE::INACTIVE },
+        { ETCSB4,               STATE::INACTIVE },
+        { ETCSB5,               STATE::INACTIVE },
+        { ETCSB6,               STATE::INACTIVE },
+        { ETCSB6,               STATE::INACTIVE },
+        { ETCSB3Image,          QJsonValue::Double },
+        { ETCSB4Image,          QJsonValue::Double },
+        { ETCSB5Image,          QJsonValue::Double }
     };
 };
 

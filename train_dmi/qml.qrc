@@ -40,8 +40,167 @@
         <file>desk_ikoner/doorleftY.png</file>
         <file>desk_ikoner/doorrightY.png</file>
         <file>desk_ikoner/closedG.png</file>
+        <file>Speedometer.qml</file>
+        <file>Temp_Speed.qml</file>
         <file>ETCS_A.qml</file>
         <file>ETCS_icons/MO_21.bmp</file>
         <file>sounds/mlg-airhorn.wav</file>
+        <file>ETCS_B.qml</file>
+        <file>symbols/Driver Request/DR_01.bmp</file>
+        <file>symbols/Driver Request/DR_02.bmp</file>
+        <file>symbols/Driver Request/DR_03.bmp</file>
+        <file>symbols/Driver Request/DR_04.bmp</file>
+        <file>symbols/Driver Request/DR_05.bmp</file>
+        <file>symbols/Level/LE_01.bmp</file>
+        <file>symbols/Level/LE_02.bmp</file>
+        <file>symbols/Level/LE_02a.bmp</file>
+        <file>symbols/Level/LE_03.bmp</file>
+        <file>symbols/Level/LE_04.bmp</file>
+        <file>symbols/Level/LE_05.bmp</file>
+        <file>symbols/Level/LE_06.bmp</file>
+        <file>symbols/Level/LE_07.bmp</file>
+        <file>symbols/Level/LE_08.bmp</file>
+        <file>symbols/Level/LE_08a.bmp</file>
+        <file>symbols/Level/LE_09.bmp</file>
+        <file>symbols/Level/LE_09a.bmp</file>
+        <file>symbols/Level/LE_10.bmp</file>
+        <file>symbols/Level/LE_11.bmp</file>
+        <file>symbols/Level/LE_12.bmp</file>
+        <file>symbols/Level/LE_13.bmp</file>
+        <file>symbols/Level/LE_14.bmp</file>
+        <file>symbols/Level/LE_15.bmp</file>
+        <file>symbols/Level Crossing/LX_01.bmp</file>
+        <file>symbols/Limited Supervision/MO_21.bmp</file>
+        <file>symbols/Mode/MO_01.bmp</file>
+        <file>symbols/Mode/MO_02.bmp</file>
+        <file>symbols/Mode/MO_03.bmp</file>
+        <file>symbols/Mode/MO_04.bmp</file>
+        <file>symbols/Mode/MO_05.bmp</file>
+        <file>symbols/Mode/MO_06.bmp</file>
+        <file>symbols/Mode/MO_07.bmp</file>
+        <file>symbols/Mode/MO_08.bmp</file>
+        <file>symbols/Mode/MO_09.bmp</file>
+        <file>symbols/Mode/MO_10.bmp</file>
+        <file>symbols/Mode/MO_11.bmp</file>
+        <file>symbols/Mode/MO_12.bmp</file>
+        <file>symbols/Mode/MO_13.bmp</file>
+        <file>symbols/Mode/MO_14.bmp</file>
+        <file>symbols/Mode/MO_15.bmp</file>
+        <file>symbols/Mode/MO_16.bmp</file>
+        <file>symbols/Mode/MO_17.bmp</file>
+        <file>symbols/Mode/MO_18.bmp</file>
+        <file>symbols/Mode/MO_19.bmp</file>
+        <file>symbols/Mode/MO_20.bmp</file>
+        <file>symbols/Mode/MO_21.bmp</file>
+        <file>symbols/Mode/MO_22.bmp</file>
+        <file>symbols/Navigation/NA_03.bmp</file>
+        <file>symbols/Navigation/NA_04.bmp</file>
+        <file>symbols/Navigation/NA_05.bmp</file>
+        <file>symbols/Navigation/NA_06.bmp</file>
+        <file>symbols/Navigation/NA_07.bmp</file>
+        <file>symbols/Navigation/NA_08.bmp</file>
+        <file>symbols/Navigation/NA_09.bmp</file>
+        <file>symbols/Navigation/NA_10.bmp</file>
+        <file>symbols/Navigation/NA_11.bmp</file>
+        <file>symbols/Navigation/NA_12.bmp</file>
+        <file>symbols/Navigation/NA_13.bmp</file>
+        <file>symbols/Navigation/NA_14.bmp</file>
+        <file>symbols/Navigation/NA_15.bmp</file>
+        <file>symbols/Navigation/NA_16.bmp</file>
+        <file>symbols/Navigation/NA_17.bmp</file>
+        <file>symbols/Navigation/NA_18.2.bmp</file>
+        <file>symbols/Navigation/NA_18.bmp</file>
+        <file>symbols/Navigation/NA_19.bmp</file>
+        <file>symbols/Navigation/NA_20.bmp</file>
+        <file>symbols/Navigation/NA_21.bmp</file>
+        <file>symbols/Navigation/NA_22.bmp</file>
+        <file>symbols/Navigation/NA_23.bmp</file>
+        <file>symbols/Planning/PL_01.bmp</file>
+        <file>symbols/Planning/PL_02.bmp</file>
+        <file>symbols/Planning/PL_03.bmp</file>
+        <file>symbols/Planning/PL_04.bmp</file>
+        <file>symbols/Planning/PL_05.bmp</file>
+        <file>symbols/Planning/PL_06.bmp</file>
+        <file>symbols/Planning/PL_07.bmp</file>
+        <file>symbols/Planning/PL_08.bmp</file>
+        <file>symbols/Planning/PL_09.bmp</file>
+        <file>symbols/Planning/PL_10.bmp</file>
+        <file>symbols/Planning/PL_11.bmp</file>
+        <file>symbols/Planning/PL_12.bmp</file>
+        <file>symbols/Planning/PL_13.bmp</file>
+        <file>symbols/Planning/PL_14.bmp</file>
+        <file>symbols/Planning/PL_15.bmp</file>
+        <file>symbols/Planning/PL_16.bmp</file>
+        <file>symbols/Planning/PL_17.bmp</file>
+        <file>symbols/Planning/PL_18.bmp</file>
+        <file>symbols/Planning/PL_19.bmp</file>
+        <file>symbols/Planning/PL_20.bmp</file>
+        <file>symbols/Planning/PL_21.bmp</file>
+        <file>symbols/Planning/PL_22.bmp</file>
+        <file>symbols/Planning/PL_23.bmp</file>
+        <file>symbols/Planning/PL_24.bmp</file>
+        <file>symbols/Planning/PL_25.bmp</file>
+        <file>symbols/Planning/PL_26.bmp</file>
+        <file>symbols/Planning/PL_27.bmp</file>
+        <file>symbols/Planning/PL_28.bmp</file>
+        <file>symbols/Planning/PL_29.bmp</file>
+        <file>symbols/Planning/PL_30.bmp</file>
+        <file>symbols/Planning/PL_31.bmp</file>
+        <file>symbols/Planning/PL_32.bmp</file>
+        <file>symbols/Planning/PL_33.bmp</file>
+        <file>symbols/Planning/PL_34.bmp</file>
+        <file>symbols/Planning/PL_35.bmp</file>
+        <file>symbols/Planning/PL_36.bmp</file>
+        <file>symbols/Setting/SE_01.bmp</file>
+        <file>symbols/Setting/SE_02.bmp</file>
+        <file>symbols/Setting/SE_03.bmp</file>
+        <file>symbols/Setting/SE_04.bmp</file>
+        <file>symbols/Status/ST_01.bmp</file>
+        <file>symbols/Status/ST_02.bmp</file>
+        <file>symbols/Status/ST_03.bmp</file>
+        <file>symbols/Status/ST_04.bmp</file>
+        <file>symbols/Status/ST_05.bmp</file>
+        <file>symbols/Status/ST_06.bmp</file>
+        <file>symbols/Track Conditions/TC_01.bmp</file>
+        <file>symbols/Track Conditions/TC_02.bmp</file>
+        <file>symbols/Track Conditions/TC_03.bmp</file>
+        <file>symbols/Track Conditions/TC_04.bmp</file>
+        <file>symbols/Track Conditions/TC_05.bmp</file>
+        <file>symbols/Track Conditions/TC_06.bmp</file>
+        <file>symbols/Track Conditions/TC_07.bmp</file>
+        <file>symbols/Track Conditions/TC_08.bmp</file>
+        <file>symbols/Track Conditions/TC_09.bmp</file>
+        <file>symbols/Track Conditions/TC_10.bmp</file>
+        <file>symbols/Track Conditions/TC_11.bmp</file>
+        <file>symbols/Track Conditions/TC_12.bmp</file>
+        <file>symbols/Track Conditions/TC_13.bmp</file>
+        <file>symbols/Track Conditions/TC_14.bmp</file>
+        <file>symbols/Track Conditions/TC_15.bmp</file>
+        <file>symbols/Track Conditions/TC_16.bmp</file>
+        <file>symbols/Track Conditions/TC_17.bmp</file>
+        <file>symbols/Track Conditions/TC_18.bmp</file>
+        <file>symbols/Track Conditions/TC_19.bmp</file>
+        <file>symbols/Track Conditions/TC_20.bmp</file>
+        <file>symbols/Track Conditions/TC_21.bmp</file>
+        <file>symbols/Track Conditions/TC_22.bmp</file>
+        <file>symbols/Track Conditions/TC_23.bmp</file>
+        <file>symbols/Track Conditions/TC_24.bmp</file>
+        <file>symbols/Track Conditions/TC_25.bmp</file>
+        <file>symbols/Track Conditions/TC_26.bmp</file>
+        <file>symbols/Track Conditions/TC_27.bmp</file>
+        <file>symbols/Track Conditions/TC_28.bmp</file>
+        <file>symbols/Track Conditions/TC_29.bmp</file>
+        <file>symbols/Track Conditions/TC_30.bmp</file>
+        <file>symbols/Track Conditions/TC_31.bmp</file>
+        <file>symbols/Track Conditions/TC_32.bmp</file>
+        <file>symbols/Track Conditions/TC_33.bmp</file>
+        <file>symbols/Track Conditions/TC_34.bmp</file>
+        <file>symbols/Track Conditions/TC_35.bmp</file>
+        <file>symbols/Track Conditions/TC_36.bmp</file>
+        <file>symbols/Track Conditions/TC_37.bmp</file>
+        <file>ETCS_A.qml</file>
+        <file>ETCS_icons/MO_21.bmp</file>
+        <file>ETCS_Box3DEffect.qml</file>
+        <file>Tick_Mark.qml</file>
     </qresource>
 </RCC>
