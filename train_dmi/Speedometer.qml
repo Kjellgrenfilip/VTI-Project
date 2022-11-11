@@ -9,6 +9,7 @@ Item {
     property real startAngle : 126
     property string needleColor : "lightgrey"
     property real indicationAngle : 180+54+54
+    property string arcColor : "yellow"
 
     width: 280; height: 300
 
@@ -27,9 +28,8 @@ Item {
 
         ShapePath {
             fillColor: "transparent"
-            strokeColor: "grey"
+            strokeColor: arcColor
             strokeWidth: 9
-
 
             PathAngleArc {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
