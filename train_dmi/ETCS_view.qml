@@ -68,6 +68,7 @@ Item {
                 width:(334/MyConst.etcsWidth) * parent.width
                 height:(50/MyConst.etcsHeight) * parent.height
                 color: "grey"
+                ETCS_C{}
             }
             Rectangle
             {

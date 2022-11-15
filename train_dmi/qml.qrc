@@ -202,5 +202,6 @@
         <file>ETCS_icons/MO_21.bmp</file>
         <file>ETCS_Box3DEffect.qml</file>
         <file>Tick_Mark.qml</file>
+        <file>ETCS_C.qml</file>
     </qresource>
 </RCC>

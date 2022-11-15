@@ -21,6 +21,7 @@ signals:
 
 public slots:
     void activatePressed();
+    void protectionPressed();
 
     void pantUpPressed();
 

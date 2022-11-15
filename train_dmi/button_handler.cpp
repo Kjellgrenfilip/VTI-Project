@@ -16,6 +16,11 @@ void Button_Handler::activatePressed()
     sendSignal(VTI_DMI::ACTIVATE, true);
 }
 
+void Button_Handler::protectionPressed()
+{
+    sendSignal(VTI_DMI::PROTECTION, true);
+}
+
 void Button_Handler::pantUpPressed()
 {
     qDebug() << "Pantograph Up!";

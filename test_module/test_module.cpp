@@ -448,7 +448,7 @@ void Test_Module::updateETCSB7(QJsonValue const & value)
     if (m_jsonETCSB.value(VTI_DMI::ETCSB7).toString() == STATE::INACTIVE)
         m_jsonETCSB.insert(VTI_DMI::ETCSB7, STATE::ACTIVE);
     m_jsonETCSB.insert(VTI_DMI::ETCSB7Image, value);
-
+    m_networkServer->sendUpdate(m_jsonETCSB);
 }
 
 void Test_Module::removeImage(QString const & key)
@@ -492,6 +492,7 @@ void Test_Module::receiveUpdate()
 
             updateETCSB345("08");
             delay(500);
+            updateETCSB7("13");
 
             updateETCSB345("07");
             delay(500);
