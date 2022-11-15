@@ -98,14 +98,21 @@ void DMI_Handler::animationHandler()
 {
     foreach(const QString& key, m_jsonState.keys())
     {
-        QObject *obj = m_rootObject->findChild<QObject*>(key + "Animation");
-        if ( obj == nullptr )
-            continue;
-
         QString currentState = m_jsonState.value(key).toString();
         if ( currentState == STATE::WARNING || currentState == STATE::BLINKING )
         {
-            obj->setProperty("running", true);
+            QObject *image = m_rootObject->findChild<QObject*>(key + "Image");
+            if ( image == nullptr )
+                continue;
+
+            QObject *imageBlinking = m_rootObject->findChild<QObject*>(key + "ImageBlinking");
+            if ( imageBlinking == nullptr )
+                continue;
+
+            image->setProperty("visible", animationState);
+            imageBlinking->setProperty("visible", !animationState);
         }
     }
+
+    animationState = !animationState;
 }

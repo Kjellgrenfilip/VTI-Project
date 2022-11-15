@@ -49,9 +49,20 @@ Item {
             Image
             {
                 id: emergencyBrakeImage
+                objectName: "emergencyBrakeImage"
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
+                visible: true
             }
+            Image
+            {
+                id: emergencyBrakeImageBlinking
+                objectName: "emergencyBrakeImageBlinking"
+                anchors.fill: parent
+                source: "desk_ikoner/redButton.png"
+                visible: false
+            }
+
             Text
             {
                 id: emergencyBrakeText
@@ -62,28 +73,28 @@ Item {
                 color: "White"
             }
 
-            SequentialAnimation
-            {
-                id: emergencyBrakeWarningAnimation
-                objectName: "emergencyBrakeAnimation"
-                running: false
-                loops: Animation.Infinite
-                PropertyAnimation
-                {
-                    target: emergencyBrakeImage
-                    property: "source"
-                    to: "desk_ikoner/redButton.png"
-                    duration: MyConst.animationDuration
-                }
+//            SequentialAnimation
+//            {
+//                id: emergencyBrakeWarningAnimation
+//                objectName: "emergencyBrakeAnimation"
+//                running: false
+//                loops: Animation.Infinite
+//                PropertyAnimation
+//                {
+//                    target: emergencyBrakeImage
+//                    property: "source"
+//                    to: "desk_ikoner/redButton.png"
+//                    duration: MyConst.animationDuration
+//                }
 
-                PropertyAnimation
-                {
-                    target: emergencyBrakeImage
-                    property: "source"
-                    to: "desk_ikoner/button69.png"
-                    duration: MyConst.animationDuration
-                }
-            }
+//                PropertyAnimation
+//                {
+//                    target: emergencyBrakeImage
+//                    property: "source"
+//                    to: "desk_ikoner/button69.png"
+//                    duration: MyConst.animationDuration
+//                }
+//            }
             states:
                 [
                 State
@@ -94,11 +105,11 @@ Item {
                         target: emergencyBrakeImage
                         source:"desk_ikoner/button69.png"
                     }
-                    PropertyChanges
-                    {
-                        target: emergencyBrakeWarningAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: emergencyBrakeWarningAnimation
+//                        running: false
+//                    }
                     PropertyChanges
                     {
                         target: emergencyBrakeButton
@@ -113,11 +124,11 @@ Item {
                         target: emergencyBrakeImage
                         source:"desk_ikoner/redButton.png"
                     }
-                    PropertyChanges
-                    {
-                        target: emergencyBrakeWarningAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: emergencyBrakeWarningAnimation
+//                        running: false
+//                    }
                     PropertyChanges
                     {
                         target: emergencyBrakeButton
@@ -130,15 +141,13 @@ Item {
                     PropertyChanges
                     {
                         target: emergencyBrakeButton
-                        width: (emergencyBrakeButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-                        height:(emergencyBrakeButton.pressed) ? parent.height - 40 : parent.height - 35
                         enabled: true
                     }
-                    PropertyChanges
-                    {
-                        target: emergencyBrakeWarningAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: emergencyBrakeWarningAnimation
+//                        running: false
+//                    }
                 }
             ]
         }
@@ -147,8 +156,8 @@ Item {
         {
             id: fireButton
             objectName: "fire"
-            width: parent.width / 2 - 35
-            height: parent.height - 35
+            width: (fireButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
+            height:(fireButton.pressed) ? parent.height - 40 : parent.height - 35
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.horizontalCenter
             anchors.margins: 5
@@ -159,8 +168,18 @@ Item {
             Image
             {
                 id: fireImage
+                objectName: "fireImage"
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
+                visible: true
+            }
+            Image
+            {
+                id: fireImageBlinking
+                objectName: "fireImageBlinking"
+                anchors.fill: parent
+                source: "desk_ikoner/redButton.png"
+                visible: false
             }
             Text
             {
@@ -172,28 +191,28 @@ Item {
                 color:"White"
             }
 
-            SequentialAnimation
-            {
-                id: fireWarningAnimation
-                objectName: "fireAnimation"
-                running: false
-                loops: Animation.Infinite
-                PropertyAnimation
-                {
-                    target: fireImage
-                    property: "source"
-                    to: "desk_ikoner/redButton.png"
-                    duration: MyConst.animationDuration
-                }
+//            SequentialAnimation
+//            {
+//                id: fireWarningAnimation
+//                objectName: "fireAnimation"
+//                running: false
+//                loops: Animation.Infinite
+//                PropertyAnimation
+//                {
+//                    target: fireImage
+//                    property: "source"
+//                    to: "desk_ikoner/redButton.png"
+//                    duration: MyConst.animationDuration
+//                }
 
-                PropertyAnimation
-                {
-                    target: fireImage
-                    property: "source"
-                    to: "desk_ikoner/button69.png"
-                    duration: MyConst.animationDuration
-                }
-            }
+//                PropertyAnimation
+//                {
+//                    target: fireImage
+//                    property: "source"
+//                    to: "desk_ikoner/button69.png"
+//                    duration: MyConst.animationDuration
+//                }
+//            }
             states:
                 [
                 State
@@ -204,11 +223,11 @@ Item {
                         target: fireImage
                         source:"desk_ikoner/button69.png"
                     }
-                    PropertyChanges
-                    {
-                        target: fireWarningAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: fireWarningAnimation
+//                        running: false
+//                    }
                     PropertyChanges
                     {
                         target: fireButton
@@ -224,11 +243,11 @@ Item {
                         source:"desk_ikoner/redButton.png"
                     }
 
-                    PropertyChanges
-                    {
-                        target: fireWarningAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: fireWarningAnimation
+//                        running: false
+//                    }
                     PropertyChanges
                     {
                         target: fireButton
@@ -241,15 +260,13 @@ Item {
                     PropertyChanges
                     {
                         target: fireButton
-                        width: (fireButton.pressed) ? parent.width / 2 -40 : parent.width / 2 - 35
-                        height:(fireButton.pressed) ? parent.height - 40 : parent.height - 35
                         enabled: true
                     }
-                    PropertyChanges
-                    {
-                        target: fireWarningAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: fireWarningAnimation
+//                        running: false
+//                    }
                 }
             ]
         }

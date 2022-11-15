@@ -27,6 +27,7 @@ public:
     QJsonObject m_latestUpdate{};
 
     bool testStart = false;
+    bool animationState = false;
 
 signals:
 
