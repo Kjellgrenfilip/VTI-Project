@@ -366,36 +366,47 @@ Item
             Image
             {
                 id: closedImage
+                objectName: "doorCloseImage"
                 anchors.fill: parent
                 source: "desk_ikoner/closed.png"
+                visible: true
             }
+            Image
+            {
+                id: closedImageBlinking
+                objectName: "doorCloseImageBlinking"
+                anchors.fill: parent
+                source: "desk_ikoner/closedG.png"
+                visible: false
+            }
+
             onPressed: buttonHandler.closeDoorPressed()
 
-            SequentialAnimation
-            {
-                id: doorCloseAnimation
-                objectName: "doorCloseAnimation"
-                running: false
-                loops: 3
-                //alwaysRunToEnd: true
+//            SequentialAnimation
+//            {
+//                id: doorCloseAnimation
+//                objectName: "doorCloseAnimation"
+//                running: false
+//                loops: 3
+//                //alwaysRunToEnd: true
 
 
 
-                PropertyAnimation
-                {
-                    target: closedImage
-                    property: "source"
-                    to: "desk_ikoner/closedG.png"
-                    duration: MyConst.animationDuration
-                }
-                PropertyAnimation
-                {
-                    target: closedImage
-                    property: "source"
-                    to: "desk_ikoner/closed.png"
-                    duration: MyConst.animationDuration
-                }
-            }
+//                PropertyAnimation
+//                {
+//                    target: closedImage
+//                    property: "source"
+//                    to: "desk_ikoner/closedG.png"
+//                    duration: MyConst.animationDuration
+//                }
+//                PropertyAnimation
+//                {
+//                    target: closedImage
+//                    property: "source"
+//                    to: "desk_ikoner/closed.png"
+//                    duration: MyConst.animationDuration
+//                }
+//            }
             states:
                 [
                 State
@@ -406,11 +417,11 @@ Item
                         target: closedImage
                         source: "desk_ikoner/closedG.png"
                     }
-                    PropertyChanges
-                    {
-                        target: doorCloseAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: doorCloseAnimation
+//                        running: false
+//                    }
                     PropertyChanges
                     {
                         target: closedButton
@@ -425,11 +436,11 @@ Item
                         target: closedImage
                         source: "desk_ikoner/closedG.png"
                     }
-                    PropertyChanges
-                    {
-                        target: doorCloseAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: doorCloseAnimation
+//                        running: false
+//                    }
 
 
                     PropertyChanges
@@ -446,11 +457,11 @@ Item
                         target: closedImage
                         source: "desk_ikoner/closed.png"
                     }
-                    PropertyChanges
-                    {
-                        target: doorCloseAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: doorCloseAnimation
+//                        running: false
+//                    }
                     PropertyChanges
                     {
                         target: closedButton
@@ -460,11 +471,11 @@ Item
                 State
                 {
                     name: "warning"
-                    PropertyChanges
-                    {
-                        target: doorCloseAnimation
-                        running: false
-                    }
+//                    PropertyChanges
+//                    {
+//                        target: doorCloseAnimation
+//                        running: false
+//                    }
                     PropertyChanges
                     {
                         target: closedButton
