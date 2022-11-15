@@ -457,12 +457,12 @@ void Test_Module::removeImage(QString const & key)
 
 }
 
-void delay(int timeToWait)
-{
-    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
-    while (QTime::currentTime() < dieTime)
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-}
+//void delay(int timeToWait)
+//{
+//    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
+//    while (QTime::currentTime() < dieTime)
+//        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+//}
 void Test_Module::receiveUpdate()
 {
     qDebug() << "TESTING";
@@ -482,25 +482,25 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->sendUpdate(m_jsonETCSB);
 
-            updateETCSB("08");
-            delay(500);
+//            updateETCSB("08");
+//            delay(500);
 
-            updateETCSB("07");
-            delay(500);
+//            updateETCSB("07");
+//            delay(500);
 
-            updateETCSB("26");
-            delay(500);
+//            updateETCSB("26");
+//            delay(500);
 
-            updateETCSB("33");
-            updateETCSB("32");
-            updateETCSB("36");
+//            updateETCSB("33");
+//            updateETCSB("32");
+//            updateETCSB("36");
 
-            delay(500);
-            removeImage(VTI_DMI::ETCSB4);
-            delay(500);
-            removeImage(VTI_DMI::ETCSB5);
-            delay(500);
-            removeImage(VTI_DMI::ETCSB3);
+//            delay(500);
+//            removeImage(VTI_DMI::ETCSB4);
+//            delay(500);
+//            removeImage(VTI_DMI::ETCSB5);
+//            delay(500);
+//            removeImage(VTI_DMI::ETCSB3);
 
         }
         else
@@ -519,11 +519,11 @@ void Test_Module::receiveUpdate()
 
         else if(key == VTI_DMI::MAIN_BREAKER)
         {
-            // Only for test. Remove from here
-//            x += 58;
-//            updateDistance(x);
-            // to here.
-           testDistance(); // for testing only
+             //Only for test. Remove from here
+            x += 58;
+            updateDistance(x);
+             //to here.
+          // testDistance(); // for testing only
            updateMainBreaker(value);
         }
         else if(key == VTI_DMI::HEATING)
