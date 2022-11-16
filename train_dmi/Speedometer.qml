@@ -6,16 +6,19 @@ Item
 {
     id: speedometer
     property real value : 0
-    property real currentSpeed : 200
-    property real currentAngle : 0
+    property real currentSpeed : 300
     property real angleBetweenTickmarks : 9.6
+    property real anglePerSpeedRange1 : 192 / 200;
+    property real anglePerSpeedRange2 : 96 / 200;
     property real startAngle : 126
     property string needleColor : "lightgrey"
-    property real indicationAngle : 180+54+54
+    property real indicationAngle : 180+54+54+5
     property string arcColor : "yellow"
     property string range : "rangeA"
 
     width: 280; height: 300
+
+    antialiasing: true
 
     // Sets the background color behind the Speedometer!
     Rectangle
@@ -25,24 +28,47 @@ Item
     }
 
     // Creates the arc around the Speedometer
-    Shape
-    {
+//    Shape
+//    {
+//        width: 280; height: 300
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        anchors.top: parent.top
+
+//        ShapePath
+//        {
+//            fillColor: "transparent"
+//            strokeColor: arcColor
+//            strokeWidth: 9
+
+//            PathAngleArc
+//            {
+//                centerX: parent.width/2; centerY: parent.height/2 - 5
+//                radiusX: 132.5; radiusY: 132.5
+//                startAngle: 126
+//                sweepAngle: indicationAngle
+//            }
+//        }
+//    }
+
+    Shape {
+        id: normal
         width: 280; height: 300
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
 
-        ShapePath
-        {
+        antialiasing: true
+
+        ShapePath {
             fillColor: "transparent"
-            strokeColor: arcColor
+            strokeColor: (value <= 50) ? "grey" : "orange"
             strokeWidth: 9
 
-            PathAngleArc
-            {
+            PathAngleArc {
+                id: arc1
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 132.5; radiusY: 132.5
-                startAngle: 126
-                sweepAngle: indicationAngle
+                startAngle: 121
+                sweepAngle: (currentSpeed <= 200) ? 5 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
             }
         }
     }
@@ -73,7 +99,7 @@ Item
                 origin.x: 4.5; origin.y: 0
                 //Min = 54, Max = 306
                 // Map the angle between min/max angle values and the speed min/max values
-                angle: Math.min(Math.max(36, speedometer.value*2.6 + 36), 324)
+                angle: (currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
                 Behavior on angle
                 {
                     SpringAnimation
@@ -99,7 +125,7 @@ Item
                 origin.x: 4.5; origin.y: 0
                 //Min = 54, Max = 306
                 // Map the angle between min/max angle values and the speed min/max values
-                angle: Math.min(Math.max(36, speedometer.value*2.6 + 36), 324)
+                angle: (currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
                 Behavior on angle
                 {
                     SpringAnimation
@@ -184,6 +210,16 @@ Item
                 speedValue: index * 10;
                 tickMarkNum: index
             }
+        }
+        Tick_Mark
+        {
+            id: hook
+            alpha: (currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+            length: 20
+            width1: 6
+            radius1: 137
+            color1: "grey"
+            visible: (currentSpeed >= 50) ? true : false
         }
     }
 }
