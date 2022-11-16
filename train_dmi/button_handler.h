@@ -49,7 +49,7 @@ public slots:
     void lightPressed();
     void emergencyPressed();
 
-    void etcs1Pressed();
+    void etcsC1Pressed();
 };
 
 #endif // BUTTON_HANDLER_H

@@ -76,11 +76,10 @@ Item {
         Rectangle
         {
             id: c1
+            objectName: "c1"
             width: 58
             height: 50
             color: MyConst.backgroundColor
-
-
 
             SequentialAnimation on color
             {
@@ -108,7 +107,16 @@ Item {
                 height: parent.height
                 anchors.fill: parent
                 anchors.margins: 4
-                onPressed: buttonHandler.etcs1Pressed()
+                background: Rectangle
+                {
+                    color: "transparent"
+                }
+
+                onPressed: {
+                    c1Image.source = ""//buttonHandler.etcsC1Pressed()
+                    c1Animation.running = false
+                    c1.color = "transparent"
+                }
 
                 Image
                 {
