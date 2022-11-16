@@ -26,7 +26,7 @@ private:
     QJsonObject m_jsonActivation;
     QJsonObject m_jsonETCS_A;
 
-    QTimer *m_doorTimer;
+    //QTimer *m_doorTimer;
     QTimer *m_pantUpTimer;
 
     // test variable for distance bar
@@ -74,7 +74,7 @@ signals:
 
 public slots:
     void receiveUpdate();
-    void doorHandler();
+    //void doorHandler();
     void pantHandler();
 };
 
