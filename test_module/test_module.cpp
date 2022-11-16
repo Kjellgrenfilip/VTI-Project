@@ -11,7 +11,7 @@ Test_Module::Test_Module(bool connection)
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
       //m_doorTimer{new QTimer{this}},
-      m_pantUpTimer{new QTimer{this}},
+      //m_pantUpTimer{new QTimer{this}},
       m_jsonETCSB{VTI_DMI::JSON_ETCS_B}
 
 {
@@ -23,9 +23,9 @@ Test_Module::Test_Module(bool connection)
 
         //m_doorTimer->setSingleShot(true);
 
-        connect(m_pantUpTimer, SIGNAL(timeout()), this, SLOT(pantHandler()));
+        //connect(m_pantUpTimer, SIGNAL(timeout()), this, SLOT(pantHandler()));
 
-        m_pantUpTimer->setSingleShot(true);
+        //m_pantUpTimer->setSingleShot(true);
     }
 }
 
@@ -47,15 +47,15 @@ Test_Module::~Test_Module()
 //    m_networkServer->sendUpdate(m_jsonDoors);
 //}
 
-void Test_Module::pantHandler()
-{
-    if (m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::WARNING)
-    {
-        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::ACTIVE);
-        checkVoltage(VTI_DMI::MAIN_BREAKER);
-        m_networkServer->sendUpdate(m_jsonVoltage);
-    }
-}
+//void Test_Module::pantHandler()
+//{
+//    if (m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::WARNING)
+//    {
+//        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::ACTIVE);
+//        checkVoltage(VTI_DMI::MAIN_BREAKER);
+//        m_networkServer->sendUpdate(m_jsonVoltage);
+//    }
+//}
 
 void Test_Module::checkVoltage(QString const& key)
 {
@@ -78,7 +78,7 @@ void Test_Module::updatePantographUp(QJsonValue const & value)
     else
     {
         m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::WARNING);
-        m_pantUpTimer->start(3000); // ACTIVE
+        //m_pantUpTimer->start(3000); // ACTIVE
         m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_DOWN, STATE::INACTIVE);
         //checkVoltage(VTI_DMI::MAIN_BREAKER);
     }
@@ -100,6 +100,12 @@ void Test_Module::updatePantographDown(QJsonValue const & value)
     }
 
      m_networkServer->sendUpdate(m_jsonVoltage);
+}
+
+void Test_Module::resetPantographUp()
+{
+    m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::ACTIVE);
+    m_networkServer->sendUpdate(m_jsonVoltage);
 }
 
 void Test_Module::updateMainBreaker(QJsonValue const & value)
@@ -516,7 +522,8 @@ void Test_Module::receiveUpdate()
 
         else if(key == VTI_DMI::PANTOGRAPH_DOWN)
             updatePantographDown(value);
-
+        else if ( key == VTI_DMI::RESET_PANTOGRAPH_UP )
+            resetPantographUp();
         else if(key == VTI_DMI::MAIN_BREAKER)
         {
              //Only for test. Remove from here

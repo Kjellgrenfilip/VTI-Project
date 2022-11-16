@@ -13,7 +13,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
 
     m_client->connectToServer();
 
-    m_animationTimer->setInterval(1000);
+    m_animationTimer->setInterval(500);
     m_animationTimer->start();
 }
 
@@ -129,12 +129,23 @@ void DMI_Handler::animationHandler()
             {
                 doorCounter++;
             }
+            else if ( key == VTI_DMI::PANTOGRAPH_UP )
+            {
+                pantCounter++;
+            }
         }
     }
     if(doorCounter>3)
     {
         doorCounter = 0;
         resetDoors();
+    }
+    else if(pantCounter>6)
+    {
+        pantCounter = 0;
+        QJsonObject json{};
+        json.insert(VTI_DMI::RESET_PANTOGRAPH_UP, true);
+        m_client->sendUpdate(json);
     }
 
     animationState = !animationState;

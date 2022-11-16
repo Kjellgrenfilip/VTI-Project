@@ -21,6 +21,7 @@ namespace VTI_DMI
     QString const CART              = "cart";
     QString const PANTOGRAPH_UP     = "pantographUp";
     QString const PANTOGRAPH_DOWN   = "pantographDown";
+    QString const RESET_PANTOGRAPH_UP = "resetPantographUp";
     QString const VELOCITY          = "velocity";
     QString const VOLTAGE           = "voltage";
     QString const EMERGENCY_BRAKE   = "emergencyBrake";

@@ -57,7 +57,7 @@ Item
             Image
             {
                 id: pantUpImage
-                objectName: "pantUpImage"
+                objectName: "pantographUpImage"
                 anchors.fill: parent
                 source: "desk_ikoner/Up.png"
                 visible: true
@@ -65,7 +65,7 @@ Item
             Image
             {
                 id: pantUpImageBlinking
-                objectName: "pantUpImageBlinking"
+                objectName: "pantographUpImageBlinking"
                 anchors.fill: parent
                 source: "desk_ikoner/UpY.png"
                 visible: false
