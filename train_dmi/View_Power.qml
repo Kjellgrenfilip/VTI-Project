@@ -283,7 +283,7 @@ Item
                 id: voltageWarningImageBlinking
                 objectName: "voltageWarningImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "desk_ikoner/yellow.png"
                 visible: false
             }
             text: "0-SP"
@@ -316,6 +316,16 @@ Item
                     {
                         target: voltageWarningButton
                         enabled: true
+                    }
+                    PropertyChanges
+                    {
+                        target: voltageWarningImage
+                        visible: false
+                    }
+                    PropertyChanges
+                    {
+                        target: voltageWarningImageBlinking
+                        visible: true
                     }
                 },
                 State
