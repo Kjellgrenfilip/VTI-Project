@@ -1,15 +1,18 @@
 import QtQuick
 import QtQuick.Shapes 1.15
+import QtQuick.Controls 2.0
 
 Item {
     id: speedometer
     property real value : 0
     property real currentSpeed : 200
+    property real currentAngle : 0
     property real angleBetweenTickmarks : 9.6
     property real startAngle : 126
     property string needleColor : "lightgrey"
     property real indicationAngle : 180+54+54
     property string arcColor : "yellow"
+    property string range : "rangeD"
 
     width: 280; height: 300
 
@@ -42,6 +45,7 @@ Item {
 
     // Creates the Speedometer!
     Rectangle{
+        id: speedometerNeedle
         width: 250; height: 250
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
@@ -94,7 +98,7 @@ Item {
             }
         }
 
-        // Creates the inner circle of the speedometer!
+        // Creates the inner circle of the speedometer arrow!
         Rectangle{
             height:50
             width:50
@@ -114,14 +118,52 @@ Item {
             }
         }
 
+        function calculateAngle(index)
+        {
+            var angle = 0;
+            for (var i = 0; i < index; i++)
+            {
+                if( i * 10 >= 200 )
+                    angle = angle + 4.8;
+                else
+                    angle = angle + 9.6;
+            }
+            return angle;
+        }
+
+        function numOfTickmarks()
+        {
+            if (range == "rangeA")
+                return 41;
+            if (range == "rangeB")
+                return 26;
+            if (range == "rangeC")
+                return 19;
+            if (range == "rangeD")
+                return 15;
+        }
+
+        function tickMarkAngle()
+        {
+            if (range == "rangeB")
+                return 11.5;
+            if (range == "rangeC")
+                return 15.95;
+            if (range == "rangeD")
+                return 20.5;
+        }
+
         // Creates the tickmarks!
         Repeater {
             id: tickmarkCreator
-            model: 31
+            model: speedometerNeedle.numOfTickmarks()
             Tick_Mark {
-                alpha: (startAngle + (index * angleBetweenTickmarks))
-                length: (index % 2 == 0) ? 25 : 15 // Makes every 5:th tickmark long.
-                visibility: (index % 2 == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
+                alpha: (range == "rangeA") ?
+                           (startAngle + speedometerNeedle.calculateAngle(index)) :
+                           (startAngle + (index * speedometerNeedle.tickMarkAngle()))
+
+                length: (index % ((range == "rangeA") ? 5 : 2) == 0) ? 25 : 15 // Makes every 5:th tickmark long.
+                visibility: (index % ((range == "rangeA") ? 5 : 2) == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
                 speedValue: index * 10;
                 tickMarkNum: index
             }
