@@ -58,6 +58,7 @@ namespace VTI_DMI
     QString const ETCSB3Image        = "etcsB3Image";
     QString const ETCSB4Image        = "etcsB4Image";
     QString const ETCSB5Image        = "etcsB5Image";
+    QString const RESET_DOORS       = "resetDoors";
 
     QJsonObject const JSON_BRAKES
     {
@@ -74,6 +75,7 @@ namespace VTI_DMI
         { DOOR_RIGHT,           STATE::DEFAULT },
         { DOOR_CLOSE,           STATE::DEFAULT },
         { DEPARTURE,            STATE::DEFAULT }
+
     };
 
     QJsonObject const JSON_VOLTAGE

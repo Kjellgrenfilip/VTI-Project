@@ -30,7 +30,8 @@ public:
     bool animationState{false};
     int doorCounter{0};
     int pantCounter{0};
-    void resetDoors();
+
+
 
 signals:
 
