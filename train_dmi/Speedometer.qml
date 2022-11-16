@@ -165,8 +165,8 @@ Item
             tickMarkNum: index
         }
     }
+    //Creates one CircularSpeedGauge.
     CircularSpeedGauge{}
-
 }
 
 
