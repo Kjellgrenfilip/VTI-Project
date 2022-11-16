@@ -27,52 +27,6 @@ Item
         color: "#041122"
     }
 
-    // Creates the arc around the Speedometer
-//    Shape
-//    {
-//        width: 280; height: 300
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        anchors.top: parent.top
-
-//        ShapePath
-//        {
-//            fillColor: "transparent"
-//            strokeColor: arcColor
-//            strokeWidth: 9
-
-//            PathAngleArc
-//            {
-//                centerX: parent.width/2; centerY: parent.height/2 - 5
-//                radiusX: 132.5; radiusY: 132.5
-//                startAngle: 126
-//                sweepAngle: indicationAngle
-//            }
-//        }
-//    }
-
-    Shape {
-        id: normal
-        width: 280; height: 300
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-
-        antialiasing: true
-
-        ShapePath {
-            fillColor: "transparent"
-            strokeColor: (value <= 50) ? "grey" : "orange"
-            strokeWidth: 9
-
-            PathAngleArc {
-                id: arc1
-                centerX: parent.width/2; centerY: parent.height/2 - 5
-                radiusX: 132.5; radiusY: 132.5
-                startAngle: 121
-                sweepAngle: (currentSpeed <= 200) ? 5 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
-            }
-        }
-    }
-
     // Creates the Speedometer!
     Rectangle
     {
@@ -158,70 +112,61 @@ Item
                 font.pointSize: 25
             }
         }
-
-        function calculateAngle(index)
+    }
+    function calculateAngle(index)
+    {
+        var angle = 0;
+        for (var i = 0; i < index; i++)
         {
-            var angle = 0;
-            for (var i = 0; i < index; i++)
-            {
-                if( i * 10 >= 200 )
-                    angle = angle + 4.8;
-                else
-                    angle = angle + 9.6;
-            }
-            return angle;
+            if( i * 10 >= 200 )
+                angle = angle + 4.8;
+            else
+                angle = angle + 9.6;
         }
+        return angle;
+    }
 
-        function numOfTickmarks()
-        {
-            if (range == "rangeA")
-                return 41;
-            if (range == "rangeB")
-                return 26;
-            if (range == "rangeC")
-                return 19;
-            if (range == "rangeD")
-                return 15;
-        }
+    function numOfTickmarks()
+    {
+        if (range == "rangeA")
+            return 41;
+        if (range == "rangeB")
+            return 26;
+        if (range == "rangeC")
+            return 19;
+        if (range == "rangeD")
+            return 15;
+    }
 
-        function tickMarkAngle()
-        {
-            if (range == "rangeB")
-                return 11.5;
-            if (range == "rangeC")
-                return 15.95;
-            if (range == "rangeD")
-                return 20.5;
-        }
+    function tickMarkAngle()
+    {
+        if (range == "rangeB")
+            return 11.5;
+        if (range == "rangeC")
+            return 15.95;
+        if (range == "rangeD")
+            return 20.5;
+    }
 
-        // Creates the tickmarks!
-        Repeater
-        {
-            id: tickmarkCreator
-            model: speedometerNeedle.numOfTickmarks()
-            Tick_Mark
-            {
-                alpha: (range == "rangeA") ?
-                           (startAngle + speedometerNeedle.calculateAngle(index)) :
-                           (startAngle + (index * speedometerNeedle.tickMarkAngle()))
-
-                length: (index % ((range == "rangeA") ? 5 : 2) == 0) ? 25 : 15 // Makes every 5:th tickmark long.
-                visibility: (index % ((range == "rangeA") ? 5 : 2) == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
-                speedValue: index * 10;
-                tickMarkNum: index
-            }
-        }
+    // Creates the tickmarks!
+    Repeater
+    {
+        id: tickmarkCreator
+        model: speedometer.numOfTickmarks()
         Tick_Mark
         {
-            id: hook
-            alpha: (currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
-            length: 20
-            width1: 6
-            radius1: 137
-            color1: "grey"
-            visible: (currentSpeed >= 50) ? true : false
+            alpha: (range == "rangeA") ?
+                       (startAngle + speedometer.calculateAngle(index)) :
+                       (startAngle + (index * speedometer.tickMarkAngle()))
+
+            length: (index % ((range == "rangeA") ? 5 : 2) == 0) ? 25 : 15 // Makes every 5:th tickmark long.
+            visibility: (index % ((range == "rangeA") ? 5 : 2) == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
+            speedValue: index * 10;
+            tickMarkNum: index
         }
     }
+    CircularSpeedGauge{}
+
 }
 
 
