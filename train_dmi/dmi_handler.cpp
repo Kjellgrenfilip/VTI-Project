@@ -115,27 +115,29 @@ void DMI_Handler::animationHandler()
             if(key == VTI_DMI::DOOR_CLOSE && !animationState)
             {
                 doorCounter++;
+                if(doorCounter>3)
+                {
+                    doorCounter = 0;
+                    QJsonObject json{};
+                    json.insert(VTI_DMI::RESET_DOORS, true);
+                    m_client->sendUpdate(json);
+                }
             }
             if ( key == VTI_DMI::PANTOGRAPH_UP && !animationState)
             {
                 pantCounter++;
+                if(pantCounter>3)
+                {
+                    pantCounter = 0;
+                    QJsonObject json{};
+                    json.insert(VTI_DMI::RESET_PANTOGRAPH_UP, true);
+                    m_client->sendUpdate(json);
+                }
             }
         }
     }
-    if(doorCounter>3)
-    {
-        doorCounter = 0;
-        QJsonObject json{};
-        json.insert(VTI_DMI::RESET_DOORS, true);
-        m_client->sendUpdate(json);
-    }
-    if(pantCounter>3)
-    {
-        pantCounter = 0;
-        QJsonObject json{};
-        json.insert(VTI_DMI::RESET_PANTOGRAPH_UP, true);
-        m_client->sendUpdate(json);
-    }
+
+
 
     animationState = !animationState;
 }
