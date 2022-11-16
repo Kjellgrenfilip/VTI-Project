@@ -2,7 +2,8 @@ import QtQuick
 import QtQuick.Shapes 1.15
 import QtQuick.Controls 2.0
 
-Item {
+Item
+{
     id: speedometer
     property real value : 0
     property real currentSpeed : 200
@@ -12,7 +13,7 @@ Item {
     property string needleColor : "lightgrey"
     property real indicationAngle : 180+54+54
     property string arcColor : "yellow"
-    property string range : "rangeD"
+    property string range : "rangeA"
 
     width: 280; height: 300
 
@@ -24,17 +25,20 @@ Item {
     }
 
     // Creates the arc around the Speedometer
-    Shape {
+    Shape
+    {
         width: 280; height: 300
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
 
-        ShapePath {
+        ShapePath
+        {
             fillColor: "transparent"
             strokeColor: arcColor
             strokeWidth: 9
 
-            PathAngleArc {
+            PathAngleArc
+            {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 132.5; radiusY: 132.5
                 startAngle: 126
@@ -44,7 +48,8 @@ Item {
     }
 
     // Creates the Speedometer!
-    Rectangle{
+    Rectangle
+    {
         id: speedometerNeedle
         width: 250; height: 250
         anchors.horizontalCenter: parent.horizontalCenter
@@ -54,7 +59,8 @@ Item {
         radius:  125
 
         // Creates the thick part of the needle!
-        Rectangle {
+        Rectangle
+        {
             id: needleThick
             x: (parent.width/2) - width/2
             y: parent.height/2
@@ -62,13 +68,16 @@ Item {
             width: 9
             height: 82
             color: needleColor
-            transform: Rotation {
+            transform: Rotation
+            {
                 origin.x: 4.5; origin.y: 0
                 //Min = 54, Max = 306
                 // Map the angle between min/max angle values and the speed min/max values
                 angle: Math.min(Math.max(36, speedometer.value*2.6 + 36), 324)
-                Behavior on angle {
-                    SpringAnimation {
+                Behavior on angle
+                {
+                    SpringAnimation
+                    {
                         spring: 1.0
                         damping: 1.0
                     }
@@ -76,7 +85,8 @@ Item {
             }
         }
         // Creates the thin part of the needle
-        Rectangle {
+        Rectangle
+        {
             id: needleThin
             x: (parent.width/2) - width/2
             y: parent.height/2
@@ -84,13 +94,16 @@ Item {
             width: 3
             height: 105
             color: needleColor
-            transform: Rotation {
+            transform: Rotation
+            {
                 origin.x: 4.5; origin.y: 0
                 //Min = 54, Max = 306
                 // Map the angle between min/max angle values and the speed min/max values
                 angle: Math.min(Math.max(36, speedometer.value*2.6 + 36), 324)
-                Behavior on angle {
-                    SpringAnimation {
+                Behavior on angle
+                {
+                    SpringAnimation
+                    {
                         spring: 1.0
                         damping: 1.0
                     }
@@ -99,7 +112,8 @@ Item {
         }
 
         // Creates the inner circle of the speedometer arrow!
-        Rectangle{
+        Rectangle
+        {
             height:50
             width:50
             anchors.horizontalCenter: parent.horizontalCenter
@@ -107,7 +121,8 @@ Item {
             radius: 25
             color: needleColor
             // Creates the text that show the speed
-            Text {
+            Text
+            {
                 id: speedText
                 text: qsTr(currentSpeed.toString())
                 anchors.right: parent.right
@@ -154,10 +169,12 @@ Item {
         }
 
         // Creates the tickmarks!
-        Repeater {
+        Repeater
+        {
             id: tickmarkCreator
             model: speedometerNeedle.numOfTickmarks()
-            Tick_Mark {
+            Tick_Mark
+            {
                 alpha: (range == "rangeA") ?
                            (startAngle + speedometerNeedle.calculateAngle(index)) :
                            (startAngle + (index * speedometerNeedle.tickMarkAngle()))
