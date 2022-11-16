@@ -474,13 +474,21 @@ void Test_Module::receiveUpdate()
             qDebug() << "Activation";
             m_jsonActivation.insert(VTI_DMI::ACTIVATE, STATE::ACTIVE);
             m_networkServer->sendUpdate(m_jsonBrakes);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonDoors);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonVoltage);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonAlarm);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonExtras);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonActivation);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCS_A);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCSB);
+            m_networkServer->delay(10);
 
 //            updateETCSB("08");
 //            delay(500);
