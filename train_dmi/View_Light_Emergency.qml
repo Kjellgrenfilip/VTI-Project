@@ -62,26 +62,20 @@ Item {
                     PropertyChanges
                     {
                         target: lightImage
-                        source: "desk_ikoner/button69.png"
+                        visible: true
                     }
-//                    PropertyChanges {
-//                        target: lightAnimation
-//                        running: false
-
-//                    }
+                    PropertyChanges
+                    {
+                        target: lightImageBlinking
+                        visible: false
+                    }
                     PropertyChanges {
                         target: lightButton
                         enabled:true
-
                     }
                 },
                 State {
                     name: "warning"
-//                    PropertyChanges {
-//                        target: lightAnimation
-//                        running: true
-
-//                    }
                     PropertyChanges {
                         target: lightButton
                         enabled: true
@@ -89,27 +83,6 @@ Item {
                     }
                 }
             ]
-//            SequentialAnimation
-//            {
-//                id: lightAnimation
-//                objectName: "lightAnimation"
-//                running: false
-//                loops: Animation.Infinite
-//                PropertyAnimation
-//                {
-//                    target: lightImage
-//                    property: "source"
-//                    to: "desk_ikoner/yellow.png"
-//                    duration: MyConst.animationDuration
-//                }
-//                PropertyAnimation
-//                {
-//                    target: lightImage
-//                    property: "source"
-//                    to: "desk_ikoner/button69.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             onPressed: buttonHandler.lightPressed()
         }
         Button

@@ -72,29 +72,6 @@ Item {
                 font.pointSize: parent.width /8
                 color: "White"
             }
-
-//            SequentialAnimation
-//            {
-//                id: emergencyBrakeWarningAnimation
-//                objectName: "emergencyBrakeAnimation"
-//                running: false
-//                loops: Animation.Infinite
-//                PropertyAnimation
-//                {
-//                    target: emergencyBrakeImage
-//                    property: "source"
-//                    to: "desk_ikoner/redButton.png"
-//                    duration: MyConst.animationDuration
-//                }
-
-//                PropertyAnimation
-//                {
-//                    target: emergencyBrakeImage
-//                    property: "source"
-//                    to: "desk_ikoner/button69.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             states:
                 [
                 State
@@ -103,13 +80,13 @@ Item {
                     PropertyChanges
                     {
                         target: emergencyBrakeImage
-                        source:"desk_ikoner/button69.png"
+                        visible: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: emergencyBrakeWarningAnimation
-//                        running: false
-//                    }
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeImageBlinking
+                        visible: false
+                    }
                     PropertyChanges
                     {
                         target: emergencyBrakeButton
@@ -121,14 +98,14 @@ Item {
                     name: "active";
                     PropertyChanges
                     {
-                        target: emergencyBrakeImage
-                        source:"desk_ikoner/redButton.png"
+                        target: emergencyBrakeImageBlinking
+                        visible: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: emergencyBrakeWarningAnimation
-//                        running: false
-//                    }
+                    PropertyChanges
+                    {
+                        target: emergencyBrakeImage
+                        visible: false
+                    }
                     PropertyChanges
                     {
                         target: emergencyBrakeButton
@@ -143,11 +120,6 @@ Item {
                         target: emergencyBrakeButton
                         enabled: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: emergencyBrakeWarningAnimation
-//                        running: false
-//                    }
                 }
             ]
         }
@@ -191,28 +163,6 @@ Item {
                 color:"White"
             }
 
-//            SequentialAnimation
-//            {
-//                id: fireWarningAnimation
-//                objectName: "fireAnimation"
-//                running: false
-//                loops: Animation.Infinite
-//                PropertyAnimation
-//                {
-//                    target: fireImage
-//                    property: "source"
-//                    to: "desk_ikoner/redButton.png"
-//                    duration: MyConst.animationDuration
-//                }
-
-//                PropertyAnimation
-//                {
-//                    target: fireImage
-//                    property: "source"
-//                    to: "desk_ikoner/button69.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             states:
                 [
                 State
@@ -221,13 +171,13 @@ Item {
                     PropertyChanges
                     {
                         target: fireImage
-                        source:"desk_ikoner/button69.png"
+                        visible: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: fireWarningAnimation
-//                        running: false
-//                    }
+                    PropertyChanges
+                    {
+                        target: fireImageBlinking
+                        visible: false
+                    }
                     PropertyChanges
                     {
                         target: fireButton
@@ -240,14 +190,14 @@ Item {
                     PropertyChanges
                     {
                         target: fireImage
-                        source:"desk_ikoner/redButton.png"
+                        visible: false
+                    }
+                    PropertyChanges
+                    {
+                        target: fireImageBlinking
+                        visible: true
                     }
 
-//                    PropertyChanges
-//                    {
-//                        target: fireWarningAnimation
-//                        running: false
-//                    }
                     PropertyChanges
                     {
                         target: fireButton
@@ -262,11 +212,6 @@ Item {
                         target: fireButton
                         enabled: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: fireWarningAnimation
-//                        running: false
-//                    }
                 }
             ]
         }
