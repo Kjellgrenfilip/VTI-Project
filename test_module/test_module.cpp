@@ -448,6 +448,7 @@ void Test_Module::updateETCSB7(QJsonValue const & value)
     if (m_jsonETCSB.value(VTI_DMI::ETCSB7).toString() == STATE::INACTIVE)
         m_jsonETCSB.insert(VTI_DMI::ETCSB7, STATE::ACTIVE);
     m_jsonETCSB.insert(VTI_DMI::ETCSB7Image, value);
+
     m_networkServer->sendUpdate(m_jsonETCSB);
 }
 

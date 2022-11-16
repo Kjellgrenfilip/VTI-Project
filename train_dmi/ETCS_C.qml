@@ -30,6 +30,7 @@ Item {
 
                 ETCS_Box3DEffect{}
             }
+
             Rectangle
             {
                 id: c9
@@ -79,6 +80,48 @@ Item {
             color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
+
+
+            SequentialAnimation on color
+            {
+              //  running: true
+                id: c1Animation
+                loops: Animation.Infinite
+                ColorAnimation
+                {
+                    from : MyConst.backgroundColor
+                    to: MyConst.yellow
+                    duration: 200
+                }
+                ColorAnimation
+                {
+                    from: MyConst.yellow
+                    to: MyConst.backgroundColor
+                    duration: 200
+                }
+            }
+            Image
+            {
+                id: c1Image
+                source: "symbols/Level/LE_07.bmp"
+                anchors.fill: parent
+                anchors.margins: 4
+                MouseArea
+                {
+                    width: parent.width
+                    height: parent.height
+                    anchors.fill: parent
+                    onClicked: console.log("clicked")
+                 /*   {
+                        c1Animation.running = false;
+
+                        enabled: false
+                    }*/
+
+                }
+            }
+
+
         }
 
         Rectangle
