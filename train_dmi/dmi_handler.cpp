@@ -34,6 +34,20 @@ DMI_Handler::~DMI_Handler()
     delete m_animationTimer;
 }
 
+void DMI_Handler::resetDoors()
+{
+      QObject *obj = m_rootObject->findChild<QObject*>(VTI_DMI::DOOR_LEFT);
+      obj->setProperty("state",STATE::INACTIVE);
+      obj = m_rootObject->findChild<QObject*>(VTI_DMI::DOOR_RIGHT);
+      obj->setProperty("state",STATE::INACTIVE);
+      obj = m_rootObject->findChild<QObject*>(VTI_DMI::DOOR_LEFT);
+      obj->setProperty("state",STATE::INACTIVE);
+      obj = m_rootObject->findChild<QObject*>(VTI_DMI::DEPARTURE);
+      obj->setProperty("state",STATE::INACTIVE);
+      obj = m_rootObject->findChild<QObject*>(VTI_DMI::DOOR_CLOSE);
+      obj->setProperty("state",STATE::ACTIVE);
+}
+
 void DMI_Handler::receiveUpdate()
 {
     m_latestUpdate = m_client->getUpdate();
@@ -111,7 +125,16 @@ void DMI_Handler::animationHandler()
 
             image->setProperty("visible", animationState);
             imageBlinking->setProperty("visible", !animationState);
+            if(key == VTI_DMI::DOOR_CLOSE)
+            {
+                doorCounter++;
+            }
         }
+    }
+    if(doorCounter>3)
+    {
+        doorCounter = 0;
+        resetDoors();
     }
 
     animationState = !animationState;
