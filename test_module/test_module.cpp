@@ -456,6 +456,14 @@ void Test_Module::removeImage(QString const & key)
     }
 
 }
+void Test_Module::resetDoors()
+{
+    m_jsonDoors.insert(VTI_DMI::DOOR_LEFT,STATE::INACTIVE);
+    m_jsonDoors.insert(VTI_DMI::DOOR_RIGHT,STATE::INACTIVE);
+    m_jsonDoors.insert(VTI_DMI::DEPARTURE,STATE::INACTIVE);
+    m_jsonDoors.insert(VTI_DMI::DOOR_CLOSE,STATE::ACTIVE);
+    m_networkServer->sendUpdate(m_jsonDoors);
+}
 
 //void delay(int timeToWait)
 //{
@@ -570,6 +578,8 @@ void Test_Module::receiveUpdate()
 
         else if ( key == VTI_DMI::LIGHT)
             updateLight(value);
+        else if (key == VTI_DMI::RESET_DOORS)
+            resetDoors();
     }
 }
 

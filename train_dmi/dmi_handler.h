@@ -29,7 +29,6 @@ public:
     bool testStart{false};
     bool animationState{false};
     int doorCounter{0};
-    void resetDoors();
 
 signals:
 
