@@ -132,3 +132,8 @@ void Button_Handler::emergencyPressed()
 {
     qDebug() << "emergency button pressed!";
 }
+
+void Button_Handler::etcs1Pressed()
+{
+
+}

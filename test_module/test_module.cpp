@@ -491,27 +491,6 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->sendUpdate(m_jsonETCSB);
 
-            updateETCSB345("08");
-            delay(500);
-            updateETCSB7("13");
-
-            updateETCSB345("07");
-            delay(500);
-
-            updateETCSB345("26");
-            delay(500);
-
-            updateETCSB345("33");
-            updateETCSB345("32");
-            updateETCSB345("36");
-
-            delay(500);
-            removeImage(VTI_DMI::ETCSB4);
-            delay(500);
-            removeImage(VTI_DMI::ETCSB5);
-            delay(500);
-            removeImage(VTI_DMI::ETCSB3);
-
         }
         else
             return;

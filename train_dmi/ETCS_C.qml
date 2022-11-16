@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.12
 import "Imports" 1.0
 
 Item {
@@ -79,12 +80,11 @@ Item {
             height: 50
             color: MyConst.backgroundColor
 
-            ETCS_Box3DEffect{}
 
 
             SequentialAnimation on color
             {
-              //  running: true
+                running: true
                 id: c1Animation
                 loops: Animation.Infinite
                 ColorAnimation
@@ -100,28 +100,25 @@ Item {
                     duration: 200
                 }
             }
-            Image
+
+            Button
             {
-                id: c1Image
-                source: "symbols/Level/LE_07.bmp"
+                id: c1Button
+                width:  parent.width
+                height: parent.height
                 anchors.fill: parent
                 anchors.margins: 4
-                MouseArea
+                onPressed: buttonHandler.etcs1Pressed()
+
+                Image
                 {
-                    width: parent.width
-                    height: parent.height
+                    id: c1Image
+                    source: "symbols/Level/LE_07.bmp"
                     anchors.fill: parent
-                    onClicked: console.log("clicked")
-                 /*   {
-                        c1Animation.running = false;
-
-                        enabled: false
-                    }*/
-
                 }
             }
 
-
+            ETCS_Box3DEffect{}
         }
 
         Rectangle
