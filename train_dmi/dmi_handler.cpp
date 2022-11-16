@@ -116,7 +116,7 @@ void DMI_Handler::animationHandler()
             {
                 doorCounter++;
             }
-            else if ( key == VTI_DMI::PANTOGRAPH_UP && !animationState)
+            if ( key == VTI_DMI::PANTOGRAPH_UP && !animationState)
             {
                 pantCounter++;
             }
@@ -129,7 +129,7 @@ void DMI_Handler::animationHandler()
         json.insert(VTI_DMI::RESET_DOORS, true);
         m_client->sendUpdate(json);
     }
-    else if(pantCounter>3)
+    if(pantCounter>3)
     {
         pantCounter = 0;
         QJsonObject json{};
