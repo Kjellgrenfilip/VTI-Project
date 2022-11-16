@@ -347,11 +347,18 @@ Item
                 State
                 {
                     name: "default";
-//                    PropertyChanges
-//                    {
-//                         target: departureImage
-//                         source: "desk_ikoner/button69.png"
-//                    }
+                    PropertyChanges
+                    {
+                         target: departureImage
+                         //source: "desk_ikoner/button69.png"
+                         visible: true
+                    }
+                    PropertyChanges
+                    {
+                         target: departureImageBlinking
+                         //source: "desk_ikoner/button69.png"
+                         visible: false
+                    }
 //                    PropertyChanges
 //                    {
 //                        target: departureAnimation

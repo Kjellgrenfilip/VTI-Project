@@ -466,7 +466,7 @@ void Test_Module::resetDoors()
 {
     m_jsonDoors.insert(VTI_DMI::DOOR_LEFT,STATE::INACTIVE);
     m_jsonDoors.insert(VTI_DMI::DOOR_RIGHT,STATE::INACTIVE);
-    m_jsonDoors.insert(VTI_DMI::DEPARTURE,STATE::INACTIVE);
+    m_jsonDoors.insert(VTI_DMI::DEPARTURE,STATE::DEFAULT);
     m_jsonDoors.insert(VTI_DMI::DOOR_CLOSE,STATE::ACTIVE);
     m_networkServer->sendUpdate(m_jsonDoors);
 }
