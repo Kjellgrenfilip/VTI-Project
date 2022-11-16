@@ -29,6 +29,9 @@ public:
     bool testStart{false};
     bool animationState{false};
     int doorCounter{0};
+    int pantCounter{0};
+
+
 
 signals:
 
