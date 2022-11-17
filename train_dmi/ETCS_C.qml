@@ -44,104 +44,116 @@ Item {
                 ETCS_Box3DEffect{}
             }
         }
-
-        Grid
+        Rectangle
         {
             id: c1234
-            width: (37*3 + 58)
+            width: 37*3
             height: 50
+            color: MyConst.backgroundColor
 
-            Rectangle
+            Grid
             {
-                id: c2
-                width: 37
-                height: 50
-                color: MyConst.backgroundColor
+                id: grid2
+                width: parent.width
+                height: parent.height
 
-            }
-
-            Rectangle
-            {
-                id: c3
-                width: 37
-                height: 50
-                color: MyConst.backgroundColor
-
-
-            }
-
-            Rectangle
-            {
-                id: c4
-                width: 37
-                height: 50
-                color: MyConst.backgroundColor
-
-
-            }
-
-            Rectangle
-            {
-                id: c1
-                objectName: "c1"
-                width: 58
-                height: 50
-                color: MyConst.backgroundColor
-
-                SequentialAnimation on color
+                Rectangle
                 {
-                    running: true
-                    id: c1Animation
-                    loops: Animation.Infinite
+                    id: c2
+                    width: 37
+                    height: 50
+                    color: MyConst.backgroundColor
 
-                    ColorAnimation
-                    {
-                        from : MyConst.backgroundColor
-                        to: MyConst.yellow
-                        duration: 200
-                    }
+                }
 
-                    ColorAnimation
-                    {
-                        from: MyConst.yellow
-                        to: MyConst.backgroundColor
-                        duration: 200
+                Rectangle
+                {
+                    id: c3
+                    width: 37
+                    height: 50
+                    color: MyConst.backgroundColor
+
+                    Text {
+                        id: c3Text
+                        text: qsTr("1000")
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: MyConst.white
                     }
                 }
 
-                Button
+                Rectangle
                 {
-                    id: c1Button
-                    width:  parent.width
-                    height: parent.height
-                    anchors.fill: parent
-                    anchors.margins: 4
-                    background: Rectangle
-                    {
-                        color: "transparent"
-                    }
+                    id: c4
+                    width: 37
+                    height: 50
+                    color: MyConst.backgroundColor
 
-                    onPressed: {
-                        c1Image.source = ""
-                        c1Animation.running = false
-                        c1.color = "transparent"
-                        buttonHandler.etcsC1Pressed();
-                    }
 
-                    Image
-                    {
-                        id: c1Image
-                        source: "symbols/Level/LE_07.bmp"
-                        anchors.fill: parent
-                    }
                 }
 
 
             }
+
             ETCS_Box3DEffect{}
         }
 
+        Rectangle
+        {
+            id: c1
+            objectName: "c1"
+            width: 58
+            height: 50
+            color: MyConst.backgroundColor
 
+            SequentialAnimation on color
+            {
+                running: true
+                id: c1Animation
+                loops: Animation.Infinite
+
+                ColorAnimation
+                {
+                    from : MyConst.backgroundColor
+                    to: MyConst.yellow
+                    duration: 200
+                }
+
+                ColorAnimation
+                {
+                    from: MyConst.yellow
+                    to: MyConst.backgroundColor
+                    duration: 200
+                }
+            }
+
+            Button
+            {
+                id: c1Button
+                width:  parent.width
+                height: parent.height
+                anchors.fill: parent
+                anchors.margins: 4
+                background: Rectangle
+                {
+                    color: "transparent"
+                }
+
+                onPressed: {
+                    c1Image.source = ""
+                    c1Animation.running = false
+                    c1.color = "transparent"
+                    buttonHandler.etcsC1Pressed();
+                }
+
+                Image
+                {
+                    id: c1Image
+                    source: "symbols/Level/LE_07.bmp"
+                    anchors.fill: parent
+                }
+            }
+            ETCS_Box3DEffect{}
+        }
 
         Rectangle
         {
