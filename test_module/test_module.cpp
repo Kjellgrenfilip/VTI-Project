@@ -466,12 +466,12 @@ void Test_Module::removeImage(QString const & key)
 
 }
 
-void delay(int timeToWait)
-{
-    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
-    while (QTime::currentTime() < dieTime)
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-}
+//void delay(int timeToWait)
+//{
+//    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
+//    while (QTime::currentTime() < dieTime)
+//        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+//}
 void Test_Module::receiveUpdate()
 {
     qDebug() << "TESTING";
@@ -508,11 +508,11 @@ void Test_Module::receiveUpdate()
 
         else if(key == VTI_DMI::MAIN_BREAKER)
         {
-            // Only for test. Remove from here
-//            x += 58;
-//            updateDistance(x);
-            // to here.
-           testDistance(); // for testing only
+             //Only for test. Remove from here
+            x += 58;
+            updateDistance(x);
+             //to here.
+          // testDistance(); // for testing only
            updateMainBreaker(value);
         }
         else if(key == VTI_DMI::HEATING)
