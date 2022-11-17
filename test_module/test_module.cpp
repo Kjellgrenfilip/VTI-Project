@@ -10,8 +10,6 @@ Test_Module::Test_Module(bool connection)
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
-      //m_doorTimer{new QTimer{this}},
-      //m_pantUpTimer{new QTimer{this}},
       m_jsonETCSB{VTI_DMI::JSON_ETCS_B}
 
 {
@@ -19,43 +17,13 @@ Test_Module::Test_Module(bool connection)
     {
         m_networkServer = new Network_Server();
         connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
-//        connect(m_doorTimer, SIGNAL(timeout()), this, SLOT(doorHandler()));
-
-        //m_doorTimer->setSingleShot(true);
-
-        //connect(m_pantUpTimer, SIGNAL(timeout()), this, SLOT(pantHandler()));
-
-        //m_pantUpTimer->setSingleShot(true);
     }
 }
 
 Test_Module::~Test_Module()
 {
     delete m_networkServer;
-    //delete m_doorTimer;
 }
-
-//void Test_Module::doorHandler()
-//{
-//    qDebug() << "TIMER PÅ TRE SEKUNDER KLAR";
-//    m_jsonDoors.insert(VTI_DMI::DEPARTURE, STATE::INACTIVE);
-//    m_jsonDoors.insert(VTI_DMI::DOOR_RIGHT, STATE::INACTIVE);
-//    m_jsonDoors.insert(VTI_DMI::DOOR_LEFT, STATE::INACTIVE);
-//    m_jsonDoors.insert(VTI_DMI::DOOR_CLOSE, STATE::ACTIVE);
-
-
-//    m_networkServer->sendUpdate(m_jsonDoors);
-//}
-
-//void Test_Module::pantHandler()
-//{
-//    if (m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::WARNING)
-//    {
-//        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::ACTIVE);
-//        checkVoltage(VTI_DMI::MAIN_BREAKER);
-//        m_networkServer->sendUpdate(m_jsonVoltage);
-//    }
-//}
 
 void Test_Module::checkVoltage(QString const& key)
 {
@@ -105,6 +73,7 @@ void Test_Module::updatePantographDown(QJsonValue const & value)
 void Test_Module::resetPantographUp()
 {
     m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::ACTIVE);
+    checkVoltage(VTI_DMI::MAIN_BREAKER);
     m_networkServer->sendUpdate(m_jsonVoltage);
 }
 
