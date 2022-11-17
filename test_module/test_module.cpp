@@ -471,8 +471,10 @@ void Test_Module::receiveUpdate()
 
         else if(key == VTI_DMI::PANTOGRAPH_DOWN)
             updatePantographDown(value);
+
         else if ( key == VTI_DMI::RESET_PANTOGRAPH_UP )
             resetPantographUp();
+
         else if(key == VTI_DMI::MAIN_BREAKER)
            updateMainBreaker(value);
 
@@ -520,6 +522,7 @@ void Test_Module::receiveUpdate()
 
         else if ( key == VTI_DMI::LIGHT)
             updateLight(value);
+
         else if (key == VTI_DMI::RESET_DOORS)
             resetDoors();
     }

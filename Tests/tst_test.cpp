@@ -74,7 +74,11 @@ void test::testPantUp()
     tc.dmiHandler->m_buttonHandler->mainBreakerPressed();
     delay(1000);
     tc.dmiHandler->m_buttonHandler->pantUpPressed();
+<<<<<<< HEAD
     delay(5000);
+=======
+    delay(7000);
+>>>>>>> 15139e6b4ab10a8a77238f4556d325890dafe66e
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PANTUP_ACTIVATION_MAINBREAKER);
 
 }
