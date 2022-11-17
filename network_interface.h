@@ -21,6 +21,7 @@ namespace VTI_DMI
     QString const CART              = "cart";
     QString const PANTOGRAPH_UP     = "pantographUp";
     QString const PANTOGRAPH_DOWN   = "pantographDown";
+    QString const RESET_PANTOGRAPH_UP = "resetPantographUp";
     QString const VELOCITY          = "velocity";
     QString const VOLTAGE           = "voltage";
     QString const EMERGENCY_BRAKE   = "emergencyBrake";
@@ -61,6 +62,8 @@ namespace VTI_DMI
     QString const ETCSC1Image       = "etcsC1Image";
     QString const ETCSC3Text        = "etcsC3Text";
 
+    QString const RESET_DOORS       = "resetDoors";
+
     QJsonObject const JSON_BRAKES
     {
         { PARK_BRAKE,           STATE::DEFAULT },
@@ -76,6 +79,7 @@ namespace VTI_DMI
         { DOOR_RIGHT,           STATE::DEFAULT },
         { DOOR_CLOSE,           STATE::DEFAULT },
         { DEPARTURE,            STATE::DEFAULT }
+
     };
 
     QJsonObject const JSON_VOLTAGE

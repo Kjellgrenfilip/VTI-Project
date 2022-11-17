@@ -50,42 +50,25 @@ Item
             objectName: "pantographUp"
             width: (pantUpButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pantUpButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
-            //anchors.fill: parent
             enabled: false
 
             onPressed: buttonHandler.pantUpPressed()
             Image
             {
                 id: pantUpImage
+                objectName: "pantographUpImage"
                 anchors.fill: parent
                 source: "desk_ikoner/Up.png"
+                visible: true
             }
-
-            SequentialAnimation
+            Image
             {
-                id: pantographUpAnimation
-                objectName: "pantographUpAnimation"
-                running: false
-                loops: Animation.Infinite
-                alwaysRunToEnd: false
-                PropertyAnimation
-                {
-                    target: pantUpImage
-                    property: "source"
-                    to: "desk_ikoner/UpY.png"
-                    duration: MyConst.animationDuration
-                }
-
-                PropertyAnimation
-                {
-                    target: pantUpImage
-                    property: "source"
-                    to: "desk_ikoner/Up.png"
-                    duration: MyConst.animationDuration
-                }
+                id: pantUpImageBlinking
+                objectName: "pantographUpImageBlinking"
+                anchors.fill: parent
+                source: "desk_ikoner/UpY.png"
+                visible: false
             }
-
-
             states:
             [
             State
@@ -94,17 +77,17 @@ Item
                 PropertyChanges
                 {
                     target: pantUpImage
-                    source:"desk_ikoner/Up.png"
+                    visible: true
+                }
+                PropertyChanges
+                {
+                    target: pantUpImageBlinking
+                    visible: false
                 }
                 PropertyChanges
                 {
                     target: pantUpButton
                     enabled: true
-                }
-                PropertyChanges
-                {
-                    target: pantographUpAnimation
-                    running: false
                 }
             },
             State
@@ -113,17 +96,17 @@ Item
                 PropertyChanges
                 {
                     target: pantUpImage
-                    source: "desk_ikoner/UpY.png"
+                    visible: false
+                }
+                PropertyChanges
+                {
+                    target: pantUpImageBlinking
+                    visible: true
                 }
                 PropertyChanges
                 {
                     target: pantUpButton
                     enabled: true
-                }
-                PropertyChanges
-                {
-                    target: pantographUpAnimation
-                    running: false
                 }
             },
             State
@@ -134,11 +117,6 @@ Item
                     target: pantUpButton
                     enabled: true
                 }
-                PropertyChanges
-                {
-                    target: pantographUpAnimation
-                    running: false
-                }
             },
             State
             {
@@ -146,17 +124,17 @@ Item
                 PropertyChanges
                 {
                     target: pantUpImage
-                    source:"desk_ikoner/Up.png"
+                    visible: true
+                }
+                PropertyChanges
+                {
+                    target: pantUpImageBlinking
+                    visible: false
                 }
                 PropertyChanges
                 {
                     target: pantUpButton
                     enabled: true
-                }
-                PropertyChanges
-                {
-                    target: pantographUpAnimation
-                    running: false
                 }
             }
             ]
@@ -294,32 +272,20 @@ Item
             Image
             {
                 id: voltageWarningImage
+                objectName: "voltageWarningImage"
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
+                visible: true
+            }
+            Image
+            {
+                id: voltageWarningImageBlinking
+                objectName: "voltageWarningImageBlinking"
+                anchors.fill: parent
+                source: "desk_ikoner/yellow.png"
+                visible: false
             }
             text: "0-SP"
-
-            SequentialAnimation
-            {
-                id: voltageWarningAnimation
-                objectName: "voltageWarningAnimation"
-                running: false
-                loops: Animation.Infinite
-                PropertyAnimation
-                {
-                    target: voltageWarningImage
-                    property: "source"
-                    to: "desk_ikoner/yellow.png"
-                    duration: MyConst.animationDuration
-                }
-                PropertyAnimation
-                {
-                    target: voltageWarningImage
-                    property: "source"
-                    to: "desk_ikoner/button69.png"
-                    duration: MyConst.animationDuration
-                }
-            }
 
             states:
                 [
@@ -328,13 +294,13 @@ Item
                     name: "default"
                     PropertyChanges
                     {
-                        target: voltageWarningAnimation
-                        running: false
+                        target: voltageWarningImage
+                        visible: true
                     }
                     PropertyChanges
                     {
-                        target: voltageWarningImage
-                        source: "desk_ikoner/button69.png"
+                        target: voltageWarningImageBlinking
+                        visible: false
                     }
                     PropertyChanges
                     {
@@ -352,8 +318,13 @@ Item
                     }
                     PropertyChanges
                     {
-                        target: voltageWarningAnimation
-                        running : false
+                        target: voltageWarningImage
+                        visible: false
+                    }
+                    PropertyChanges
+                    {
+                        target: voltageWarningImageBlinking
+                        visible: true
                     }
                 },
                 State
@@ -361,13 +332,13 @@ Item
                     name: "inactive"
                     PropertyChanges
                     {
-                        target: voltageWarningAnimation
-                        running : false
+                        target: voltageWarningImage
+                        visible: true
                     }
                     PropertyChanges
                     {
-                        target: voltageWarningImage
-                        source: "desk_ikoner/button69.png"
+                        target: voltageWarningImageBlinking
+                        visible: false
                     }
                     PropertyChanges
                     {
@@ -389,9 +360,12 @@ Item
             Image
             {
                 id: mainBreakerImage
+                objectName: "mainBreakerImage"
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
+                visible: true
             }
+
             text: "H-BRYT"
             onPressed: buttonHandler.mainBreakerPressed()
             states:

@@ -13,7 +13,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
 
     m_client->connectToServer();
 
-    m_animationTimer->setInterval(1000);
+    m_animationTimer->setInterval(500);
     m_animationTimer->start();
 }
 
@@ -33,6 +33,7 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
+
 
 void DMI_Handler::receiveUpdate()
 {
@@ -103,14 +104,43 @@ void DMI_Handler::animationHandler()
 {
     foreach(const QString& key, m_jsonState.keys())
     {
-        QObject *obj = m_rootObject->findChild<QObject*>(key + "Animation");
-        if ( obj == nullptr )
-            continue;
-
         QString currentState = m_jsonState.value(key).toString();
         if ( currentState == STATE::WARNING || currentState == STATE::BLINKING )
         {
-            obj->setProperty("running", true);
+            QObject *image = m_rootObject->findChild<QObject*>(key + "Image");
+            if ( image == nullptr )
+                continue;
+
+            QObject *imageBlinking = m_rootObject->findChild<QObject*>(key + "ImageBlinking");
+            if ( imageBlinking == nullptr )
+                continue;
+
+            image->setProperty("visible", animationState);
+            imageBlinking->setProperty("visible", !animationState);
+            if(key == VTI_DMI::DOOR_CLOSE && !animationState)
+            {
+                doorCounter++;
+                if(doorCounter>3)
+                {
+                    doorCounter = 0;
+                    QJsonObject json{};
+                    json.insert(VTI_DMI::RESET_DOORS, true);
+                    m_client->sendUpdate(json);
+                }
+            }
+            if ( key == VTI_DMI::PANTOGRAPH_UP && !animationState)
+            {
+                pantCounter++;
+                if(pantCounter>3)
+                {
+                    pantCounter = 0;
+                    QJsonObject json{};
+                    json.insert(VTI_DMI::RESET_PANTOGRAPH_UP, true);
+                    m_client->sendUpdate(json);
+                }
+            }
         }
     }
+
+    animationState = !animationState;
 }

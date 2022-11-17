@@ -34,7 +34,7 @@ public slots:
     void mainBreakerPressed();
     void heatingPressed();
 
-    void nboPressed();
+    void emergencyBrakePressed();
     void firePressed();
 
     void reversePressed();

@@ -20,7 +20,7 @@ Item {
         color: "#041122"
     }
 
-    // Somehow create a arc around the Speedometer89
+    // Creates the arc around the Speedometer
     Shape {
         width: 280; height: 300
         anchors.horizontalCenter: parent.horizontalCenter
@@ -121,7 +121,9 @@ Item {
             Tick_Mark {
                 alpha: (startAngle + (index * angleBetweenTickmarks))
                 length: (index % 2 == 0) ? 25 : 15 // Makes every 5:th tickmark long.
-                visibility: (index % 5 == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
+                visibility: (index % 2 == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
+                speedValue: index * 10;
+                tickMarkNum: index
             }
         }
     }

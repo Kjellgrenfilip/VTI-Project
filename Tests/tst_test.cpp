@@ -72,9 +72,10 @@ void test::testPantUp()
 
     tc.testModule->resetStates();
     tc.dmiHandler->m_buttonHandler->mainBreakerPressed();
-    delay(100);
+    delay(1000);
     tc.dmiHandler->m_buttonHandler->pantUpPressed();
-    delay(3500);
+    delay(5000);
+
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::VOLTAGE_PANTUP_ACTIVATION_MAINBREAKER);
 
 }
@@ -207,13 +208,13 @@ void test::testEmergencyInfo()
 {
     TestConf tc{};
 
-    tc.dmiHandler->m_buttonHandler->nboPressed();
+    tc.dmiHandler->m_buttonHandler->emergencyBrakePressed();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::NBO_BUTTON_PRESSED);
 
     tc.dmiHandler->m_buttonHandler->firePressed();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::FIRE_BUTTON_PRESSED);
 
-    tc.dmiHandler->m_buttonHandler->nboPressed();
+    tc.dmiHandler->m_buttonHandler->emergencyBrakePressed();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::SOLID_NBO_BUTTON_PRESSED);
 
     tc.dmiHandler->m_buttonHandler->firePressed();
@@ -224,7 +225,7 @@ void test::testEmergencyInfo()
 
     // Press reciept in warning states
     tc.dmiHandler->m_buttonHandler->firePressed();
-    tc.dmiHandler->m_buttonHandler->nboPressed();
+    tc.dmiHandler->m_buttonHandler->emergencyBrakePressed();
     tc.dmiHandler->m_buttonHandler->receiptPressed();
     QCOMPARE(tc.dmiHandler->m_latestUpdate, VTI_TESTCASE::RECIEPT_BUTTON_PRESSED);
 }

@@ -26,7 +26,12 @@ public:
     QJsonObject m_jsonState;
     QJsonObject m_latestUpdate{};
 
-    bool testStart = false;
+    bool testStart{false};
+    bool animationState{false};
+    int doorCounter{0};
+    int pantCounter{0};
+
+
 
 signals:
 

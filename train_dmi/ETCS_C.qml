@@ -149,7 +149,7 @@ Item {
                 Image
                 {
                     id: c1Image
-                    obejctName: "etcsC1Image"
+                    objectName: "etcsC1Image"
                     source: "symbols/Level/LE_07.bmp"
                     anchors.fill: parent
                 }

@@ -10,8 +10,6 @@ Test_Module::Test_Module(bool connection)
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
-      m_doorTimer{new QTimer{this}},
-      m_pantUpTimer{new QTimer{this}},
       m_jsonETCSB{VTI_DMI::JSON_ETCS_B}
 
 {
@@ -19,42 +17,12 @@ Test_Module::Test_Module(bool connection)
     {
         m_networkServer = new Network_Server();
         connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
-        connect(m_doorTimer, SIGNAL(timeout()), this, SLOT(doorHandler()));
-
-        m_doorTimer->setSingleShot(true);
-
-        connect(m_pantUpTimer, SIGNAL(timeout()), this, SLOT(pantHandler()));
-
-        m_pantUpTimer->setSingleShot(true);
     }
 }
 
 Test_Module::~Test_Module()
 {
     delete m_networkServer;
-    delete m_doorTimer;
-}
-
-void Test_Module::doorHandler()
-{
-    qDebug() << "TIMER PÅ TRE SEKUNDER KLAR";
-    m_jsonDoors.insert(VTI_DMI::DEPARTURE, STATE::INACTIVE);
-    m_jsonDoors.insert(VTI_DMI::DOOR_RIGHT, STATE::INACTIVE);
-    m_jsonDoors.insert(VTI_DMI::DOOR_LEFT, STATE::INACTIVE);
-    m_jsonDoors.insert(VTI_DMI::DOOR_CLOSE, STATE::ACTIVE);
-
-
-    m_networkServer->sendUpdate(m_jsonDoors);
-}
-
-void Test_Module::pantHandler()
-{
-    if (m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::WARNING)
-    {
-        m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::ACTIVE);
-        checkVoltage(VTI_DMI::MAIN_BREAKER);
-        m_networkServer->sendUpdate(m_jsonVoltage);
-    }
 }
 
 void Test_Module::checkVoltage(QString const& key)
@@ -73,14 +41,11 @@ void Test_Module::updatePantographUp(QJsonValue const & value)
     if(m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::ACTIVE)
     {
         m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::WARNING);
-        m_pantUpTimer->start(3000); // ACTIVE
     }
     else
     {
         m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::WARNING);
-        m_pantUpTimer->start(3000); // ACTIVE
         m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_DOWN, STATE::INACTIVE);
-        //checkVoltage(VTI_DMI::MAIN_BREAKER);
     }
 
      m_networkServer->sendUpdate(m_jsonVoltage);
@@ -100,6 +65,13 @@ void Test_Module::updatePantographDown(QJsonValue const & value)
     }
 
      m_networkServer->sendUpdate(m_jsonVoltage);
+}
+
+void Test_Module::resetPantographUp()
+{
+    m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::ACTIVE);
+    checkVoltage(VTI_DMI::MAIN_BREAKER);
+    m_networkServer->sendUpdate(m_jsonVoltage);
 }
 
 void Test_Module::updateMainBreaker(QJsonValue const & value)
@@ -328,7 +300,7 @@ void Test_Module::updateDoorClose(QJsonValue const & value)
      if (departureState == STATE::WARNING)
      {
          m_jsonDoors.insert(VTI_DMI::DOOR_CLOSE, STATE::WARNING);
-         m_doorTimer->start(3000);
+         //m_doorTimer->start(3000);
      }
      m_networkServer->sendUpdate(m_jsonDoors);
 }
@@ -355,6 +327,8 @@ void Test_Module::updateSpeedLimit(double newValue)
 
     m_networkServer->sendUpdate(m_jsonETCS_A);
 }
+
+// This function is for testing the distance bar. Will freeze the entire GUI.
 int Test_Module::testDistance()
 {
     bool up{true};
@@ -465,13 +439,15 @@ void Test_Module::removeImage(QString const & key)
     }
 
 }
-
-void delay(int timeToWait)
+void Test_Module::resetDoors()
 {
-    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
-    while (QTime::currentTime() < dieTime)
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+    m_jsonDoors.insert(VTI_DMI::DOOR_LEFT,STATE::INACTIVE);
+    m_jsonDoors.insert(VTI_DMI::DOOR_RIGHT,STATE::INACTIVE);
+    m_jsonDoors.insert(VTI_DMI::DEPARTURE,STATE::DEFAULT);
+    m_jsonDoors.insert(VTI_DMI::DOOR_CLOSE,STATE::ACTIVE);
+    m_networkServer->sendUpdate(m_jsonDoors);
 }
+
 void Test_Module::receiveUpdate()
 {
     qDebug() << "TESTING";
@@ -490,7 +466,6 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonActivation);
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->sendUpdate(m_jsonETCSB);
-
         }
         else
             return;
@@ -506,15 +481,12 @@ void Test_Module::receiveUpdate()
         else if(key == VTI_DMI::PANTOGRAPH_DOWN)
             updatePantographDown(value);
 
+        else if ( key == VTI_DMI::RESET_PANTOGRAPH_UP )
+            resetPantographUp();
+
         else if(key == VTI_DMI::MAIN_BREAKER)
-        {
-            // Only for test. Remove from here
-//            x += 58;
-//            updateDistance(x);
-            // to here.
-           testDistance(); // for testing only
            updateMainBreaker(value);
-        }
+
         else if(key == VTI_DMI::HEATING)
             updateHeating(value);
 
@@ -559,6 +531,9 @@ void Test_Module::receiveUpdate()
 
         else if ( key == VTI_DMI::LIGHT)
             updateLight(value);
+
+        else if (key == VTI_DMI::RESET_DOORS)
+            resetDoors();
     }
 }
 
