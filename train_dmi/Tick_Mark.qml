@@ -21,7 +21,8 @@ Item
         color: color1
         antialiasing: true
         radius: 0.5
-
+        //Calculates the position of the tickmark
+        //cos function takes Radians as parameter.
         x: radius1 * Math.cos(alpha * Math.PI / 180) + 140
         y: radius1 * Math.sin(alpha * Math.PI / 180) + 145
 

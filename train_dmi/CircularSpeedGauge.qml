@@ -11,8 +11,10 @@ Item {
     property string hookColor: "lightgrey"
     property real hookWidth: 6
     property real hookLength: 20
-
-
+    property bool haveHook: false
+    property real startAngle1: 121
+    property real rX: 132.5
+    property real rY: 132.5
 
     Shape {
         width: 280; height: 300
@@ -27,9 +29,9 @@ Item {
 
             PathAngleArc {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
-                radiusX: 132.5; radiusY: 132.5
-                startAngle: 121
-                sweepAngle: (currentSpeed <= 200) ? 5 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                radiusX: rX; radiusY: rY
+                startAngle: startAngle1
+                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
             }
         }
     }
@@ -37,10 +39,12 @@ Item {
     Tick_Mark
     {
         id: hook
-        alpha: (currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+        alpha: (currentSpeed <= 200) ? 121 + 4 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
         length: hookLength
         width1: hookWidth
         radius1: 137
         color1: hookColor
+        visible: haveHook
+
     }
 }

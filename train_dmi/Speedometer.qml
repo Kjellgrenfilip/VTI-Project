@@ -6,7 +6,7 @@ Item
 {
     id: speedometer
     property real value : 0
-    property real currentSpeed : 300
+    property real currentSpeed : 100
     property real angleBetweenTickmarks : 9.6
     property real anglePerSpeedRange1 : 192 / 200;
     property real anglePerSpeedRange2 : 96 / 200;
@@ -53,7 +53,7 @@ Item
                 origin.x: 4.5; origin.y: 0
                 //Min = 54, Max = 306
                 // Map the angle between min/max angle values and the speed min/max values
-                angle: (currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRange1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRange2//(currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
                 Behavior on angle
                 {
                     SpringAnimation
@@ -76,10 +76,10 @@ Item
             color: needleColor
             transform: Rotation
             {
-                origin.x: 4.5; origin.y: 0
+                origin.x: 1.5; origin.y: 0
                 //Min = 54, Max = 306
-                // Map the angle between min/max angle values and the speed min/max values
-                angle: (currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                //Map the angle between min/max angle values and the speed min/max values
+                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRange1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRange2
                 Behavior on angle
                 {
                     SpringAnimation
@@ -104,7 +104,7 @@ Item
             Text
             {
                 id: speedText
-                text: qsTr(currentSpeed.toString())
+                text: qsTr((currentSpeed).toString())
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 color: "black"
@@ -167,6 +167,15 @@ Item
     }
     //Creates one CircularSpeedGauge.
     CircularSpeedGauge{}
+    CircularSpeedGauge{
+    gaugeColor: "orange"
+    gaugeWidth: 20
+    startAngle1: (126+(currentSpeed*anglePerSpeedRange1))+5.5
+    rY: 127
+    rX: 127
+
+    }
+
 }
 
 
