@@ -50,7 +50,6 @@ Item
             objectName: "pantographUp"
             width: (pantUpButton.pressed) ? parent.width / 2 -10 : parent.width / 2 - 5
             height:(pantUpButton.pressed) ? parent.height / 3 - 12 : parent.height / 3 - 7
-            //anchors.fill: parent
             enabled: false
 
             onPressed: buttonHandler.pantUpPressed()

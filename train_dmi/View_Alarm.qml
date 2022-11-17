@@ -43,8 +43,7 @@ Item {
             anchors.margins: 5
             enabled: false
 
-            // onPressed: buttonHandler.emergencyBrakePressed()
-            onPressed: buttonHandler.nboPressed()
+            onPressed: buttonHandler.emergencyBrakePressed()
 
             Image
             {

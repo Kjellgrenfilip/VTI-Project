@@ -41,14 +41,11 @@ void Test_Module::updatePantographUp(QJsonValue const & value)
     if(m_jsonVoltage.value(VTI_DMI::PANTOGRAPH_UP) == STATE::ACTIVE)
     {
         m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::WARNING);
-        //m_pantUpTimer->start(3000); // ACTIVE
     }
     else
     {
         m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_UP, STATE::WARNING);
-        //m_pantUpTimer->start(3000); // ACTIVE
         m_jsonVoltage.insert(VTI_DMI::PANTOGRAPH_DOWN, STATE::INACTIVE);
-        //checkVoltage(VTI_DMI::MAIN_BREAKER);
     }
 
      m_networkServer->sendUpdate(m_jsonVoltage);
@@ -330,6 +327,8 @@ void Test_Module::updateSpeedLimit(double newValue)
 
     m_networkServer->sendUpdate(m_jsonETCS_A);
 }
+
+// This function is for testing the distance bar. Will freeze the entire GUI.
 int Test_Module::testDistance()
 {
     bool up{true};
@@ -440,12 +439,6 @@ void Test_Module::resetDoors()
     m_networkServer->sendUpdate(m_jsonDoors);
 }
 
-//void delay(int timeToWait)
-//{
-//    QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
-//    while (QTime::currentTime() < dieTime)
-//        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-//}
 void Test_Module::receiveUpdate()
 {
     qDebug() << "TESTING";
@@ -464,27 +457,6 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonActivation);
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->sendUpdate(m_jsonETCSB);
-
-//            updateETCSB("08");
-//            delay(500);
-
-//            updateETCSB("07");
-//            delay(500);
-
-//            updateETCSB("26");
-//            delay(500);
-
-//            updateETCSB("33");
-//            updateETCSB("32");
-//            updateETCSB("36");
-
-//            delay(500);
-//            removeImage(VTI_DMI::ETCSB4);
-//            delay(500);
-//            removeImage(VTI_DMI::ETCSB5);
-//            delay(500);
-//            removeImage(VTI_DMI::ETCSB3);
-
         }
         else
             return;
@@ -502,14 +474,8 @@ void Test_Module::receiveUpdate()
         else if ( key == VTI_DMI::RESET_PANTOGRAPH_UP )
             resetPantographUp();
         else if(key == VTI_DMI::MAIN_BREAKER)
-        {
-             //Only for test. Remove from here
-            x += 58;
-            updateDistance(x);
-             //to here.
-          // testDistance(); // for testing only
            updateMainBreaker(value);
-        }
+
         else if(key == VTI_DMI::HEATING)
             updateHeating(value);
 

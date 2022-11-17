@@ -68,45 +68,11 @@ Item
                 source: "desk_ikoner/doorleftY.png"
                 visible: false
             }
-
-//            SequentialAnimation
-//            {
-//                id: doorLeftAnimation
-//                objectName: "doorLeftAnimation"
-//                running: false
-//                loops: Animation.Infinite
-//                alwaysRunToEnd: true
-//                PropertyAnimation
-//                {
-//                    target: doorLeftImage
-//                    property: "source"
-//                    to: "desk_ikoner/doorleftY.png"
-//                    duration: MyConst.animationDuration
-//                }
-
-//                PropertyAnimation
-//                {
-//                    target: doorLeftImage
-//                    property: "source"
-//                    to: "desk_ikoner/doorleft.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             states:
                 [
                 State
                 {
                     name: "default";
-//                    PropertyChanges
-//                    {
-//                        target: doorLeftImage
-//                        source: "desk_ikoner/doorleft.png"
-//                    }
-//                    PropertyChanges
-//                    {
-//                        target: doorLeftAnimation
-//                        running: false
-//                    }
                     PropertyChanges
                     {
                         target: doorLeftButton

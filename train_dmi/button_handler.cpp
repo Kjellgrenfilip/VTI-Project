@@ -70,7 +70,7 @@ void Button_Handler::heatingPressed()
     sendSignal(VTI_DMI::HEATING, true);
 }
 
-void Button_Handler::nboPressed()
+void Button_Handler::emergencyBrakePressed()
 {
     qDebug() << "NBO button pressed!";
     sendSignal(VTI_DMI::EMERGENCY_BRAKE, true);

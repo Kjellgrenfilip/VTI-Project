@@ -137,7 +137,5 @@ void DMI_Handler::animationHandler()
         }
     }
 
-
-
     animationState = !animationState;
 }
