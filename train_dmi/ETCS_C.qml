@@ -111,6 +111,7 @@ Item {
                 height: parent.height
                 anchors.fill: parent
                 anchors.margins: 4
+                hoverEnabled: false
                 background: Rectangle
                 {
                     color: "transparent"
