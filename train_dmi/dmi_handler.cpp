@@ -57,7 +57,7 @@ void DMI_Handler::receiveUpdate()
                 // Special case example
             }
 
-            else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE)
+            else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE || key == VTI_DMI::ETCSC3Text)
             {
                 QString newValue = m_latestUpdate.value(key).toString();
                 obj->setProperty("text", newValue);
@@ -76,11 +76,16 @@ void DMI_Handler::receiveUpdate()
                 obj->setProperty("text", newText);
             }
 
-            if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image || key == VTI_DMI::ETCSB5Image )
+            else if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image
+                      || key == VTI_DMI::ETCSB5Image  ||  key == VTI_DMI::ETCSB7Image )
             {
                 QString value = m_latestUpdate.value(key).toString();
-
-                QString s = "symbols/Track Conditions/TC_" + value + ".bmp";
+                QString s;
+                if(key == VTI_DMI::ETCSB7Image)
+                    s = "symbols/Track Conditions/MO_";
+                else
+                    s = "symbols/Track Conditions/TC_";
+                s = s + value + ".bmp";
                 qDebug() << s;
                 obj->setProperty("source", s);
             }

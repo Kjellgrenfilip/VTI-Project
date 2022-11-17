@@ -75,6 +75,7 @@ Item {
 
                     Text {
                         id: c3Text
+                        objectName: "etcsC3Text"
                         text: qsTr("1000")
                         anchors.verticalCenter: parent.verticalCenter
                         color: MyConst.white
@@ -148,6 +149,7 @@ Item {
                 Image
                 {
                     id: c1Image
+                    obejctName: "etcsC1Image"
                     source: "symbols/Level/LE_07.bmp"
                     anchors.fill: parent
                 }
