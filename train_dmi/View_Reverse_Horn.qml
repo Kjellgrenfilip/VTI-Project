@@ -52,28 +52,6 @@ Item
                 font.pointSize: parent.width /8
                 color:"White"
             }
-//            SequentialAnimation
-//            {
-//                id: reverseAnimation
-//                objectName: "reverseAnimation"
-//                running: false
-//                loops: Animation.Infinite
-//                PropertyAnimation
-//                {
-//                    target: reverseImage
-//                    property: "source"
-//                    to: "desk_ikoner/yellow.png"
-//                    duration: MyConst.animationDuration
-//                }
-
-//                PropertyAnimation
-//                {
-//                    target: reverseImage
-//                    property: "source"
-//                    to: "desk_ikoner/button69.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             states:
                 [
                 State
@@ -82,13 +60,13 @@ Item
                     PropertyChanges
                     {
                         target: reverseImage
-                        source:"desk_ikoner/button69.png"
+                        visible: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: reverseAnimation
-//                        running: false
-//                    }
+                    PropertyChanges
+                    {
+                        target: reverseImageBlinking
+                        visible: false
+                    }
                     PropertyChanges
                     {
                         target: reverseButton
@@ -103,11 +81,6 @@ Item
                         target: reverseButton
                         enabled: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: reverseAnimation
-//                        running: false
-//                    }
                 }
                 ]
         }
@@ -123,7 +96,6 @@ Item
             enabled: false
 
             onPressed: { buttonHandler.hornPressed(); sound.play() }
-//            onPressed: { buttonHandler.hornPressed() }
 
             SoundEffect
             {

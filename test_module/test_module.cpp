@@ -499,17 +499,13 @@ void Test_Module::receiveUpdate()
 
         else if(key == VTI_DMI::PANTOGRAPH_DOWN)
             updatePantographDown(value);
+
         else if ( key == VTI_DMI::RESET_PANTOGRAPH_UP )
             resetPantographUp();
+
         else if(key == VTI_DMI::MAIN_BREAKER)
-        {
-             //Only for test. Remove from here
-            x += 58;
-            updateDistance(x);
-             //to here.
-          // testDistance(); // for testing only
            updateMainBreaker(value);
-        }
+
         else if(key == VTI_DMI::HEATING)
             updateHeating(value);
 
@@ -554,6 +550,7 @@ void Test_Module::receiveUpdate()
 
         else if ( key == VTI_DMI::LIGHT)
             updateLight(value);
+
         else if (key == VTI_DMI::RESET_DOORS)
             resetDoors();
     }

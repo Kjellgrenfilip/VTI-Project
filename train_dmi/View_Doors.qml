@@ -68,30 +68,6 @@ Item
                 source: "desk_ikoner/doorleftY.png"
                 visible: false
             }
-
-//            SequentialAnimation
-//            {
-//                id: doorLeftAnimation
-//                objectName: "doorLeftAnimation"
-//                running: false
-//                loops: Animation.Infinite
-//                alwaysRunToEnd: true
-//                PropertyAnimation
-//                {
-//                    target: doorLeftImage
-//                    property: "source"
-//                    to: "desk_ikoner/doorleftY.png"
-//                    duration: MyConst.animationDuration
-//                }
-
-//                PropertyAnimation
-//                {
-//                    target: doorLeftImage
-//                    property: "source"
-//                    to: "desk_ikoner/doorleft.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             states:
                 [
                 State
@@ -116,21 +92,11 @@ Item
                 State
                 {
                     name: "warning";
-//                    PropertyChanges
-//                    {
-//                        target: doorLeftImage
-//                        source: "desk_ikoner/doorleftY.png"
-//                    }
                     PropertyChanges
                     {
                         target: doorLeftButton
                         enabled: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: doorLeftAnimation
-//                        running: false
-//                    }
                 },
                 State
                 {
@@ -147,11 +113,6 @@ Item
                          //source: "desk_ikoner/doorleft.png"
                          visible:false
                      }
-//                     PropertyChanges
-//                     {
-//                         target: doorLeftAnimation
-//                         running: false
-//                     }
                      PropertyChanges
                      {
                          target: doorLeftButton
@@ -187,29 +148,6 @@ Item
 
             onPressed: buttonHandler.rightDoorPressed()
 
-//            SequentialAnimation
-//            {
-//                id: doorRightAnimation
-//                objectName: "doorRightAnimation"
-//                running: false
-//                loops: Animation.Infinite
-//                alwaysRunToEnd: true
-//                PropertyAnimation
-//                {
-//                    target: doorRightImage
-//                    property: "source"
-//                    to: "desk_ikoner/doorrightY.png"
-//                    duration: MyConst.animationDuration
-//                }
-
-//                PropertyAnimation
-//                {
-//                    target: doorRightImage
-//                    property: "source"
-//                    to: "desk_ikoner/doorright.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             states:
                 [
                 State
@@ -227,11 +165,6 @@ Item
                          //source: "desk_ikoner/doorright.png"
                          visible:false
                      }
-//                     PropertyChanges
-//                     {
-//                         target: doorRightAnimation
-//                         running: false
-//                     }
                      PropertyChanges
                      {
                          target: doorRightButton
@@ -241,21 +174,11 @@ Item
                 State
                 {
                      name: "warning"
-//                     PropertyChanges
-//                     {
-//                         target: doorRightImage
-//                         source: "desk_ikoner/doorrightY.png"
-//                     }
                      PropertyChanges
                      {
                          target: doorRightButton
                          enabled: true
                      }
-//                     PropertyChanges
-//                     {
-//                         target: doorRightAnimation
-//                         running: false
-//                     }
                 },
                  State {
                      name: "inactive";
@@ -270,11 +193,6 @@ Item
                          target: doorRightImageBlinking
                          visible:false
                      }
-//                     PropertyChanges
-//                     {
-//                         target: doorRightAnimation
-//                         running: false
-//                     }
                      PropertyChanges
                      {
                          target: doorRightButton
@@ -319,29 +237,6 @@ Item
             }
             onPressed: buttonHandler.departureButtonPressed()
 
-//            SequentialAnimation
-//            {
-//                id: departureAnimation
-//                objectName: "departureAnimation"
-//                running: false
-//                loops: Animation.Infinite
-//                alwaysRunToEnd: true
-//                PropertyAnimation
-//                {
-//                    target: departureImage
-//                    property: "source"
-//                    to: "desk_ikoner/green.png"
-//                    duration: MyConst.animationDuration
-//                }
-
-//                PropertyAnimation
-//                {
-//                    target: departureImage
-//                    property: "source"
-//                    to: "desk_ikoner/button69.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             states:
                 [
                 State
@@ -359,11 +254,6 @@ Item
                          //source: "desk_ikoner/button69.png"
                          visible: false
                     }
-//                    PropertyChanges
-//                    {
-//                        target: departureAnimation
-//                        running: false
-//                    }
                     PropertyChanges
                     {
                         target: departureButton
@@ -373,21 +263,11 @@ Item
                 State
                 {
                     name: "warning";
-//                    PropertyChanges
-//                    {
-//                         target: departureImage
-//                         source: "desk_ikoner/green.png"
-//                    }
                     PropertyChanges
                     {
                         target: departureButton
                         enabled: true
                     }
-//                    PropertyChanges
-//                    {
-//                        target: departureAnimation
-//                        running: true
-//                    }
                 },
                 State
                 {
@@ -404,11 +284,6 @@ Item
                          //source: "desk_ikoner/avgang.png"
                          visible:false
                      }
-//                   PropertyChanges
-//                     {
-//                         target: departureAnimation
-//                         running: false
-//                     }
                      PropertyChanges
                      {
                          target: departureButton
@@ -444,31 +319,6 @@ Item
 
             onPressed: buttonHandler.closeDoorPressed()
 
-//            SequentialAnimation
-//            {
-//                id: doorCloseAnimation
-//                objectName: "doorCloseAnimation"
-//                running: false
-//                loops: 3
-//                //alwaysRunToEnd: true
-
-
-
-//                PropertyAnimation
-//                {
-//                    target: closedImage
-//                    property: "source"
-//                    to: "desk_ikoner/closedG.png"
-//                    duration: MyConst.animationDuration
-//                }
-//                PropertyAnimation
-//                {
-//                    target: closedImage
-//                    property: "source"
-//                    to: "desk_ikoner/closed.png"
-//                    duration: MyConst.animationDuration
-//                }
-//            }
             states:
                 [
                 State
@@ -486,11 +336,6 @@ Item
                         //source: "desk_ikoner/closedG.png"
                         visible:false
                     }
-//                    PropertyChanges
-//                    {
-//                        target: doorCloseAnimation
-//                        running: false
-//                    }
                     PropertyChanges
                     {
                         target: closedButton
@@ -500,18 +345,6 @@ Item
                 State
                 {
                     name: "active"
-//                    PropertyChanges
-//                    {
-//                        target: closedImage
-//                        source: "desk_ikoner/closedG.png"
-//                    }
-//                    PropertyChanges
-//                    {
-//                        target: doorCloseAnimation
-//                        running: false
-//                    }
-
-
                     PropertyChanges
                     {
                         target: closedButton
@@ -533,11 +366,6 @@ Item
                         //source: "desk_ikoner/closed.png"
                         visible:false
                     }
-//                    PropertyChanges
-//                    {
-//                        target: doorCloseAnimation
-//                        running: false
-//                    }
                     PropertyChanges
                     {
                         target: closedButton
@@ -547,11 +375,6 @@ Item
                 State
                 {
                     name: "warning"
-//                    PropertyChanges
-//                    {
-//                        target: doorCloseAnimation
-//                        running: false
-//                    }
                     PropertyChanges
                     {
                         target: closedButton
