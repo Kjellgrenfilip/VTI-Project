@@ -25,17 +25,9 @@ private:
     QJsonObject m_jsonExtras;
     QJsonObject m_jsonActivation;
     QJsonObject m_jsonETCS_A;
-
-    //QTimer *m_doorTimer;
-    //QTimer *m_pantUpTimer;
-
-    // test variable for distance bar
-    double x{};
     QJsonObject m_jsonETCSB;
 
     QTimer *m_testTimer;
-
-
 
     void updatePantographUp(QJsonValue const & value);
     void updatePantographDown(QJsonValue const & value);
@@ -69,15 +61,12 @@ public:
 
     void updateDistance(double newValue);
     void updateDistanceBar(double newValue);
-    //void updateTimeToIndication();
     void updateSpeedLimit(double newValue);
 
 signals:
 
 public slots:
     void receiveUpdate();
-    //void doorHandler();
-    //void pantHandler();
 };
 
 #endif // TEST_MODULE_H
