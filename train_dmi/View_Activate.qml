@@ -88,6 +88,8 @@ Item
                 color: MyConst.backgroundColor
             }
 
+            onPressed: buttonHandler.protectionPressed()
+
             Image
             {
                 id: protectionImage

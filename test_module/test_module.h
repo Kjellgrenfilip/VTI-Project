@@ -50,13 +50,17 @@ private:
     void updateLight(QJsonValue const & value);
     void checkVoltage(QString const& key);
     void resetDoors();
+
+    void updateETCSB345(QJsonValue const & value);
+    void updateETCSB7(QJsonValue const & value);
+
     int testDistance();
 
 public:
     void resetStates();
     void removeImage(QString const & key);
 
-    void updateETCSB(QJsonValue const & value);
+
     QQueue<QJsonValue> etcsBImageQueue;
 
     void updateDistance(double newValue);

@@ -16,6 +16,11 @@ void Button_Handler::activatePressed()
     sendSignal(VTI_DMI::ACTIVATE, true);
 }
 
+void Button_Handler::protectionPressed()
+{
+    sendSignal(VTI_DMI::PROTECTION, true);
+}
+
 void Button_Handler::pantUpPressed()
 {
     qDebug() << "Pantograph Up!";
@@ -126,4 +131,9 @@ void Button_Handler::lightPressed()
 void Button_Handler::emergencyPressed()
 {
     qDebug() << "emergency button pressed!";
+}
+
+void Button_Handler::etcsC1Pressed()
+{
+    qDebug()  << "etcs C1 clicked";
 }

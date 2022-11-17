@@ -31,10 +31,11 @@ Item
             Text
             {
                 id: b6Text
-                text: qsTr("25")
+                //text: qsTr("25")
                 color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
+                font.pointSize: parent.height/1.8
             }
 
             ETCS_Box3DEffect{}
@@ -47,7 +48,7 @@ Item
                     PropertyChanges
                     {
                         target: b6Text
-                        //visible: false
+                        visible: false
                     }
                 },
                 State
@@ -225,11 +226,21 @@ Item
             width: parent.width/7
             height: parent.height
 
+            Text
+            {
+                id: b7Text
+             //   text: "IS"
+                color: MyConst.white
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                font.pointSize: parent.height/1.8
+            }
+
             Image
             {
                 id: etcsB7Image
                 objectName: "etcsB7Image"
-                source: "symbols/Mode/MO_09.bmp"
+                source: ""
                 anchors.fill: parent
                 anchors.margins: 2
             }
@@ -244,8 +255,14 @@ Item
                     PropertyChanges
                     {
                         target: etcsB7Image
-                        source: "symbols/Mode/MO_09.bmp"
-                        //visible: false
+                        source: ""
+                        visible: false
+                    }
+                    PropertyChanges
+                    {
+                        target: b7Text
+                        text: qsTr("IS")
+                        visible: true
                     }
                 },
                 State
@@ -253,8 +270,13 @@ Item
                     name: "active"
                     PropertyChanges
                     {
+                        target: b7Text
+                        visible: false
+                    }
+                    PropertyChanges
+                    {
                         target: etcsB7Image
-                        source: ""
+                        source: "symbols/Mode/MO_13.bmp"
                         visible: true
                     }
                 }

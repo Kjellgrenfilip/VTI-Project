@@ -21,6 +21,7 @@ signals:
 
 public slots:
     void activatePressed();
+    void protectionPressed();
 
     void pantUpPressed();
 
@@ -47,6 +48,8 @@ public slots:
     void receiptPressed();
     void lightPressed();
     void emergencyPressed();
+
+    void etcsC1Pressed();
 };
 
 #endif // BUTTON_HANDLER_H
