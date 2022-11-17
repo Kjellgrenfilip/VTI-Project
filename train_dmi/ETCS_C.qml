@@ -21,6 +21,7 @@ Item {
             color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
+
             Rectangle
             {
                 id: c8
@@ -53,6 +54,7 @@ Item {
 
             ETCS_Box3DEffect{}
         }
+
         Rectangle
         {
             id: c3
@@ -86,12 +88,14 @@ Item {
                 running: true
                 id: c1Animation
                 loops: Animation.Infinite
+
                 ColorAnimation
                 {
                     from : MyConst.backgroundColor
                     to: MyConst.yellow
                     duration: 200
                 }
+
                 ColorAnimation
                 {
                     from: MyConst.yellow
@@ -113,9 +117,10 @@ Item {
                 }
 
                 onPressed: {
-                    c1Image.source = ""//buttonHandler.etcsC1Pressed()
+                    c1Image.source = ""
                     c1Animation.running = false
                     c1.color = "transparent"
+                    buttonHandler.etcsC1Pressed();
                 }
 
                 Image

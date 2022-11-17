@@ -135,5 +135,5 @@ void Button_Handler::emergencyPressed()
 
 void Button_Handler::etcsC1Pressed()
 {
-
+    qDebug()  << "etcs C1 clicked";
 }
