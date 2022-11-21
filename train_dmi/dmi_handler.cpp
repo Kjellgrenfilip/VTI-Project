@@ -54,7 +54,7 @@ void DMI_Handler::receiveUpdate()
 
             if ( key == VTI_DMI::VELOCITY )
             {
-                // Special case example
+                //Special case
             }
 
             else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE)

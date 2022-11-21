@@ -127,3 +127,4 @@ void Button_Handler::emergencyPressed()
 {
     qDebug() << "emergency button pressed!";
 }
+

@@ -11,7 +11,7 @@ Item {
     property string hookColor: "lightgrey"
     property real hookWidth: 6
     property real hookLength: 20
-    property bool haveHook: false
+    property bool haveHook: true
     property real startAngle1: 121
     property real rX: 132.5
     property real rY: 132.5

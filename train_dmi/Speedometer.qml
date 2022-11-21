@@ -1,12 +1,12 @@
 import QtQuick
 import QtQuick.Shapes 1.15
-import QtQuick.Controls 2.0
 
+import QtQuick.Controls 2.15
 Item
 {
     id: speedometer
     property real value : 0
-    property real currentSpeed : 100
+    property real currentSpeed : 65
     property real angleBetweenTickmarks : 9.6
     property real anglePerSpeedRange1 : 192 / 200;
     property real anglePerSpeedRange2 : 96 / 200;
@@ -15,7 +15,7 @@ Item
     property real indicationAngle : 180+54+54+5
     property string arcColor : "yellow"
     property string range : "rangeA"
-
+    property bool hookActive: true
     width: 280; height: 300
 
     antialiasing: true
@@ -166,16 +166,33 @@ Item
         }
     }
     //Creates one CircularSpeedGauge.
-    CircularSpeedGauge{}
+    CircularSpeedGauge{
+        id: gauge1
+        objectName: "gauge1"
+        haveHook: hookActive
+    }
     CircularSpeedGauge{
     gaugeColor: "orange"
     gaugeWidth: 20
     startAngle1: (126+(currentSpeed*anglePerSpeedRange1))+5.5
     rY: 127
     rX: 127
-
     }
-
+    CircularSpeedGauge{
+        id: gauge3
+        objectName: "gauge3"
+        haveHook: false
+    }
+    CircularSpeedGauge{
+        id: gauge4
+        objectName: "gauge4"
+        haveHook: false
+    }
+    CircularSpeedGauge{
+        id: gauge5
+        objectName: "gauge5"
+        haveHook: false
+    }
 }
 
 
