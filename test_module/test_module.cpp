@@ -448,6 +448,11 @@ void Test_Module::resetDoors()
     m_networkServer->sendUpdate(m_jsonDoors);
 }
 
+void Test_Module::updateETCSC(QJsonValue const & value)
+{
+
+}
+
 void Test_Module::receiveUpdate()
 {
     qDebug() << "TESTING";
@@ -466,6 +471,7 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonActivation);
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->sendUpdate(m_jsonETCSB);
+            m_networkServer->sendUpdate(m_jsonETCSC);
         }
         else
             return;

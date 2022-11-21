@@ -26,6 +26,7 @@ private:
     QJsonObject m_jsonActivation;
     QJsonObject m_jsonETCS_A;
     QJsonObject m_jsonETCSB;
+    QJsonObject m_jsonETCSC;
 
     QTimer *m_testTimer;
 
@@ -53,6 +54,7 @@ private:
 
     void updateETCSB345(QJsonValue const & value);
     void updateETCSB7(QJsonValue const & value);
+    void updateETCSC(QJsonValue const & value);
 
     int testDistance();
 

@@ -137,6 +137,8 @@ Item {
                 height: parent.height
                 anchors.fill: parent
                 anchors.margins: 4
+                hoverEnabled: false
+
                 background: Rectangle
                 {
                     color: "transparent"
@@ -173,24 +175,38 @@ Item {
         Rectangle
         {
             id: c6
+            objectName: "etcsC6"
             width: 37
             height: 50
             color: MyConst.backgroundColor
 
             Image
             {
-                source: "symbols/Driver Request"
+                id: c6Image
+                anchors.fill: parent
+                anchors.margins: 2
+                source: "symbols/Status/ST_06.bmp"
             }
 
             states:
             [
                 State
                 {
-
+                    name: "inactive"
+                    PropertyChanges
+                    {
+                        target: c6Image
+                        visible: false
+                    }
                 },
                 State
                 {
-
+                    name: "active"
+                    PropertyChanges
+                    {
+                        target: c6Image
+                        visible: true
+                    }
                 }
 
             ]
