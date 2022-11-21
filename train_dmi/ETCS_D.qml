@@ -53,7 +53,7 @@ Item {
                 text: d1.scale
                 width:parent.width
                 color: MyConst.grey
-                y:(6/270) * parent.height
+                y:(0/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
             Text {
@@ -61,7 +61,7 @@ Item {
                 text: d1.scale/2
                 width:parent.width
                 color: MyConst.grey
-                y:(49/270) * parent.height
+                y:(40/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
             Text {
@@ -69,7 +69,7 @@ Item {
                 text: d1.scale/4
                 width:parent.width
                 color: MyConst.grey
-                y:(92/270) * parent.height
+                y:(83/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
             Text {
@@ -77,7 +77,7 @@ Item {
                 text: d1.scale/8
                 width:parent.width
                 color: MyConst.grey
-                y:(135/270) * parent.height
+                y:(126/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
             Text {
@@ -85,7 +85,7 @@ Item {
                 text: qsTr("0")
                 width:parent.width
                 color: MyConst.grey
-                y:(240/270) * parent.height
+                y:(260/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
         }
@@ -95,27 +95,90 @@ Item {
             width: (25/246) * parent.width
             height: parent.height
             color: "brown"
+            Rectangle
+            {
+                y:(6/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 2
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                y:(49/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 1
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                y:(92/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 1
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                y:(135/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 2
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                y:(149/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 1
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                y:(167/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 1
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                y:(191/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 1
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                y:(235/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 1
+                color: MyConst.grey
+            }
+            Rectangle
+            {
+                y:(268/270) * parent.height
+                width: (200/246) * middlegrid.width
+                height: 2
+                color: MyConst.grey
+            }
         }
         Rectangle
         {
             id:d3
             width: (25/246) * parent.width
             height: parent.height
-            color: "red"
+            color: "transparent"
         }
         Rectangle
         {
             id:d4
             width: (25/246) * parent.width
             height: parent.height
-            color: "brown"
+            color: "transparent"
         }
         Rectangle
         {
             id:d5
             width: (18/246) * parent.width
             height: parent.height
-            color: "red"
+            color: "transparent"
             Rectangle
             {
                 id:d5bar1
@@ -163,21 +226,21 @@ Item {
             id:d6
             width: (14/246) * parent.width
             height: parent.height
-            color: "brown"
+            color: "transparent"
         }
         Rectangle
         {
             id:d7
             width: (93/246) * parent.width
             height: parent.height
-            color: "red"
+            color: "transparent"
         }
         Rectangle
         {
             id:d8
             width: (6/246) * parent.width
             height: parent.height
-            color: "brown"
+            color: "transparent"
         }
     }
     Grid
