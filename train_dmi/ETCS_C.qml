@@ -5,6 +5,9 @@ import "Imports" 1.0
 Item {
     id: etcsC
     anchors.fill: parent
+    width: parent.width
+    height: parent.height
+
     Grid
     {
         anchors.fill: parent
@@ -173,6 +176,24 @@ Item {
             width: 37
             height: 50
             color: MyConst.backgroundColor
+
+            Image
+            {
+                source: "symbols/Driver Request"
+            }
+
+            states:
+            [
+                State
+                {
+
+                },
+                State
+                {
+
+                }
+
+            ]
 
             ETCS_Box3DEffect{}
         }
