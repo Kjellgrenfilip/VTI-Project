@@ -19,8 +19,8 @@ Item {
         Rectangle
         {
             id: c89
-            width: 54
-            height: 50
+            width: parent.width/6.185
+            height: parent.height
             color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
@@ -29,8 +29,8 @@ Item {
             {
                 id: c8
                 anchors.top: parent.top
-                width: 54
-                height: 25
+                width: parent.width
+                height: parent.height/2
                 color: MyConst.backgroundColor
 
                 ETCS_Box3DEffect{}
@@ -40,8 +40,8 @@ Item {
             {
                 id: c9
                 anchors.bottom: parent.bottom
-                width: 54
-                height: 25
+                width: parent.width
+                height: parent.height/2
                 color: MyConst.backgroundColor
 
                 ETCS_Box3DEffect{}
@@ -50,8 +50,8 @@ Item {
         Rectangle
         {
             id: c1234
-            width: 37*3
-            height: 50
+            width: parent.width/3
+            height: parent.height
             color: MyConst.backgroundColor
 
             Grid
@@ -63,8 +63,8 @@ Item {
                 Rectangle
                 {
                     id: c2
-                    width: 37
-                    height: 50
+                    width: parent.width/3
+                    height: parent.height
                     color: MyConst.backgroundColor
 
                 }
@@ -72,8 +72,8 @@ Item {
                 Rectangle
                 {
                     id: c3
-                    width: 37
-                    height: 50
+                    width: parent.width/3
+                    height: parent.height
                     color: MyConst.backgroundColor
 
                     Text {
@@ -88,8 +88,8 @@ Item {
                 Rectangle
                 {
                     id: c4
-                    width: 37
-                    height: 50
+                    width: parent.width/3
+                    height: parent.height
                     color: MyConst.backgroundColor
 
 
@@ -105,8 +105,8 @@ Item {
         {
             id: c1
             objectName: "c1"
-            width: 58
-            height: 50
+            width: parent.width/5.758
+            height: parent.height
             color: MyConst.backgroundColor
 
             SequentialAnimation on color
@@ -165,8 +165,8 @@ Item {
         Rectangle
         {
             id: c5
-            width: 37
-            height: 50
+            width: parent.width/9
+            height: parent.height
             color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}
@@ -176,8 +176,8 @@ Item {
         {
             id: c6
             objectName: "etcsC6"
-            width: 37
-            height: 50
+            width: parent.width/9
+            height: parent.height
             color: MyConst.backgroundColor
 
             Image
@@ -217,8 +217,8 @@ Item {
         Rectangle
         {
             id: c7
-            width: 37
-            height: 50
+            width: parent.width/9
+            height: parent.height
             color: MyConst.backgroundColor
 
             ETCS_Box3DEffect{}

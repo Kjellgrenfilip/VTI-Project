@@ -451,6 +451,7 @@ void Test_Module::resetDoors()
 void Test_Module::updateETCSC(QJsonValue const & value)
 {
     m_jsonETCSC.insert(VTI_DMI::ETCSC6, STATE::ACTIVE);
+
 }
 
 void Test_Module::receiveUpdate()
