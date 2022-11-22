@@ -203,5 +203,6 @@
         <file>ETCS_Box3DEffect.qml</file>
         <file>Tick_Mark.qml</file>
         <file>CircularSpeedGauge.qml</file>
+        <file>CircularSpeedGauge3.qml</file>
     </qresource>
 </RCC>
