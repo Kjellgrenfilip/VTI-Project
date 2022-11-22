@@ -176,6 +176,7 @@ Item {
         Rectangle
         {
             id:d5
+            objectName: "d5"
             width: (18/246) * parent.width
             height: parent.height
             color: "transparent"

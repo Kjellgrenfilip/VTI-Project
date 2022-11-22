@@ -33,7 +33,48 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
+void DMI_Handler::d5loghandler(std::vector<std::pair<double,double>> input,int scale)
+{
+    double totallength{0};
+    double currentlength{0};
+    int iterator = 1;
+    double scaleLength = 270;
+    double linearLength = 35;
+    double logLength = scaleLength - linearLength;
+    double log100 = 2;
+    double log1000 = 3;
 
+    for(std::pair<double,double>x : input)
+    {
+        if(x.second > 0.0)
+        {
+            totallength += x.second;
+        }
+    }
+    for(std::pair<double,double>x : input)
+    {
+        if(x.second > 0.0)
+        {
+            if ( x.second + currentlength <= scale/8 )
+                x.second = -currentlength + (x.second + currentlength)  * (linearLength/100);
+            else if ( x.second + currentlength <= scale )
+                x.second = -currentlength + linearLength + (log10(x.second) - log100) / (log1000 - log100) * logLength;
+            else
+                x.second = scaleLength - currentlength;
+            currentlength += x.second;
+        }
+    }
+    for(auto x : input)
+    {
+        if(x.second > 0.0 && iterator <=4)
+        {
+            QObject *obj = m_rootObject->findChild<QObject*>("d5bar" + std::to_string(iterator));
+            std::string text{"barValue" + std::to_string(iterator++)};
+
+            obj->setProperty(text ,x.second);
+        }
+    }
+}
 
 void DMI_Handler::receiveUpdate()
 {
