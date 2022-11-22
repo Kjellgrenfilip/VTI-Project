@@ -113,6 +113,7 @@ Item {
             {
                 running: true
                 id: c1Animation
+                objectName: "etcsC1Animation"
                 loops: Animation.Infinite
 
                 ColorAnimation
@@ -155,7 +156,7 @@ Item {
                 {
                     id: c1Image
                     objectName: "etcsC1Image"
-                    source: "symbols/Level/LE_07.bmp"
+                    source: ""
                     anchors.fill: parent
                 }
             }

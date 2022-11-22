@@ -78,16 +78,23 @@ void DMI_Handler::receiveUpdate()
             }
 
             else if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image
-                      || key == VTI_DMI::ETCSB5Image  ||  key == VTI_DMI::ETCSB7Image )
+                      || key == VTI_DMI::ETCSB5Image  ||  key == VTI_DMI::ETCSB7Image
+                      || key == VTI_DMI::ETCSC1Image)
             {
                 QString value = m_latestUpdate.value(key).toString();
                 QString s;
                 if(key == VTI_DMI::ETCSB7Image)
                     s = "symbols/Track Conditions/MO_";
+                else if(key == VTI_DMI::ETCSC1Image)
+                {
+                    s = "symbols/Level/LE_";
+                    m_rootObject->findChild<QObject*>("etcsC1Animation")->setProperty("running",true);
+                }
                 else
                     s = "symbols/Track Conditions/TC_";
                 s = s + value + ".bmp";
                 qDebug() << s;
+
                 obj->setProperty("source", s);
             }
             else

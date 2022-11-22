@@ -451,7 +451,9 @@ void Test_Module::resetDoors()
 void Test_Module::updateETCSC(QJsonValue const & value)
 {
     m_jsonETCSC.insert(VTI_DMI::ETCSC6, STATE::ACTIVE);
-
+    m_jsonETCSC.insert(VTI_DMI::ETCSC3Text, value);
+    m_jsonETCSC.insert(VTI_DMI::ETCSC1Image, value);
+    m_networkServer->sendUpdate(m_jsonETCSC);
 }
 
 void Test_Module::receiveUpdate()
@@ -473,6 +475,7 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->sendUpdate(m_jsonETCSB);
             m_networkServer->sendUpdate(m_jsonETCSC);
+            updateETCSC("03");
         }
         else
             return;
