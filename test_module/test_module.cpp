@@ -369,27 +369,8 @@ void Test_Module::updateDistance(double newValue)
         newValue = round(newValue);
         newValue *= 10;
         m_jsonETCS_A.insert(VTI_DMI::DISTANCE, QString::number(newValue));
-        updateDistanceBar(newValue);
     }
     m_networkServer->sendUpdate(m_jsonETCS_A);
-}
-
-void Test_Module::updateDistanceBar(double newValue)
-{
-    double scaleLength = 186;
-    double linearLength = 33;
-    double logLength = scaleLength - linearLength;
-    double log100 = 2;
-    double log1000 = 3;
-
-    if ( newValue <= 100 )
-        newValue = newValue * (linearLength/100);
-    else if ( newValue <= 1000 )
-        newValue = linearLength + (log10(newValue) - log100) / (log1000 - log100) * logLength;
-    else
-        newValue = 186;
-
-    m_jsonETCS_A.insert(VTI_DMI::DISTANCE_BAR, newValue);
 }
 
 void Test_Module::updateETCSB345(QJsonValue const & value)
@@ -485,7 +466,7 @@ void Test_Module::receiveUpdate()
             resetPantographUp();
 
         else if(key == VTI_DMI::MAIN_BREAKER)
-           updateMainBreaker(value);
+            updateMainBreaker(value);
 
         else if(key == VTI_DMI::HEATING)
             updateHeating(value);

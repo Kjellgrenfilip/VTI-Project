@@ -58,17 +58,20 @@ void DMI_Handler::receiveUpdate()
                 // Special case example
             }
 
-            else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE)
+            else if ( key == VTI_DMI::SPEEDLIMIT )
             {
                 QString newValue = m_latestUpdate.value(key).toString();
                 obj->setProperty("text", newValue);
             }
 
-            else if ( key == VTI_DMI::DISTANCE_BAR )
+            else if ( key == VTI_DMI::DISTANCE )
             {
-                int newValue = m_latestUpdate.value(key).toDouble();
-                qDebug() << "DISTANCE: " << newValue;
-                obj->setProperty("barValue", newValue);
+                QString distanceStr = m_latestUpdate.value(key).toString();
+                obj->setProperty("text", distanceStr);
+
+                obj = m_rootObject->findChild<QObject*>(VTI_DMI::DISTANCE_BAR);
+                double distance = distanceStr.toDouble();
+                obj->setProperty("barValue", distanceToPixelHeight(distance));
             }
 
             else if( key == VTI_DMI::TEXTINFO)
@@ -138,4 +141,23 @@ void DMI_Handler::animationHandler()
     }
 
     animationState = !animationState;
+}
+
+int DMI_Handler::distanceToPixelHeight(double distance)
+{
+    double scaleLength{186};
+    double linearLength{33};
+    double logLength{scaleLength - linearLength};
+    double log100{2};
+    double log1000{3};
+    int pixelHeight{0};
+
+    if ( distance <= 100 )
+        pixelHeight = distance * (linearLength/100);
+    else if ( distance <= 1000 )
+        pixelHeight = linearLength + (log10(distance) - log100) / (log1000 - log100) * logLength;
+    else
+        pixelHeight = 186;
+
+    return pixelHeight;
 }
