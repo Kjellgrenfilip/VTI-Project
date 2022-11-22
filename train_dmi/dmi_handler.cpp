@@ -3,7 +3,8 @@
 #include <QJsonObject>
 
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
-    m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{}
+    m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{},
+    m_speedometer{new Speedometer{}}
 {
     rootContext->setContextProperty("buttonHandler", m_buttonHandler);
 
@@ -19,7 +20,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
 
 DMI_Handler::DMI_Handler(bool testStart) : QObject(), m_client{new Network_Client{}},
     m_buttonHandler{new Button_Handler{}}, m_rootObject{}, m_animationTimer{new QTimer{this}},
-    m_jsonState{}, testStart(testStart)
+    m_jsonState{}, testStart(testStart), m_speedometer{new Speedometer{}}
 {
     connect(m_buttonHandler, SIGNAL(sendUpdate(QJsonObject)), m_client, SLOT(sendUpdate(QJsonObject)));
     connect(m_client, SIGNAL(updateReceived()),this, SLOT(receiveUpdate()));

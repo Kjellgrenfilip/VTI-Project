@@ -8,6 +8,7 @@
 
 #include "network_client.h"
 #include "button_handler.h"
+#include "speedometer.h"
 
 class DMI_Handler : public QObject
 {
@@ -27,6 +28,8 @@ public:
     QJsonObject m_latestUpdate{};
 
     bool testStart = false;
+
+    Speedometer *m_speedometer;
 
 signals:
 
