@@ -62,6 +62,8 @@ namespace VTI_DMI
     QString const ETCSC6            = "etcsC6";
     QString const ETCSC1Image       = "etcsC1Image";
     QString const ETCSC3Text        = "etcsC3Text";
+    QString const ETCSC1            = "etcsC1";
+
 
     QString const RESET_DOORS       = "resetDoors";
 
@@ -144,7 +146,8 @@ namespace VTI_DMI
     {
       { ETCSC6,                 STATE::INACTIVE},
       { ETCSC1Image,            QJsonValue::String },
-      { ETCSC3Text,             QJsonValue::Double }
+      { ETCSC3Text,             QJsonValue::Double },
+      { ETCSC1,                 STATE::INACTIVE}
     };
 };
 

@@ -88,7 +88,6 @@ void DMI_Handler::receiveUpdate()
                 else if(key == VTI_DMI::ETCSC1Image)
                 {
                     s = "symbols/Level/LE_";
-                    m_rootObject->findChild<QObject*>("etcsC1Animation")->setProperty("running",true);
                 }
                 else
                     s = "symbols/Track Conditions/TC_";

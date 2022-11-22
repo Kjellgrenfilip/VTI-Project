@@ -10,7 +10,9 @@ Test_Module::Test_Module(bool connection)
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
-      m_jsonETCSB{VTI_DMI::JSON_ETCS_B}
+      m_jsonETCSB{VTI_DMI::JSON_ETCS_B},
+      m_jsonETCSC{VTI_DMI::JSON_ETCS_C}
+
 
 {
     if(connection)
@@ -453,6 +455,8 @@ void Test_Module::updateETCSC(QJsonValue const & value)
     m_jsonETCSC.insert(VTI_DMI::ETCSC6, STATE::ACTIVE);
     m_jsonETCSC.insert(VTI_DMI::ETCSC3Text, value);
     m_jsonETCSC.insert(VTI_DMI::ETCSC1Image, value);
+    m_jsonETCSC.insert(VTI_DMI::ETCSC1, STATE::ACTIVE);
+
     m_networkServer->sendUpdate(m_jsonETCSC);
 }
 

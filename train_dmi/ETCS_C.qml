@@ -104,7 +104,7 @@ Item {
         Rectangle
         {
             id: c1
-            objectName: "c1"
+            objectName: "etcsC1"
             width: parent.width/5.758
             height: parent.height
             color: MyConst.backgroundColor
@@ -129,7 +129,30 @@ Item {
                     to: MyConst.backgroundColor
                     duration: 200
                 }
+
             }
+            states:
+            [
+                State
+                {
+                    name: "inactive"
+                    PropertyChanges
+                    {
+                        target: c1Animation
+                        running: false
+                    }
+                },
+                State
+                {
+                    name: "active"
+                    PropertyChanges
+                    {
+                        target: c1Animation
+                        running: true
+                    }
+                }
+
+            ]
 
             Button
             {
