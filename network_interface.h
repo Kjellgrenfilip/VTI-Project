@@ -119,7 +119,6 @@ namespace VTI_DMI
         { SPEEDLIMIT_STATE,     STATE::ACTIVE},
         { DISTANCE,             QJsonValue::String },
         { DISTANCE_STATE,       STATE::ACTIVE},
-        { DISTANCE_BAR,         QJsonValue::Double},
         { DISTANCE_BAR_STATE,   STATE::ACTIVE}
     };
 
