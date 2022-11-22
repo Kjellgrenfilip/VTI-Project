@@ -8,8 +8,8 @@ Item
     property real value : 0
     property real currentSpeed : 65
     property real angleBetweenTickmarks : 9.6
-    property real anglePerSpeedRange1 : 192 / 200;
-    property real anglePerSpeedRange2 : 96 / 200;
+    property real anglePerSpeedRangeA1 : 192 / 200;
+    property real anglePerSpeedRangeA2 : 96 / 200;
     property real startAngle : 126
     property string needleColor : "lightgrey"
     property real indicationAngle : 180+54+54+5
@@ -53,7 +53,7 @@ Item
                 origin.x: 4.5; origin.y: 0
                 //Min = 54, Max = 306
                 // Map the angle between min/max angle values and the speed min/max values
-                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRange1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRange2//(currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRangeA1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRangeA2//(currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
                 Behavior on angle
                 {
                     SpringAnimation
@@ -79,7 +79,7 @@ Item
                 origin.x: 1.5; origin.y: 0
                 //Min = 54, Max = 306
                 //Map the angle between min/max angle values and the speed min/max values
-                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRange1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRange2
+                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRangeA1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRangeA2
                 Behavior on angle
                 {
                     SpringAnimation
@@ -174,7 +174,7 @@ Item
     CircularSpeedGauge{
     gaugeColor: "orange"
     gaugeWidth: 20
-    startAngle1: (126+(currentSpeed*anglePerSpeedRange1))+5.5
+    startAngle1: (126+(currentSpeed*anglePerSpeedRangeA1))+5.5 - 2.5
     rY: 127
     rX: 127
     }
