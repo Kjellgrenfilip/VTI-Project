@@ -51,7 +51,8 @@ Item {
             Text {
                 id: d1text1
                 text: d1.scale
-                width:parent.width
+                width: parent.width
+                font.pointSize: parent.height/28
                 color: MyConst.grey
                 y:(0/270) * parent.height
                 horizontalAlignment: Text.AlignRight
@@ -60,32 +61,36 @@ Item {
                 id: d1text2
                 text: d1.scale/2
                 width:parent.width
+                font.pointSize: parent.height/28
                 color: MyConst.grey
-                y:(40/270) * parent.height
+                y:(41/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
             Text {
                 id: d1text3
                 text: d1.scale/4
                 width:parent.width
+                font.pointSize: parent.height/28
                 color: MyConst.grey
-                y:(83/270) * parent.height
+                y:(84/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
             Text {
                 id: d1text4
                 text: d1.scale/8
                 width:parent.width
+                font.pointSize: parent.height/28
                 color: MyConst.grey
-                y:(126/270) * parent.height
+                y:(127/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
             Text {
                 id: d1text5
                 text: qsTr("0")
                 width:parent.width
+                font.pointSize: parent.height/28
                 color: MyConst.grey
-                y:(260/270) * parent.height
+                y:(261/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
         }
@@ -187,7 +192,7 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
-                height: barvalue
+                height: barValue
             }
             Rectangle
             {
@@ -197,7 +202,7 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
-                height: barvalue
+                height: barValue
             }
             Rectangle
             {
@@ -207,7 +212,7 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
-                height: barvalue
+                height: barValue
             }
             Rectangle
             {
@@ -217,7 +222,7 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
-                height: barvalue
+                height: barValue
             }
 
         }
