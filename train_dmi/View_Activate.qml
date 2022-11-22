@@ -28,7 +28,7 @@ Item
             {
                 id: activateImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_green2.png"
+                source: "desk_ikoner/power_green_3d.png"
             }
 
             onPressed: buttonHandler.activatePressed()
@@ -43,7 +43,7 @@ Item
                 {
                     target: activateImage
                     property: "source"
-                    to: "desk_ikoner/power_green2.png"
+                    to: "desk_ikoner/power_green_3d.png"
                     duration: MyConst.animationDuration
                 }
 
@@ -51,7 +51,7 @@ Item
                 {
                     target: activateImage
                     property: "source"
-                    to: "desk_ikoner/power2.png"
+                    to: "desk_ikoner/power_white_3d.png"
                     duration: MyConst.animationDuration
                 }
             }
@@ -62,7 +62,7 @@ Item
                     PropertyChanges
                     {
                         target: activateImage
-                        source:"desk_ikoner/power_green2.png"
+                        source:"desk_ikoner/power_green_3d.png"
                     }
                     PropertyChanges
                     {
@@ -94,7 +94,7 @@ Item
             {
                 id: protectionImage
                 anchors.fill: parent
-                source: "desk_ikoner/power2.png"
+                source: "desk_ikoner/power_white_3d.png"
             }
             SequentialAnimation
             {
@@ -106,7 +106,7 @@ Item
                 {
                     target: protectionImage
                     property: "source"
-                    to: "desk_ikoner/power_green2.png"
+                    to: "desk_ikoner/power_green_3d.png"
                     duration: MyConst.animationDuration
                 }
 
@@ -114,7 +114,7 @@ Item
                 {
                     target: protectionImage
                     property: "source"
-                    to: "desk_ikoner/power2.png"
+                    to: "desk_ikoner/power_white_3d.png"
                     duration: MyConst.animationDuration
                 }
             }
@@ -155,7 +155,7 @@ Item
             {
                 id: cartImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_green2.png"
+                source: "desk_ikoner/power_green_3d.png"
             }
 
             states:
@@ -171,7 +171,7 @@ Item
                     PropertyChanges
                     {
                         target: cartImage
-                        source: "desk_ikoner/power_green2.png"
+                        source: "desk_ikoner/power_green_3d.png"
                     }
                 },
                 State
@@ -185,19 +185,18 @@ Item
                     PropertyChanges
                     {
                         target: cartImage
-                        source: "desk_ikoner/power2.png"
+                        source: "desk_ikoner/power_white_3d.png"
                     }
                 }
             ]
         }
 
-        TextArea
+        Text
         {
             id: activateText
             width: parent.width/9
             anchors.horizontalCenter: activateButton.horizontalCenter
             anchors.bottom:parent.bottom
-            color: "orange"
 
             Text
             {
@@ -208,7 +207,7 @@ Item
             }
         }
 
-        TextArea
+        Text
         {
             id: protectionText
             width: parent.width/9
@@ -223,7 +222,7 @@ Item
             }
         }
 
-        TextArea
+        Text
         {
             id: cartText
             anchors.bottom:parent.bottom
@@ -236,6 +235,7 @@ Item
                 font.pointSize: parent.width/3
                 color:"White"
             }
+
         }
     }
 }
