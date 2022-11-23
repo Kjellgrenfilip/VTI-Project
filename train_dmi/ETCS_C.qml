@@ -108,7 +108,7 @@ Item {
 
             SequentialAnimation on color
             {
-                running: true
+                running: false
                 id: c1Animation
                 objectName: "etcsC1Animation"
                 loops: Animation.Infinite
