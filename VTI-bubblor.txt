@@ -1,4 +1,75 @@
 
-VTI SCENARION
+	VTI SCENARION
 
-3 olika typer 	Se figur 12, sida 36
+		3 olika typer 	Se figur 12, sida 36
+		
+		Conditions for display and colour of the current train speed pointer, se sida 53
+		
+		Bubbles
+		1a
+			Speed and supervision in CSM/NoS, till exempel hook vid 160 km/h
+		1b
+		1c
+		1d
+		
+		2a
+		2b
+		2c
+		2d
+		2e
+		2f
+		2+
+		2++
+		2g
+		
+
+	MODES
+		SN		System National Mode
+		NL		Non Leading Mode
+		FS		Full Supervision Mode
+		OS		On Sight Mode
+		LS		Limited Supervision Mode
+		SR		Staff Responsible Mode
+		UN		Unfitted Mode
+		SH		Shunting Mode
+		RV		Reversing Mode
+		SB		Service Brake or Stand by Mode
+		PT		Post Trip Mode
+		TR		Trip Mode
+		SBI		Service Break Intervention Supervision Limit
+		
+		MRSP	Most Restrictive Speed Profile
+	
+	SUPERVISION STATUS
+		CSM		Ceiling Speed Monitoring
+			NoS		Normal Status Information
+			OvS		Over Speed Status Information
+			WaS		Warning Status Information
+			IntS	Intervention Status Information
+			IndS	Indication Status Information
+		
+		TSM		Target Speed Monitoring
+			NoS		Normal Status Information
+			OvS		Over Speed Status Information
+			WaS		Warning Status Information
+			IntS	Intervention Status Information
+			IndS	Indication Status Information
+		
+		RSM		Release Speed Monitoring
+			NoS		Normal Status Information
+			OvS		Over Speed Status Information
+			WaS		Warning Status Information
+			IntS	Intervention Status Information
+			IndS	Indication Status Information
+		
+	
+	HOOKS
+		en hook 		6x20
+		Två hooks		10x20
+		en hook			6x14 (start i mitten)
+		
+		Övre taket på hooken vid speed limit
+		
+		Vperm
+		Vtarget
+		Vrelease
