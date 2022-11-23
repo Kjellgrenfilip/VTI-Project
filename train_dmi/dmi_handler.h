@@ -31,6 +31,9 @@ public:
 
     Speedometer *m_speedometer;
 
+private:
+    void updateGUI(QString const& key, QObject *obj);
+
 signals:
 
 public slots:

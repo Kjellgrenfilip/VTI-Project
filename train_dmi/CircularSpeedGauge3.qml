@@ -41,6 +41,7 @@ Item {
                 radiusX: 134; radiusY: 134
                 startAngle: 121//+((360/(134*2*Math.PI))*6)
                 sweepAngle: threeLayerCSG.calcAngle()+1// -((360/(134*2*Math.PI))*6)
+
             }
         }
         ShapePath {
@@ -53,6 +54,7 @@ Item {
                 radiusX: 130.5; radiusY: 130.5
                 startAngle: 121 - ((360/(130.5*2*Math.PI))*2)
                 sweepAngle: threeLayerCSG.calcAngle() +2*((360/(130.5*2*Math.PI))*2)
+
             }
         }///2,31 pixlar/grad     0,432 grader/pixlar.   0.432*1,5 = 0.648
         ShapePath {
@@ -63,8 +65,10 @@ Item {
             PathAngleArc {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 128.5; radiusY: 128.5
+
                 startAngle: 121 - ((360/(128.5*2*Math.PI))*1.5)
                 sweepAngle: threeLayerCSG.calcAngle() + 2*((360/(128.5*2*Math.PI))*1.5) +1
+
             }
         }
     }

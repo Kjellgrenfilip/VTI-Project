@@ -5,8 +5,9 @@ import QtQuick.Controls 2.15
 Item
 {
     id: speedometer
+    objectName: "speedometer"
     property real value : 0
-    property real currentSpeed : 100
+    property real currentSpeed : 20
     property real angleBetweenTickmarks : 9.6
     property real anglePerSpeedRangeA1 : 192 / 200;
     property real anglePerSpeedRangeA2 : 96 / 200;
@@ -208,8 +209,8 @@ Item
         width1:10
         alpha: 350
         radius1: 137
-    }
+
 
 }
 
-
+}

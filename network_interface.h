@@ -57,6 +57,13 @@ namespace VTI_DMI
     QString const ETCSB3Image        = "etcsB3Image";
     QString const ETCSB4Image        = "etcsB4Image";
     QString const ETCSB5Image        = "etcsB5Image";
+    QString const CURRENTSPEED      = "currentSpeed";
+    QString const RELEASESPEED      = "releaseSpeed";
+    QString const TARGETSPEED       = "targetSpeed";
+    QString const INTERVENTIONSPEED = "interventionsSpeed";
+    QString const PERMITTEDSPEED    = "permittedSpeed";
+    QString const CRUISESPEED       = "cruiseSpeed";
+    QString const ADVISORYSPEED     = "advisorySpeed";
 
     QJsonObject const JSON_BRAKES
     {
@@ -129,6 +136,17 @@ namespace VTI_DMI
         { ETCSB3Image,          QJsonValue::String },
         { ETCSB4Image,          QJsonValue::String },
         { ETCSB5Image,          QJsonValue::String }
+    };
+
+    QJsonObject const JSON_SPEEDOMETER
+    {
+        { CURRENTSPEED,         QJsonValue::Double },
+        { RELEASESPEED,         QJsonValue::Double },
+        { TARGETSPEED,          QJsonValue::Double },
+        { INTERVENTIONSPEED,    QJsonValue::Double },
+        { PERMITTEDSPEED,       QJsonValue::Double },
+        { CRUISESPEED,          QJsonValue::Double },
+        { ADVISORYSPEED,        QJsonValue::Double }
     };
 };
 
