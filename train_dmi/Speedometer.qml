@@ -6,7 +6,7 @@ Item
 {
     id: speedometer
     property real value : 0
-    property real currentSpeed : 65
+    property real currentSpeed : 100
     property real angleBetweenTickmarks : 9.6
     property real anglePerSpeedRangeA1 : 192 / 200;
     property real anglePerSpeedRangeA2 : 96 / 200;
@@ -15,7 +15,7 @@ Item
     property real indicationAngle : 180+54+54+5
     property string arcColor : "yellow"
     property string range : "rangeA"
-    property bool hookActive: true
+    property bool hookActive: false
     width: 280; height: 300
 
     antialiasing: true
@@ -167,32 +167,49 @@ Item
     }
     //Creates one CircularSpeedGauge.
     CircularSpeedGauge{
-        id: gauge1
-        objectName: "gauge1"
+        id: csgBottomLayer
+        objectName: "csgBottomLayer"
         haveHook: hookActive
+        gaugeColor: "darkgrey"
+        visible: false
+    }
+    CircularSpeedGauge3{
+    id: csgMiddleLayer
+    objectName: "csgMiddleLayer"
+    haveHook: true
+    innerColor: "grey"
+    outerColor: "grey"
+    centerColor:"grey"
     }
     CircularSpeedGauge{
-    gaugeColor: "orange"
-    gaugeWidth: 20
-    startAngle1: (126+(currentSpeed*anglePerSpeedRangeA1))+5.5 - 2.5
-    rY: 127
-    rX: 127
+        gaugeWidth: 20
+        gaugeColor: "orange"
+        visible: false
+        startAngle1: (126+(currentSpeed*anglePerSpeedRangeA1))+5.5 - 2.5
+        rY: 127
+        rX: 127
+
     }
-    CircularSpeedGauge{
-        id: gauge3
-        objectName: "gauge3"
-        haveHook: false
+    Tick_Mark
+    {
+        id: vTargetHook
+        visible: true
+        length: 20
+        width1:10
+        alpha: 300
+        radius1: 137
     }
-    CircularSpeedGauge{
-        id: gauge4
-        objectName: "gauge4"
-        haveHook: false
+
+    Tick_Mark
+    {
+        id: vPermHook
+        visible: true
+        length: 20
+        width1:10
+        alpha: 350
+        radius1: 137
     }
-    CircularSpeedGauge{
-        id: gauge5
-        objectName: "gauge5"
-        haveHook: false
-    }
+
 }
 
 

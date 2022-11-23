@@ -22,18 +22,21 @@ Item {
         return (currentSpeed <= 200) ? 5 + currentSpeed * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2 - 2.5
     }
 
-    Shape {
+    Shape
+    {
         width: 280; height: 300
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         antialiasing: true
 
-        ShapePath {
+        ShapePath
+        {
             fillColor: "transparent"
             strokeColor: (value <= 50) ? gaugeColor : "orange"
             strokeWidth: gaugeWidth
 
-            PathAngleArc {
+            PathAngleArc
+            {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: rX; radiusY: rY
                 startAngle: startAngle1

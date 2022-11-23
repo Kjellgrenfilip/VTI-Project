@@ -3,6 +3,7 @@ import QtQuick.Shapes 1.5
 import QtQuick.Controls 2.0
 
 Item {
+    id: threeLayerCSG
     anchors.fill: parent
 
     property real value: 0
@@ -18,6 +19,12 @@ Item {
     property real rX: 132.5
     property real rY: 132.5
 
+
+    function calcAngle()
+    {
+        return (currentSpeed <= 200) ? 5 + currentSpeed * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2 - 2.5
+    }
+
     Shape {
         width: 280; height: 300
         anchors.horizontalCenter: parent.horizontalCenter
@@ -32,8 +39,8 @@ Item {
             PathAngleArc {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 134; radiusY: 134
-                startAngle: 121
-                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                startAngle: 121//+((360/(134*2*Math.PI))*6)
+                sweepAngle: threeLayerCSG.calcAngle()+1// -((360/(134*2*Math.PI))*6)
             }
         }
         ShapePath {
@@ -44,10 +51,10 @@ Item {
             PathAngleArc {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 130.5; radiusY: 130.5
-                startAngle: 121
-                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                startAngle: 121 - ((360/(130.5*2*Math.PI))*2)
+                sweepAngle: threeLayerCSG.calcAngle() +2*((360/(130.5*2*Math.PI))*2)
             }
-        }
+        }///2,31 pixlar/grad     0,432 grader/pixlar.   0.432*1,5 = 0.648
         ShapePath {
             fillColor: "transparent"
             strokeColor: innerColor
@@ -56,8 +63,8 @@ Item {
             PathAngleArc {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 128.5; radiusY: 128.5
-                startAngle: 121
-                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                startAngle: 121 - ((360/(128.5*2*Math.PI))*1.5)
+                sweepAngle: threeLayerCSG.calcAngle() + 2*((360/(128.5*2*Math.PI))*1.5) +1
             }
         }
     }
@@ -65,7 +72,7 @@ Item {
     Tick_Mark
     {
         id: hook
-        alpha: (currentSpeed <= 200) ? 121 + 4 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+        alpha: (currentSpeed <= 200) ? 121 + 4 + currentSpeed * anglePerSpeedRangeA1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2
         length: hookLength
         width1: hookWidth
         radius1: 137
@@ -73,4 +80,15 @@ Item {
         visible: haveHook
 
     }
+   /* Tick_Mark
+    {
+        id: hook
+        alpha: (currentSpeed <= 200) ? 121 + 4 + currentSpeed * anglePerSpeedRangeA1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2
+        length: hookLength
+        width1: hookWidth
+        radius1: 137
+        color1: hookColor
+        visible: haveHook
+
+    }*/
 }
