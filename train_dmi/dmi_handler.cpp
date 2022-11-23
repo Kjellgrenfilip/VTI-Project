@@ -40,9 +40,9 @@ void DMI_Handler::receiveUpdate()
     m_latestUpdate = m_client->getUpdate();
     foreach(const QString& key, m_latestUpdate.keys())
     {
-        if(key == VTI_DMI::CURRENTSPEED)
+        if(key == VTI_DMI::SUPERVISIONSTATUS)
         {
-            m_speedometer->updateSpeedometer(m_latestUpdate);
+            m_speedometer->updateSpeedometer(m_latestUpdate, m_latestUpdate.value(VTI_DMI::SUPERVISIONSTATUS).toString(), m_latestUpdate.value(VTI_DMI::STATUSINFORMATION).toString());
             return;
         }
         m_jsonState.insert(key, m_latestUpdate.value(key));

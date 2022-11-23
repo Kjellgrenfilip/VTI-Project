@@ -64,6 +64,8 @@ namespace VTI_DMI
     QString const PERMITTEDSPEED    = "permittedSpeed";
     QString const CRUISESPEED       = "cruiseSpeed";
     QString const ADVISORYSPEED     = "advisorySpeed";
+    QString const SUPERVISIONSTATUS = "supervisionStatus";
+    QString const STATUSINFORMATION = "statusInformation";
 
     QJsonObject const JSON_BRAKES
     {
@@ -140,6 +142,8 @@ namespace VTI_DMI
 
     QJsonObject const JSON_SPEEDOMETER
     {
+        { SUPERVISIONSTATUS,    QJsonValue::String },
+        { STATUSINFORMATION,    QJsonValue::String },
         { CURRENTSPEED,         QJsonValue::Double },
         { RELEASESPEED,         QJsonValue::Double },
         { TARGETSPEED,          QJsonValue::Double },

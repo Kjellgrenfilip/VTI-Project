@@ -34,6 +34,8 @@ Item
     property bool threeLayerCSG: false
     property bool largeCSG: false
 
+    property string supervisionMode: ""
+
 
 
 
@@ -199,6 +201,7 @@ Item
         objectName: "csgBottomLayer"
         haveHook: speedHook
         visible: normalCSG
+        value: (supervisionMode == "CSM") ? permittedSpeed : currentSpeed
     }
 
     CircularSpeedGauge3

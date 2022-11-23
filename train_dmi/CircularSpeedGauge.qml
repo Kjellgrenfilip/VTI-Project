@@ -9,7 +9,7 @@ Item {
     property real value: 0
     property real gaugeWidth: 9
     property string gaugeColor: "lightgrey"
-    property string hookColor: "lightgrey"
+    property string hookColor: "grey"
     property real hookWidth: 6
     property real hookLength: 20
     property bool haveHook: true
@@ -19,7 +19,7 @@ Item {
 
     function calcAngle()
     {
-        return (currentSpeed <= 200) ? 5 + currentSpeed * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2 - 2.5
+        return (value <= 200) ? 5 + value * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (value - 200) * anglePerSpeedRangeA2 - 2.5
     }
 
     Shape
@@ -42,14 +42,14 @@ Item {
                 startAngle: startAngle1
                 sweepAngle: circularGauge.calcAngle()
 
-                Behavior on sweepAngle
-                {
-                    SpringAnimation
-                    {
-                        spring: 1.0
-                        damping: 1.0
-                    }
-                }
+//                Behavior on sweepAngle
+//                {
+//                    SpringAnimation
+//                    {
+//                        spring: 1.0
+//                        damping: 1.0
+//                    }
+//                }
             }
         }
     }
@@ -61,7 +61,7 @@ Item {
         length: hookLength
         tickWidth: hookWidth
         placementRadius: 137
-        tickmarkColor: gaugeColor
+        tickmarkColor: outerColor
         visible: speedHook
     }
 }
