@@ -36,7 +36,9 @@ public:
     int pantCounter{0};
 
     int distanceToPixelHeight(double);
-    void d5loghandler(std::vector<Grad_Pos> input,int scale);
+    void d5loghandler(std::vector<Grad_Pos> input, int scale);
+    double toLogScale(double value, double maxDistance);
+    double toLinScale(double value, double maxDistance);
 
 
 

@@ -33,76 +33,72 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
-void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input,int scale)
+void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input, int maxDistance)
 {
-    double totallength{0};
-    double currentlength{0};
-    int iterator = 1;
-    double scaleLength = 270;
-    double linearLength = 135;
-    double logLength = scaleLength - linearLength;
-    double log100 = 2;
-    double log1000 = 3;
+    // double y0log = toLogScale(maxDistance);
 
-    for(Grad_Pos & x : input)
-    {
-        if(x.second > 0.0)
-        {
-            totallength += x.second;
-        }
-    }
+//    for ( int i{0}; i < 3; i++ )
+//    {
+//        double y = input[i].second;
 
-    std::vector<double> lengths;
-    double prevPos = 0;
-    for(int i = 0; i < 3; i++)
-    {
-        double currentPos = (input[i].second < 0) ? 0 : input[i].second;
-        double nextPos = input[i+1].second;
-        double length = nextPos - currentPos;
+//        if ( y > maxDistance )
+//            y = maxDistance;
+//        else if ( y < 0 )
+//            y = 0;
 
-        if(length > 0.0)
-        {
-            if ( prevPos < scale/8 && currentPos > scale/8 )
-            {
-                double log = scale/8 - prevPos;
-                length -= log;
-                double t = 0;
+//        double ylog = toLogScale(y, maxDistance);
+//        double height = y0log - ylog;
+//    }
 
-                t += (log10(log) - log100) / (log1000 - log100) * logLength;
-                t += length * (linearLength/(scale - scale/8));
-                lengths.push_back(t);
+    double y = 1000.0;
 
-            }
+    double lin = y - 500;
+    double log = y - 500;
 
-            else
-            {
-                if ( length + currentlength <= scale/8 )
-                    lengths.push_back((log10(length) - log100) / (log1000 - log100) * logLength);
-                else if ( length + currentlength <= scale )
-                    lengths.push_back(length * (linearLength/(scale - scale/8)));
-                else
-                    lengths.push_back(scaleLength);
-                currentlength += length;
-            }
-        }
-        prevPos = currentPos;
-    }
 
-    for(int i = 0; i < lengths.size(); i++)
-    {
-        qDebug() << lengths[i];
-        if(lengths[i] > 0.0)
-        {
-            QString objectName = QString::fromStdString("d5bar" + std::to_string(i+1));
+    double linv = toLinScale(lin, 4000);
+    double logv = toLogScale(log, 4000);
+    double v = linv + logv;
+    QObject *obj = m_rootObject->findChild<QObject*>("d5bar1");
+    obj->setProperty("barValue", v);
 
-            QObject *obj = m_rootObject->findChild<QObject*>(objectName);
-            obj->setProperty("barValue",lengths[i]);
-
-            if ( lengths[i] > 20 )
-                obj->setProperty("textValue", input[i].first);
-        }
-    }
 }
+
+double DMI_Handler::toLogScale(double value, double maxDistance)
+{
+    double logValue = 0;
+    double lengthOfLinearPart = 135;
+    double lengthOfLogPart = 135;
+    double maxLinear = maxDistance/8;
+
+    if ( value == 0 )
+        logValue = 0.0;
+    else if ( value > 0.0 && value < 1.0 )
+        logValue = 0.0;
+
+    else if ( value >= 1.0 && value <= maxLinear )
+    {
+        double factor = (log10(value) - log10(maxLinear)) / (log10(maxDistance) - log10(maxLinear));
+        logValue = factor * lengthOfLogPart + lengthOfLinearPart;
+    }
+
+    else if ( maxLinear < value && value <= maxDistance )
+    {
+        double factor = value / maxLinear;
+        logValue = factor * lengthOfLinearPart;
+    }
+
+    return logValue;
+}
+
+double DMI_Handler::toLinScale(double value, double maxDistance)
+{
+    double lengthOfLinearPart = 135;
+    double factor = maxDistance - maxDistance/4;
+
+    return value * (lengthOfLinearPart/factor);
+}
+
 
 void DMI_Handler::receiveUpdate()
 {
