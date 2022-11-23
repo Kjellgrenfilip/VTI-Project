@@ -256,13 +256,10 @@ Item {
                 Rectangle
                 {
                     id: d7Collumn1
-                    x: parent.x
                     width: parent.width/4
                     height: parent.height
                     color: MyConst.paspLight
                     anchors.bottom: parent.bottom
-                   // Button{anchors.fill: parent
-                    //onPressed: console.log(parent.x)}
                 }
 
                 Rectangle
@@ -278,7 +275,7 @@ Item {
                 Rectangle
                 {
                     id: d7Collumn3
-                    x: parent.x/4 * 2
+                    x: parent.width/4 * 2
                     width: parent.width/4
                     height: parent.height/2
                     color: MyConst.paspLight
