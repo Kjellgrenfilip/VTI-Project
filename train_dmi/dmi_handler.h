@@ -8,6 +8,7 @@
 
 #include "network_client.h"
 #include "button_handler.h"
+#include "speedometer.h"
 
 class DMI_Handler : public QObject
 {
@@ -32,6 +33,11 @@ public:
     int pantCounter{0};
 
 
+
+    Speedometer *m_speedometer;
+
+private:
+    void updateGUI(QString const& key, QObject *obj);
 
 signals:
 

@@ -1,43 +1,53 @@
 import QtQuick 2.0
 
-Item {
+Item
+{
     property real alpha: 0
     property real length: 0
     property bool visibility: false
     property real speedValue: 0
     property real tickMarkNum: 0
 
+    property real tickWidth: 1
+    property real placementRadius: 125
+    property string tickmarkColor: "lightgrey"
+
     // Template for a tickmark
-    Rectangle {
+    Rectangle
+    {
         id: tickMark
         height: length
-        width: 1
-        color: "lightgrey"
+        width: tickWidth
+        color: tickmarkColor
         antialiasing: true
-
-        x: 125 * Math.cos(alpha * Math.PI / 180) + 125
-        y: 125 * Math.sin(alpha * Math.PI / 180) + 125
+        radius: 0.5
+        //Calculates the position of the tickmark
+        //cos function takes Radians as parameter.
+        x: placementRadius * Math.cos(alpha * Math.PI / 180) + 140
+        y: placementRadius * Math.sin(alpha * Math.PI / 180) + 145
 
         // Rotates the tickmark so that they point to the middle!
-        transform: Rotation {
+        transform: Rotation
+        {
             origin.x: 0
             origin.y: 0
-            angle: ((Math.atan2( (125 - tickMark.y) , (125 - tickMark.x) ) * 180 / (Math.PI) ) - 90)
+            angle: ((Math.atan2( (145 - tickMark.y) , (140 - tickMark.x) ) * 180 / (Math.PI) ) - 90)
         }
     }
-    Text {
+    Text
+    {
         id: speed
         text: speedValue.toString()
         color: "lightgrey"
         font.bold: true
         font.pointSize: 15
         visible: visibility
-        x: 85 * Math.cos(alpha * Math.PI / 180) + 125
-        y: 85 * Math.sin(alpha * Math.PI / 180) + 125
-        transform: Translate {
+        x: 85 * Math.cos(alpha * Math.PI / 180) + 140
+        y: 85 * Math.sin(alpha * Math.PI / 180) + 145
+        transform: Translate
+        {
             x: -10 - tickMarkNum*0.3
             y: -10
-
         }
     }
 }

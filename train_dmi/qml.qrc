@@ -239,5 +239,7 @@
         <file>desk_ikoner/siren6.tif</file>
         <file>desk_ikoner/UpY.tif</file>
         <file>desk_ikoner/yellow.tif</file>
+        <file>CircularSpeedGauge.qml</file>
+        <file>CircularSpeedGauge3.qml</file>
     </qresource>
 </RCC>

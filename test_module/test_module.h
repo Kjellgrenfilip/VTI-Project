@@ -25,6 +25,13 @@ private:
     QJsonObject m_jsonExtras;
     QJsonObject m_jsonActivation;
     QJsonObject m_jsonETCS_A;
+    QJsonObject m_jsonSpeed;
+
+    QTimer *m_doorTimer;
+    QTimer *m_pantUpTimer;
+
+    // test variable for distance bar
+    double x{};
     QJsonObject m_jsonETCSB;
     QJsonObject m_jsonETCSC;
 
