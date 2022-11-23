@@ -6,12 +6,7 @@ Item {
     id: threeLayerCSG
     anchors.fill: parent
 
-    property real value: 0
     property real gaugeWidth: 9
-    property string outerColor: "lightgrey"
-    property string centerColor: "darkblue"
-    property string innerColor: "orange"
-    property string hookColor: "lightgrey"
     property real hookWidth: 6
     property real hookLength: 20
     property bool haveHook: true
@@ -39,9 +34,8 @@ Item {
             PathAngleArc {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 134; radiusY: 134
-                startAngle: 121//+((360/(134*2*Math.PI))*6)
-                sweepAngle: threeLayerCSG.calcAngle()+1// -((360/(134*2*Math.PI))*6)
-
+                startAngle: 121
+                sweepAngle: threeLayerCSG.calcAngle()+1
             }
         }
         ShapePath {
@@ -75,24 +69,24 @@ Item {
 
     Tick_Mark
     {
-        id: hook
-        alpha: (currentSpeed <= 200) ? 121 + 4 + currentSpeed * anglePerSpeedRangeA1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2
+        id: normalHook
+        alpha: threeLayerCSG.calcAngle()+121
         length: hookLength
-        width1: hookWidth
-        radius1: 137
-        color1: hookColor
-        visible: haveHook
+        tickWidth: hookWidth
+        placementRadius: 137
+        tickmarkColor: outerColor
+        visible: speedHook
 
     }
-   /* Tick_Mark
+   Tick_Mark
     {
-        id: hook
-        alpha: (currentSpeed <= 200) ? 121 + 4 + currentSpeed * anglePerSpeedRangeA1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2
-        length: hookLength
-        width1: hookWidth
-        radius1: 137
-        color1: hookColor
-        visible: haveHook
+        id: smallHook
+        alpha: threeLayerCSG.calcAngle()+121
+        length: 14
+        tickWidth: 6
+        placementRadius: 130
+        tickmarkColor: innerColor
+        visible: smallSpeedHook
 
-    }*/
+    }
 }

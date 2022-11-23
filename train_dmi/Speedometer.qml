@@ -2,21 +2,38 @@ import QtQuick
 import QtQuick.Shapes 1.15
 
 import QtQuick.Controls 2.15
+
+import "Imports" 1.0
 Item
 {
     id: speedometer
     objectName: "speedometer"
-    property real value : 0
-    property real currentSpeed : 20
     property real angleBetweenTickmarks : 9.6
     property real anglePerSpeedRangeA1 : 192 / 200;
     property real anglePerSpeedRangeA2 : 96 / 200;
     property real startAngle : 126
     property string needleColor : "lightgrey"
-    property real indicationAngle : 180+54+54+5
-    property string arcColor : "yellow"
     property string range : "rangeA"
-    property bool hookActive: false
+    //Properties that controls the if the Hooks are visible
+    property bool targetHook: false
+    property bool permittedHook: false
+    property bool speedHook: false
+    property bool smallSpeedHook: false
+    //Speed Related Properties
+    property real currentSpeed: 20
+    property real permittedSpeed: 50
+    property real targetSpeed: 60
+    property real advisorySpeed: 0
+    property real interventionSpeed: 0
+    //properties related to the threeLayer CSG
+    property string innerColor: MyConst.darkGrey
+    property string centerColor: MyConst.darkGrey
+    property string outerColor: MyConst.darkGrey
+
+
+
+
+
     width: 280; height: 300
 
     antialiasing: true
@@ -114,6 +131,10 @@ Item
             }
         }
     }
+    function calcCSGAngle(speed)
+    {
+        return (speed <= 200) ? 5 + speed * anglePerSpeedRangeA1 -4.18: 96 * 2 + 5 + (speed - 200) * anglePerSpeedRangeA2-4.18
+    }
     function calculateAngle(index)
     {
         var angle = 0;
@@ -170,19 +191,16 @@ Item
     CircularSpeedGauge{
         id: csgBottomLayer
         objectName: "csgBottomLayer"
-        haveHook: hookActive
-        gaugeColor: "darkgrey"
-        visible: false
+        haveHook: speedHook
     }
-    CircularSpeedGauge3{
-    id: csgMiddleLayer
-    objectName: "csgMiddleLayer"
-    haveHook: true
-    innerColor: "grey"
-    outerColor: "grey"
-    centerColor:"grey"
+
+    CircularSpeedGauge3
+    {
+        id: csgMiddleLayer
+        objectName: "csgMiddleLayer"
     }
     CircularSpeedGauge{
+        id: csgLarge
         gaugeWidth: 20
         gaugeColor: "orange"
         visible: false
@@ -194,23 +212,21 @@ Item
     Tick_Mark
     {
         id: vTargetHook
-        visible: true
+        visible: targetHook
         length: 20
-        width1:10
-        alpha: 300
-        radius1: 137
+        tickWidth:10
+        alpha: 121+speedometer.calcCSGAngle(targetSpeed)
+        placementRadius: 137
     }
 
     Tick_Mark
     {
         id: vPermHook
-        visible: true
+        visible: permittedHook
         length: 20
-        width1:10
-        alpha: 350
-        radius1: 137
-
-
+        tickWidth:10
+        alpha: 121+speedometer.calcCSGAngle(permittedSpeed)
+        placementRadius: 137
 }
 
 }

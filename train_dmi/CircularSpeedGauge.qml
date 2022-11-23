@@ -59,9 +59,9 @@ Item {
         id: hook
         alpha: circularGauge.calcAngle() + 121
         length: hookLength
-        width1: hookWidth
-        radius1: 137
-        color1: hookColor
-        visible: haveHook
+        tickWidth: hookWidth
+        placementRadius: 137
+        tickmarkColor: gaugeColor
+        visible: speedHooks
     }
 }
