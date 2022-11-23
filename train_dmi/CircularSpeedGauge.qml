@@ -32,7 +32,7 @@ Item {
         ShapePath
         {
             fillColor: "transparent"
-            strokeColor: (value <= 50) ? gaugeColor : "orange"
+            strokeColor: outerColor
             strokeWidth: gaugeWidth
 
             PathAngleArc
@@ -62,6 +62,6 @@ Item {
         tickWidth: hookWidth
         placementRadius: 137
         tickmarkColor: gaugeColor
-        visible: speedHooks
+        visible: speedHook
     }
 }

@@ -29,6 +29,12 @@ Item
     property string innerColor: MyConst.darkGrey
     property string centerColor: MyConst.darkGrey
     property string outerColor: MyConst.darkGrey
+    //Properties related to visibility of different CSG's
+    property bool normalCSG: true
+    property bool threeLayerCSG: false
+    property bool largeCSG: false
+
+
 
 
 
@@ -192,21 +198,23 @@ Item
         id: csgBottomLayer
         objectName: "csgBottomLayer"
         haveHook: speedHook
+        visible: normalCSG
     }
 
     CircularSpeedGauge3
     {
         id: csgMiddleLayer
         objectName: "csgMiddleLayer"
+        visible: threeLayerCSG
     }
     CircularSpeedGauge{
         id: csgLarge
         gaugeWidth: 20
         gaugeColor: "orange"
-        visible: false
         startAngle1: (126+(currentSpeed*anglePerSpeedRangeA1))+5.5 - 2.5
         rY: 127
         rX: 127
+        visible: largeCSG
 
     }
     Tick_Mark
