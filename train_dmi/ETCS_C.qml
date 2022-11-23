@@ -49,7 +49,7 @@ Item {
         }
         Rectangle
         {
-            id: c1234
+            id: c234
             width: parent.width/3
             height: parent.height
             color: MyConst.backgroundColor
@@ -76,7 +76,8 @@ Item {
                     height: parent.height
                     color: MyConst.backgroundColor
 
-                    Text {
+                    Text
+                    {
                         id: c3Text
                         objectName: "etcsC3Text"
                         text: qsTr("1000")
@@ -91,11 +92,7 @@ Item {
                     width: parent.width/3
                     height: parent.height
                     color: MyConst.backgroundColor
-
-
                 }
-
-
             }
 
             ETCS_Box3DEffect{}
