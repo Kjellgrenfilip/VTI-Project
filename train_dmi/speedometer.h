@@ -3,13 +3,15 @@
 
 #include <QObject>
 
+#include "../network_interface.h"
+
 class Speedometer : public QObject
 {
     Q_OBJECT
 public:
-    explicit Speedometer(QObject *parent = nullptr);
+    explicit Speedometer(QObject *obj);
 
-    void updateSpeedometer();
+    void updateSpeedometer(QJsonObject update);
 
 private:
     double m_currentSpeed;
@@ -21,7 +23,10 @@ private:
     double m_advisorySpeed;
     double m_previousSpeed;
 
+    QObject *m_rootObject;
+
     QString m_speedometerMode;
+    QJsonObject m_values{VTI_DMI::JSON_SPEEDOMETER};
 
 signals:
 

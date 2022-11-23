@@ -38,6 +38,15 @@ Item {
                 radiusX: rX; radiusY: rY
                 startAngle: startAngle1
                 sweepAngle: circularGauge.calcAngle()
+
+                Behavior on sweepAngle
+                {
+                    SpringAnimation
+                    {
+                        spring: 1.0
+                        damping: 1.0
+                    }
+                }
             }
         }
     }
@@ -51,6 +60,5 @@ Item {
         radius1: 137
         color1: hookColor
         visible: haveHook
-
     }
 }

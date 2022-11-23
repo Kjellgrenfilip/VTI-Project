@@ -33,7 +33,7 @@ Item {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 134; radiusY: 134
                 startAngle: 121
-                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRangeA1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2
             }
         }
         ShapePath {
@@ -45,7 +45,7 @@ Item {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 130.5; radiusY: 130.5
                 startAngle: 121
-                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRangeA1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2
             }
         }
         ShapePath {
@@ -57,7 +57,7 @@ Item {
                 centerX: parent.width/2; centerY: parent.height/2 - 5
                 radiusX: 128.5; radiusY: 128.5
                 startAngle: 121
-                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRange1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                sweepAngle: (currentSpeed <= 200) ? 4 + currentSpeed * anglePerSpeedRangeA1 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2
             }
         }
     }
@@ -65,7 +65,7 @@ Item {
     Tick_Mark
     {
         id: hook
-        alpha: (currentSpeed <= 200) ? 121 + 4 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+        alpha: (currentSpeed <= 200) ? 121 + 4 + currentSpeed * anglePerSpeedRangeA1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2
         length: hookLength
         width1: hookWidth
         radius1: 137

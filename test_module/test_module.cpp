@@ -10,10 +10,10 @@ Test_Module::Test_Module(bool connection)
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
+      m_jsonSpeed{VTI_DMI::JSON_SPEEDOMETER},
       m_doorTimer{new QTimer{this}},
       m_pantUpTimer{new QTimer{this}},
       m_jsonETCSB{VTI_DMI::JSON_ETCS_B}
-
 {
     if(connection)
     {
@@ -488,6 +488,10 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCSB);
+            m_networkServer->delay(10);
+
+            m_jsonSpeed.insert(VTI_DMI::CURRENTSPEED, 100);
+            m_networkServer->sendUpdate(m_jsonSpeed);
             m_networkServer->delay(10);
 
 //            updateETCSB("08");
