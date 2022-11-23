@@ -31,6 +31,8 @@ public:
     int doorCounter{0};
     int pantCounter{0};
 
+    int distanceToPixelHeight(double);
+
 
 
 signals:

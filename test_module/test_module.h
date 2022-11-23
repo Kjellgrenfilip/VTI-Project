@@ -66,7 +66,7 @@ public:
     QQueue<QJsonValue> etcsBImageQueue;
 
     void updateDistance(double newValue);
-    void updateDistanceBar(double newValue);
+    //void updateDistanceBar(double newValue);
     void updateSpeedLimit(double newValue);
 
 signals:

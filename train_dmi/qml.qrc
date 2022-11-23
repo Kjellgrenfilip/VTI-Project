@@ -239,5 +239,7 @@
         <file>desk_ikoner/siren6.tif</file>
         <file>desk_ikoner/UpY.tif</file>
         <file>desk_ikoner/yellow.tif</file>
+        <file>ETCS_D.qml</file>
+
     </qresource>
 </RCC>

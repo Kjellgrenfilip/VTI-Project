@@ -33,7 +33,48 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
+/*void DMI_Handler::d5loghandler(std::vector<std::pair<double,double>> input,int scale)
+{
+    double totallength{0};
+    double currentlength{0};
+    int iterator = 1;
+    double scaleLength = 270;
+    double linearLength = 35;
+    double logLength = scaleLength - linearLength;
+    double log100 = 2;
+    double log1000 = 3;
 
+    for(std::pair<double,double>x : input)
+    {
+        if(x.second > 0.0)
+        {
+            totallength += x.second;
+        }
+    }
+    for(std::pair<double,double>x : input)
+    {
+        if(x.second > 0.0)
+        {
+            if ( x.second + currentlength <= scale/8 )
+                x.second = -currentlength + (x.second + currentlength)  * (linearLength/100);
+            else if ( x.second + currentlength <= scale )
+                x.second = -currentlength + linearLength + (log10(x.second) - log100) / (log1000 - log100) * logLength;
+            else
+                x.second = scaleLength - currentlength;
+            currentlength += x.second;
+        }
+    }
+    for(auto x : input)
+    {
+        if(x.second > 0.0 && iterator <=4)
+        {
+            QObject *obj = m_rootObject->findChild<QObject*>("d5bar" + std::to_string(iterator));
+            std::string text{"barValue" + std::to_string(iterator++)};
+
+            obj->setProperty(text ,x.second);
+        }
+    }
+}*/
 
 void DMI_Handler::receiveUpdate()
 {
@@ -57,18 +98,20 @@ void DMI_Handler::receiveUpdate()
             {
                 // Special case example
             }
-
             else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE || key == VTI_DMI::ETCSC3Text)
             {
                 QString newValue = m_latestUpdate.value(key).toString();
                 obj->setProperty("text", newValue);
             }
 
-            else if ( key == VTI_DMI::DISTANCE_BAR )
+            else if ( key == VTI_DMI::DISTANCE )
             {
-                int newValue = m_latestUpdate.value(key).toDouble();
-                qDebug() << "DISTANCE: " << newValue;
-                obj->setProperty("barValue", newValue);
+                QString distanceStr = m_latestUpdate.value(key).toString();
+                obj->setProperty("text", distanceStr);
+
+                obj = m_rootObject->findChild<QObject*>(VTI_DMI::DISTANCE_BAR);
+                double distance = distanceStr.toDouble();
+                obj->setProperty("barValue", distanceToPixelHeight(distance));
             }
 
             else if( key == VTI_DMI::TEXTINFO)
@@ -149,4 +192,23 @@ void DMI_Handler::animationHandler()
     }
 
     animationState = !animationState;
+}
+
+int DMI_Handler::distanceToPixelHeight(double distance)
+{
+    double scaleLength{186};
+    double linearLength{33};
+    double logLength{scaleLength - linearLength};
+    double log100{2};
+    double log1000{3};
+    int pixelHeight{0};
+
+    if ( distance <= 100 )
+        pixelHeight = distance * (linearLength/100);
+    else if ( distance <= 1000 )
+        pixelHeight = linearLength + (log10(distance) - log100) / (log1000 - log100) * logLength;
+    else
+        pixelHeight = 186;
+
+    return pixelHeight;
 }
