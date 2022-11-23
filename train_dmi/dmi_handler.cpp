@@ -33,45 +33,73 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
-void DMI_Handler::d5loghandler(std::vector<std::pair<double,double>> input,int scale)
+void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input,int scale)
 {
     double totallength{0};
     double currentlength{0};
     int iterator = 1;
     double scaleLength = 270;
-    double linearLength = 35;
+    double linearLength = 135;
     double logLength = scaleLength - linearLength;
     double log100 = 2;
     double log1000 = 3;
 
-    for(std::pair<double,double>x : input)
+    for(Grad_Pos & x : input)
     {
         if(x.second > 0.0)
         {
             totallength += x.second;
         }
     }
-    for(std::pair<double,double>x : input)
-    {
-        if(x.second > 0.0)
-        {
-            if ( x.second + currentlength <= scale/8 )
-                x.second = -currentlength + (x.second + currentlength)  * (linearLength/100);
-            else if ( x.second + currentlength <= scale )
-                x.second = -currentlength + linearLength + (log10(x.second) - log100) / (log1000 - log100) * logLength;
-            else
-                x.second = scaleLength - currentlength;
-            currentlength += x.second;
-        }
-    }
-    for(auto x : input)
-    {
-        if(x.second > 0.0 && iterator <=4)
-        {
-            QObject *obj = m_rootObject->findChild<QObject*>("d5bar" + std::to_string(iterator));
-            std::string text{"barValue" + std::to_string(iterator++)};
 
-            obj->setProperty(text ,x.second);
+    std::vector<double> lengths;
+    double prevPos = 0;
+    for(int i = 0; i < 3; i++)
+    {
+        double currentPos = (input[i].second < 0) ? 0 : input[i].second;
+        double nextPos = input[i+1].second;
+        double length = nextPos - currentPos;
+
+        if(length > 0.0)
+        {
+            if ( prevPos < scale/8 && currentPos > scale/8 )
+            {
+                double log = scale/8 - prevPos;
+                length -= log;
+                double t = 0;
+
+                t += (log10(log) - log100) / (log1000 - log100) * logLength;
+                t += length * (linearLength/(scale - scale/8));
+                lengths.push_back(t);
+
+            }
+
+            else
+            {
+                if ( length + currentlength <= scale/8 )
+                    lengths.push_back((log10(length) - log100) / (log1000 - log100) * logLength);
+                else if ( length + currentlength <= scale )
+                    lengths.push_back(length * (linearLength/(scale - scale/8)));
+                else
+                    lengths.push_back(scaleLength);
+                currentlength += length;
+            }
+        }
+        prevPos = currentPos;
+    }
+
+    for(int i = 0; i < lengths.size(); i++)
+    {
+        qDebug() << lengths[i];
+        if(lengths[i] > 0.0)
+        {
+            QString objectName = QString::fromStdString("d5bar" + std::to_string(i+1));
+
+            QObject *obj = m_rootObject->findChild<QObject*>(objectName);
+            obj->setProperty("barValue",lengths[i]);
+
+            if ( lengths[i] > 20 )
+                obj->setProperty("textValue", input[i].first);
         }
     }
 }
@@ -137,6 +165,7 @@ void DMI_Handler::receiveUpdate()
             }
         }
     }
+    d5loghandler(test_vector, 4000);
 }
 
 void DMI_Handler::animationHandler()

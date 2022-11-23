@@ -9,6 +9,10 @@
 #include "network_client.h"
 #include "button_handler.h"
 
+typedef std::pair<double, double> Grad_Pos;
+
+static const std::vector<Grad_Pos> test_vector = { {15, -375.73}, {0, 201.26}, {-10, 604.26}, {0, 1835.26} };
+
 class DMI_Handler : public QObject
 {
     Q_OBJECT
@@ -32,6 +36,7 @@ public:
     int pantCounter{0};
 
     int distanceToPixelHeight(double);
+    void d5loghandler(std::vector<Grad_Pos> input,int scale);
 
 
 

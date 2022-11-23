@@ -189,41 +189,45 @@ Item {
             {
                 id:d5bar1
                 objectName: "d5bar1"
-                anchors.bottom: parent.anchors.bottom
+                anchors.bottom: parent.bottom
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
                 height: barValue
+                color: MyConst.grey
             }
             Rectangle
             {
                 id:d5bar2
                 objectName: "d5bar2"
-                anchors.bottom: d5bar1.anchors.top
+                anchors.bottom: d5bar1.top
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
                 height: barValue
+                color: MyConst.darkGrey
             }
             Rectangle
             {
                 id:d5bar3
                 objectName: "d5bar3"
-                anchors.bottom: d5bar2.anchors.bottom
+                anchors.bottom: d5bar2.top
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
                 height: barValue
+                color: MyConst.grey
             }
             Rectangle
             {
                 id:d5bar4
                 objectName: "d5bar4"
-                anchors.bottom: d5bar3.anchors.top
+                anchors.bottom: d5bar3.top
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
                 height: barValue
+                color: MyConst.darkGrey
             }
 
         }
@@ -251,6 +255,7 @@ Item {
     }
     Grid
     {
+        id: lowergrid
         height: (15/300) * parent.height
         width: parent.width
         anchors.top: middlegrid.bottom
