@@ -226,7 +226,6 @@ Item
     CircularSpeedGauge {
         id: csgTop
         objectName: "csgTopLayer"
-        //haveHook: speedHook
         visible: topCSG
         value: csgTopLayerValue
         gaugeColor: topColor
@@ -244,10 +243,13 @@ Item
     CircularSpeedGauge {
         id: csgThic
         objectName: "sgThicLayer"
-        //haveHook: speedHook
+        gaugeWidth: 20
         visible: thicCSG
-        value: csgThicLayerValue
-         gaugeColor: thicColor
+        value: 30//csgThicLayerValue
+        gaugeColor: thicColor
+        startAngle1: speedometer.calcCSGAngle(permittedSpeed) + 126 + 4.5
+        rX: 127
+        rY:127
     }
 
     CircularSpeedGauge {

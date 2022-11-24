@@ -41,7 +41,19 @@ void Speedometer::updateSpeedometer(QJsonObject update)
         }
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "WaS")
         {
+            obj->setProperty("permittedSpeed", update.value(VTI_DMI::PERMITTED_SPEED));
+            obj->setProperty("currentSpeed", update.value(VTI_DMI::CURRENT_SPEED));
 
+
+            //obj->setProperty()
+            if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() > update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
+            {
+                obj->setProperty("thicCSG", true);
+                obj->setProperty("thicColor", "#EA9100");
+
+                //Set startangle from hook
+                obj->setProperty("csgThicLayerValue", (update.value(VTI_DMI::CURRENT_SPEED).toDouble())-(update.value(VTI_DMI::PERMITTED_SPEED).toDouble()));
+            }
         }
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
         {

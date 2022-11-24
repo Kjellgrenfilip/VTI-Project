@@ -523,6 +523,18 @@ void Test_Module::receiveUpdate()
                 m_networkServer->sendUpdate(m_jsonSpeed);
                 m_networkServer->delay(50);
             }
+
+            m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+            m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "WaS");
+            m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 130);
+            m_networkServer->sendUpdate(m_jsonSpeed);
+            m_networkServer->delay(1000);
+            for(int i{100}; i <= 180; i++)
+            {
+                m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+                m_networkServer->sendUpdate(m_jsonSpeed);
+                m_networkServer->delay(50);
+            }
         }
         else
             return;

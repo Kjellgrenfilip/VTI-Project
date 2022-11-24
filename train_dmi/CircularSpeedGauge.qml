@@ -42,7 +42,7 @@ Item {
                 centerX: 140; centerY: 135
                 radiusX: rX; radiusY: rY
                 startAngle: startAngle1
-                sweepAngle: circularGauge.calcAngle()
+                sweepAngle: circularGauge.calcAngle()//currentSpeed-permittedspeed
 
 //                Behavior on sweepAngle
 //                {
