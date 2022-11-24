@@ -240,6 +240,7 @@
         <file>desk_ikoner/UpY.tif</file>
         <file>desk_ikoner/yellow.tif</file>
         <file>ETCS_D.qml</file>
-
+        <file>CircularSpeedGauge.qml</file>
+        <file>CircularSpeedGauge3.qml</file>
     </qresource>
 </RCC>

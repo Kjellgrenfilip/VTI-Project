@@ -10,10 +10,11 @@ Test_Module::Test_Module(bool connection)
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
+      m_jsonSpeed{VTI_DMI::JSON_SPEEDOMETER},
+      m_doorTimer{new QTimer{this}},
+      m_pantUpTimer{new QTimer{this}},
       m_jsonETCSB{VTI_DMI::JSON_ETCS_B},
       m_jsonETCSC{VTI_DMI::JSON_ETCS_C}
-
-
 {
     if(connection)
     {
@@ -452,15 +453,47 @@ void Test_Module::receiveUpdate()
             qDebug() << "Activation";
             m_jsonActivation.insert(VTI_DMI::ACTIVATE, STATE::ACTIVE);
             m_networkServer->sendUpdate(m_jsonBrakes);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonDoors);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonVoltage);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonAlarm);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonExtras);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonActivation);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCS_A);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCSB);
+            m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCSC);
+            m_networkServer->delay(10);
+
             updateETCSC("03");
+
+            m_jsonSpeed.insert(VTI_DMI::SUPERVISIONSTATUS, "CSM");
+            m_jsonSpeed.insert(VTI_DMI::STATUSINFORMATION, "NoS");
+            m_jsonSpeed.insert(VTI_DMI::CURRENTSPEED, 138);
+            m_jsonSpeed.insert(VTI_DMI::PERMITTEDSPEED, 160);
+            m_networkServer->sendUpdate(m_jsonSpeed);
+            m_networkServer->delay(3000);
+
+            for(int i{138}; i >= 67; i--)
+            {
+                m_jsonSpeed.insert(VTI_DMI::CURRENTSPEED, i);
+                m_networkServer->sendUpdate(m_jsonSpeed);
+                m_networkServer->delay(100);
+            }
+
+            m_jsonSpeed.insert(VTI_DMI::PERMITTEDSPEED, 160);
+            m_networkServer->sendUpdate(m_jsonSpeed);
+            m_networkServer->delay(3000);
+
+            m_jsonSpeed.insert(VTI_DMI::PERMITTEDSPEED, 100);
+            m_networkServer->sendUpdate(m_jsonSpeed);
+            m_networkServer->delay(3000);
         }
         else
             return;
