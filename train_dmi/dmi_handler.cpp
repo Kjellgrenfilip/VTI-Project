@@ -61,15 +61,14 @@ void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input, int maxDistance)
 
         else
         {
-            if ( totalDistance < maxDistance/8 )
-            {
-                log = maxDistance/8;
-                logv = toLogScale(log, maxDistance);
-            }
+            log = maxDistance/8;
+            logv = toLogScale(log, maxDistance);
             lin = y - log;
             linv = toLinScale(lin, maxDistance);
             v = linv + logv;
         }
+
+
 
         v -= totalPixelHeight;
 
