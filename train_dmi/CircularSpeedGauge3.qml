@@ -32,7 +32,7 @@ Item {
             strokeWidth: 6
 
             PathAngleArc {
-                centerX: parent.width/2; centerY: parent.height/2 - 5
+                centerX: 140; centerY: 135
                 radiusX: 134; radiusY: 134
                 startAngle: 121
                 sweepAngle: threeLayerCSG.calcAngle()+1
@@ -44,7 +44,7 @@ Item {
             strokeWidth: 1
 
             PathAngleArc {
-                centerX: parent.width/2; centerY: parent.height/2 - 5
+                centerX: 140; centerY: 135
                 radiusX: 130.5; radiusY: 130.5
                 startAngle: 121 - ((360/(130.5*2*Math.PI))*2)
                 sweepAngle: threeLayerCSG.calcAngle() +2*((360/(130.5*2*Math.PI))*2)
@@ -57,7 +57,7 @@ Item {
             strokeWidth: 3
 
             PathAngleArc {
-                centerX: parent.width/2; centerY: parent.height/2 - 5
+                centerX: 140; centerY: 135
                 radiusX: 128.5; radiusY: 128.5
 
                 startAngle: 121 - ((360/(128.5*2*Math.PI))*1.5)

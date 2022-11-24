@@ -37,7 +37,7 @@ Item {
 
             PathAngleArc
             {
-                centerX: parent.width/2; centerY: parent.height/2 - 5
+                centerX: 140; centerY: 135
                 radiusX: rX; radiusY: rY
                 startAngle: startAngle1
                 sweepAngle: circularGauge.calcAngle()
@@ -54,14 +54,14 @@ Item {
         }
     }
 
-    Tick_Mark
-    {
-        id: hook
-        alpha: circularGauge.calcAngle() + 121
-        length: hookLength
-        tickWidth: hookWidth
-        placementRadius: 137
-        tickmarkColor: outerColor
-        visible: speedHook
-    }
+//    Tick_Mark
+//    {
+//        id: hook
+//        alpha: circularGauge.calcAngle() + 121
+//        length: hookLength
+//        tickWidth: hookWidth
+//        placementRadius: 137
+//        tickmarkColor: outerColor
+//        visible: speedHook
+//    }
 }

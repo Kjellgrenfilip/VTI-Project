@@ -11,7 +11,7 @@ class Speedometer : public QObject
 public:
     explicit Speedometer(QObject *obj);
 
-    void updateSpeedometer(QJsonObject update, QString mode, QString status);
+    void updateSpeedometer(QJsonObject update);
 
 private:
     double m_currentSpeed;

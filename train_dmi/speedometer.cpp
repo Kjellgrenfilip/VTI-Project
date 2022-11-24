@@ -5,25 +5,18 @@ Speedometer::Speedometer(QObject *obj)
 {
 }
 
-void Speedometer::updateSpeedometer(QJsonObject update, QString mode, QString status)
+void Speedometer::updateSpeedometer(QJsonObject update)
 {
     QObject *obj = m_rootObject->findChild<QObject*>("speedometer");
-    foreach(QString key, update.keys())
+    //m_values.insert(key, update.value(key));
+    if(update.value(VTI_DMI::SUPERVISIONSTATUS) == "CSM")
     {
-        m_values.insert(key, update.value(key));
-        if(mode == "CSM")
+        obj->setProperty("supervisionMode", "CSM");
+        if(update.value(VTI_DMI::STATUSINFORMATION) == "NoS")
         {
-            obj->setProperty("supervisionMode", "CSM");
-            if(status == "NoS")
-            {
-                if(key == VTI_DMI::CURRENTSPEED)
-                    obj->setProperty("currentSpeed", update.value(key));
-                if(key == VTI_DMI::PERMITTEDSPEED)
-                {
-                    obj->setProperty("permittedSpeed", update.value(key));
-                    obj->setProperty("speedHook", true);
-                }
-            }
+            obj->setProperty("currentSpeed", update.value(VTI_DMI::CURRENTSPEED));
+            obj->setProperty("csgBottomLayerValue", update.value(VTI_DMI::PERMITTEDSPEED));
+            obj->setProperty("csgBottomLayerHook", true);
         }
     }
 

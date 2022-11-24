@@ -24,14 +24,14 @@ Item
         //Calculates the position of the tickmark
         //cos function takes Radians as parameter.
         x: placementRadius * Math.cos(alpha * Math.PI / 180) + 140
-        y: placementRadius * Math.sin(alpha * Math.PI / 180) + 145
+        y: placementRadius * Math.sin(alpha * Math.PI / 180) + 135
 
         // Rotates the tickmark so that they point to the middle!
         transform: Rotation
         {
             origin.x: 0
             origin.y: 0
-            angle: ((Math.atan2( (145 - tickMark.y) , (140 - tickMark.x) ) * 180 / (Math.PI) ) - 90)
+            angle: ((Math.atan2( (140 - tickMark.y) , (140 - tickMark.x) ) * 180 / (Math.PI) ) - 90)
         }
     }
     Text
@@ -43,7 +43,7 @@ Item
         font.pointSize: 15
         visible: visibility
         x: 85 * Math.cos(alpha * Math.PI / 180) + 140
-        y: 85 * Math.sin(alpha * Math.PI / 180) + 145
+        y: 85 * Math.sin(alpha * Math.PI / 180) + 140
         transform: Translate
         {
             x: -10 - tickMarkNum*0.3

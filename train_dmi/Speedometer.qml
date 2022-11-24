@@ -19,6 +19,8 @@ Item
     property bool permittedHook: false
     property bool speedHook: false
     property bool smallSpeedHook: false
+
+    property bool csgBottomLayerHook: false
     //Speed Related Properties
     property real currentSpeed: 20
     property real permittedSpeed: 50
@@ -29,6 +31,8 @@ Item
     property string innerColor: MyConst.darkGrey
     property string centerColor: MyConst.darkGrey
     property string outerColor: MyConst.darkGrey
+
+    property real csgBottomLayerValue: 0
     //Properties related to visibility of different CSG's
     property bool normalCSG: true
     property bool threeLayerCSG: false
@@ -41,20 +45,22 @@ Item
     antialiasing: true
 
     // Sets the background color behind the Speedometer!
-    Rectangle
-    {
-        anchors.fill:  parent
-        color: "#041122"
-    }
+//    Rectangle
+//    {
+//        anchors.fill:  parent
+//        color: "blue"
+//    }
 
     // Creates the Speedometer!
     Rectangle
     {
         id: speedometerNeedle
         width: 250; height: 250
+        //anchors.fill: parent
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.margins: 20
+        anchors.margins: 10
+
         color: "#041122"
         radius:  125
 
@@ -127,6 +133,7 @@ Item
                 text: qsTr((currentSpeed).toString())
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
+                anchors.margins: 2
                 color: "black"
                 font.bold: true
                 font.pointSize: 25
@@ -184,7 +191,7 @@ Item
                        (startAngle + (index * speedometer.tickMarkAngle()))
 
             length: (index % ((range == "rangeA") ? 5 : 2) == 0) ? 25 : 15 // Makes every 5:th tickmark long.
-            visibility: (index % ((range == "rangeA") ? 5 : 2) == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
+            visibility: (index % ((range == "rangeA") ? ((index >= 20) ? 10 : 5) : 2) == 0) ? true : false // Makes every 5:th tickmark have a speedtext.
             speedValue: index * 10;
             tickMarkNum: index
         }
@@ -193,9 +200,18 @@ Item
     CircularSpeedGauge{
         id: csgBottomLayer
         objectName: "csgBottomLayer"
-        haveHook: speedHook
+        //haveHook: speedHook
         visible: normalCSG
-        value: (supervisionMode == "CSM") ? permittedSpeed : currentSpeed
+        value: csgBottomLayerValue
+        Tick_Mark
+        {
+            alpha: 121+speedometer.calcCSGAngle(csgBottomLayerValue) + 1.68
+            length: 20
+            tickWidth: 6
+            placementRadius: 137
+            tickmarkColor: outerColor
+            visible: csgBottomLayerHook
+        }
     }
 
     CircularSpeedGauge3
