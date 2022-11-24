@@ -1,5 +1,4 @@
 #include "dmi_handler.h"
-
 #include <QJsonObject>
 
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
@@ -75,7 +74,14 @@ void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input, int maxDistance)
         QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
         QObject *obj = m_rootObject->findChild<QObject*>(objectName);
         obj->setProperty("barValue", v);
-
+        if(v>10)
+        {
+            obj->setProperty("textValue",abs(input.at(i).first));
+            if(input.at(i).first <0)
+            {
+                //obj->setProperty("color",MyConst.)
+            }
+        }
         totalPixelHeight += v;
         totalDistance = y;
 

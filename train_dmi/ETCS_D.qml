@@ -194,6 +194,12 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
+                Text {
+                    text: d5bar1.textValue
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: "blue"
+                }
                 height: barValue
                 color: MyConst.grey
             }
@@ -205,6 +211,12 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
+                Text {
+                    text: d5bar2.textValue
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: "blue"
+                }
                 height: barValue
                 color: MyConst.darkGrey
             }
@@ -216,6 +228,12 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
+                Text {
+                   text: d5bar3.textValue
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: "blue"
+                }
                 height: barValue
                 color: MyConst.grey
             }
@@ -227,6 +245,12 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0
+                Text {
+                    text: d5bar4.textValue
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: "blue"
+                }
                 height: barValue
                 color: MyConst.darkGrey
             }
