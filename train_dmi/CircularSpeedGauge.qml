@@ -2,13 +2,15 @@ import QtQuick
 import QtQuick.Shapes 1.5
 import QtQuick.Controls 2.0
 
+import "Imports" 1.0
+
 Item {
     id: circularGauge
     anchors.fill: parent
 
     property real value: 0
     property real gaugeWidth: 9
-    property string gaugeColor: "lightgrey"
+    property string gaugeColor: MyConst.darkGrey
     property string hookColor: "grey"
     property real hookWidth: 6
     property real hookLength: 20
@@ -32,7 +34,7 @@ Item {
         ShapePath
         {
             fillColor: "transparent"
-            strokeColor: outerColor
+            strokeColor: gaugeColor
             strokeWidth: gaugeWidth
 
             PathAngleArc

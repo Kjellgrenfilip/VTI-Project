@@ -20,7 +20,9 @@ Item
     property bool speedHook: false
     property bool smallSpeedHook: false
 
-    property bool csgBottomLayerHook: false
+    property bool csgTopLayerHook: false
+    property bool csgMiddleLayerHook: false
+
     //Speed Related Properties
     property real currentSpeed: 20
     property real permittedSpeed: 50
@@ -32,11 +34,19 @@ Item
     property string centerColor: MyConst.darkGrey
     property string outerColor: MyConst.darkGrey
 
+    property string topColor: MyConst.darkGrey
+    property string thicColor: MyConst.darkGrey
+    property string bottomColor: MyConst.darkGrey
+
     property real csgBottomLayerValue: 0
+    property real csgMiddleLayerValue: 0
+    property real csgTopLayerValue: 0
+    property real csgThicLayerValue: 0
     //Properties related to visibility of different CSG's
-    property bool normalCSG: true
-    property bool threeLayerCSG: false
-    property bool largeCSG: false
+    property bool bottomCSG: false
+    property bool middleCSG: false
+    property bool topCSG: false
+    property bool thicCSG: false
 
     property string supervisionMode: ""
 
@@ -82,10 +92,9 @@ Item
                 angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRangeA1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRangeA2//(currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
                 Behavior on angle
                 {
-                    SpringAnimation
+                    SmoothedAnimation
                     {
-                        spring: 1.0
-                        damping: 1.0
+                        velocity: 50
                     }
                 }
             }
@@ -108,10 +117,9 @@ Item
                 angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRangeA1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRangeA2
                 Behavior on angle
                 {
-                    SpringAnimation
+                    SmoothedAnimation
                     {
-                        spring: 1.0
-                        damping: 1.0
+                        velocity: 50
                     }
                 }
             }
@@ -130,7 +138,7 @@ Item
             Text
             {
                 id: speedText
-                text: qsTr((currentSpeed).toString())
+                text: qsTr(currentSpeed.toString())
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.margins: 2
@@ -197,39 +205,60 @@ Item
         }
     }
     //Creates one CircularSpeedGauge.
-    CircularSpeedGauge{
-        id: csgBottomLayer
-        objectName: "csgBottomLayer"
+
+    CircularSpeedGauge3 {
+        id: csgMiddle
+        objectName: "csgMiddleLayer"
         //haveHook: speedHook
-        visible: normalCSG
-        value: csgBottomLayerValue
+        visible: middleCSG
+        value: csgMiddleLayerValue
         Tick_Mark
         {
-            alpha: 121+speedometer.calcCSGAngle(csgBottomLayerValue) + 1.68
-            length: 20
+            alpha: 121+speedometer.calcCSGAngle(csgMiddleLayerValue) + 1.68
+            length: 14
             tickWidth: 6
-            placementRadius: 137
-            tickmarkColor: outerColor
-            visible: csgBottomLayerHook
+            placementRadius: 130
+            tickmarkColor: innerColor
+            visible: csgMiddleLayerHook
         }
     }
 
-    CircularSpeedGauge3
-    {
-        id: csgMiddleLayer
-        objectName: "csgMiddleLayer"
-        visible: threeLayerCSG
+    CircularSpeedGauge {
+        id: csgTop
+        objectName: "csgTopLayer"
+        //haveHook: speedHook
+        visible: topCSG
+        value: csgTopLayerValue
+        gaugeColor: topColor
+        Tick_Mark
+        {
+            alpha: 121+speedometer.calcCSGAngle(csgTopLayerValue) + 1.68
+            length: 20
+            tickWidth: 6
+            placementRadius: 137
+            tickmarkColor: topColor
+            visible: csgTopLayerHook
+        }
     }
-    CircularSpeedGauge{
-        id: csgLarge
-        gaugeWidth: 20
-        gaugeColor: "orange"
-        startAngle1: (126+(currentSpeed*anglePerSpeedRangeA1))+5.5 - 2.5
-        rY: 127
-        rX: 127
-        visible: largeCSG
 
+    CircularSpeedGauge {
+        id: csgThic
+        objectName: "sgThicLayer"
+        //haveHook: speedHook
+        visible: thicCSG
+        value: csgThicLayerValue
+         gaugeColor: thicColor
     }
+
+    CircularSpeedGauge {
+        id: csgBottom
+        objectName: "csgBottomLayer"
+        visible: bottomCSG
+        value: csgBottomLayerValue
+        gaugeColor: bottomColor
+    }
+
+
     Tick_Mark
     {
         id: vTargetHook

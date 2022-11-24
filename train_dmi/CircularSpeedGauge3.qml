@@ -6,6 +6,7 @@ Item {
     id: threeLayerCSG
     anchors.fill: parent
 
+    property real value: 0
     property real gaugeWidth: 9
     property real hookWidth: 6
     property real hookLength: 20
@@ -17,7 +18,7 @@ Item {
 
     function calcAngle()
     {
-        return (currentSpeed <= 200) ? 5 + currentSpeed * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2 - 2.5
+        return (value <= 200) ? 5 + value * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (value - 200) * anglePerSpeedRangeA2 - 2.5
     }
 
     Shape {
