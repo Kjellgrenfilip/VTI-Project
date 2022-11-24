@@ -64,15 +64,15 @@ namespace VTI_DMI
     QString const ETCSC3Text        = "etcsC3Text";
     QString const ETCSC1            = "etcsC1";
     QString const RESET_DOORS       = "resetDoors";
-    QString const CURRENTSPEED      = "currentSpeed";
-    QString const RELEASESPEED      = "releaseSpeed";
-    QString const TARGETSPEED       = "targetSpeed";
-    QString const INTERVENTIONSPEED = "interventionsSpeed";
-    QString const PERMITTEDSPEED    = "permittedSpeed";
-    QString const CRUISESPEED       = "cruiseSpeed";
-    QString const ADVISORYSPEED     = "advisorySpeed";
-    QString const SUPERVISIONSTATUS = "supervisionStatus";
-    QString const STATUSINFORMATION = "statusInformation";
+    QString const CURRENT_SPEED      = "currentSpeed";
+    QString const RELEASE_SPEED      = "releaseSpeed";
+    QString const TARGET_SPEED       = "targetSpeed";
+    QString const INTERVENTION_SPEED = "interventionSpeed";
+    QString const PERMITTED_SPEED    = "permittedSpeed";
+    QString const CRUISE_SPEED       = "cruiseSpeed";
+    QString const ADVISORY_SPEED     = "advisorySpeed";
+    QString const SUPERVISION_STATUS = "supervisionStatus";
+    QString const STATUS_INFORMATION = "statusInformation";
 
     QJsonObject const JSON_BRAKES
     {
@@ -159,15 +159,15 @@ namespace VTI_DMI
 
     QJsonObject const JSON_SPEEDOMETER
     {
-        { SUPERVISIONSTATUS,    QJsonValue::String },
-        { STATUSINFORMATION,    QJsonValue::String },
-        { CURRENTSPEED,         QJsonValue::Double },
-        { RELEASESPEED,         QJsonValue::Double },
-        { TARGETSPEED,          QJsonValue::Double },
-        { INTERVENTIONSPEED,    QJsonValue::Double },
-        { PERMITTEDSPEED,       QJsonValue::Double },
-        { CRUISESPEED,          QJsonValue::Double },
-        { ADVISORYSPEED,        QJsonValue::Double }
+        { SUPERVISION_STATUS,    QJsonValue::String },
+        { STATUS_INFORMATION,    QJsonValue::String },
+        { CURRENT_SPEED,         QJsonValue::Double },
+        { RELEASE_SPEED,         QJsonValue::Double },
+        { TARGET_SPEED,          QJsonValue::Double },
+        { INTERVENTION_SPEED,    QJsonValue::Double },
+        { PERMITTED_SPEED,       QJsonValue::Double },
+        { CRUISE_SPEED,          QJsonValue::Double },
+        { ADVISORY_SPEED,        QJsonValue::Double }
     };
 };
 
