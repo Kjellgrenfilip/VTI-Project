@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import "Imports" 1.0
 import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.3
 
 Item {
     anchors.fill: parent
@@ -45,19 +44,7 @@ Item {
         columns: 8
         rows: 1
         layoutDirection: "RightToLeft"
-//        Rectangle
-//        {
-//           width: (107/246) * parent.width
-//           height: parent.height
-//           color: "transparent"
-////           Image
-////           {
-////               id: planningImage
-////               anchors.bottom: parent.BottomLeft
-////               anchors.margins: 2
-////               source: "symbols/Planning/PL_21.bmp"
-////           }
-//        }
+
         Rectangle
         {
             id:d8
@@ -120,6 +107,7 @@ Item {
                     color: MyConst.yellow
                 }
 
+
            // }
         }
         Rectangle
@@ -127,7 +115,23 @@ Item {
             id:d6
             width: (14/246) * parent.width
             height: parent.height
-            color: "transparent"
+            color: MyConst.red
+            Rectangle
+            {
+                id:d76
+                width: (20/246) * parent.width
+                height: parent.height
+                color: MyConst.yellow
+                anchors.right: parent.right
+
+               Image
+               {
+                   id: planningImage
+                   anchors.horizontalCenter: parent.horizontalCenter
+                   anchors.margins: 2
+                   source: "symbols/Planning/PL_21.bmp"
+               }
+            }
         }
         Rectangle
         {
