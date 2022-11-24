@@ -190,6 +190,7 @@ Item {
                 id:d5bar1
                 objectName: "d5bar1"
                 anchors.bottom: parent.bottom
+                anchors.margins: 2
                 width: parent.width
                 property int barValue: 0
                 property int textValue: 0

@@ -35,40 +35,60 @@ DMI_Handler::~DMI_Handler()
 }
 void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input, int maxDistance)
 {
-    // double y0log = toLogScale(maxDistance);
+    double totalPixelHeight = 0;
+    double totalDistance = 0;
+    double log = 0;
+    double lin = 0;
+    double linv = 0;
+    double logv = 0;
+    double v = 0;
+    int it = 1;
 
-//    for ( int i{0}; i < 3; i++ )
-//    {
-//        double y = input[i].second;
+    for ( int i = 0; i < input.size(); i++ )
+    {
+        double logv = 0;
+        double log = 0;
+        double y = input[i].second;
 
-//        if ( y > maxDistance )
-//            y = maxDistance;
-//        else if ( y < 0 )
-//            y = 0;
+        if ( y <= 0 )
+            continue;
 
-//        double ylog = toLogScale(y, maxDistance);
-//        double height = y0log - ylog;
-//    }
+        if ( y <= maxDistance / 8 )
+        {
+            log = y;
+            v = toLogScale(log, maxDistance);
+        }
 
-    double y = 1000.0;
+        else
+        {
+            if ( totalDistance < maxDistance/8 )
+            {
+                log = maxDistance/8;
+                logv = toLogScale(log, maxDistance);
+            }
+            lin = y - log;
+            linv = toLinScale(lin, maxDistance);
+            v = linv + logv;
+        }
 
-    double lin = y - 500;
-    double log = y - 500;
+        v -= totalPixelHeight;
 
+        QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
+        QObject *obj = m_rootObject->findChild<QObject*>(objectName);
+        obj->setProperty("barValue", v);
 
-    double linv = toLinScale(lin, 4000);
-    double logv = toLogScale(log, 4000);
-    double v = linv + logv;
-    QObject *obj = m_rootObject->findChild<QObject*>("d5bar1");
-    obj->setProperty("barValue", v);
+        totalPixelHeight += v;
+        totalDistance = y;
+
+    }
 
 }
 
 double DMI_Handler::toLogScale(double value, double maxDistance)
 {
     double logValue = 0;
-    double lengthOfLinearPart = 135;
-    double lengthOfLogPart = 135;
+    double lengthOfLinearPart = 131;
+    double lengthOfLogPart = 131;
     double maxLinear = maxDistance/8;
 
     if ( value == 0 )
@@ -93,10 +113,32 @@ double DMI_Handler::toLogScale(double value, double maxDistance)
 
 double DMI_Handler::toLinScale(double value, double maxDistance)
 {
-    double lengthOfLinearPart = 135;
-    double factor = maxDistance - maxDistance/4;
+    double lengthOfLinearPart = 41;
+    double divider = 8;
+    double factor = maxDistance/divider;
+    double result = 0;
 
-    return value * (lengthOfLinearPart/factor);
+    if ( value >= maxDistance )
+    {
+        result = 3 * lengthOfLinearPart;
+        return result;
+    }
+
+    for ( int i = 2; i < 16; i*=2 )
+    {
+        if ( value >= maxDistance/i )
+        {
+            result += lengthOfLinearPart;
+            value -= maxDistance/i;
+        }
+    }
+
+    if ( value >= 0 )
+    {
+        result += value * (lengthOfLinearPart/(maxDistance/8));
+    }
+
+    return result;
 }
 
 
