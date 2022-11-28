@@ -10,7 +10,8 @@ Test_Module::Test_Module(bool connection)
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
-      m_jsonETCSB{VTI_DMI::JSON_ETCS_B}
+      m_jsonETCSB{VTI_DMI::JSON_ETCS_B},
+      m_jsonPosition{VTI_DMI::JSON_POSITION}
 
 {
     if(connection)
@@ -18,6 +19,10 @@ Test_Module::Test_Module(bool connection)
         m_networkServer = new Network_Server();
         connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
     }
+
+    connect(m_positionTimer, SIGNAL(timeout()), this, SLOT(demoPositionUpdate()));
+    m_positionTimer->setInterval(1000);
+    m_positionTimer->start();
 }
 
 Test_Module::~Test_Module()
@@ -407,6 +412,12 @@ void Test_Module::updateETCSB7(QJsonValue const & value)
     m_networkServer->sendUpdate(m_jsonETCSB);
 }
 
+void Test_Module::updatePosition()
+{
+    m_jsonPosition.insert(VTI_DMI::TRAIN_POSITION, m_trainPosition);
+    m_networkServer->sendUpdate(m_jsonPosition);
+}
+
 void Test_Module::removeImage(QString const & key)
 {
     m_jsonETCSB.insert(key, STATE::INACTIVE);
@@ -518,13 +529,17 @@ void Test_Module::receiveUpdate()
     }
 }
 
- void Test_Module::resetStates()
- {
-     m_jsonBrakes = VTI_DMI::JSON_BRAKES;
-     m_jsonDoors = VTI_DMI::JSON_DOORS;
-     m_jsonVoltage = VTI_DMI::JSON_VOLTAGE;
-     m_jsonAlarm = VTI_DMI::JSON_ALARM;
-     m_jsonExtras = VTI_DMI::JSON_EXTRAS;
- }
+void Test_Module::resetStates()
+{
+    m_jsonBrakes = VTI_DMI::JSON_BRAKES;
+    m_jsonDoors = VTI_DMI::JSON_DOORS;
+    m_jsonVoltage = VTI_DMI::JSON_VOLTAGE;
+    m_jsonAlarm = VTI_DMI::JSON_ALARM;
+    m_jsonExtras = VTI_DMI::JSON_EXTRAS;
+}
 
-
+void Test_Module::demoPositionUpdate()
+{
+    m_trainPosition += 20;
+    updatePosition();
+}

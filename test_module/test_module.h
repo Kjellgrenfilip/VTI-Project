@@ -26,8 +26,11 @@ private:
     QJsonObject m_jsonActivation;
     QJsonObject m_jsonETCS_A;
     QJsonObject m_jsonETCSB;
+    QJsonObject m_jsonPosition;
 
     QTimer *m_testTimer;
+    QTimer *m_positionTimer;
+    double m_trainPosition{0};
 
     void updatePantographUp(QJsonValue const & value);
     void updatePantographDown(QJsonValue const & value);
@@ -54,6 +57,8 @@ private:
     void updateETCSB345(QJsonValue const & value);
     void updateETCSB7(QJsonValue const & value);
 
+    void updatePosition();
+
     int testDistance();
 
 public:
@@ -71,6 +76,7 @@ signals:
 
 public slots:
     void receiveUpdate();
+    void demoPositionUpdate();
 };
 
 #endif // TEST_MODULE_H
