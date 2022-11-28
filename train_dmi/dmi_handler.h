@@ -34,9 +34,9 @@ public:
     bool animationState{false};
     int doorCounter{0};
     int pantCounter{0};
-
+    double trainPos{0};
     int distanceToPixelHeight(double);
-    void d5loghandler(std::vector<Grad_Pos> input, int scale);
+    void d5loghandler(int maxDistance);
     double toLogScale(double value, double maxDistance);
     double toLinScale(double value, double maxDistance);
 

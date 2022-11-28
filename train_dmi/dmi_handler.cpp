@@ -32,7 +32,7 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
-void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input, int maxDistance)
+void DMI_Handler::d5loghandler(int maxDistance)
 {
     double totalPixelHeight = 0;
     double totalDistance = 0;
@@ -43,15 +43,18 @@ void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input, int maxDistance)
     double v = 0;
     int it = 1;
 
-    for ( int i = 0; i < input.size(); i++ )
+    for ( size_t i = 0; i < test_vector.size(); i++ )
     {
         double logv = 0;
         double log = 0;
-        double y = input[i].second;
+        double y = test_vector[i].second - trainPos;
 
         if ( y <= 0 )
             continue;
-
+        if(it > 4)
+        {
+            break;
+        }
         if ( y <= maxDistance / 8 )
         {
             log = y;
@@ -76,8 +79,8 @@ void DMI_Handler::d5loghandler(std::vector<Grad_Pos> input, int maxDistance)
         obj->setProperty("barValue", v);
         if(v>10)
         {
-            obj->setProperty("textValue",abs(input.at(i).first));
-            if(input.at(i).first <0)
+            obj->setProperty("textValue",abs(test_vector.at(i).first));
+            if(test_vector.at(i).first <0)
             {
                 //obj->setProperty("color",MyConst.)
             }
@@ -199,6 +202,10 @@ void DMI_Handler::receiveUpdate()
                 QString s = "symbols/Track Conditions/TC_" + value + ".bmp";
                 qDebug() << s;
                 obj->setProperty("source", s);
+            }
+            else if(key == VTI_DMI::TRAIN_POSITION)
+            {
+                trainPos = m_latestUpdate.value(key).toDouble();
             }
             else
             {
