@@ -193,7 +193,7 @@ Item {
                 anchors.margins: 2
                 width: parent.width
                 property int barValue: 0
-                property int textValue: 0
+                property string textValue: ""
                 Text {
                     text: d5bar1.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -210,7 +210,7 @@ Item {
                 anchors.bottom: d5bar1.top
                 width: parent.width
                 property int barValue: 0
-                property int textValue: 0
+                property string textValue: ""
                 Text {
                     text: d5bar2.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -227,7 +227,7 @@ Item {
                 anchors.bottom: d5bar2.top
                 width: parent.width
                 property int barValue: 0
-                property int textValue: 0
+                property string textValue: ""
                 Text {
                    text: d5bar3.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -244,7 +244,7 @@ Item {
                 anchors.bottom: d5bar3.top
                 width: parent.width
                 property int barValue: 0
-                property int textValue: 0
+                property string textValue: ""
                 Text {
                     text: d5bar4.textValue
                     anchors.horizontalCenter: parent.horizontalCenter

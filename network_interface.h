@@ -61,6 +61,7 @@ namespace VTI_DMI
     QString const ETCSB7Image       = "etcsB7Image";
     QString const RESET_DOORS       = "resetDoors";
     QString const TRAIN_POSITION    = "trainPosition";
+    QString const GRADIENT_PROFILE  = "gradientProfile";
 
     QJsonObject const JSON_BRAKES
     {
@@ -139,7 +140,8 @@ namespace VTI_DMI
     QJsonObject const JSON_POSITION
     {
         { TRAIN_POSITION,       QJsonValue::Double }
-    }
+    };
+
 };
 
 #endif // NETWORK_INTERFACE_H

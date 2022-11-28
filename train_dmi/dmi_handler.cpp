@@ -43,14 +43,19 @@ void DMI_Handler::d5loghandler(int maxDistance)
     double v = 0;
     int it = 1;
 
-    for ( size_t i = 0; i < test_vector.size(); i++ )
+    qDebug() << trainPos;
+
+    for ( size_t i = 0; i < m_gradientProfile.size(); i++ )
     {
         double logv = 0;
         double log = 0;
-        double y = test_vector[i].second - trainPos;
+        double y = m_gradientProfile[i].second - trainPos;
 
-        if ( y <= 0 )
+        if ( y < 0 )
+        {
             continue;
+        }
+
         if(it > 4)
         {
             break;
@@ -79,17 +84,25 @@ void DMI_Handler::d5loghandler(int maxDistance)
         obj->setProperty("barValue", v);
         if(v>10)
         {
-            obj->setProperty("textValue",abs(test_vector.at(i).first));
-            if(test_vector.at(i).first <0)
+            obj->setProperty("textValue",abs(m_gradientProfile.at(i).first));
+            if(m_gradientProfile.at(i).first <0)
             {
                 //obj->setProperty("color",MyConst.)
             }
         }
-        totalPixelHeight += v;
-        totalDistance = y;
 
+        totalPixelHeight += v;
     }
 
+    qDebug() << "it: " << it;
+
+    while ( it <= 4 )
+    {
+        QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
+        QObject *obj = m_rootObject->findChild<QObject*>(objectName);
+        obj->setProperty("barValue", 0);
+        obj->setProperty("textValue", "");
+    }
 }
 
 double DMI_Handler::toLogScale(double value, double maxDistance)
@@ -121,12 +134,13 @@ double DMI_Handler::toLogScale(double value, double maxDistance)
 
 double DMI_Handler::toLinScale(double value, double maxDistance)
 {
+    double newMaxDistance = maxDistance - maxDistance/8;
     double lengthOfLinearPart = 41;
     double divider = 8;
     double factor = maxDistance/divider;
     double result = 0;
 
-    if ( value >= maxDistance )
+    if ( value >= newMaxDistance )
     {
         result = 3 * lengthOfLinearPart;
         return result;
@@ -134,7 +148,7 @@ double DMI_Handler::toLinScale(double value, double maxDistance)
 
     for ( int i = 2; i < 16; i*=2 )
     {
-        if ( value >= maxDistance/i )
+        if ( value >= newMaxDistance/i )
         {
             result += lengthOfLinearPart;
             value -= maxDistance/i;
@@ -160,6 +174,13 @@ void DMI_Handler::receiveUpdate()
         //Update GUI
         if(!testStart)
         {
+            if(key == VTI_DMI::TRAIN_POSITION)
+            {
+                trainPos = m_latestUpdate.value(key).toDouble();
+                d5loghandler(4000);
+                continue;
+            }
+
             QObject *obj = m_rootObject->findChild<QObject*>(key);
 
             if(!obj)
@@ -203,9 +224,9 @@ void DMI_Handler::receiveUpdate()
                 qDebug() << s;
                 obj->setProperty("source", s);
             }
-            else if(key == VTI_DMI::TRAIN_POSITION)
+            else if (key == VTI_DMI::GRADIENT_PROFILE)
             {
-                trainPos = m_latestUpdate.value(key).toDouble();
+                // Receive gradient profile here :)
             }
             else
             {
@@ -215,7 +236,6 @@ void DMI_Handler::receiveUpdate()
             }
         }
     }
-    d5loghandler(test_vector, 4000);
 }
 
 void DMI_Handler::animationHandler()

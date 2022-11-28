@@ -11,7 +11,8 @@ Test_Module::Test_Module(bool connection)
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
       m_jsonETCSB{VTI_DMI::JSON_ETCS_B},
-      m_jsonPosition{VTI_DMI::JSON_POSITION}
+      m_jsonPosition{VTI_DMI::JSON_POSITION},
+      m_positionTimer{new QTimer{}}
 
 {
     if(connection)
@@ -21,8 +22,7 @@ Test_Module::Test_Module(bool connection)
     }
 
     connect(m_positionTimer, SIGNAL(timeout()), this, SLOT(demoPositionUpdate()));
-    m_positionTimer->setInterval(1000);
-    m_positionTimer->start();
+    m_positionTimer->setInterval(50);
 }
 
 Test_Module::~Test_Module()
@@ -458,6 +458,7 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonActivation);
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->sendUpdate(m_jsonETCSB);
+            m_positionTimer->start();
         }
         else
             return;
@@ -540,6 +541,6 @@ void Test_Module::resetStates()
 
 void Test_Module::demoPositionUpdate()
 {
-    m_trainPosition += 20;
+    m_trainPosition += 1;
     updatePosition();
 }
