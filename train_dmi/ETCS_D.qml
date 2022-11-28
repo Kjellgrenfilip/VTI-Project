@@ -35,6 +35,7 @@ Item {
         }
     }
     // Note that this grid will be filled from the right
+
     Grid
     {
         id: middlegrid
@@ -44,6 +45,7 @@ Item {
         columns: 8
         rows: 1
         layoutDirection: "RightToLeft"
+
 
         Rectangle
         {
@@ -59,6 +61,7 @@ Item {
             width: (93/246) * parent.width
             height: parent.height
             color: MyConst.paspDark
+            z: -3
 
                 Rectangle
                 {
@@ -129,7 +132,7 @@ Item {
                    id: planningImage
                    anchors.horizontalCenter: parent.horizontalCenter
                    anchors.margins: 2
-                   source: "symbols/Planning/PL_21.bmp"
+                   source: "symbols/Planning/PL_21.png"
                }
             }
         }
@@ -203,6 +206,8 @@ Item {
             width: (25/246) * parent.width
             height: parent.height
             color: "brown"
+            z: -2
+
             Rectangle
             {
                 y:(6/270) * parent.height

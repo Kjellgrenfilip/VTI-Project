@@ -242,5 +242,8 @@
         <file>ETCS_D.qml</file>
         <file>CircularSpeedGauge.qml</file>
         <file>CircularSpeedGauge3.qml</file>
+        <file>symbols/Planning/PL_21.png</file>
+        <file>symbols/Planning/PL_22.png</file>
+        <file>symbols/Planning/PL_23.png</file>
     </qresource>
 </RCC>
