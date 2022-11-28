@@ -148,10 +148,12 @@ Item
             }
         }
     }
+    //Calculates the sweepangles for the CSG's
     function calcCSGAngle(speed)
     {
         return (speed <= 200) ? 5 + speed * anglePerSpeedRangeA1 -4.18: 96 * 2 + 5 + (speed - 200) * anglePerSpeedRangeA2-4.18
     }
+    //Calculates the angle for the TickMarks, angle to point to center. Used for RangeA mode
     function calculateAngle(index)
     {
         var angle = 0;
@@ -165,6 +167,7 @@ Item
         return angle;
     }
 
+//Function that returns the number of tickmarks for different modes and speedometer scales.
     function numOfTickmarks()
     {
         if (range == "rangeA")
@@ -177,6 +180,7 @@ Item
             return 15;
     }
 
+    //returns the values of the angle between tickmarks in different modes.
     function tickMarkAngle()
     {
         if (range == "rangeB")
@@ -204,9 +208,23 @@ Item
             tickMarkNum: index
         }
     }
-    //Creates one CircularSpeedGauge.
-
-    CircularSpeedGauge3 {
+    //Creates the "thic" CircularSpeedGauge.
+    CircularSpeedGauge
+    {
+        id: csgThic
+        objectName: "sgThicLayer"
+        gaugeWidth: 20
+        visible: thicCSG
+        value: ((csgThicLayerValue - 11) <= 0) ? 0 : csgThicLayerValue - 11
+        gaugeColor: thicColor
+        startAngle1: speedometer.calcCSGAngle(permittedSpeed) + 126 + 3
+        rX: 127
+        rY:127
+        type: "thic"
+    }
+    //Creates the three-layered CircularSpeedGauge.
+    CircularSpeedGauge3
+    {
         id: csgMiddle
         objectName: "csgMiddleLayer"
         //haveHook: speedHook
@@ -222,8 +240,9 @@ Item
             visible: csgMiddleLayerHook
         }
     }
-
-    CircularSpeedGauge {
+//Creates the normal CircularSpeedGauge.
+    CircularSpeedGauge
+    {
         id: csgTop
         objectName: "csgTopLayer"
         visible: topCSG
@@ -239,27 +258,15 @@ Item
             visible: csgTopLayerHook
         }
     }
-
-    CircularSpeedGauge {
-        id: csgThic
-        objectName: "sgThicLayer"
-        gaugeWidth: 20
-        visible: thicCSG
-        value: 30//csgThicLayerValue
-        gaugeColor: thicColor
-        startAngle1: speedometer.calcCSGAngle(permittedSpeed) + 126 + 4.5
-        rX: 127
-        rY:127
-    }
-
-    CircularSpeedGauge {
+//Creates the bottom darkgrey CircularSpeedGauge.
+    CircularSpeedGauge
+    {
         id: csgBottom
         objectName: "csgBottomLayer"
         visible: bottomCSG
         value: csgBottomLayerValue
         gaugeColor: bottomColor
     }
-
 
     Tick_Mark
     {
@@ -279,6 +286,6 @@ Item
         tickWidth:10
         alpha: 121+speedometer.calcCSGAngle(permittedSpeed)
         placementRadius: 137
-}
+    }
 
 }

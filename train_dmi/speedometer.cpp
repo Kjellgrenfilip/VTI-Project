@@ -54,6 +54,8 @@ void Speedometer::updateSpeedometer(QJsonObject update)
                 //Set startangle from hook
                 obj->setProperty("csgThicLayerValue", (update.value(VTI_DMI::CURRENT_SPEED).toDouble())-(update.value(VTI_DMI::PERMITTED_SPEED).toDouble()));
             }
+            if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
+                    obj->setProperty("thicCSG", false);
         }
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
         {
