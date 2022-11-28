@@ -1,4 +1,4 @@
-    #include "dmi_handler.h"
+#include "dmi_handler.h"
 
 #include <QJsonObject>
 

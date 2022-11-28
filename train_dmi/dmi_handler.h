@@ -10,6 +10,8 @@
 #include "button_handler.h"
 #include "speedometer.h"
 
+#include <QImage>
+
 class DMI_Handler : public QObject
 {
     Q_OBJECT
