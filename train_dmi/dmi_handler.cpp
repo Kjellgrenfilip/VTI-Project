@@ -1,6 +1,8 @@
 #include "dmi_handler.h"
 
 #include <QJsonObject>
+#include <QQmlComponent>
+#include <QQuickItem>
 
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
     m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{},
@@ -16,6 +18,16 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
 
     m_animationTimer->setInterval(500);
     m_animationTimer->start();
+
+    QQmlEngine *engine = qmlEngine(this);
+    if(engine == nullptr)
+        qDebug() << "FACKING NULL";
+/*    auto rectangle = new QQmlComponent(engine, QUrl::fromLocalFile("PASPImage.qml"));
+    QQuickItem *childItem = qobject_cast<QQuickItem*>(rectangle->create());
+    childItem->setParentItem(m_qmlObject);
+*/
+    //m_qmlObject->findChild<QObject>("speed").setProperty("color", "MyConst.orange");
+
 }
 
 DMI_Handler::DMI_Handler(bool testStart) : QObject(), m_client{new Network_Client{}},

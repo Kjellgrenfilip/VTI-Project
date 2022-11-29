@@ -8,10 +8,11 @@
 
 #include "network_client.h"
 #include "button_handler.h"
+#include "qqmlengine.h"
 #include "speedometer.h"
 
 #include <QImage>
-
+#include <QQuickItem>
 class DMI_Handler : public QObject
 {
     Q_OBJECT
@@ -36,9 +37,12 @@ public:
 
     int distanceToPixelHeight(double);
 
-
+    int m_permittedSpeed;
 
     Speedometer *m_speedometer;
+
+    QQueue<QObject> *m_PASPQueue;
+    QQuickItem *m_qmlObject;
 
 private:
     void updateGUI(QString const& key, QObject *obj);
