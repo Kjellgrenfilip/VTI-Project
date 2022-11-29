@@ -30,11 +30,11 @@ Item {
         ShapePath {
             fillColor: "transparent"
             strokeColor: outerColor
-            strokeWidth: 6
+            strokeWidth: 5
 
             PathAngleArc {
                 centerX: 140; centerY: 135
-                radiusX: 134; radiusY: 134
+                radiusX: 134.5; radiusY: 134.5
                 startAngle: 121
                 sweepAngle: threeLayerCSG.calcAngle()+1
             }
@@ -46,7 +46,7 @@ Item {
 
             PathAngleArc {
                 centerX: 140; centerY: 135
-                radiusX: 130.5; radiusY: 130.5
+                radiusX: 131.5; radiusY: 131.5
                 startAngle: 121 - ((360/(130.5*2*Math.PI))*2)
                 sweepAngle: threeLayerCSG.calcAngle() +2*((360/(130.5*2*Math.PI))*2)
 
@@ -59,7 +59,7 @@ Item {
 
             PathAngleArc {
                 centerX: 140; centerY: 135
-                radiusX: 128.5; radiusY: 128.5
+                radiusX: 129.5; radiusY: 129.5
 
                 startAngle: 121 - ((360/(128.5*2*Math.PI))*1.5)
                 sweepAngle: threeLayerCSG.calcAngle() + 2*((360/(128.5*2*Math.PI))*1.5) +1

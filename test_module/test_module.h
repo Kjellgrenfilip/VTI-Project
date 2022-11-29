@@ -65,6 +65,8 @@ private:
 
     int testDistance();
 
+    void testSpeedometer();
+
 public:
     void resetStates();
     void removeImage(QString const & key);

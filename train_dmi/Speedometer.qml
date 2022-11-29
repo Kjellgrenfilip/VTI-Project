@@ -222,6 +222,24 @@ Item
         rY:127
         type: "thic"
     }
+    //Creates the normal CircularSpeedGauge.
+        CircularSpeedGauge
+        {
+            id: csgTop
+            objectName: "csgTopLayer"
+            visible: topCSG
+            value: csgTopLayerValue
+            gaugeColor: topColor
+            Tick_Mark
+            {
+                alpha: 121+speedometer.calcCSGAngle(csgTopLayerValue) + 1.68
+                length: 20
+                tickWidth: 6
+                placementRadius: 137
+                tickmarkColor: topColor
+                visible: csgTopLayerHook
+            }
+        }
     //Creates the three-layered CircularSpeedGauge.
     CircularSpeedGauge3
     {
@@ -240,24 +258,7 @@ Item
             visible: csgMiddleLayerHook
         }
     }
-//Creates the normal CircularSpeedGauge.
-    CircularSpeedGauge
-    {
-        id: csgTop
-        objectName: "csgTopLayer"
-        visible: topCSG
-        value: csgTopLayerValue
-        gaugeColor: topColor
-        Tick_Mark
-        {
-            alpha: 121+speedometer.calcCSGAngle(csgTopLayerValue) + 1.68
-            length: 20
-            tickWidth: 6
-            placementRadius: 137
-            tickmarkColor: topColor
-            visible: csgTopLayerHook
-        }
-    }
+
 //Creates the bottom darkgrey CircularSpeedGauge.
     CircularSpeedGauge
     {
