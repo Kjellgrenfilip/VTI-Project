@@ -472,7 +472,7 @@ void Test_Module::receiveUpdate()
             m_networkServer->delay(10);
 
             updateETCSC("03");
-
+/*
             m_jsonSpeed.insert(VTI_DMI::SUPERVISIONSTATUS, "CSM");
             m_jsonSpeed.insert(VTI_DMI::STATUSINFORMATION, "NoS");
             m_jsonSpeed.insert(VTI_DMI::CURRENTSPEED, 138);
@@ -493,7 +493,7 @@ void Test_Module::receiveUpdate()
 
             m_jsonSpeed.insert(VTI_DMI::PERMITTEDSPEED, 100);
             m_networkServer->sendUpdate(m_jsonSpeed);
-            m_networkServer->delay(3000);
+            m_networkServer->delay(3000);*/
         }
         else
             return;

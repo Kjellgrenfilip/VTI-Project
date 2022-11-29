@@ -2,16 +2,20 @@ import QtQuick 2.0
 
 Item {
     anchors.fill: parent
+    height: 300
+    width: 300
+    z: 50
     Rectangle
     {
-        height: 50
-        width: 50
+        anchors.fill: parent
         objectName: "speed"
-        color: "black"
+        color: "red"
+
         Image
         {
             id: image
             source: "symbols/Planning/PL_21.png"
+            anchors.fill: parent
         }
 
         Text
