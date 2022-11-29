@@ -70,19 +70,34 @@ void DMI_Handler::d5loghandler(int maxDistance)
         {
             log = maxDistance/8;
             logv = toLogScale(log, maxDistance);
-            lin = y - log;
+            lin = y; //- log;
             linv = toLinScale(lin, maxDistance);
             v = linv + logv;
         }
 
-
+        qDebug() << v << " - " << totalPixelHeight << " = " << v - totalPixelHeight;
 
         v -= totalPixelHeight;
+        if ( v < 0 )
+            v = 0;
+
 
         QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
-        QObject *obj = m_rootObject->findChild<QObject*>(objectName);
+        QObject *obj = m_rootObject->findChild<QObject*>(objectName); 
         obj->setProperty("barValue", v);
+        qDebug() << v;
         if(v>10)
+        {
+            obj->setProperty("sign", "+");
+            if(m_gradientProfile.at(i).first <0)
+            {
+                //obj->setProperty("color",MyConst.)
+            }
+        }
+        else
+            obj->setProperty("sign", "");
+
+        if(v>30)
         {
             obj->setProperty("textValue",abs(m_gradientProfile.at(i).first));
             if(m_gradientProfile.at(i).first <0)
@@ -90,6 +105,21 @@ void DMI_Handler::d5loghandler(int maxDistance)
                 //obj->setProperty("color",MyConst.)
             }
         }
+        else
+            obj->setProperty("textValue", "");
+
+
+        if(v>40)
+        {
+            obj->setProperty("sign", "+");
+            if(m_gradientProfile.at(i).first <0)
+            {
+                //obj->setProperty("color",MyConst.)
+            }
+        }
+        else
+            obj->setProperty("sign", "");
+
 
         totalPixelHeight += v;
     }
@@ -134,30 +164,26 @@ double DMI_Handler::toLogScale(double value, double maxDistance)
 
 double DMI_Handler::toLinScale(double value, double maxDistance)
 {
-    double newMaxDistance = maxDistance - maxDistance/8;
     double lengthOfLinearPart = 41;
-    double divider = 8;
-    double factor = maxDistance/divider;
     double result = 0;
 
-    if ( value >= newMaxDistance )
+    if ( value >= maxDistance )
     {
         result = 3 * lengthOfLinearPart;
         return result;
     }
 
-    for ( int i = 2; i < 16; i*=2 )
+    for ( int i = 4; i >= 1; i/=2 )
     {
-        if ( value >= newMaxDistance/i )
+        if ( value >= maxDistance/i )
         {
             result += lengthOfLinearPart;
-            value -= maxDistance/i;
         }
-    }
-
-    if ( value >= 0 )
-    {
-        result += value * (lengthOfLinearPart/(maxDistance/8));
+        else
+        {
+            result += (value - (maxDistance/(i*2))) * (lengthOfLinearPart/(maxDistance/(i*2)));
+            break;
+        }
     }
 
     return result;

@@ -190,14 +190,27 @@ Item {
                 id:d5bar1
                 objectName: "d5bar1"
                 anchors.bottom: parent.bottom
-                anchors.margins: 2
+                //anchors.margins: 2
                 width: parent.width
                 property int barValue: 0
                 property string textValue: ""
+                property string sign: ""
                 Text {
                     text: d5bar1.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
+                    color: "blue"
+                }
+                Text {
+                    text: d5bar1.sign
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    color: "red"
+                }
+                Text {
+                    text: d5bar1.sign
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
                     color: "blue"
                 }
                 height: barValue
@@ -211,10 +224,23 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property string textValue: ""
+                property string sign: ""
                 Text {
                     text: d5bar2.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
+                    color: "blue"
+                }
+                Text {
+                    text: d5bar2.sign
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    color: "red"
+                }
+                Text {
+                    text: d5bar2.sign
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
                     color: "blue"
                 }
                 height: barValue
@@ -228,10 +254,23 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property string textValue: ""
+                property string sign: ""
                 Text {
                    text: d5bar3.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
+                    color: "blue"
+                }
+                Text {
+                    text: d5bar3.sign
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    color: "red"
+                }
+                Text {
+                    text: d5bar3.sign
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
                     color: "blue"
                 }
                 height: barValue
@@ -245,10 +284,23 @@ Item {
                 width: parent.width
                 property int barValue: 0
                 property string textValue: ""
+                property string sign: ""
                 Text {
                     text: d5bar4.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
+                    color: "blue"
+                }
+                Text {
+                    text: d5bar4.sign
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    color: "red"
+                }
+                Text {
+                    text: d5bar4.sign
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
                     color: "blue"
                 }
                 height: barValue

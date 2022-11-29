@@ -11,7 +11,7 @@
 
 typedef std::pair<double, double> Grad_Pos;
 
-static const std::vector<Grad_Pos> test_vector = { {15, -375.73}, {0, 201.26}, {-10, 604.26}, {12, 1500}, {0, 4000.0} };
+static const std::vector<Grad_Pos> test_vector = { {15, -375.73}, {0, 201.26}, {-10, 800.26}, {12, 3500}, {0, 4500.0} };
 
 class DMI_Handler : public QObject
 {
