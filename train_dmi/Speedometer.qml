@@ -24,7 +24,7 @@ Item
     property bool csgMiddleLayerHook: false
 
     //Speed Related Properties
-    property real currentSpeed: 20
+    property real currentSpeed: 200
     property real permittedSpeed: 50
     property real targetSpeed: 60
     property real advisorySpeed: 0
@@ -55,99 +55,14 @@ Item
     antialiasing: true
 
     // Sets the background color behind the Speedometer!
-//    Rectangle
-//    {
-//        anchors.fill:  parent
-//        color: "blue"
-//    }
-
-    // Creates the Speedometer!
     Rectangle
     {
-        id: speedometerNeedle
-        width: 250; height: 250
-        //anchors.fill: parent
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-        anchors.margins: 10
-
+        anchors.fill:  parent
         color: "#041122"
-        radius:  125
-
-        // Creates the thick part of the needle!
-        Rectangle
-        {
-            id: needleThick
-            x: (parent.width/2) - width/2
-            y: parent.height/2
-            antialiasing: true
-            width: 9
-            height: 82
-            color: needleColor
-            transform: Rotation
-            {
-                origin.x: 4.5; origin.y: 0
-                //Min = 54, Max = 306
-                // Map the angle between min/max angle values and the speed min/max values
-                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRangeA1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRangeA2//(currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
-                Behavior on angle
-                {
-                    SmoothedAnimation
-                    {
-                        velocity: 50
-                    }
-                }
-            }
-        }
-        // Creates the thin part of the needle
-        Rectangle
-        {
-            id: needleThin
-            x: (parent.width/2) - width/2
-            y: parent.height/2
-            antialiasing: true
-            width: 3
-            height: 105
-            color: needleColor
-            transform: Rotation
-            {
-                origin.x: 1.5; origin.y: 0
-                //Min = 54, Max = 306
-                //Map the angle between min/max angle values and the speed min/max values
-                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRangeA1 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRangeA2
-                Behavior on angle
-                {
-                    SmoothedAnimation
-                    {
-                        velocity: 50
-                    }
-                }
-            }
-        }
-
-        // Creates the inner circle of the speedometer arrow!
-        Rectangle
-        {
-            height:50
-            width:50
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
-            radius: 25
-            color: needleColor
-            // Creates the text that show the speed
-            Text
-            {
-                id: speedText
-                text: qsTr(currentSpeed.toString())
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.margins: 2
-                color: "black"
-                font.bold: true
-                font.pointSize: 25
-            }
-        }
     }
+
+    // Creates the Speedometer
+
     //Calculates the sweepangles for the CSG's
     function calcCSGAngle(speed)
     {
@@ -289,4 +204,73 @@ Item
         placementRadius: 137
     }
 
+    Rectangle
+    {
+        id: speedometerNeedle
+        width: 250; height: 250
+        //anchors.fill: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.margins: 10
+
+        color: "transparent"
+        radius:  125
+        Image {
+            id: needleImage
+            //verticalAlignment:
+            //horizontalAlignment:
+            anchors.horizontalCenter:parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+
+            source: "symbols/Speedometer/yellow_needle.png"
+            scale: 0.1
+
+            transform:
+                Translate
+                {
+                    x: -40
+                }
+        }
+
+        transform:
+            Rotation
+            {
+                origin.x: 125; origin.y: 125
+                //Min = 54, Max = 306
+                // Map the angle between min/max angle values and the speed min/max values
+                angle: (currentSpeed <= 200) ? (126-90)+currentSpeed * anglePerSpeedRangeA1 -90 :  36 + 96 * 2 + (currentSpeed - 200) * anglePerSpeedRangeA2 -90//(currentSpeed <= 200) ? 121 + 5 + currentSpeed * anglePerSpeedRange1 :  121 + 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRange2
+                Behavior on angle
+                {
+                    SmoothedAnimation
+                    {
+                        velocity: 50
+                    }
+                }
+            }
+    }
+    Rectangle
+    {
+        height:50
+        width:50
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        radius: 25
+        color: "transparent"
+        // Creates the text that show the speed
+        Text
+        {
+            id: speedText
+            text: qsTr(currentSpeed.toString())
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.margins: 2
+            color: "black"
+            font.bold: true
+            font.pointSize: 24
+        }
+        transform: Translate
+        {
+            y: -(2 + speedText.contentHeight/2)
+        }
+    }
 }

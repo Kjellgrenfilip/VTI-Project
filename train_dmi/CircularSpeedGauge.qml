@@ -35,7 +35,7 @@ Item {
             sweepDistance = 5 + value * anglePerSpeedRangeA1
         }
         return (currentSpeed <= 200) ? 5 + value * anglePerSpeedRangeA1 - 2.5 : sweepDistance + (currentSpeed-200) * anglePerSpeedRangeA2 - 2.5
-    }
+}
     Shape
     {
         width: 280; height: 300

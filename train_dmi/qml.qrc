@@ -241,5 +241,10 @@
         <file>desk_ikoner/yellow.tif</file>
         <file>CircularSpeedGauge.qml</file>
         <file>CircularSpeedGauge3.qml</file>
+        <file>symbols/Speedometer/yellow_needle.png</file>
+        <file>symbols/Speedometer/orange_needle.png</file>
+        <file>symbols/Speedometer/red_needle.png</file>
+        <file>symbols/Speedometer/white_needle.png</file>
+        <file>symbols/Speedometer/grey_needle.png</file>
     </qresource>
 </RCC>
