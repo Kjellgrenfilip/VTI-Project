@@ -3,6 +3,7 @@ import "Imports" 1.0
 import QtQuick.Controls 2.12
 
 Item {
+    objectName: "etcsD"
     anchors.fill: parent
     Grid
     {
@@ -359,49 +360,21 @@ Item {
     function createPASPImage()
      {
          console.log("hello");
-         var component = Qt.createComponent(pasp);
-         if (component.status == Component.Ready)
-         {
+         var component = Qt.createComponent("PASPImage.qml");
+
              var image = component.createObject(pasp);
+             image.width = 400;
+             image.height = 400;
+             image.show();
+             return "hello";
 
-         }
      }
-
-    //Component.onCompleted: createPASPImage()
 
     Connections
     {
-        onCreatePASPImage: {
+        target: DMI_Handler
+        function onCreatePaspImage() {
           createPASPImage()
         }
     }
-
-     Rectangle
-     {
-         width: 50
-         height: 20
-         objectName: "speed"
-         color: MyConst.white
-         id: pasp
-
-         Image
-         {
-             id: image
-             source: "symbols/Planning/PL_21.png"
-             width: 20
-             height: 20
-             anchors.left: parent.left
-         }
-
-         Text
-         {
-             id: text
-             text: qsTr("80")
-             font.pointSize: parent.parent.height/30
-             anchors.left: image.right
-             anchors.bottom: parent.bottom
-             //anchors.margins: 2
-             //anchors.verticalCenter: parent.verticalCenter
-         }
-     }
 }

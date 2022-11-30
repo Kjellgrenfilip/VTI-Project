@@ -5,6 +5,7 @@
 #include <QQuickItem>
 #include <QJSEngine>
 #include <QFile>
+#include <QMetaObject>
 
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
     m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{},
@@ -22,6 +23,16 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
     m_animationTimer->start();
 
     callCreatePASPImageInQML();
+
+    QObject *image;
+    QString hello;
+    QMetaObject::invokeMethod(m_rootObject->findChild<QObject*>("etcsD"), "createPASPImage", Q_RETURN_ARG(QString, hello));
+    qDebug() << hello;/*
+
+   // QMetaObject::invokeMethod(this, "createPASPImage", Q_RETURN_ARG(QObject*, image));
+    //image->setProperty("x", 500);
+    //qDebug() << image.;
+   // something->setProperty("color","red");
     //m_qmlObject->findChild<QObject>("speed").setProperty("color", "MyConst.orange");
 
 }
@@ -84,16 +95,17 @@ DMI_Handler::~DMI_Handler()
         }
     }
 }*/
-
+/*
 void DMI_Handler::callCreatePASPImageInQML()
 {
     emit doCreatePASPImage();
-}
+}*/
 
 void DMI_Handler::receiveUpdate()
 {
     if(firstTime)
-    {/*
+    {
+
         //QQmlComponent rectangle = QQmlComponent(m_Engine, QUrl("PASPImage.qml"));
         qDebug() << "HERE";
         QQuickItem *childItem = qobject_cast<QQuickItem*>(rectangle.create());

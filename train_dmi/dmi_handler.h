@@ -53,12 +53,12 @@ private:
     void updateGUI(QString const& key, QObject *obj);
 
 signals:
-    void doCreatePASPImage();
+   // void doCreatePASPImage();
 
 public slots:
     void receiveUpdate();
     void animationHandler();
-    void callCreatePASPImageInQML();
+  //  void callCreatePASPImageInQML();
 };
 
 #endif // DMI_HANDLER_H

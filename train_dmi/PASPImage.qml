@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtQml 2.0
+import QtQml 2.15
 
 Item {
     id: pasp
@@ -9,32 +9,6 @@ Item {
     width: 300
     z: 50
 
-   function createPASPImage()
-    {
-        console.log("hello");
-        var component = Qt.createComponent("PASPImage.qml");
-        if (component.status == Component.Ready)
-        {
-            var image = component.createObject(pasp);
-
-        }
-    }
-
-   //Component.onCompleted: createPASPImage()
-
-   Connections
-   {
-       target: dmi_handler
-       onCreatePaspImage: {
-         createPASPImage()
-       }
-   }
-
-   Loader
-   {
-       id: paspLoader
-       source: "PASPImage.qml"
-   }
 
     Rectangle
     {
