@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.0
 import "Imports" 1.0
 Item {
     anchors.fill: parent
@@ -15,7 +16,24 @@ Item {
             id:d12
             height: parent.height
             width: (40/246) * parent.width
-            color: "orange"
+            color: "transparent"
+            Button
+            {
+                id: topSign
+                anchors.fill: parent
+                background:Rectangle { color:"transparent"}
+                Text
+                {
+                    id: upperSign
+                    text: qsTr("−")
+                    color:  MyConst.grey
+                    anchors.fill: parent
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pointSize:(topSign.pressed) ? parent.height - 5 : parent.height
+                }
+            }
+
         }
         Rectangle
         {
@@ -45,7 +63,7 @@ Item {
             id:d1
             width: (40/246) * parent.width
             height: parent.height
-            color: "red"
+            color: "transparent"
             property int scale: 4000
 
             Text {
@@ -357,7 +375,24 @@ Item {
             id: d9
             height: parent.height
             width: (40/246) * parent.width
-            color: "orange"
+            color: "transparent"
+            Button
+            {
+                id: scaleUp
+                anchors.fill: parent
+                background:Rectangle { color:"transparent"}
+                Text
+                {
+                    id: lowerSign
+                    text: qsTr("+")
+                    color:  MyConst.grey
+                    anchors.fill: parent
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pointSize:(scaleUp.pressed) ? parent.height - 5 : parent.height
+                }
+            }
+
         }
         Rectangle
         {
