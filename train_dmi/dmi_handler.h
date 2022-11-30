@@ -8,19 +8,19 @@
 
 #include "network_client.h"
 #include "button_handler.h"
-#include "qqmlengine.h"
 #include "speedometer.h"
-#include <QQmlApplicationEngine>
 
 #include <QImage>
 #include <QQuickItem>
 #include <QQueue>
 
+#include <QJSEngine>
+
 class DMI_Handler : public QObject
 {
     Q_OBJECT
 public:
-    explicit DMI_Handler(QQmlContext *rootContext, QObject *obj, QQmlApplicationEngine *engine);
+    explicit DMI_Handler(QQmlContext *rootContext, QObject *obj);
     DMI_Handler(bool testStart = true);
     ~DMI_Handler();
 
@@ -49,16 +49,16 @@ public:
 
     bool firstTime = true;
 
-    QQmlApplicationEngine *m_Engine;
-
 private:
     void updateGUI(QString const& key, QObject *obj);
 
 signals:
+    void doCreatePASPImage();
 
 public slots:
     void receiveUpdate();
     void animationHandler();
+    void callCreatePASPImageInQML();
 };
 
 #endif // DMI_HANDLER_H

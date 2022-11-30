@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    DMI_Handler dmiHandler{engine.rootContext(), engine.rootObjects().at(0), &engine};
+    DMI_Handler dmiHandler{engine.rootContext(), engine.rootObjects().at(0)};
 
   /*  QSizePolicy p = app.devicePixelRatio();
     p.setHeightForWidth(true);

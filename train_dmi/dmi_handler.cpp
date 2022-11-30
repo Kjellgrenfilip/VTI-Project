@@ -3,10 +3,12 @@
 #include <QJsonObject>
 #include <QQmlComponent>
 #include <QQuickItem>
+#include <QJSEngine>
+#include <QFile>
 
-DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj, QQmlApplicationEngine *engine) : QObject(), m_client{new Network_Client{}},
+DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
     m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{},
-    m_speedometer{new Speedometer{obj}},m_PASPQueue{}, m_Engine{engine}
+    m_speedometer{new Speedometer{obj}},m_PASPQueue{}
 {
     rootContext->setContextProperty("buttonHandler", m_buttonHandler);
 
@@ -19,8 +21,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj, QQmlApplication
     m_animationTimer->setInterval(500);
     m_animationTimer->start();
 
-
-
+    callCreatePASPImageInQML();
     //m_qmlObject->findChild<QObject>("speed").setProperty("color", "MyConst.orange");
 
 }
@@ -84,19 +85,24 @@ DMI_Handler::~DMI_Handler()
     }
 }*/
 
+void DMI_Handler::callCreatePASPImageInQML()
+{
+    emit doCreatePASPImage();
+}
+
 void DMI_Handler::receiveUpdate()
 {
     if(firstTime)
-    {
-        QQmlComponent rectangle = QQmlComponent(m_Engine, QUrl("qrc:/PASPImage.qml"));
+    {/*
+        //QQmlComponent rectangle = QQmlComponent(m_Engine, QUrl("PASPImage.qml"));
         qDebug() << "HERE";
         QQuickItem *childItem = qobject_cast<QQuickItem*>(rectangle.create());
         qDebug() << "HERE2";
-        //childItem->setParent()
+        childItem->setParent(m_qmlObject);
         m_PASPQueue.enqueue(childItem);
        // qDebug() << m_qmlObject->childItems().empty();
         qDebug() << childItem->width();
-        firstTime = false;
+        firstTime = false;*/
     }
 
     m_latestUpdate = m_client->getUpdate();

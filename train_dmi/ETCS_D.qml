@@ -355,4 +355,53 @@ Item {
             color: "yellow"
         }
     }
+
+    function createPASPImage()
+     {
+         console.log("hello");
+         var component = Qt.createComponent(pasp);
+         if (component.status == Component.Ready)
+         {
+             var image = component.createObject(pasp);
+
+         }
+     }
+
+    //Component.onCompleted: createPASPImage()
+
+    Connections
+    {
+        onCreatePASPImage: {
+          createPASPImage()
+        }
+    }
+
+     Rectangle
+     {
+         width: 50
+         height: 20
+         objectName: "speed"
+         color: MyConst.white
+         id: pasp
+
+         Image
+         {
+             id: image
+             source: "symbols/Planning/PL_21.png"
+             width: 20
+             height: 20
+             anchors.left: parent.left
+         }
+
+         Text
+         {
+             id: text
+             text: qsTr("80")
+             font.pointSize: parent.parent.height/30
+             anchors.left: image.right
+             anchors.bottom: parent.bottom
+             //anchors.margins: 2
+             //anchors.verticalCenter: parent.verticalCenter
+         }
+     }
 }

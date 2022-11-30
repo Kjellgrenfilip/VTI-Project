@@ -246,5 +246,6 @@
         <file>symbols/Planning/PL_22.png</file>
         <file>symbols/Planning/PL_23.png</file>
         <file>PASPImage.qml</file>
+        <file>createQmlObject.mjs</file>
     </qresource>
 </RCC>
