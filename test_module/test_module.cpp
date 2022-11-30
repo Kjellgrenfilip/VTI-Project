@@ -574,7 +574,7 @@ void Test_Module::receiveUpdate()
 
  void Test_Module::testSpeedometer()
  {
-    /* m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     /*m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
      m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "NoS");
      m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 138);
      m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 160);
@@ -624,7 +624,7 @@ void Test_Module::receiveUpdate()
          m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
          m_networkServer->sendUpdate(m_jsonSpeed);
          m_networkServer->delay(5);
-     }*/
+     }
     //2A
      m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
      m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "NoS");
@@ -647,7 +647,36 @@ void Test_Module::receiveUpdate()
      m_jsonSpeed.insert(VTI_DMI::TARGET_SPEED, 0);
      m_jsonSpeed.insert(VTI_DMI::RELEASE_SPEED, 30);
      m_networkServer->sendUpdate(m_jsonSpeed);
-     m_networkServer->delay(1000);
+     m_networkServer->delay(1000);*/
+
+     //CSM in OvS
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "OvS");
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 160);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(100);
+
+     for(int i{67}; i <= 220; i++)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(50);
+     }
+     for(int i{220}; i >= 100; i--)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(50);
+     }
+
+
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "TSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "OvS");
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 100);
+     m_jsonSpeed.insert(VTI_DMI::RELEASE_SPEED, 30);
+     m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 23);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(100);
 
  }
 

@@ -11,57 +11,42 @@ void Speedometer::updateSpeedometer(QJsonObject update)
     //m_values.insert(key, update.value(key));
     if(update.value(VTI_DMI::SUPERVISION_STATUS) == "CSM")
     {
+
         obj->setProperty("supervisionMode", "CSM");
-        if(update.value(VTI_DMI::STATUS_INFORMATION) == "NoS")
+        obj->setProperty("currentSpeed", update.value(VTI_DMI::CURRENT_SPEED));
+        obj->setProperty("permittedSpeed", update.value(VTI_DMI::PERMITTED_SPEED));
+        obj->setProperty("bottomCSG", true);
+        obj->setProperty("csgBottomLayerValue", 0);
+
+        obj->setProperty("topCSG", true);
+        obj->setProperty("csgTopLayerHook", true);
+        obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
+
+        obj->setProperty("topColor", "#555555");
+
+        if(update.value(VTI_DMI::STATUS_INFORMATION) == "OvS" || update.value(VTI_DMI::STATUS_INFORMATION) == "WaS")
         {
-            obj->setProperty("currentSpeed", update.value(VTI_DMI::CURRENT_SPEED));
-            obj->setProperty("bottomCSG", true);
-            obj->setProperty("csgBottomLayerValue", 0);
-
-            obj->setProperty("topCSG", true);
-            obj->setProperty("csgTopLayerHook", true);
-            obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
-
-            obj->setProperty("topColor", "#555555");
-        }
-        if(update.value(VTI_DMI::STATUS_INFORMATION) == "OvS")
-        {
-            obj->setProperty("currentSpeed", update.value(VTI_DMI::CURRENT_SPEED));
-            obj->setProperty("bottomCSG", true);
-            obj->setProperty("csgBottomLayerValue", 0);
-
-            obj->setProperty("topCSG", true);
-            obj->setProperty("csgTopLayerHook", true);
-            obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
-
-            obj->setProperty("topColor", "#555555");
-
-            if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() > update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
-                obj->setProperty("topColor", "#EA9100");
-        }
-        if(update.value(VTI_DMI::STATUS_INFORMATION) == "WaS")
-        {
-            obj->setProperty("permittedSpeed", update.value(VTI_DMI::PERMITTED_SPEED));
-            obj->setProperty("currentSpeed", update.value(VTI_DMI::CURRENT_SPEED));
-            obj->setProperty("csgTopLayerHook", true);
-            obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
-
-
-            //obj->setProperty()
             if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() > update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
             {
                 obj->setProperty("thicCSG", true);
                 obj->setProperty("thicColor", "#EA9100");
-
-                //Set startangle from hook
-                obj->setProperty("csgThicLayerValue", (update.value(VTI_DMI::CURRENT_SPEED).toDouble())-(update.value(VTI_DMI::PERMITTED_SPEED).toDouble()));
+                //obj->setProperty("csgThicLayerValue", (update.value(VTI_DMI::CURRENT_SPEED).toDouble())-(update.value(VTI_DMI::PERMITTED_SPEED).toDouble()));
+                obj->setProperty("csgThicLayerValue", 50.0);
             }
             if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
                     obj->setProperty("thicCSG", false);
         }
+
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
         {
-
+            if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() > update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
+            {
+                obj->setProperty("thicCSG", true);
+                obj->setProperty("thicColor", "#BF0002");
+                obj->setProperty("csgThicLayerValue", (update.value(VTI_DMI::CURRENT_SPEED).toDouble())-(update.value(VTI_DMI::PERMITTED_SPEED).toDouble()));
+            }
+            if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
+                    obj->setProperty("thicCSG", false);
         }
 
 
@@ -69,6 +54,17 @@ void Speedometer::updateSpeedometer(QJsonObject update)
     if(update.value(VTI_DMI::SUPERVISION_STATUS) == "TSM")
     {
         obj->setProperty("supervisionMode", "TSM");
+        obj->setProperty("currentSpeed", update.value(VTI_DMI::CURRENT_SPEED));
+        if(update.value(VTI_DMI::RELEASE_SPEED) != "-1")
+        {
+            if(0.0 <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::RELEASE_SPEED).toDouble())
+            {
+                obj->setProperty("topColor", "#969696");
+                obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
+                obj->setProperty("csgTopLayerHook", false);
+            }
+        }
+
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "OvS")
         {
 
