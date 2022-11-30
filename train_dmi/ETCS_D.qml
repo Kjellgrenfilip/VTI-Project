@@ -53,7 +53,7 @@ Item {
                 text: d1.scale
                 width: parent.width
                 font.pointSize: parent.height/28
-                color: MyConst.grey
+                color: MyConst.mediumGrey
                 y:(0/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
@@ -62,7 +62,7 @@ Item {
                 text: d1.scale/2
                 width:parent.width
                 font.pointSize: parent.height/28
-                color: MyConst.grey
+                color: MyConst.mediumGrey
                 y:(41/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
@@ -71,7 +71,7 @@ Item {
                 text: d1.scale/4
                 width:parent.width
                 font.pointSize: parent.height/28
-                color: MyConst.grey
+                color: MyConst.mediumGrey
                 y:(84/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
@@ -80,7 +80,7 @@ Item {
                 text: d1.scale/8
                 width:parent.width
                 font.pointSize: parent.height/28
-                color: MyConst.grey
+                color: MyConst.mediumGrey
                 y:(127/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
@@ -89,7 +89,7 @@ Item {
                 text: qsTr("0")
                 width:parent.width
                 font.pointSize: parent.height/28
-                color: MyConst.grey
+                color: MyConst.mediumGrey
                 y:(261/270) * parent.height
                 horizontalAlignment: Text.AlignRight
             }
@@ -105,63 +105,63 @@ Item {
                 y:(6/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 2
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
             Rectangle
             {
                 y:(49/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 1
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
             Rectangle
             {
                 y:(92/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 1
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
             Rectangle
             {
                 y:(135/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 2
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
             Rectangle
             {
                 y:(149/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 1
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
             Rectangle
             {
                 y:(167/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 1
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
             Rectangle
             {
                 y:(191/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 1
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
             Rectangle
             {
                 y:(235/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 1
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
             Rectangle
             {
                 y:(268/270) * parent.height
                 width: (200/246) * middlegrid.width
                 height: 2
-                color: MyConst.grey
+                color: MyConst.mediumGrey
             }
         }
         Rectangle
@@ -237,21 +237,18 @@ Item {
                     text: d5bar2.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
-                    color: "blue"
                 }
                 Text {
                     objectName: "d5bar2text2"
                     text: d5bar2.upperSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
-                    color: "red"
                 }
                 Text {
                     objectName: "d5bar2text3"
                     text: d5bar2.lowerSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
-                    color: "blue"
                 }
             }
             Rectangle
@@ -271,21 +268,18 @@ Item {
                    text: d5bar3.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
-                    color: "blue"
                 }
                 Text {
                     objectName: "d5bar3text2"
                     text: d5bar3.upperSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
-                    color: "red"
                 }
                 Text {
                     objectName: "d5bar3text3"
                     text: d5bar3.lowerSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
-                    color: "blue"
                 }
             }
             Rectangle
@@ -305,21 +299,18 @@ Item {
                     text: d5bar4.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
-                    color: "blue"
                 }
                 Text {
                     objectName: "d5bar4text2"
                     text: d5bar4.upperSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
-                    color: "red"
                 }
                 Text {
                     objectName: "d5bar4text3"
                     text: d5bar4.lowerSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
-                    color: "blue"
                 }
             }
 
