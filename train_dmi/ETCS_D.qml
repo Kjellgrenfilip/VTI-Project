@@ -192,29 +192,33 @@ Item {
                 anchors.bottom: parent.bottom
                 //anchors.margins: 2
                 width: parent.width
+                height: (barValue/262) * parent.height
+                ETCS_D_GradientEffect{}
                 property int barValue: 0
                 property string textValue: ""
-                property string sign: ""
+                property string lowerSign: ""
+                property string upperSign: ""
                 Text {
+                    objectName: "d5bar1text1"
                     text: d5bar1.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     color: "blue"
                 }
                 Text {
-                    text: d5bar1.sign
+                    objectName: "d5bar1text2"
+                    text: d5bar1.upperSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
                     color: "red"
                 }
                 Text {
-                    text: d5bar1.sign
+                    objectName: "d5bar1text3"
+                    text: d5bar1.lowerSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                     color: "blue"
                 }
-                height: barValue
-                color: MyConst.grey
             }
             Rectangle
             {
@@ -222,29 +226,33 @@ Item {
                 objectName: "d5bar2"
                 anchors.bottom: d5bar1.top
                 width: parent.width
+                height: (barValue/262) * parent.height
+                ETCS_D_GradientEffect{}
                 property int barValue: 0
                 property string textValue: ""
-                property string sign: ""
+                property string lowerSign: ""
+                property string upperSign: ""
                 Text {
+                    objectName: "d5bar2text1"
                     text: d5bar2.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     color: "blue"
                 }
                 Text {
-                    text: d5bar2.sign
+                    objectName: "d5bar2text2"
+                    text: d5bar2.upperSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
                     color: "red"
                 }
                 Text {
-                    text: d5bar2.sign
+                    objectName: "d5bar2text3"
+                    text: d5bar2.lowerSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                     color: "blue"
                 }
-                height: barValue
-                color: MyConst.darkGrey
             }
             Rectangle
             {
@@ -252,59 +260,67 @@ Item {
                 objectName: "d5bar3"
                 anchors.bottom: d5bar2.top
                 width: parent.width
+                height: (barValue/262) * parent.height
+                ETCS_D_GradientEffect{}
                 property int barValue: 0
                 property string textValue: ""
-                property string sign: ""
+                property string lowerSign: ""
+                property string upperSign: ""
                 Text {
+                    objectName: "d5bar3text1"
                    text: d5bar3.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     color: "blue"
                 }
                 Text {
-                    text: d5bar3.sign
+                    objectName: "d5bar3text2"
+                    text: d5bar3.upperSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
                     color: "red"
                 }
                 Text {
-                    text: d5bar3.sign
+                    objectName: "d5bar3text3"
+                    text: d5bar3.lowerSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                     color: "blue"
                 }
-                height: barValue
-                color: MyConst.grey
             }
             Rectangle
-            {
+            {   
                 id:d5bar4
                 objectName: "d5bar4"
                 anchors.bottom: d5bar3.top
                 width: parent.width
+                height: (barValue/262) * parent.height
+                ETCS_D_GradientEffect{}
                 property int barValue: 0
                 property string textValue: ""
-                property string sign: ""
+                property string lowerSign: ""
+                property string upperSign: ""
                 Text {
+                    objectName: "d5bar4text1"
                     text: d5bar4.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     color: "blue"
                 }
                 Text {
-                    text: d5bar4.sign
+                    objectName: "d5bar4text2"
+                    text: d5bar4.upperSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
                     color: "red"
                 }
                 Text {
-                    text: d5bar4.sign
+                    objectName: "d5bar4text3"
+                    text: d5bar4.lowerSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                     color: "blue"
                 }
-                height: barValue
-                color: MyConst.darkGrey
             }
 
         }

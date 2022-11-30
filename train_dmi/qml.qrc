@@ -204,5 +204,6 @@
         <file>Tick_Mark.qml</file>
         <file>ETCS_C.qml</file>
         <file>ETCS_D.qml</file>
+        <file>ETCS_D_GradientEffect.qml</file>
     </qresource>
 </RCC>

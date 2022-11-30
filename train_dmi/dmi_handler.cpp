@@ -36,10 +36,8 @@ void DMI_Handler::d5loghandler(int maxDistance)
 {
     double totalPixelHeight = 0;
     double totalDistance = 0;
-    double log = 0;
     double lin = 0;
     double linv = 0;
-    double logv = 0;
     double v = 0;
     int it = 1;
 
@@ -50,6 +48,7 @@ void DMI_Handler::d5loghandler(int maxDistance)
         double logv = 0;
         double log = 0;
         double y = m_gradientProfile[i].second - trainPos;
+        //qDebug() << "distance: " <<  m_gradientProfile[i].second << "-" << trainPos << "=" << y;
 
         if ( y < 0 )
         {
@@ -75,8 +74,9 @@ void DMI_Handler::d5loghandler(int maxDistance)
             v = linv + logv;
         }
 
-        qDebug() << v << " - " << totalPixelHeight << " = " << v - totalPixelHeight;
-
+        //qDebug() << v << " - " << totalPixelHeight << " = " << v - totalPixelHeight;
+        //qDebug() << "pixelheight" <<  v - totalPixelHeight;
+        //qDebug() << "totalHeight" << totalPixelHeight;
         v -= totalPixelHeight;
         if ( v < 0 )
             v = 0;
@@ -85,46 +85,63 @@ void DMI_Handler::d5loghandler(int maxDistance)
         QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
         QObject *obj = m_rootObject->findChild<QObject*>(objectName); 
         obj->setProperty("barValue", v);
-        qDebug() << v;
-        if(v>10)
+        qDebug() << it-1 << ": " << v;
+
+        if(m_gradientProfile.at(i).first <0)
         {
-            obj->setProperty("sign", "+");
-            if(m_gradientProfile.at(i).first <0)
+            obj->setProperty("color", "#555555");
+            for ( int j = 1; j < 4; j++ )
             {
-                //obj->setProperty("color",MyConst.)
+                QString textObjectName = objectName + "text" + QString::fromStdString(std::to_string(j));
+                QObject *textObj = m_rootObject->findChild<QObject*>(textObjectName);
+                textObj->setProperty("color", "#FFFFFF");
             }
         }
         else
-            obj->setProperty("sign", "");
+        {
+            obj->setProperty("color", "#C3C3C3");
+            for ( int j = 1; j < 4; j++ )
+            {
+                QString textObjectName = objectName + "text" + QString::fromStdString(std::to_string(j));
+                QObject *textObj = m_rootObject->findChild<QObject*>(textObjectName);
+                textObj->setProperty("color", "#000000");
+            }
 
-        if(v>30)
+        }
+
+        if(v>20)
+        {
+            if(m_gradientProfile.at(i).first <0)
+                obj->setProperty("upperSign", "-");
+            else
+                obj->setProperty("upperSign", "+");
+        }
+        else
+            obj->setProperty("upperSign", "");
+
+        if(v>40)
         {
             obj->setProperty("textValue",abs(m_gradientProfile.at(i).first));
-            if(m_gradientProfile.at(i).first <0)
-            {
-                //obj->setProperty("color",MyConst.)
-            }
         }
         else
             obj->setProperty("textValue", "");
 
 
-        if(v>40)
+        if(v>60)
         {
-            obj->setProperty("sign", "+");
             if(m_gradientProfile.at(i).first <0)
-            {
-                //obj->setProperty("color",MyConst.)
-            }
+                obj->setProperty("lowerSign", "-");
+            else
+                obj->setProperty("lowerSign", "+");
         }
         else
-            obj->setProperty("sign", "");
+            obj->setProperty("lowerSign", "");
 
 
         totalPixelHeight += v;
     }
-
-    qDebug() << "it: " << it;
+    getchar();
+    //qDebug() << "it: " << it;
 
     while ( it <= 4 )
     {
@@ -132,7 +149,10 @@ void DMI_Handler::d5loghandler(int maxDistance)
         QObject *obj = m_rootObject->findChild<QObject*>(objectName);
         obj->setProperty("barValue", 0);
         obj->setProperty("textValue", "");
+        obj->setProperty("lowerSign", "");
+        obj->setProperty("upperSign", "");
     }
+
 }
 
 double DMI_Handler::toLogScale(double value, double maxDistance)
@@ -158,6 +178,10 @@ double DMI_Handler::toLogScale(double value, double maxDistance)
         double factor = value / maxLinear;
         logValue = factor * lengthOfLinearPart;
     }
+
+    if ( logValue < 0 )
+        logValue = 0;
+
 
     return logValue;
 }
