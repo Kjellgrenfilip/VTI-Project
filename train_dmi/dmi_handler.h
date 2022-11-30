@@ -36,12 +36,12 @@ public:
     int pantCounter{0};
     double trainPos{0};
     int distanceToPixelHeight(double);
-    void d5loghandler(int maxDistance);
-    double toLogScale(double value, double maxDistance);
-    double toLinScale(double value, double maxDistance);
+    void d5loghandler();
+    double toLogScale(double value);
+    double toLinScale(double value);
 
     std::vector<Grad_Pos> m_gradientProfile = test_vector;
-
+    double m_maxDistance{4000};
 
 
 signals:
@@ -49,6 +49,7 @@ signals:
 public slots:
     void receiveUpdate();
     void animationHandler();
+    void recieveMaxDistance(int x);
 };
 
 #endif // DMI_HANDLER_H

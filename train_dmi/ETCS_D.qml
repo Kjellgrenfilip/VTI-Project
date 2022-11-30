@@ -32,6 +32,7 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                     font.pointSize:(topSign.pressed) ? parent.height - 5 : parent.height
                 }
+                onPressed: buttonHandler.scaleDownPressed(d1.scale)
             }
 
         }
@@ -61,6 +62,7 @@ Item {
         Rectangle
         {
             id:d1
+            objectName: "D1"
             width: (40/246) * parent.width
             height: parent.height
             color: "transparent"
@@ -382,6 +384,7 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                     font.pointSize:(scaleUp.pressed) ? parent.height - 5 : parent.height
                 }
+                onPressed:buttonHandler.scaleUpPressed(d1.scale)
             }
 
         }

@@ -9,7 +9,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
     connect(m_buttonHandler, SIGNAL(sendUpdate(QJsonObject)), m_client, SLOT(sendUpdate(QJsonObject)));
     connect(m_client, SIGNAL(updateReceived()),this, SLOT(receiveUpdate()));
     connect(m_animationTimer, SIGNAL(timeout()), this, SLOT(animationHandler()));
-
+    connect(m_buttonHandler,SIGNAL(sendSignalMaxDistance(int)),this,SLOT(recieveMaxDistance(int)));
     m_client->connectToServer();
 
     m_animationTimer->setInterval(500);
@@ -32,7 +32,7 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
-void DMI_Handler::d5loghandler(int maxDistance)
+void DMI_Handler::d5loghandler()
 {
     double totalPixelHeight = 0;
     double totalDistance = 0;
@@ -59,18 +59,18 @@ void DMI_Handler::d5loghandler(int maxDistance)
         {
             break;
         }
-        if ( y <= maxDistance / 8 )
+        if ( y <= m_maxDistance / 8 )
         {
             log = y;
-            v = toLogScale(log, maxDistance);
+            v = toLogScale(log);
         }
 
         else
         {
-            log = maxDistance/8;
-            logv = toLogScale(log, maxDistance);
+            log = m_maxDistance/8;
+            logv = toLogScale(log);
             lin = y; //- log;
-            linv = toLinScale(lin, maxDistance);
+            linv = toLinScale(lin);
             v = linv + logv;
         }
 
@@ -155,12 +155,12 @@ void DMI_Handler::d5loghandler(int maxDistance)
 
 }
 
-double DMI_Handler::toLogScale(double value, double maxDistance)
+double DMI_Handler::toLogScale(double value)
 {
     double logValue = 0;
     double lengthOfLinearPart = 131;
     double lengthOfLogPart = 131;
-    double maxLinear = maxDistance/8;
+    double maxLinear = m_maxDistance/8;
 
     if ( value == 0 )
         logValue = 0.0;
@@ -169,11 +169,11 @@ double DMI_Handler::toLogScale(double value, double maxDistance)
 
     else if ( value >= 1.0 && value <= maxLinear )
     {
-        double factor = (log10(value) - log10(maxLinear)) / (log10(maxDistance) - log10(maxLinear));
+        double factor = (log10(value) - log10(maxLinear)) / (log10(m_maxDistance) - log10(maxLinear));
         logValue = factor * lengthOfLogPart + lengthOfLinearPart;
     }
 
-    else if ( maxLinear < value && value <= maxDistance )
+    else if ( maxLinear < value && value <= m_maxDistance )
     {
         double factor = value / maxLinear;
         logValue = factor * lengthOfLinearPart;
@@ -186,12 +186,12 @@ double DMI_Handler::toLogScale(double value, double maxDistance)
     return logValue;
 }
 
-double DMI_Handler::toLinScale(double value, double maxDistance)
+double DMI_Handler::toLinScale(double value)
 {
     double lengthOfLinearPart = 41;
     double result = 0;
 
-    if ( value >= maxDistance )
+    if ( value >= m_maxDistance )
     {
         result = 3 * lengthOfLinearPart;
         return result;
@@ -199,13 +199,13 @@ double DMI_Handler::toLinScale(double value, double maxDistance)
 
     for ( int i = 4; i >= 1; i/=2 )
     {
-        if ( value >= maxDistance/i )
+        if ( value >= m_maxDistance/i )
         {
             result += lengthOfLinearPart;
         }
         else
         {
-            result += (value - (maxDistance/(i*2))) * (lengthOfLinearPart/(maxDistance/(i*2)));
+            result += (value - (m_maxDistance/(i*2))) * (lengthOfLinearPart/(m_maxDistance/(i*2)));
             break;
         }
     }
@@ -227,7 +227,7 @@ void DMI_Handler::receiveUpdate()
             if(key == VTI_DMI::TRAIN_POSITION)
             {
                 trainPos = m_latestUpdate.value(key).toDouble();
-                d5loghandler(4000);
+                d5loghandler();
                 continue;
             }
 
@@ -350,4 +350,11 @@ int DMI_Handler::distanceToPixelHeight(double distance)
         pixelHeight = 186;
 
     return pixelHeight;
+}
+void DMI_Handler::recieveMaxDistance(int x)
+{
+    m_maxDistance = x;
+    QObject *obj = m_rootObject->findChild<QObject*>("D1");
+    obj->setProperty("scale",x);
+    d5loghandler();
 }
