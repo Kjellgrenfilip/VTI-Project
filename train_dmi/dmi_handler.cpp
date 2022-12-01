@@ -227,7 +227,7 @@ void DMI_Handler::receiveUpdate()
     m_latestUpdate = m_client->getUpdate();
     foreach(const QString& key, m_latestUpdate.keys())
     {
-        if(key == VTI_DMI::SUPERVISIONSTATUS)
+        if(key == VTI_DMI::SUPERVISION_STATUS)
         {
             m_speedometer->updateSpeedometer(m_latestUpdate);
             return;

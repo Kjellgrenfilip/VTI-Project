@@ -198,8 +198,6 @@
         <file>symbols/Track Conditions/TC_35.bmp</file>
         <file>symbols/Track Conditions/TC_36.bmp</file>
         <file>symbols/Track Conditions/TC_37.bmp</file>
-        <file>ETCS_A.qml</file>
-        <file>ETCS_icons/MO_21.bmp</file>
         <file>ETCS_Box3DEffect.qml</file>
         <file>Tick_Mark.qml</file>
         <file>ETCS_C.qml</file>
@@ -248,5 +246,10 @@
         <file>symbols/Planning/PL_22.png</file>
         <file>symbols/Planning/PL_23.png</file>
         <file>PASPImage.qml</file>
+        <file>symbols/Speedometer/yellow_needle.png</file>
+        <file>symbols/Speedometer/orange_needle.png</file>
+        <file>symbols/Speedometer/red_needle.png</file>
+        <file>symbols/Speedometer/white_needle.png</file>
+        <file>symbols/Speedometer/grey_needle.png</file>
     </qresource>
 </RCC>

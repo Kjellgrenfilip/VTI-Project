@@ -6,6 +6,7 @@ Item {
     id: threeLayerCSG
     anchors.fill: parent
 
+    property real value: 0
     property real gaugeWidth: 9
     property real hookWidth: 6
     property real hookLength: 20
@@ -17,7 +18,7 @@ Item {
 
     function calcAngle()
     {
-        return (currentSpeed <= 200) ? 5 + currentSpeed * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (currentSpeed - 200) * anglePerSpeedRangeA2 - 2.5
+        return (value <= 200) ? 5 + value * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (value - 200) * anglePerSpeedRangeA2 - 2.5
     }
 
     Shape {
@@ -29,11 +30,11 @@ Item {
         ShapePath {
             fillColor: "transparent"
             strokeColor: outerColor
-            strokeWidth: 6
+            strokeWidth: 5
 
             PathAngleArc {
                 centerX: 140; centerY: 135
-                radiusX: 134; radiusY: 134
+                radiusX: 134.5; radiusY: 134.5
                 startAngle: 121
                 sweepAngle: threeLayerCSG.calcAngle()+1
             }
@@ -45,7 +46,7 @@ Item {
 
             PathAngleArc {
                 centerX: 140; centerY: 135
-                radiusX: 130.5; radiusY: 130.5
+                radiusX: 131.5; radiusY: 131.5
                 startAngle: 121 - ((360/(130.5*2*Math.PI))*2)
                 sweepAngle: threeLayerCSG.calcAngle() +2*((360/(130.5*2*Math.PI))*2)
 
@@ -58,7 +59,7 @@ Item {
 
             PathAngleArc {
                 centerX: 140; centerY: 135
-                radiusX: 128.5; radiusY: 128.5
+                radiusX: 129.5; radiusY: 129.5
 
                 startAngle: 121 - ((360/(128.5*2*Math.PI))*1.5)
                 sweepAngle: threeLayerCSG.calcAngle() + 2*((360/(128.5*2*Math.PI))*1.5) +1

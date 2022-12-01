@@ -2,13 +2,15 @@ import QtQuick
 import QtQuick.Shapes 1.5
 import QtQuick.Controls 2.0
 
+import "Imports" 1.0
+
 Item {
     id: circularGauge
     anchors.fill: parent
 
     property real value: 0
     property real gaugeWidth: 9
-    property string gaugeColor: "lightgrey"
+    property string gaugeColor: MyConst.darkGrey
     property string hookColor: "grey"
     property real hookWidth: 6
     property real hookLength: 20
@@ -16,12 +18,24 @@ Item {
     property real startAngle1: 121
     property real rX: 132.5
     property real rY: 132.5
+    property string type: "normal"  //Property to separate the thic and normal CSG's
+    property real sweepDistance: 0
 
     function calcAngle()
     {
+
         return (value <= 200) ? 5 + value * anglePerSpeedRangeA1 - 2.5 : 96 * 2 + 5 + (value - 200) * anglePerSpeedRangeA2 - 2.5
     }
 
+    function calcThicAngle()
+    {
+        //Creates the value of which how far the thic CSG has moved since the Vperm-hook.
+        if(currentSpeed == 200)
+        {
+            sweepDistance = 5 + value * anglePerSpeedRangeA1
+        }
+        return (currentSpeed <= 200) ? 5 + value * anglePerSpeedRangeA1 - 2.5 : sweepDistance + (currentSpeed-200) * anglePerSpeedRangeA2 - 2.5
+}
     Shape
     {
         width: 280; height: 300
@@ -32,7 +46,7 @@ Item {
         ShapePath
         {
             fillColor: "transparent"
-            strokeColor: outerColor
+            strokeColor: gaugeColor
             strokeWidth: gaugeWidth
 
             PathAngleArc
@@ -40,28 +54,9 @@ Item {
                 centerX: 140; centerY: 135
                 radiusX: rX; radiusY: rY
                 startAngle: startAngle1
-                sweepAngle: circularGauge.calcAngle()
-
-//                Behavior on sweepAngle
-//                {
-//                    SpringAnimation
-//                    {
-//                        spring: 1.0
-//                        damping: 1.0
-//                    }
-//                }
+                sweepAngle: (type == "normal") ? circularGauge.calcAngle() : circularGauge.calcThicAngle() //currentSpeed-permittedspeed
             }
         }
     }
 
-//    Tick_Mark
-//    {
-//        id: hook
-//        alpha: circularGauge.calcAngle() + 121
-//        length: hookLength
-//        tickWidth: hookWidth
-//        placementRadius: 137
-//        tickmarkColor: outerColor
-//        visible: speedHook
-//    }
 }

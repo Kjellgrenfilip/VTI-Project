@@ -485,29 +485,8 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCSC);
             m_networkServer->delay(10);
 
-            updateETCSC("03");
-/*
-            m_jsonSpeed.insert(VTI_DMI::SUPERVISIONSTATUS, "CSM");
-            m_jsonSpeed.insert(VTI_DMI::STATUSINFORMATION, "NoS");
-            m_jsonSpeed.insert(VTI_DMI::CURRENTSPEED, 138);
-            m_jsonSpeed.insert(VTI_DMI::PERMITTEDSPEED, 160);
-            m_networkServer->sendUpdate(m_jsonSpeed);
-            m_networkServer->delay(3000);
+            testSpeedometer();
 
-            for(int i{138}; i >= 67; i--)
-            {
-                m_jsonSpeed.insert(VTI_DMI::CURRENTSPEED, i);
-                m_networkServer->sendUpdate(m_jsonSpeed);
-                m_networkServer->delay(100);
-            }
-
-            m_jsonSpeed.insert(VTI_DMI::PERMITTEDSPEED, 160);
-            m_networkServer->sendUpdate(m_jsonSpeed);
-            m_networkServer->delay(3000);
-
-            m_jsonSpeed.insert(VTI_DMI::PERMITTEDSPEED, 100);
-            m_networkServer->sendUpdate(m_jsonSpeed);
-            m_networkServer->delay(3000);*/
         }
         else
             return;
@@ -588,8 +567,160 @@ void Test_Module::resetStates()
     m_jsonExtras = VTI_DMI::JSON_EXTRAS;
 }
 
+
+ void Test_Module::testSpeedometer()
+ {
+     /*m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "NoS");
+     m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 138);
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 160);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(300);
+
+     for(int i{138}; i >= 67; i--)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(50);
+     }
+
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "OvS");
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 130);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(100);
+
+     for(int i{67}; i <= 180; i++)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(50);
+     }
+
+     for(int i{180}; i >= 100; i--)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(5);
+     }
+
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "WaS");
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 160);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(100);
+     for(int i{100}; i <= 300; i++)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(5);
+     }
+     for(int i{300}; i >= 100; i--)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(5);
+     }*/
+    //2A
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "NoS");
+     m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 67);
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 160);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(1000);
+
+     //2D
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 100);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(1000);
+
+     /*//2F
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "TSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "IndS");
+     m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 67);
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 77);
+
+     m_jsonSpeed.insert(VTI_DMI::TARGET_SPEED, 0);
+     m_jsonSpeed.insert(VTI_DMI::RELEASE_SPEED, 30);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(1000);*/
+
+     //CSM in IntS
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "IntS");
+     m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 67);
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 130);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(100);
+     for(int i{67}; i <= 140; i++)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(100);
+     }
+     for(int i{140}; i >= 85; i--)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(100);
+     }
+
+
+     //CSM in OvS
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "OvS");
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 160);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(100);
+
+     for(int i{67}; i <= 199; i++)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(50);
+     }
+     for(int i{199}; i >= 100; i--)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(50);
+     }
+
+
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "TSM");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "IndS");
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 100);
+     m_jsonSpeed.insert(VTI_DMI::RELEASE_SPEED, 30);
+     m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 23);
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(2000);
+
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM_NV");
+     m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "IntS");
+     m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 100);
+     m_jsonSpeed.insert(VTI_DMI::TARGET_SPEED, 50);
+      m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 40);
+     for(int i{40}; i <= 120; i++)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(50);
+     }
+     for(int i{120}; i >= 90; i--)
+     {
+         m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
+         m_networkServer->sendUpdate(m_jsonSpeed);
+         m_networkServer->delay(50);
+     }
+
+     m_networkServer->sendUpdate(m_jsonSpeed);
+     m_networkServer->delay(100);
+
+ }
+
 void Test_Module::demoPositionUpdate()
 {
     m_trainPosition += 1;
     updatePosition();
 }
+
