@@ -10,6 +10,10 @@
 #include "button_handler.h"
 #include "speedometer.h"
 
+typedef std::pair<double, double> Grad_Pos;
+
+static const std::vector<Grad_Pos> test_vector = { {15, -375.73}, {0, 201.26}, {-10, 800.26}, {12, 3500}, {0, 4500.0} };
+
 class DMI_Handler : public QObject
 {
     Q_OBJECT
@@ -31,7 +35,14 @@ public:
     bool animationState{false};
     int doorCounter{0};
     int pantCounter{0};
+    double trainPos{0};
+    int distanceToPixelHeight(double);
+    void d5loghandler();
+    double toLogScale(double value);
+    double toLinScale(double value);
 
+    std::vector<Grad_Pos> m_gradientProfile = test_vector;
+    double m_maxDistance{4000};
 
 
     Speedometer *m_speedometer;
@@ -44,6 +55,7 @@ signals:
 public slots:
     void receiveUpdate();
     void animationHandler();
+    void recieveMaxDistance(int x);
 };
 
 #endif // DMI_HANDLER_H

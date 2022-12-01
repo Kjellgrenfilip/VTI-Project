@@ -18,6 +18,7 @@ private:
 
 signals:
     void sendUpdate(QJsonObject);
+    void sendSignalMaxDistance(int x);
 
 public slots:
     void activatePressed();
@@ -50,6 +51,8 @@ public slots:
     void emergencyPressed();
 
     void etcsC1Pressed();
+    void scaleUpPressed(int x);
+    void scaleDownPressed(int x);
 };
 
 #endif // BUTTON_HANDLER_H

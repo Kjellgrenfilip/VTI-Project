@@ -9,7 +9,10 @@ void Button_Handler::sendSignal(QString const& object, bool const value)
     json.insert(object, value);
     emit sendUpdate(json);
 }
+//void Button_Handler::sendSignalMaxDistance(int x)
+//{
 
+//}
 void Button_Handler::activatePressed()
 {
     qDebug() << "Activate";
@@ -136,4 +139,18 @@ void Button_Handler::emergencyPressed()
 void Button_Handler::etcsC1Pressed()
 {
     qDebug()  << "etcs C1 clicked";
+}
+void Button_Handler::scaleDownPressed(int x)
+{
+    if(x>1000)
+    {
+        emit sendSignalMaxDistance(x/2);
+    }
+}
+void Button_Handler::scaleUpPressed(int x)
+{
+    if(x<32000)
+    {
+        emit sendSignalMaxDistance(x*2);
+    }
 }

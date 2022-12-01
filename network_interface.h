@@ -64,15 +64,18 @@ namespace VTI_DMI
     QString const ETCSC3Text        = "etcsC3Text";
     QString const ETCSC1            = "etcsC1";
     QString const RESET_DOORS       = "resetDoors";
+    QString const TRAIN_POSITION    = "trainPosition";
+    QString const GRADIENT_PROFILE  = "gradientProfile";
     QString const CURRENT_SPEED      = "currentSpeed";
     QString const RELEASE_SPEED      = "releaseSpeed";
     QString const TARGET_SPEED       = "targetSpeed";
-    QString const INTERVENTION_SPEED = "interventionSpeed";
+    QString const INTERVENTION_SPEED = "interventionsSpeed";
     QString const PERMITTED_SPEED    = "permittedSpeed";
     QString const CRUISE_SPEED       = "cruiseSpeed";
     QString const ADVISORY_SPEED     = "advisorySpeed";
     QString const SUPERVISION_STATUS = "supervisionStatus";
     QString const STATUS_INFORMATION = "statusInformation";
+
 
     QJsonObject const JSON_BRAKES
     {
@@ -132,7 +135,6 @@ namespace VTI_DMI
         { SPEEDLIMIT_STATE,     STATE::ACTIVE},
         { DISTANCE,             QJsonValue::String },
         { DISTANCE_STATE,       STATE::ACTIVE},
-        { DISTANCE_BAR,         QJsonValue::Double},
         { DISTANCE_BAR_STATE,   STATE::ACTIVE}
     };
 
@@ -147,6 +149,11 @@ namespace VTI_DMI
         { ETCSB4Image,          QJsonValue::String },
         { ETCSB5Image,          QJsonValue::String },
         { ETCSB7Image,          QJsonValue::String }
+    };
+
+    QJsonObject const JSON_POSITION
+    {
+        { TRAIN_POSITION,       QJsonValue::Double }
     };
 
     QJsonObject const JSON_ETCS_C

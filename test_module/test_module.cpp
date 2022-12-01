@@ -10,17 +10,24 @@ Test_Module::Test_Module(bool connection)
       m_jsonExtras{VTI_DMI::JSON_EXTRAS},
       m_jsonActivation{VTI_DMI::JSON_ACTIVATION},
       m_jsonETCS_A{VTI_DMI::JSON_ETCS_A},
+      m_jsonETCSB{VTI_DMI::JSON_ETCS_B},
+      m_jsonPosition{VTI_DMI::JSON_POSITION},
+
       m_jsonSpeed{VTI_DMI::JSON_SPEEDOMETER},
       m_doorTimer{new QTimer{this}},
       m_pantUpTimer{new QTimer{this}},
-      m_jsonETCSB{VTI_DMI::JSON_ETCS_B},
-      m_jsonETCSC{VTI_DMI::JSON_ETCS_C}
+
+      m_jsonETCSC{VTI_DMI::JSON_ETCS_C},
+      m_positionTimer{new QTimer{}}
 {
     if(connection)
     {
         m_networkServer = new Network_Server();
         connect(m_networkServer, SIGNAL(updateReceived()), this, SLOT(receiveUpdate()));
     }
+
+    connect(m_positionTimer, SIGNAL(timeout()), this, SLOT(demoPositionUpdate()));
+    m_positionTimer->setInterval(1);
 }
 
 Test_Module::~Test_Module()
@@ -372,27 +379,8 @@ void Test_Module::updateDistance(double newValue)
         newValue = round(newValue);
         newValue *= 10;
         m_jsonETCS_A.insert(VTI_DMI::DISTANCE, QString::number(newValue));
-        updateDistanceBar(newValue);
     }
     m_networkServer->sendUpdate(m_jsonETCS_A);
-}
-
-void Test_Module::updateDistanceBar(double newValue)
-{
-    double scaleLength = 186;
-    double linearLength = 33;
-    double logLength = scaleLength - linearLength;
-    double log100 = 2;
-    double log1000 = 3;
-
-    if ( newValue <= 100 )
-        newValue = newValue * (linearLength/100);
-    else if ( newValue <= 1000 )
-        newValue = linearLength + (log10(newValue) - log100) / (log1000 - log100) * logLength;
-    else
-        newValue = 186;
-
-    m_jsonETCS_A.insert(VTI_DMI::DISTANCE_BAR, newValue);
 }
 
 void Test_Module::updateETCSB345(QJsonValue const & value)
@@ -427,6 +415,12 @@ void Test_Module::updateETCSB7(QJsonValue const & value)
     m_jsonETCSB.insert(VTI_DMI::ETCSB7Image, value);
 
     m_networkServer->sendUpdate(m_jsonETCSB);
+}
+
+void Test_Module::updatePosition()
+{
+    m_jsonPosition.insert(VTI_DMI::TRAIN_POSITION, m_trainPosition);
+    m_networkServer->sendUpdate(m_jsonPosition);
 }
 
 void Test_Module::removeImage(QString const & key)
@@ -486,6 +480,7 @@ void Test_Module::receiveUpdate()
             m_networkServer->sendUpdate(m_jsonETCS_A);
             m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCSB);
+            m_positionTimer->start();
             m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCSC);
             m_networkServer->delay(10);
@@ -511,7 +506,7 @@ void Test_Module::receiveUpdate()
             resetPantographUp();
 
         else if(key == VTI_DMI::MAIN_BREAKER)
-           updateMainBreaker(value);
+            updateMainBreaker(value);
 
         else if(key == VTI_DMI::HEATING)
             updateHeating(value);
@@ -563,14 +558,15 @@ void Test_Module::receiveUpdate()
     }
 }
 
- void Test_Module::resetStates()
- {
-     m_jsonBrakes = VTI_DMI::JSON_BRAKES;
-     m_jsonDoors = VTI_DMI::JSON_DOORS;
-     m_jsonVoltage = VTI_DMI::JSON_VOLTAGE;
-     m_jsonAlarm = VTI_DMI::JSON_ALARM;
-     m_jsonExtras = VTI_DMI::JSON_EXTRAS;
- }
+void Test_Module::resetStates()
+{
+    m_jsonBrakes = VTI_DMI::JSON_BRAKES;
+    m_jsonDoors = VTI_DMI::JSON_DOORS;
+    m_jsonVoltage = VTI_DMI::JSON_VOLTAGE;
+    m_jsonAlarm = VTI_DMI::JSON_ALARM;
+    m_jsonExtras = VTI_DMI::JSON_EXTRAS;
+}
+
 
  void Test_Module::testSpeedometer()
  {
@@ -721,4 +717,10 @@ void Test_Module::receiveUpdate()
      m_networkServer->delay(100);
 
  }
+
+void Test_Module::demoPositionUpdate()
+{
+    m_trainPosition += 1;
+    updatePosition();
+}
 
