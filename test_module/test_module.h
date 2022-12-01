@@ -33,9 +33,12 @@ private:
     // test variable for distance bar
     double x{};
     QJsonObject m_jsonETCSB;
+    QJsonObject m_jsonPosition;
     QJsonObject m_jsonETCSC;
 
     QTimer *m_testTimer;
+    QTimer *m_positionTimer;
+    double m_trainPosition{0};
 
     void updatePantographUp(QJsonValue const & value);
     void updatePantographDown(QJsonValue const & value);
@@ -63,6 +66,8 @@ private:
     void updateETCSB7(QJsonValue const & value);
     void updateETCSC(QJsonValue const & value);
 
+    void updatePosition();
+
     int testDistance();
 
 public:
@@ -80,6 +85,7 @@ signals:
 
 public slots:
     void receiveUpdate();
+    void demoPositionUpdate();
 };
 
 #endif // TEST_MODULE_H

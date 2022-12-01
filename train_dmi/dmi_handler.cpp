@@ -1,5 +1,4 @@
 #include "dmi_handler.h"
-
 #include <QJsonObject>
 #include <QQmlComponent>
 #include <QQuickItem>
@@ -13,7 +12,7 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
     connect(m_buttonHandler, SIGNAL(sendUpdate(QJsonObject)), m_client, SLOT(sendUpdate(QJsonObject)));
     connect(m_client, SIGNAL(updateReceived()),this, SLOT(receiveUpdate()));
     connect(m_animationTimer, SIGNAL(timeout()), this, SLOT(animationHandler()));
-
+    connect(m_buttonHandler,SIGNAL(sendSignalMaxDistance(int)),this,SLOT(recieveMaxDistance(int)));
     m_client->connectToServer();
 
     m_animationTimer->setInterval(500);
@@ -36,48 +35,191 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
-/*void DMI_Handler::d5loghandler(std::vector<std::pair<double,double>> input,int scale)
+void DMI_Handler::d5loghandler()
 {
-    double totallength{0};
-    double currentlength{0};
-    int iterator = 1;
-    double scaleLength = 270;
-    double linearLength = 35;
-    double logLength = scaleLength - linearLength;
-    double log100 = 2;
-    double log1000 = 3;
+    double totalPixelHeight = 0;
+    double totalDistance = 0;
+    double lin = 0;
+    double linv = 0;
+    double v = 0;
+    int it = 1;
 
-    for(std::pair<double,double>x : input)
+    qDebug() << trainPos;
+
+    for ( size_t i = 0; i < m_gradientProfile.size(); i++ )
     {
-        if(x.second > 0.0)
+        double logv = 0;
+        double log = 0;
+        double y = m_gradientProfile[i].second - trainPos;
+        //qDebug() << "distance: " <<  m_gradientProfile[i].second << "-" << trainPos << "=" << y;
+
+        if ( y < 0 )
         {
-            totallength += x.second;
+            continue;
         }
-    }
-    for(std::pair<double,double>x : input)
-    {
-        if(x.second > 0.0)
+
+        if(it > 4)
         {
-            if ( x.second + currentlength <= scale/8 )
-                x.second = -currentlength + (x.second + currentlength)  * (linearLength/100);
-            else if ( x.second + currentlength <= scale )
-                x.second = -currentlength + linearLength + (log10(x.second) - log100) / (log1000 - log100) * logLength;
+            break;
+        }
+        if ( y <= m_maxDistance / 8 )
+        {
+            log = y;
+            v = toLogScale(log);
+        }
+
+        else
+        {
+            log = m_maxDistance/8;
+            logv = toLogScale(log);
+            lin = y; //- log;
+            linv = toLinScale(lin);
+            v = linv + logv;
+        }
+
+        //qDebug() << v << " - " << totalPixelHeight << " = " << v - totalPixelHeight;
+        //qDebug() << "pixelheight" <<  v - totalPixelHeight;
+        //qDebug() << "totalHeight" << totalPixelHeight;
+        v -= totalPixelHeight;
+        if ( v < 0 )
+            v = 0;
+
+
+        QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
+        QObject *obj = m_rootObject->findChild<QObject*>(objectName); 
+        obj->setProperty("barValue", v);
+        obj->setProperty("visible",true);
+        qDebug() << it-1 << ": " << v;
+
+        if(m_gradientProfile.at(i).first <0)
+        {
+            obj->setProperty("color", "#555555");
+            for ( int j = 1; j < 4; j++ )
+            {
+                QString textObjectName = objectName + "text" + QString::fromStdString(std::to_string(j));
+                QObject *textObj = m_rootObject->findChild<QObject*>(textObjectName);
+                textObj->setProperty("color", "#FFFFFF");
+            }
+        }
+        else
+        {
+            obj->setProperty("color", "#C3C3C3");
+            for ( int j = 1; j < 4; j++ )
+            {
+                QString textObjectName = objectName + "text" + QString::fromStdString(std::to_string(j));
+                QObject *textObj = m_rootObject->findChild<QObject*>(textObjectName);
+                textObj->setProperty("color", "#000000");
+            }
+
+        }
+
+        if(v>20)
+        {
+            if(m_gradientProfile.at(i).first <0)
+                obj->setProperty("upperSign", "-");
             else
-                x.second = scaleLength - currentlength;
-            currentlength += x.second;
+                obj->setProperty("upperSign", "+");
         }
-    }
-    for(auto x : input)
-    {
-        if(x.second > 0.0 && iterator <=4)
-        {
-            QObject *obj = m_rootObject->findChild<QObject*>("d5bar" + std::to_string(iterator));
-            std::string text{"barValue" + std::to_string(iterator++)};
+        else
+            obj->setProperty("upperSign", "");
 
-            obj->setProperty(text ,x.second);
+        if(v>40)
+        {
+            obj->setProperty("textValue",abs(m_gradientProfile.at(i).first));
+        }
+        else
+            obj->setProperty("textValue", "");
+
+
+        if(v>60)
+        {
+            if(m_gradientProfile.at(i).first <0)
+                obj->setProperty("lowerSign", "-");
+            else
+                obj->setProperty("lowerSign", "+");
+        }
+        else
+            obj->setProperty("lowerSign", "");
+
+
+        totalPixelHeight += v;
+    }
+    getchar();
+    //qDebug() << "it: " << it;
+
+    while ( it <= 4 )
+    {
+        QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
+        QObject *obj = m_rootObject->findChild<QObject*>(objectName);
+        obj->setProperty("barValue", 0);
+        obj->setProperty("textValue", "");
+        obj->setProperty("lowerSign", "");
+        obj->setProperty("upperSign", "");
+        obj->setProperty("visible",false);
+    }
+
+}
+
+double DMI_Handler::toLogScale(double value)
+{
+    double logValue = 0;
+    double lengthOfLinearPart = 131;
+    double lengthOfLogPart = 131;
+    double maxLinear = m_maxDistance/8;
+
+    if ( value == 0 )
+        logValue = 0.0;
+    else if ( value > 0.0 && value < 1.0 )
+        logValue = 0.0;
+
+    else if ( value >= 1.0 && value <= maxLinear )
+    {
+        double factor = (log10(value) - log10(maxLinear)) / (log10(m_maxDistance) - log10(maxLinear));
+        logValue = factor * lengthOfLogPart + lengthOfLinearPart;
+    }
+
+    else if ( maxLinear < value && value <= m_maxDistance )
+    {
+        double factor = value / maxLinear;
+        logValue = factor * lengthOfLinearPart;
+    }
+
+    if ( logValue < 0 )
+        logValue = 0;
+
+
+    return logValue;
+}
+
+double DMI_Handler::toLinScale(double value)
+{
+    double lengthOfLinearPart = 41;
+    double result = 0;
+
+    if ( value >= m_maxDistance )
+    {
+        result = 3 * lengthOfLinearPart;
+        return result;
+    }
+
+    for ( int i = 4; i >= 1; i/=2 )
+    {
+        if ( value >= m_maxDistance/i )
+        {
+            result += lengthOfLinearPart;
+        }
+        else
+        {
+            result += (value - (m_maxDistance/(i*2))) * (lengthOfLinearPart/(m_maxDistance/(i*2)));
+            break;
         }
     }
-}*/
+
+
+
+    return result;
+}
+
 
 void DMI_Handler::receiveUpdate()
 {
@@ -95,6 +237,13 @@ void DMI_Handler::receiveUpdate()
         //Update GUI
         if(!testStart)
         {
+            if(key == VTI_DMI::TRAIN_POSITION)
+            {
+                trainPos = m_latestUpdate.value(key).toDouble();
+                d5loghandler();
+                continue;
+            }
+
             QObject *obj = m_rootObject->findChild<QObject*>(key);
             if(!obj)
             {
@@ -146,6 +295,10 @@ void DMI_Handler::receiveUpdate()
                 qDebug() << s;
 
                 obj->setProperty("source", s);
+            }
+            else if (key == VTI_DMI::GRADIENT_PROFILE)
+            {
+                // Receive gradient profile here :)
             }
             else
             {
@@ -287,4 +440,11 @@ int DMI_Handler::distanceToPixelHeight(double distance)
         pixelHeight = 186;
 
     return pixelHeight;
+}
+void DMI_Handler::recieveMaxDistance(int x)
+{
+    m_maxDistance = x;
+    QObject *obj = m_rootObject->findChild<QObject*>("D1");
+    obj->setProperty("scale",x);
+    d5loghandler();
 }

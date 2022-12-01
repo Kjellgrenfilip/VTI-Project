@@ -64,6 +64,8 @@ namespace VTI_DMI
     QString const ETCSC3Text        = "etcsC3Text";
     QString const ETCSC1            = "etcsC1";
     QString const RESET_DOORS       = "resetDoors";
+    QString const TRAIN_POSITION    = "trainPosition";
+    QString const GRADIENT_PROFILE  = "gradientProfile";
     QString const CURRENTSPEED      = "currentSpeed";
     QString const RELEASESPEED      = "releaseSpeed";
     QString const TARGETSPEED       = "targetSpeed";
@@ -146,6 +148,11 @@ namespace VTI_DMI
         { ETCSB4Image,          QJsonValue::String },
         { ETCSB5Image,          QJsonValue::String },
         { ETCSB7Image,          QJsonValue::String }
+    };
+
+    QJsonObject const JSON_POSITION
+    {
+        { TRAIN_POSITION,       QJsonValue::Double }
     };
 
     QJsonObject const JSON_ETCS_C

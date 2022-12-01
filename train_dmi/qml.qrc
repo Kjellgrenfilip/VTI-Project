@@ -203,6 +203,8 @@
         <file>ETCS_Box3DEffect.qml</file>
         <file>Tick_Mark.qml</file>
         <file>ETCS_C.qml</file>
+        <file>ETCS_D.qml</file>
+        <file>ETCS_D_GradientEffect.qml</file>
         <file>desk_ikoner/back.tif</file>
         <file>desk_ikoner/backR.tif</file>
         <file>desk_ikoner/backY.tif</file>

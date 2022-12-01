@@ -10,11 +10,9 @@
 #include "button_handler.h"
 #include "speedometer.h"
 
-#include <QImage>
-#include <QQuickItem>
-#include <QQueue>
+typedef std::pair<double, double> Grad_Pos;
 
-#include <QJSEngine>
+static const std::vector<Grad_Pos> test_vector = { {15, -375.73}, {0, 201.26}, {-10, 800.26}, {12, 3500}, {0, 4500.0} };
 
 class DMI_Handler : public QObject
 {
@@ -37,28 +35,27 @@ public:
     bool animationState{false};
     int doorCounter{0};
     int pantCounter{0};
-
+    double trainPos{0};
     int distanceToPixelHeight(double);
+    void d5loghandler();
+    double toLogScale(double value);
+    double toLinScale(double value);
 
     int m_permittedSpeed;
+    std::vector<Grad_Pos> m_gradientProfile = test_vector;
+    double m_maxDistance{4000};
 
     Speedometer *m_speedometer;
-
-    QQueue<QObject*> m_PASPQueue;
-    QQuickItem *m_qmlObject;
-
-    bool firstTime = true;
 
 private:
     void updateGUI(QString const& key, QObject *obj);
 
 signals:
-   // void doCreatePASPImage();
 
 public slots:
     void receiveUpdate();
     void animationHandler();
-  //  void callCreatePASPImageInQML();
+    void recieveMaxDistance(int x);
 };
 
 #endif // DMI_HANDLER_H
