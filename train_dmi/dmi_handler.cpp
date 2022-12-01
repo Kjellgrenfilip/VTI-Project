@@ -5,7 +5,7 @@
 
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
     m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{},
-    m_speedometer{new Speedometer{obj}},m_PASPQueue{}
+    m_speedometer{new Speedometer{obj}}
 {
     rootContext->setContextProperty("buttonHandler", m_buttonHandler);
 

@@ -503,7 +503,7 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP1"
-        y: 0
+        y: (d7.height - d7Collumn3.height)
 
         Image
         {
@@ -531,7 +531,7 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP2"
-        y: 0
+        y: (d7.height - d7Collumn2.height)
 
         Image
         {
