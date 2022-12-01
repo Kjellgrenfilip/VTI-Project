@@ -85,6 +85,7 @@ void DMI_Handler::d5loghandler()
         QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
         QObject *obj = m_rootObject->findChild<QObject*>(objectName); 
         obj->setProperty("barValue", v);
+        obj->setProperty("visible",true);
         qDebug() << it-1 << ": " << v;
 
         if(m_gradientProfile.at(i).first <0)
@@ -151,6 +152,7 @@ void DMI_Handler::d5loghandler()
         obj->setProperty("textValue", "");
         obj->setProperty("lowerSign", "");
         obj->setProperty("upperSign", "");
+        obj->setProperty("visible",false);
     }
 
 }

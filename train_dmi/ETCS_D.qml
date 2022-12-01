@@ -30,7 +30,8 @@ Item {
                     anchors.fill: parent
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    font.pointSize:(topSign.pressed) ? parent.height - 5 : parent.height
+                    font.pointSize:(topSign.pressed) ? parent.height*2 - 15 : parent.height*2 - 10
+                    font.weight: 1
                 }
                 onPressed: buttonHandler.scaleDownPressed(d1.scale)
             }
@@ -41,14 +42,14 @@ Item {
             id:d13
             height: parent.height
             width: (166/246) * parent.width
-            color: "blue"
+            color: "transparent"
         }
         Rectangle
         {
             id:d14
             height: parent.height
             width: (40/246) * parent.width
-            color: "yellow"
+            color: "transparent"
         }
     }
     Grid
@@ -119,7 +120,7 @@ Item {
             id:d2
             width: (25/246) * parent.width
             height: parent.height
-            color: "brown"
+            color: "transparent"
             Rectangle
             {
                 y:(6/270) * parent.height
@@ -218,27 +219,29 @@ Item {
                 property string textValue: ""
                 property string lowerSign: ""
                 property string upperSign: ""
+                visible: false
                 Text {
                     objectName: "d5bar1text1"
                     text: d5bar1.textValue
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
-                    color: "blue"
+
                 }
                 Text {
                     objectName: "d5bar1text2"
                     text: d5bar1.upperSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
-                    color: "red"
+
                 }
                 Text {
                     objectName: "d5bar1text3"
                     text: d5bar1.lowerSign
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
-                    color: "blue"
+
                 }
+
             }
             Rectangle
             {
@@ -252,6 +255,7 @@ Item {
                 property string textValue: ""
                 property string lowerSign: ""
                 property string upperSign: ""
+                visible: false
                 Text {
                     objectName: "d5bar2text1"
                     text: d5bar2.textValue
@@ -270,6 +274,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                 }
+
             }
             Rectangle
             {
@@ -283,6 +288,7 @@ Item {
                 property string textValue: ""
                 property string lowerSign: ""
                 property string upperSign: ""
+                visible: false
                 Text {
                     objectName: "d5bar3text1"
                    text: d5bar3.textValue
@@ -301,6 +307,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                 }
+
             }
             Rectangle
             {   
@@ -314,6 +321,7 @@ Item {
                 property string textValue: ""
                 property string lowerSign: ""
                 property string upperSign: ""
+                visible: false
                 Text {
                     objectName: "d5bar4text1"
                     text: d5bar4.textValue
@@ -333,6 +341,7 @@ Item {
                     anchors.bottom: parent.bottom
                 }
             }
+
 
         }
         Rectangle
@@ -383,6 +392,7 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     font.pointSize:(scaleUp.pressed) ? parent.height - 5 : parent.height
+
                 }
                 onPressed:buttonHandler.scaleUpPressed(d1.scale)
             }
@@ -393,14 +403,14 @@ Item {
             id: d10
             height: parent.height
             width: (166/246) * parent.width
-            color: "blue"
+            color: "transparent"
         }
         Rectangle
         {
             id: d11
             height: parent.height
             width: (40/246) * parent.width
-            color: "yellow"
+            color: "transparent"
         }
     }
 }

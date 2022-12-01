@@ -22,7 +22,7 @@ Test_Module::Test_Module(bool connection)
     }
 
     connect(m_positionTimer, SIGNAL(timeout()), this, SLOT(demoPositionUpdate()));
-    m_positionTimer->setInterval(50);
+    m_positionTimer->setInterval(1);
 }
 
 Test_Module::~Test_Module()
