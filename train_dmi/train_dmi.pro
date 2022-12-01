@@ -19,7 +19,8 @@ SOURCES += \
         button_handler.cpp \
         dmi_handler.cpp \
         main.cpp \
-        network_client.cpp
+        network_client.cpp \
+        speedometer.cpp
 
 RESOURCES += qml.qrc
 
@@ -37,7 +38,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     button_handler.h \
     dmi_handler.h \
-    network_client.h
+    network_client.h \
+    speedometer.h
 
 DISTFILES += \
     qmldir \

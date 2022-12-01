@@ -205,5 +205,43 @@
         <file>ETCS_C.qml</file>
         <file>ETCS_D.qml</file>
         <file>ETCS_D_GradientEffect.qml</file>
+        <file>desk_ikoner/back.tif</file>
+        <file>desk_ikoner/backR.tif</file>
+        <file>desk_ikoner/backY.tif</file>
+        <file>desk_ikoner/button.tif</file>
+        <file>desk_ikoner/button69.tif</file>
+        <file>desk_ikoner/closed.tif</file>
+        <file>desk_ikoner/closedG.tif</file>
+        <file>desk_ikoner/deskPanel.tif</file>
+        <file>desk_ikoner/deskPanel.xml</file>
+        <file>desk_ikoner/deskPanel0.bmp</file>
+        <file>desk_ikoner/deskPanel1.bmp</file>
+        <file>desk_ikoner/deskPanel2.bmp</file>
+        <file>desk_ikoner/doorleft.tif</file>
+        <file>desk_ikoner/doorleftY.tif</file>
+        <file>desk_ikoner/doorright.tif</file>
+        <file>desk_ikoner/doorrightY.tif</file>
+        <file>desk_ikoner/Down.tif</file>
+        <file>desk_ikoner/DownY.tif</file>
+        <file>desk_ikoner/emergencyCall.tif</file>
+        <file>desk_ikoner/emergencyCallR.tif</file>
+        <file>desk_ikoner/frontLight.tif</file>
+        <file>desk_ikoner/frontLightY.png</file>
+        <file>desk_ikoner/frontLightY.tif</file>
+        <file>desk_ikoner/green.tif</file>
+        <file>desk_ikoner/indicator_frame_green.xcf</file>
+        <file>desk_ikoner/power.tif</file>
+        <file>desk_ikoner/power_green.tif</file>
+        <file>desk_ikoner/power_green_3d.png</file>
+        <file>desk_ikoner/power_white_3d.png</file>
+        <file>desk_ikoner/redButton.tif</file>
+        <file>desk_ikoner/siren.tif</file>
+        <file>desk_ikoner/siren5.tif</file>
+        <file>desk_ikoner/siren6.png</file>
+        <file>desk_ikoner/siren6.tif</file>
+        <file>desk_ikoner/UpY.tif</file>
+        <file>desk_ikoner/yellow.tif</file>
+        <file>CircularSpeedGauge.qml</file>
+        <file>CircularSpeedGauge3.qml</file>
     </qresource>
 </RCC>

@@ -55,13 +55,26 @@ namespace VTI_DMI
     QString const ETCSB5            = "etcsB5";
     QString const ETCSB6            = "etcsB6";
     QString const ETCSB7            = "etcsB7";
-    QString const ETCSB3Image        = "etcsB3Image";
-    QString const ETCSB4Image        = "etcsB4Image";
-    QString const ETCSB5Image        = "etcsB5Image";
+    QString const ETCSB3Image       = "etcsB3Image";
+    QString const ETCSB4Image       = "etcsB4Image";
+    QString const ETCSB5Image       = "etcsB5Image";
     QString const ETCSB7Image       = "etcsB7Image";
+    QString const ETCSC6            = "etcsC6";
+    QString const ETCSC1Image       = "etcsC1Image";
+    QString const ETCSC3Text        = "etcsC3Text";
+    QString const ETCSC1            = "etcsC1";
     QString const RESET_DOORS       = "resetDoors";
     QString const TRAIN_POSITION    = "trainPosition";
     QString const GRADIENT_PROFILE  = "gradientProfile";
+    QString const CURRENTSPEED      = "currentSpeed";
+    QString const RELEASESPEED      = "releaseSpeed";
+    QString const TARGETSPEED       = "targetSpeed";
+    QString const INTERVENTIONSPEED = "interventionsSpeed";
+    QString const PERMITTEDSPEED    = "permittedSpeed";
+    QString const CRUISESPEED       = "cruiseSpeed";
+    QString const ADVISORYSPEED     = "advisorySpeed";
+    QString const SUPERVISIONSTATUS = "supervisionStatus";
+    QString const STATUSINFORMATION = "statusInformation";
 
     QJsonObject const JSON_BRAKES
     {
@@ -142,6 +155,26 @@ namespace VTI_DMI
         { TRAIN_POSITION,       QJsonValue::Double }
     };
 
+    QJsonObject const JSON_ETCS_C
+    {
+      { ETCSC6,                 STATE::INACTIVE},
+      { ETCSC1Image,            QJsonValue::String },
+      { ETCSC3Text,             QJsonValue::Double },
+      { ETCSC1,                 STATE::INACTIVE}
+    };
+
+    QJsonObject const JSON_SPEEDOMETER
+    {
+        { SUPERVISIONSTATUS,    QJsonValue::String },
+        { STATUSINFORMATION,    QJsonValue::String },
+        { CURRENTSPEED,         QJsonValue::Double },
+        { RELEASESPEED,         QJsonValue::Double },
+        { TARGETSPEED,          QJsonValue::Double },
+        { INTERVENTIONSPEED,    QJsonValue::Double },
+        { PERMITTEDSPEED,       QJsonValue::Double },
+        { CRUISESPEED,          QJsonValue::Double },
+        { ADVISORYSPEED,        QJsonValue::Double }
+    };
 };
 
 #endif // NETWORK_INTERFACE_H

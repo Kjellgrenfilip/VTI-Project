@@ -2,7 +2,8 @@
 #include <QJsonObject>
 
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
-    m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{}
+    m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{},
+    m_speedometer{new Speedometer{obj}}
 {
     rootContext->setContextProperty("buttonHandler", m_buttonHandler);
 
@@ -221,6 +222,11 @@ void DMI_Handler::receiveUpdate()
     m_latestUpdate = m_client->getUpdate();
     foreach(const QString& key, m_latestUpdate.keys())
     {
+        if(key == VTI_DMI::SUPERVISIONSTATUS)
+        {
+            m_speedometer->updateSpeedometer(m_latestUpdate);
+            return;
+        }
         m_jsonState.insert(key, m_latestUpdate.value(key));
         qDebug() << key;
         //Update GUI
@@ -234,7 +240,6 @@ void DMI_Handler::receiveUpdate()
             }
 
             QObject *obj = m_rootObject->findChild<QObject*>(key);
-
             if(!obj)
             {
                 qDebug() << "Unknown object: " << key;
@@ -286,7 +291,76 @@ void DMI_Handler::receiveUpdate()
                 qDebug() << key << " : " << newState;
                 obj->setProperty("state", newState);
             }
+            updateGUI(key, obj);
+
         }
+    }
+}
+
+void DMI_Handler::updateGUI(QString const& key, QObject *obj)
+{
+    if ( key == VTI_DMI::VELOCITY )
+    {
+        //Special case
+    }
+    else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE || key == VTI_DMI::ETCSC3Text)
+    {
+        QString newValue = m_latestUpdate.value(key).toString();
+        obj->setProperty("text", newValue);
+    }
+
+    else if ( key == VTI_DMI::DISTANCE_BAR )
+    {
+        int newValue = m_latestUpdate.value(key).toDouble();
+        qDebug() << "DISTANCE: " << newValue;
+        obj->setProperty("barValue", newValue);
+    }
+
+    else if( key == VTI_DMI::TEXTINFO)
+    {
+        QString newText = m_latestUpdate.value(key).toString();
+        obj->setProperty("text", newText);
+    }
+
+    else if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image
+              || key == VTI_DMI::ETCSB5Image  ||  key == VTI_DMI::ETCSB7Image
+              || key == VTI_DMI::ETCSC1Image)
+    {
+        QString value = m_latestUpdate.value(key).toString();
+        QString s;
+        if(key == VTI_DMI::ETCSB7Image)
+            s = "symbols/Track Conditions/MO_";
+        else if(key == VTI_DMI::ETCSC1Image)
+        {
+            s = "symbols/Level/LE_";
+        }
+        else
+            s = "symbols/Track Conditions/TC_";
+        s = s + value + ".bmp";
+        qDebug() << s;
+
+        obj->setProperty("source", s);
+    }
+    else
+    {
+        QString newState = m_latestUpdate.value(key).toString();
+        qDebug() << key << " : " << newState;
+        obj->setProperty("state", newState);
+    }
+
+    if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image || key == VTI_DMI::ETCSB5Image )
+    {
+        QString value = m_latestUpdate.value(key).toString();
+
+        QString s = "symbols/Track Conditions/TC_" + value + ".bmp";
+        qDebug() << s;
+        obj->setProperty("source", s);
+    }
+    else
+    {
+        QString newState = m_latestUpdate.value(key).toString();
+        qDebug() << key << " : " << newState;
+        obj->setProperty("state", newState);
     }
 }
 

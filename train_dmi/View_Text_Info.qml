@@ -16,13 +16,12 @@ Item {
             border.width: 10
             border.color: "grey"
             radius: 25
-            TextArea // should be textinput
+            Text // should be textinput
             {
                 id: textAreaInfo
                 objectName: "textInfo"
                 anchors.fill: parent
                 anchors.margins: 20
-                readOnly: true
                 Text
                 {
                     id: textAreaInfoText

@@ -8,6 +8,7 @@
 
 #include "network_client.h"
 #include "button_handler.h"
+#include "speedometer.h"
 
 typedef std::pair<double, double> Grad_Pos;
 
@@ -43,6 +44,11 @@ public:
     std::vector<Grad_Pos> m_gradientProfile = test_vector;
     double m_maxDistance{4000};
 
+
+    Speedometer *m_speedometer;
+
+private:
+    void updateGUI(QString const& key, QObject *obj);
 
 signals:
 

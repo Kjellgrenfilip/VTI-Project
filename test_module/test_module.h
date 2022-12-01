@@ -25,8 +25,16 @@ private:
     QJsonObject m_jsonExtras;
     QJsonObject m_jsonActivation;
     QJsonObject m_jsonETCS_A;
+    QJsonObject m_jsonSpeed;
+
+    QTimer *m_doorTimer;
+    QTimer *m_pantUpTimer;
+
+    // test variable for distance bar
+    double x{};
     QJsonObject m_jsonETCSB;
     QJsonObject m_jsonPosition;
+    QJsonObject m_jsonETCSC;
 
     QTimer *m_testTimer;
     QTimer *m_positionTimer;
@@ -56,6 +64,7 @@ private:
 
     void updateETCSB345(QJsonValue const & value);
     void updateETCSB7(QJsonValue const & value);
+    void updateETCSC(QJsonValue const & value);
 
     void updatePosition();
 
