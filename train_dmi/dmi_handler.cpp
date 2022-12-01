@@ -3,9 +3,6 @@
 #include <QJsonObject>
 #include <QQmlComponent>
 #include <QQuickItem>
-#include <QJSEngine>
-#include <QFile>
-#include <QMetaObject>
 
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
     m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{},
@@ -21,27 +18,6 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
 
     m_animationTimer->setInterval(500);
     m_animationTimer->start();
-
-    QString key = "repeater";
-       QObject *temp = m_rootObject->findChild<QObject*>(key);
-       if(temp == nullptr)
-           qDebug() << "funkar inte";
-       else
-       {
-           auto children = temp->findChildren<QObject*>();
-           qDebug() << children.at(0)->property("width");
-
-       }
-
-    //temp->setProperty("x", "white");
-
-/*
-   // QMetaObject::invokeMethod(this, "createPASPImage", Q_RETURN_ARG(QObject*, image));
-    //image->setProperty("x", 500);
-    //qDebug() << image.;
-   // something->setProperty("color","red");
-    //m_qmlObject->findChild<QObject>("speed").setProperty("color", "MyConst.orange");
-*/
 }
 
 DMI_Handler::DMI_Handler(bool testStart) : QObject(), m_client{new Network_Client{}},
@@ -102,17 +78,9 @@ DMI_Handler::~DMI_Handler()
         }
     }
 }*/
-/*
-void DMI_Handler::callCreatePASPImageInQML()
-{
-    emit doCreatePASPImage();
-}*/
 
 void DMI_Handler::receiveUpdate()
 {
-
-        firstTime = false;
-
 
     m_latestUpdate = m_client->getUpdate();
     foreach(const QString& key, m_latestUpdate.keys())

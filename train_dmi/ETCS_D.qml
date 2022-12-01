@@ -356,7 +356,7 @@ Item {
             color: "yellow"
         }
     }
-
+/*
     Repeater
     {
         model: 10
@@ -371,7 +371,7 @@ Item {
             x: d6.x + 3
             //visible: false
             objectName: "PASP" + index
-            y: index * 20
+            y: 0
 
             Image
             {
@@ -395,7 +395,7 @@ Item {
             }
         }
 
-    }
+    }*/
 
 /*
     function createPASPImage()
@@ -417,4 +417,144 @@ Item {
           createPASPImage()
         }
     }*/
+
+    Rectangle
+    {
+        color: "transparent"
+        height: 20
+        width: 40
+        x: d6.x + 3
+        //visible: false
+        objectName: "PASP0"
+        y: (d7.height - d7Collumn4.height)
+
+        Image
+        {
+            id: image0
+            source: "symbols/Planning/PL_21.png"
+            anchors.left: parent.left
+            height: 20
+            width: 20
+        }
+
+        Text
+        {
+            id: text0
+            text: qsTr("80")
+            font.pointSize: 12
+            anchors.left: image0.right
+        }
+    }
+
+    Rectangle
+    {
+        color: "transparent"
+        height: 20
+        width: 30
+        x: d6.x + 3
+        //visible: false
+        objectName: "PASP1"
+        y: 0
+
+        Image
+        {
+            id: image1
+            source: "symbols/Planning/PL_21.png"
+            anchors.left: parent.left
+            height: 20
+            width: 20
+        }
+
+        Text
+        {
+            id: text1
+            text: qsTr("120")
+            font.pointSize: 12
+            anchors.left: image1.right
+        }
+    }
+
+    Rectangle
+    {
+        color: "transparent"
+        height: 20
+        width: 30
+        x: d6.x + 3
+        //visible: false
+        objectName: "PASP2"
+        y: 0
+
+        Image
+        {
+            id: image2
+            source: "symbols/Planning/PL_21.png"
+            anchors.left: parent.left
+            height: 20
+            width: 20
+        }
+
+        Text
+        {
+            id: text2
+            text: qsTr("140")
+            font.pointSize: 12
+            anchors.left: image2.right
+        }
+    }
+
+    Rectangle
+    {
+        color: "transparent"
+        height: 20
+        width: 30
+        x: d6.x + 3
+        //visible: false
+        objectName: "PASP3"
+        y: 0
+
+        Image
+        {
+            id: image3
+            source: "symbols/Planning/PL_21.png"
+            anchors.left: parent.left
+            height: 20
+            width: 20
+        }
+
+        Text
+        {
+            id: text3
+            text: qsTr("40")
+            font.pointSize: 12
+            anchors.left: image3.right
+        }
+    }
+
+    Rectangle
+    {
+        color: "transparent"
+        height: 20
+        width: 30
+        x: d6.x + 3
+        //visible: false
+        objectName: "PASP4"
+        y: 0
+
+        Image
+        {
+            id: image4
+            source: "symbols/Planning/PL_21.png"
+            anchors.left: parent.left
+            height: 20
+            width: 20
+        }
+
+        Text
+        {
+            id: text4
+            text: qsTr("60")
+            font.pointSize: 12
+            anchors.left: image4.right
+        }
+    }
 }
