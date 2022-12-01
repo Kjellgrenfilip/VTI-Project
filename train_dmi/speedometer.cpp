@@ -82,11 +82,18 @@ void Speedometer::updateSpeedometer(QJsonObject update)
 
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "OvS")
         {
-
+            if(update.value(VTI_DMI::PERMITTED_SPEED).toDouble() < update.value(VTI_DMI::CURRENT_SPEED).toDouble())
+            {
+                obj->setProperty("needleColor", "orange");
+                obj->setProperty("speedDigitColor", "black");
+            }
         }
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "WaS")
         {
-
+            if(update.value(VTI_DMI::PERMITTED_SPEED).toDouble() < update.value(VTI_DMI::CURRENT_SPEED).toDouble())
+            {
+                obj->setProperty("needleColor", "orange");
+                obj->setProperty("speedDigitColor", "black");
         }
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "IndS")
         {
@@ -107,10 +114,14 @@ void Speedometer::updateSpeedometer(QJsonObject update)
             {
                 obj->setProperty("csgTopLayerHook", true);
                 obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
+                obj->setProperty("needleColor", "grey");
+                obj->setProperty("speedDigitColor", "black");
             }
             if(update.value(VTI_DMI::TARGET_SPEED).toDouble() <= update.value(VTI_DMI::CURRENT_SPEED).toDouble()
                     && update.value(VTI_DMI::PERMITTED_SPEED).toDouble() >= update.value(VTI_DMI::CURRENT_SPEED).toDouble() )
             {
+                obj->setProperty("needleColor", "yellow");
+                obj->setProperty("speedDigitColor", "black");
                 obj->setProperty("csgTopLayerHook", true);
                 obj->setProperty("topColor", "#DFDF00");
                 obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
@@ -121,8 +132,45 @@ void Speedometer::updateSpeedometer(QJsonObject update)
         }
         if(update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
         {
-
+            if(update.value(VTI_DMI::TARGET_SPEED).toDouble() <= update.value(VTI_DMI::CURRENT_SPEED).toDouble()
+                    && update.value(VTI_DMI::PERMITTED_SPEED).toDouble() >= update.value(VTI_DMI::CURRENT_SPEED).toDouble() )
+            {
+                obj->setProperty("needleColor", "yellow");
+                obj->setProperty("speedDigitColor", "black");
+            }
+            if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() < update.value(VTI_DMI::TARGET_SPEED).toDouble()
+                    && 0 <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() )
+            {
+                obj->setProperty("needleColor", "grey");
+                obj->setProperty("speedDigitColor", "black");
+            }
+            if(update.value(VTI_DMI::PERMITTED_SPEED).toDouble() < update.value(VTI_DMI::CURRENT_SPEED).toDouble())
+            {
+                obj->setProperty("needleColor", "red");
+                obj->setProperty("speedDigitColor", "white");
+            }
         }
     }
 }
+}
+    if(update.value(VTI_DMI::SUPERVISION_STATUS) == "RSM")
+    {
+        obj->setProperty("supervisionMode", update.value(VTI_DMI::SUPERVISION_STATUS));
+        if(update.value(VTI_DMI::STATUS_INFORMATION) == "IndS" || update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
+        {
+            if(0.0 <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::RELEASE_SPEED).toDouble())
+            {
+                obj->setProperty("needleColor", "yellow");
+                obj->setProperty("speedDigitColor", "black");
+            }
+        }
+        if(update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
+        {
+            if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() > update.value(VTI_DMI::RELEASE_SPEED).toDouble())
+            {
+                obj->setProperty("needleColor", "red");
+                obj->setProperty("speedDigitColor", "white");
+            }
+        }
+    }
 }
