@@ -12,7 +12,7 @@ Item
     property real anglePerSpeedRangeA1 : 192 / 200;
     property real anglePerSpeedRangeA2 : 96 / 200;
     property real startAngle : 126
-    property string needleColor : "lightgrey"
+    property string needleColor: "grey"
     property string range : "rangeA"
     //Properties that controls the if the Hooks are visible
     property bool targetHook: false
@@ -24,7 +24,7 @@ Item
     property bool csgMiddleLayerHook: false
 
     //Speed Related Properties
-    property real currentSpeed: 200
+    property real currentSpeed: 0
     property real permittedSpeed: 50
     property real targetSpeed: 60
     property real advisorySpeed: 0
@@ -37,6 +37,8 @@ Item
     property string topColor: MyConst.darkGrey
     property string thicColor: MyConst.darkGrey
     property string bottomColor: MyConst.darkGrey
+
+    property string speedDigitColor: "black"
 
     property real csgBottomLayerValue: 0
     property real csgMiddleLayerValue: 0
@@ -222,7 +224,7 @@ Item
             anchors.horizontalCenter:parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
 
-            source: "symbols/Speedometer/yellow_needle.png"
+            source: "symbols/Speedometer/"+needleColor+"_needle.png"
             scale: 0.1
 
             transform:
@@ -264,7 +266,7 @@ Item
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             anchors.margins: 2
-            color: "black"
+            color: speedDigitColor
             font.bold: true
             font.pointSize: 24
         }
