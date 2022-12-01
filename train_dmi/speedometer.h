@@ -23,6 +23,8 @@ private:
     double m_advisorySpeed;
     double m_previousSpeed;
 
+    bool autoBreak = false;
+
     QObject *m_rootObject;
 
     QString m_speedometerMode;
