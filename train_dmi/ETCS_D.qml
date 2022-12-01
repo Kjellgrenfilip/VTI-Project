@@ -3,7 +3,6 @@ import "Imports" 1.0
 import QtQuick.Controls 2.12
 
 Item {
-    objectName: "etcsD"
     anchors.fill: parent
     Grid
     {
@@ -62,6 +61,7 @@ Item {
             width: (93/246) * parent.width
             height: parent.height
             color: MyConst.paspDark
+            objectName: "d7"
             z: -3
 
                 Rectangle
@@ -127,14 +127,14 @@ Item {
                 height: parent.height
                 color: MyConst.yellow
                 anchors.right: parent.right
-
+/*
                Image
                {
                    id: planningImage
                    anchors.horizontalCenter: parent.horizontalCenter
                    anchors.margins: 2
                    source: "symbols/Planning/PL_21.png"
-               }
+               }*/
             }
         }
         Rectangle
@@ -357,6 +357,47 @@ Item {
         }
     }
 
+    Repeater
+    {
+        model: 10
+        id: repeater
+        objectName: "repeater"
+
+        Rectangle
+        {
+            color: "transparent"
+            height: 20
+            width: 30
+            x: d6.x + 3
+            //visible: false
+            objectName: "PASP" + index
+            y: index * 20
+
+            Image
+            {
+                id: image
+                source: "symbols/Planning/PL_21.png"
+                anchors.left: parent.left
+                height: 20
+                width: 20
+            }
+
+            Button
+            {
+                onPressed: console.log(parent.objectName)
+}
+            Text
+            {
+                id: text
+                text: qsTr("80")
+                font.pointSize: 12
+                anchors.left: image.right
+            }
+        }
+
+    }
+
+/*
     function createPASPImage()
      {
          console.log("hello");
@@ -367,7 +408,6 @@ Item {
              image.height = 400;
              image.show();
              return "hello";
-
      }
 
     Connections
@@ -376,5 +416,5 @@ Item {
         function onCreatePaspImage() {
           createPASPImage()
         }
-    }
+    }*/
 }

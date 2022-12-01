@@ -27,15 +27,15 @@ Item
             height: parent.height
             color: MyConst.backgroundColor
             objectName: "etcsB6"
+            visible: true
 
             Text
             {
                 id: b6Text
-                //text: qsTr("25")
+                text: qsTr("25")
                 color: MyConst.white
+                font.pointSize: parent.height/2
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                font.pointSize: parent.height/1.8
             }
 
             ETCS_Box3DEffect{}
@@ -48,7 +48,7 @@ Item
                     PropertyChanges
                     {
                         target: b6Text
-                        visible: false
+                        //visible: false
                     }
                 },
                 State

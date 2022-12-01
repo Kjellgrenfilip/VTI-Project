@@ -22,19 +22,26 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
     m_animationTimer->setInterval(500);
     m_animationTimer->start();
 
-    callCreatePASPImageInQML();
+    QString key = "repeater";
+       QObject *temp = m_rootObject->findChild<QObject*>(key);
+       if(temp == nullptr)
+           qDebug() << "funkar inte";
+       else
+       {
+           auto children = temp->findChildren<QObject*>();
+           qDebug() << children.at(0)->property("width");
 
-    QObject *image;
-    QString hello;
-    QMetaObject::invokeMethod(m_rootObject->findChild<QObject*>("etcsD"), "createPASPImage", Q_RETURN_ARG(QString, hello));
-    qDebug() << hello;/*
+       }
 
+    //temp->setProperty("x", "white");
+
+/*
    // QMetaObject::invokeMethod(this, "createPASPImage", Q_RETURN_ARG(QObject*, image));
     //image->setProperty("x", 500);
     //qDebug() << image.;
    // something->setProperty("color","red");
     //m_qmlObject->findChild<QObject>("speed").setProperty("color", "MyConst.orange");
-
+*/
 }
 
 DMI_Handler::DMI_Handler(bool testStart) : QObject(), m_client{new Network_Client{}},
@@ -103,19 +110,9 @@ void DMI_Handler::callCreatePASPImageInQML()
 
 void DMI_Handler::receiveUpdate()
 {
-    if(firstTime)
-    {
 
-        //QQmlComponent rectangle = QQmlComponent(m_Engine, QUrl("PASPImage.qml"));
-        qDebug() << "HERE";
-        QQuickItem *childItem = qobject_cast<QQuickItem*>(rectangle.create());
-        qDebug() << "HERE2";
-        childItem->setParent(m_qmlObject);
-        m_PASPQueue.enqueue(childItem);
-       // qDebug() << m_qmlObject->childItems().empty();
-        qDebug() << childItem->width();
-        firstTime = false;*/
-    }
+        firstTime = false;
+
 
     m_latestUpdate = m_client->getUpdate();
     foreach(const QString& key, m_latestUpdate.keys())
