@@ -8,11 +8,11 @@ The DMI is implemented in the QT version 6.4 with the addition of the multimedia
 
 ### How to start the application
 
-To start the application do the following steps:
+To start the application, do the following steps:
 
-- Build / run the *test_module*.
+- Build / run the *test_module* application.
 - Wait until the test_module has started (indicated by the debug message **server started**). 
-- Start the *train_dmi* module. 
+- Build / run the *train_dmi* application. 
 
 ## Known bugs
 
