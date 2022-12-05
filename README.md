@@ -1,6 +1,6 @@
 # Driver Machine Interface
 
-** QT versions **
+**QT versions**
 Designed and implemented in QT 6.4 with the addition of the multimedia module. 
 
 ---
