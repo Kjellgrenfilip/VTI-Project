@@ -25,9 +25,15 @@ Resultatet som genererats av studenten inom ramen för projektet ska ägas av *V
 ### Authors
 
 Filip Kjellgren
+
 Viktor Lindell
+
 Linus Olsson
+
 Pontus Kågström
+
 Erik Delbom
+
 Linus Bergman
+
 Mikael Johnsson
