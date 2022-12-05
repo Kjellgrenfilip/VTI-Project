@@ -17,3 +17,17 @@ To start the application, do the following steps:
 ## Known bugs
 
 - The application behaves & looks different depending on which OS the application is running on. 
+
+## Licence
+
+Resultatet som genererats av studenten inom ramen för projektet ska ägas av *VTI*, statens väg- och transportforskningsinstitut som kan ta det i drift och vidareutveckla det. Studenten bibehåller rätten att stå som upphovsman och visa upp de ursprungliga resultaten, t ex i CV och portfolio.
+
+### Authors
+
+Filip Kjellgren
+Viktor Lindell
+Linus Olsson
+Pontus Kågström
+Erik Delbom
+Linus Bergman
+Mikael Johnsson
