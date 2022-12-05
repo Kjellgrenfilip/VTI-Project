@@ -1,5 +1,4 @@
 import QtQuick 2.0
-import QtQml 2.15
 
 Item {
     id: pasp
@@ -19,7 +18,7 @@ Item {
         Image
         {
             id: image
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.fill: parent
         }
 
