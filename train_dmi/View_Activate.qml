@@ -2,21 +2,24 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import "Imports" 1.0
 
-Item
+Grid
 {
     id: activate
     anchors.fill: parent
+    rows: 2
+    columns: 3
     Rectangle
     {
-        anchors.fill: parent
-        color: "transparent"
+        height : parent.height * 3 / 4
+        width : parent.width/3
+        color :  "transparent"
         Button
         {
             id: activateButton
             objectName: "activate"
-            width: (activateButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
-            height:(activateButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
-            anchors.left: parent.left
+            width: activateButton.height
+            height: (activateButton.pressed) ? parent.height -5 : parent.height
+            anchors.horizontalCenter: parent.horizontalCenter
             padding: 0
             background: Rectangle
             {
@@ -73,20 +76,20 @@ Item
             ]
         }
 
+    }
+    Rectangle
+    {
+        height : parent.height * 3 / 4
+        width : parent.width/3
+        color: "transparent"
         Button
         {
             id: protectionButton
             objectName: "protection"
-            width: (protectionButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
-            height:(protectionButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
+            width: protectionButton.height
+            height: (protectionButton.pressed) ? parent.height -5 : parent.height
             anchors.horizontalCenter: parent.horizontalCenter
             enabled: false
-
-            background: Rectangle
-            {
-                anchors.fill: parent
-                color: MyConst.backgroundColor
-            }
 
             onPressed: buttonHandler.protectionPressed()
 
@@ -137,20 +140,20 @@ Item
                 }
             ]
         }
-
+    }
+    Rectangle
+    {
+        height : parent.height * 3 / 4
+        width : parent.width/3
+        color : "transparent"
         Button
         {
             id: cartButton
             objectName: "cart"
-            width: (cartButton.pressed) ? parent.width / 4 -10 : parent.width / 4 - 5
-            height:(cartButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
-            anchors.right: parent.right
+            width: cartButton.height
+            height:(cartButton.pressed) ? parent.height - 5 : parent.height
+            anchors.horizontalCenter: parent.horizontalCenter
             enabled: true
-            background: Rectangle
-            {
-                anchors.fill: parent
-                color: MyConst.backgroundColor
-            }
             Image
             {
                 id: cartImage
@@ -190,52 +193,148 @@ Item
                 }
             ]
         }
-
+    }
+    Rectangle
+    {
+        height: parent.height / 4
+        width: parent.width/3
+        color: "transparent"
         Text
         {
             id: activateText
-            width: parent.width/9
-            anchors.horizontalCenter: activateButton.horizontalCenter
-            anchors.bottom:parent.bottom
-
+            anchors.horizontalCenter: parent.horizontalCenter
+            //anchors.horizontalCenter: parent.horizontalCenter
+            //anchors.bottom:parent.bottom
             Text
             {
+                //anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("AKTIVERING")
                 font.pointSize: parent.width/3
                 color: "White"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
             }
         }
-
+    }
+    Rectangle
+    {
+        height: parent.height / 4
+        width: parent.width/3
+        color: "transparent"
         Text
         {
             id: protectionText
-            width: parent.width/9
-            anchors.bottom:parent.bottom
-            anchors.horizontalCenter: protectionButton.horizontalCenter
+
+            anchors.horizontalCenter: parent.horizontalCenter
             Text
             {
+                //anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("TÅGSKYDD")
                 font.pointSize: parent.width/3
                 color:"White"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
             }
         }
-
+    }
+    Rectangle
+    {
+        height: parent.height / 4
+        width: parent.width/3
+        color: "transparent"
         Text
         {
             id: cartText
-            anchors.bottom:parent.bottom
-            anchors.horizontalCenter: cartButton.horizontalCenter
-            width: parent.width/9
+            anchors.horizontalCenter: parent.horizontalCenter
             Text
             {
-                anchors.horizontalCenter: parent.horizontalCenter
+                //anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BYT HYTT")
                 font.pointSize: parent.width/3
                 color:"White"
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
             }
 
         }
     }
+
+//    Rectangle
+//    {
+//        Text
+//        {
+//            id: activateText
+//            width: parent.width/9
+//            anchors.horizontalCenter: activateButton.horizontalCenter
+//            anchors.bottom:parent.bottom
+
+//            Text
+//            {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                text: qsTr("AKTIVERING")
+//                font.pointSize: parent.width/3
+//                color: "White"
+//            }
+//        }
+//    }
+//    Rectangle
+//    {
+//        Text
+//        {
+//            id: protectionText
+//            width: parent.width/9
+//            anchors.bottom:parent.bottom
+//            anchors.horizontalCenter: protectionButton.horizontalCenter
+//            Text
+//            {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                text: qsTr("TÅGSKYDD")
+//                font.pointSize: parent.width/3
+//                color:"White"
+//            }
+//        }
+//    }
+//    Rectangle
+//    {
+//        Text
+//        {
+//            id: cartText
+//            anchors.bottom:parent.bottom
+//            anchors.horizontalCenter: cartButton.horizontalCenter
+//            width: parent.width/9
+//            Text
+//            {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                text: qsTr("BYT HYTT")
+//                font.pointSize: parent.width/3
+//                color:"White"
+//            }
+
+//        }
+//    }
+
+
 }
+
+//Item
+//{
+
+//    Rectangle
+//    {
+//        anchors.fill: parent
+//        color: "transparent"
+
+
+
+
+
+
+
+
+
+
+//    }
+//}
