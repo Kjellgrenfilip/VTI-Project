@@ -679,21 +679,17 @@ void Test_Module::resetStates()
          m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
          m_networkServer->sendUpdate(m_jsonSpeed);
          m_networkServer->delay(50);
-         if (i == 185)
-             m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "IntS");
      }
 
 
-     /*for(int i{199}; i >= 100; i--)
+     for(int i{199}; i >= 100; i--)
      {
          m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
          m_networkServer->sendUpdate(m_jsonSpeed);
          m_networkServer->delay(50);
          distTest--;
          m_jsonSpeed.insert(VTI_DMI::INTERVENTION_SPEED, distTest);
-
-
-     }*/
+     }
 
 
      m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "TSM");
