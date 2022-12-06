@@ -11,14 +11,18 @@ Item
         anchors.fill: parent
         color: "transparent"
     }
+
+    // Grey border around the button group
     Rectangle
     {
         anchors.fill: parent
         color: "transparent"
-        border.width: 10
-        border.color: "grey"
-        radius: 50
+        border.width: 5
+        border.color: MyConst.darkGrey
+        radius: 40
     }
+
+    // Text for doors button group
     Rectangle
     {
         width: parent.width / 2
@@ -33,6 +37,8 @@ Item
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
+
+    // The grid containing the buttons for doors button group
     Grid
     {
         id: gridDoors
@@ -43,6 +49,8 @@ Item
         rows: 2
         columns: 2
         anchors.margins: 30
+
+        // The left door button
         Button
         {
             id: doorLeftButton
@@ -111,6 +119,8 @@ Item
                  }
              ]
         }
+
+        // The right door button
         Button
         {
             id:doorRightButton
@@ -191,6 +201,8 @@ Item
                 }
             ]
         }
+
+        // The departure button
         Button
         {
             id:departureButton
@@ -282,6 +294,8 @@ Item
                  }
              ]
         }
+
+        // The button for closing doors
         Button
         {
             id:closedButton

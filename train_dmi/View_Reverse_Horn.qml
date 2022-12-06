@@ -12,6 +12,7 @@ Item
         anchors.fill: parent
         color: "transparent"
 
+        // The button for reverse
         Button
         {
             id: reverseButton
@@ -82,6 +83,8 @@ Item
                 }
                 ]
         }
+
+        // The button for the horn
         Button
         {
             id: hornButton
