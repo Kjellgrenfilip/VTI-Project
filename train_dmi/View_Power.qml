@@ -184,6 +184,11 @@ Item
                         target: pantChargeImage
                         source: "desk_ikoner/indicator_frame.png"
                     }
+                    PropertyChanges
+                    {
+                        target: pantChargeText
+                        color: "black"
+                    }
                 },
                 State
                 {
@@ -197,6 +202,11 @@ Item
                     {
                         target: pantChargeImage
                         source: "desk_ikoner/indicator_frameR.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: pantChargeText
+                        color: "white"
                     }
                 }
             ]
