@@ -17,6 +17,7 @@ To start the application, do the following steps:
 ## Known bugs
 
 - The application behaves & looks different depending on which OS the application is running on. 
+- The application window can be resized during runtime, and all graphics will scale after this. However the speedometer will not scale but instead remain the same size. 
 
 ## Licence
 
