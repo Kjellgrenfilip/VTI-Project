@@ -30,7 +30,7 @@ Item {
                     objectName: "textAreaInfoText"
                     anchors.fill: parent
                     color: "White"
-                    text: qsTr("hello")
+                    text: qsTr("")
                     font.pointSize: parent.width/24
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter

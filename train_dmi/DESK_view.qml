@@ -19,11 +19,6 @@ Item{
         background: Rectangle{
             anchors.fill: parent;
             color: MyConst.backgroundColor
-
-            Text{
-            text: "Left Desk PANEL";
-            color: "white";
-            }
         }
 
         GridLayout{
@@ -82,11 +77,6 @@ Item{
         background: Rectangle{
             anchors.fill: parent;
             color: MyConst.backgroundColor;
-
-            Text{
-            text: "bottom Desk PANEL";
-            color: "white";
-            }
         }
 
         Rectangle{
@@ -106,10 +96,6 @@ Item{
         background: Rectangle{
             anchors.fill: parent;
             color: MyConst.backgroundColor;
-            Text{
-            text: "right Desk PANEL";
-            color: "white";
-            }
         }
 
         GridLayout{
