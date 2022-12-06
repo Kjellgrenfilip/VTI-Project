@@ -3,8 +3,6 @@ import QtQuick.Controls 2.0
 
 import "Imports" 1.0
 
-import QtMultimedia
-
 Item
 {
     id: reverseHorn
@@ -14,6 +12,7 @@ Item
         anchors.fill: parent
         color: "transparent"
 
+        // The button for reverse
         Button
         {
             id: reverseButton
@@ -84,6 +83,8 @@ Item
                 }
                 ]
         }
+
+        // The button for the horn
         Button
         {
             id: hornButton
@@ -95,13 +96,7 @@ Item
             anchors.verticalCenter: parent.verticalCenter
             enabled: false
 
-            onPressed: { buttonHandler.hornPressed(); sound.play() }
-
-            SoundEffect
-            {
-                id: sound
-                source: "sounds/mlg-airhorn.wav"
-            }
+            onPressed: buttonHandler.hornPressed()
 
             Image
             {

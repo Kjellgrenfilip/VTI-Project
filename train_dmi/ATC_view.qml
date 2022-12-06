@@ -15,12 +15,6 @@ Item {
         {
             anchors.fill: parent;
             color: MyConst.backgroundColor;
-            border.color: "#bfbfbf";
-            border.width: 2;
-            Text{
-                text: "ATC_panel";
-                color:"white";
-            }
         }
     }
 }

@@ -24,6 +24,8 @@ Item {
                     id: topSign
                     anchors.fill: parent
                     background:Rectangle { color:"transparent"}
+                    hoverEnabled: false
+
                     Text
                     {
                         id: upperSign
@@ -435,6 +437,8 @@ Item {
                     id: scaleUp
                     anchors.fill: parent
                     background:Rectangle { color:"transparent"}
+                    hoverEnabled: false
+
                     Text
                     {
                         id: lowerSign

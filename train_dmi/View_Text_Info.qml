@@ -8,14 +8,16 @@ Item {
     {
         anchors.fill: parent
         color: "transparent"
+
+        // The area for showing received information
         Rectangle
         {
             width: parent.width*7/8 -5
             height: parent.height - 5
             color: "transparent"
-            border.width: 10
-            border.color: "grey"
-            radius: 25
+            border.width: 5
+            border.color: MyConst.darkGrey
+            radius: 20
             Text // should be textinput
             {
                 id: textAreaInfo
@@ -28,7 +30,7 @@ Item {
                     objectName: "textAreaInfoText"
                     anchors.fill: parent
                     color: "White"
-                    text: qsTr("hello")
+                    text: qsTr("")
                     font.pixelSize: parent.width/24
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -36,6 +38,8 @@ Item {
             }
         }
            }
+
+    // The button for acknowledging the received information
     Button
     {
         id: receiptButton

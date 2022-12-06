@@ -12,14 +12,18 @@ Item
         anchors.fill: parent
         color: "transparent"
     }
+
+    // Grey border around the button group
     Rectangle
     {
         anchors.fill: parent
         color: "transparent"
-        border.width: 10
-        border.color: "grey"
-        radius: 50
+        border.width: 5
+        border.color: MyConst.darkGrey
+        radius: 40
     }
+
+    // Text for the button group
     Rectangle
     {
         width: parent.width / 2

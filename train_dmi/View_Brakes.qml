@@ -7,16 +7,18 @@ Item
     id: brakes
     anchors.fill: parent
 
-    Rectangle       //Grey fram around ButtonGroup
+    //Grey frame around button group
+    Rectangle
     {
         anchors.fill: parent
         color: "transparent"
-        border.width: 10
-        border.color: "grey"
-        radius: 50
+        border.width: 5
+        border.color: MyConst.darkGrey
+        radius: 40
     }
 
-    Rectangle       //Rectangle to hold the text
+    // Text for brakes button group
+    Rectangle
     {
         width: parent.width / 2
         height: 30
@@ -41,6 +43,8 @@ Item
         rows: 2
         columns: 2
         anchors.margins: 30
+
+        // Button for parking brake
         Button
         {
 
@@ -115,6 +119,7 @@ Item
             ]
         }
 
+        // Button for the brake indicator
         Button
         {
             id: brakeIndicator
@@ -182,6 +187,8 @@ Item
                 }
             ]
         }
+
+        // Button for the electric brake
         Button
         {
             id: electricityBrake
@@ -268,6 +275,8 @@ Item
             ]
 
         }
+
+        // Button for the magnetic brake
         Button
         {
             id: magneticBrake

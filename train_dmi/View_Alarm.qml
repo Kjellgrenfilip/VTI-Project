@@ -7,14 +7,17 @@ Item {
     anchors.fill: parent
     Rectangle
     {
+        // Grey border around button group
         Rectangle
         {
             anchors.fill: parent
             color: "transparent"
-            border.width: 10
-            border.color: "grey"
-            radius: 50
+            border.width: 5
+            border.color: MyConst.darkGrey
+            radius: 20
         }
+
+        // Text for alarm button group
         Rectangle
         {
             width: parent.width / 2
@@ -32,6 +35,8 @@ Item {
         }
         anchors.fill: parent
         color: "transparent"
+
+        // Button for emergency brake
         Button
         {
             id: emergencyBrakeButton
@@ -123,6 +128,7 @@ Item {
             ]
         }
 
+        // Button for fire alam
         Button
         {
             id: fireButton

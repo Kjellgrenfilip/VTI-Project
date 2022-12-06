@@ -8,6 +8,8 @@ Item {
     {
         anchors.fill: parent
         color: "transparent"
+
+        // The button for front lights
         Button
         {
             id: lightButton
@@ -85,6 +87,8 @@ Item {
             ]
             onPressed: buttonHandler.lightPressed()
         }
+
+        // The button for emergency call
         Button
         {
             id: emergencyButton
