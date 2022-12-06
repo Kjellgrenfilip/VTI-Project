@@ -75,7 +75,7 @@ Item {
                     id: d1text1
                     text: d1.scale
                     width: parent.width
-                    font.pixelSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(0/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -84,7 +84,7 @@ Item {
                     id: d1text2
                     text: d1.scale/2
                     width:parent.width
-                    font.pixelSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(41/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -93,7 +93,7 @@ Item {
                     id: d1text3
                     text: d1.scale/4
                     width:parent.width
-                    font.pixelSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(84/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -102,7 +102,7 @@ Item {
                     id: d1text4
                     text: d1.scale/8
                     width:parent.width
-                    font.pixelSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(127/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -111,7 +111,7 @@ Item {
                     id: d1text5
                     text: qsTr("0")
                     width:parent.width
-                    font.pixelSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(261/270) * parent.height
                     horizontalAlignment: Text.AlignRight
