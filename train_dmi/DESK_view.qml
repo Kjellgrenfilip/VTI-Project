@@ -5,28 +5,28 @@ import QtQuick.Layouts 1.12
 import "Imports" 1.0
 
 
-Item{
+Item
+{
     anchors.fill: parent
     id: mainItem
 
-    Frame{
+    Frame
+    {
         id: leftFrame;
         anchors.left: mainItem.left;
         anchors.bottom: mainItem.bottom;
         width: parent.width/4
         height:(parent.height/6)*5;
 
-        background: Rectangle{
+        background: Rectangle
+        {
             anchors.fill: parent;
             color: MyConst.backgroundColor
 
-            Text{
-            text: "Left Desk PANEL";
-            color: "white";
-            }
         }
 
-        GridLayout{
+        GridLayout
+        {
             anchors.fill: parent;
             columns: 1;
             rows: 4;
@@ -34,16 +34,18 @@ Item{
             anchors.margins: 10;
 
             //Each rectangle represents a group of buttons. Insert one ButtonGroup per rectangle.
-            Rectangle{
+            Rectangle
+            {
                        id: powerButtons
                        color: "transparent";
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                        Layout.preferredHeight: (parent.height*3)/7
                        View_Power{}
-                     }
+             }
 
-            Rectangle{
+            Rectangle
+            {
                         id: doorButtons
                         color: "transparent";
                         Layout.fillHeight: true
@@ -82,11 +84,6 @@ Item{
         background: Rectangle{
             anchors.fill: parent;
             color: MyConst.backgroundColor;
-
-            Text{
-            text: "bottom Desk PANEL";
-            color: "white";
-            }
         }
 
         Rectangle{
@@ -106,10 +103,6 @@ Item{
         background: Rectangle{
             anchors.fill: parent;
             color: MyConst.backgroundColor;
-            Text{
-            text: "right Desk PANEL";
-            color: "white";
-            }
         }
 
         GridLayout{
