@@ -77,6 +77,7 @@ namespace VTI_DMI
     QString const STATUS_INFORMATION = "statusInformation";
 
 
+
     QJsonObject const JSON_BRAKES
     {
         { PARK_BRAKE,           STATE::DEFAULT },

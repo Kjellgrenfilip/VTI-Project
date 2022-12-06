@@ -44,6 +44,7 @@ Item
     property real csgMiddleLayerValue: 0
     property real csgTopLayerValue: 0
     property real csgThicLayerValue: 0
+    property real speedDistCoeff: 0
     //Properties related to visibility of different CSG's
     property bool bottomCSG: false
     property bool middleCSG: false

@@ -665,11 +665,12 @@ void Test_Module::resetStates()
          m_networkServer->delay(100);
      }
 
-
+     double distTest = 50.0;
      //CSM in OvS
      m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
      m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "OvS");
      m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 160);
+     m_jsonSpeed.insert(VTI_DMI::INTERVENTION_SPEED, 30.0);
      m_networkServer->sendUpdate(m_jsonSpeed);
      m_networkServer->delay(100);
 
@@ -678,13 +679,21 @@ void Test_Module::resetStates()
          m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
          m_networkServer->sendUpdate(m_jsonSpeed);
          m_networkServer->delay(50);
+         if (i == 185)
+             m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "IntS");
      }
-     for(int i{199}; i >= 100; i--)
+
+
+     /*for(int i{199}; i >= 100; i--)
      {
          m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
          m_networkServer->sendUpdate(m_jsonSpeed);
          m_networkServer->delay(50);
-     }
+         distTest--;
+         m_jsonSpeed.insert(VTI_DMI::INTERVENTION_SPEED, distTest);
+
+
+     }*/
 
 
      m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "TSM");
@@ -720,7 +729,7 @@ void Test_Module::resetStates()
 
 void Test_Module::demoPositionUpdate()
 {
-    m_trainPosition += 1;
-    updatePosition();
+   // m_trainPosition += 1;
+   //updatePosition();
 }
 

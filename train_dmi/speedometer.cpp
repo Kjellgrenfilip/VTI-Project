@@ -46,7 +46,7 @@ void Speedometer::updateSpeedometer(QJsonObject update)
                 obj->setProperty("thicColor", "#EA9100");
                 obj->setProperty("needleColor", "orange");
                 //obj->setProperty("csgThicLayerValue", (update.value(VTI_DMI::CURRENT_SPEED).toDouble())-(update.value(VTI_DMI::PERMITTED_SPEED).toDouble()));
-                obj->setProperty("csgThicLayerValue", 50.0);
+                obj->setProperty("csgThicLayerValue", update.value(VTI_DMI::INTERVENTION_SPEED).toDouble());
             }
             if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
                     obj->setProperty("thicCSG", false);
