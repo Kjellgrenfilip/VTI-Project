@@ -207,7 +207,7 @@ Item
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("AKTIVERING")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color: "White"
             }
         }
@@ -222,7 +222,7 @@ Item
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("TÅGSKYDD")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color:"White"
             }
         }
@@ -237,7 +237,7 @@ Item
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BYT HYTT")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color:"White"
             }
 

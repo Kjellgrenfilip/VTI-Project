@@ -28,7 +28,7 @@ Item
         Text
         {
             text: qsTr("DÖRRAR")
-            font.pointSize: doors.width / 25 // gives warning
+            font.pixelSize: doors.width / 25 // gives warning
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -223,7 +223,7 @@ Item
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 color: "white"
-                font.pointSize: parent.width /9
+                font.pixelSize: parent.width /9
             }
             onPressed: buttonHandler.departureButtonPressed()
 
