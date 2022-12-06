@@ -3,6 +3,7 @@
 #include <QQmlComponent>
 #include <QQuickItem>
 
+// Creates a DMI_handler with graphics.
 DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_client{new Network_Client{}},
     m_buttonHandler{new Button_Handler{}}, m_rootObject{obj}, m_animationTimer{new QTimer{this}}, m_jsonState{},
     m_speedometer{new Speedometer{obj}}
@@ -19,9 +20,10 @@ DMI_Handler::DMI_Handler(QQmlContext *rootContext, QObject *obj) : QObject(), m_
     m_animationTimer->start();
 }
 
-DMI_Handler::DMI_Handler(bool testStart) : QObject(), m_client{new Network_Client{}},
-    m_buttonHandler{new Button_Handler{}}, m_rootObject{}, m_animationTimer{new QTimer{this}},
-    m_jsonState{}, testStart(testStart)
+// Creates a DMI_handler which only has the logical functions initilized, no graphics.
+DMI_Handler::DMI_Handler(bool testStart) : QObject(), m_testStart(testStart),
+    m_client{new Network_Client{}}, m_buttonHandler{new Button_Handler{}}, m_rootObject{},
+    m_animationTimer{new QTimer{this}}, m_jsonState{}
 {
     connect(m_buttonHandler, SIGNAL(sendUpdate(QJsonObject)), m_client, SLOT(sendUpdate(QJsonObject)));
     connect(m_client, SIGNAL(updateReceived()),this, SLOT(receiveUpdate()));
@@ -35,6 +37,154 @@ DMI_Handler::~DMI_Handler()
     delete m_buttonHandler;
     delete m_animationTimer;
 }
+
+// Is called upon when a update is received by the network handler.
+// Processes the update information.
+void DMI_Handler::receiveUpdate()
+{
+    m_latestUpdate = m_client->getUpdate();
+    foreach(const QString& key, m_latestUpdate.keys())
+    {
+        if(key == VTI_DMI::SUPERVISION_STATUS)
+        {
+            m_speedometer->updateSpeedometer(m_latestUpdate);
+            return;
+        }
+        m_jsonState.insert(key, m_latestUpdate.value(key));
+
+        //Update GUI
+        if(!m_testStart)
+        {
+            QObject *obj = m_rootObject->findChild<QObject*>(key);
+            updateGUI(key, obj);
+        }
+    }
+}
+
+// Updates a GUI object determined by key and the value stored in latest_update.
+void DMI_Handler::updateGUI(QString const& key, QObject *obj)
+{
+    if(key == VTI_DMI::TRAIN_POSITION)
+    {
+        m_trainPos = m_latestUpdate.value(key).toDouble();
+        d5loghandler();
+        return;
+    }
+
+    if(!obj)
+    {
+        qDebug() << "Unknown object: " << key;
+        return;
+    }
+
+    if ( key == VTI_DMI::VELOCITY )
+    {
+        // Special case example
+    }
+
+    else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE || key == VTI_DMI::ETCSC3Text)
+    {
+        QString newValue = m_latestUpdate.value(key).toString();
+        obj->setProperty("text", newValue);
+    }
+
+    else if ( key == VTI_DMI::DISTANCE )
+    {
+        QString distanceStr = m_latestUpdate.value(key).toString();
+        obj->setProperty("text", distanceStr);
+
+        obj = m_rootObject->findChild<QObject*>(VTI_DMI::DISTANCE_BAR);
+        double distance = distanceStr.toDouble();
+        obj->setProperty("barValue", distanceToPixelHeight(distance));
+    }
+
+    else if( key == VTI_DMI::TEXTINFO)
+    {
+        QString newText = m_latestUpdate.value(key).toString();
+        obj->setProperty("text", newText);
+    }
+
+    else if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image
+              || key == VTI_DMI::ETCSB5Image  ||  key == VTI_DMI::ETCSB7Image
+              || key == VTI_DMI::ETCSC1Image)
+    {
+        QString value = m_latestUpdate.value(key).toString();
+        QString s;
+        if(key == VTI_DMI::ETCSB7Image)
+            s = "symbols/Track Conditions/MO_";
+        else if(key == VTI_DMI::ETCSC1Image)
+        {
+            s = "symbols/Level/LE_";
+        }
+        else
+            s = "symbols/Track Conditions/TC_";
+        s = s + value + ".bmp";
+        qDebug() << s;
+
+        obj->setProperty("source", s);
+    }
+
+    else if (key == VTI_DMI::GRADIENT_PROFILE)
+    {
+        // Receive gradient profile here :)
+    }
+
+    else
+    {
+        QString newState = m_latestUpdate.value(key).toString();
+        qDebug() << key << " : " << newState;
+        obj->setProperty("state", newState);
+    }
+}
+
+// Function that is triggered by a timer, which fires every .5 seconds.
+// The animation is done by switching which image in the buttons that is visible.
+void DMI_Handler::animationHandler()
+{
+    foreach(const QString& key, m_jsonState.keys())
+    {
+        QString currentState = m_jsonState.value(key).toString();
+        if ( currentState == STATE::WARNING || currentState == STATE::BLINKING )
+        {
+            QObject *image = m_rootObject->findChild<QObject*>(key + "Image");
+            if ( image == nullptr )
+                continue;
+
+            QObject *imageBlinking = m_rootObject->findChild<QObject*>(key + "ImageBlinking");
+            if ( imageBlinking == nullptr )
+                continue;
+
+            image->setProperty("visible", m_animationState);
+            imageBlinking->setProperty("visible", !m_animationState);
+            if(key == VTI_DMI::DOOR_CLOSE && !m_animationState)
+            {
+                m_doorCounter++;
+                if(m_doorCounter>3)
+                {
+                    m_doorCounter = 0;
+                    QJsonObject json{};
+                    json.insert(VTI_DMI::RESET_DOORS, true);
+                    m_client->sendUpdate(json);
+                }
+            }
+            if ( key == VTI_DMI::PANTOGRAPH_UP && !m_animationState)
+            {
+                m_pantCounter++;
+                if(m_pantCounter>3)
+                {
+                    m_pantCounter = 0;
+                    QJsonObject json{};
+                    json.insert(VTI_DMI::RESET_PANTOGRAPH_UP, true);
+                    m_client->sendUpdate(json);
+                }
+            }
+        }
+    }
+
+    m_animationState = !m_animationState;
+}
+
+// Updating the gradient in square D5.
 void DMI_Handler::d5loghandler()
 {
     double totalPixelHeight = 0;
@@ -47,7 +197,7 @@ void DMI_Handler::d5loghandler()
     {
         double logv = 0;
         double log = 0;
-        double y = m_gradientProfile[i].second - trainPos;
+        double y = m_gradientProfile[i].second - m_trainPos;
 
         if ( y < 0 )
         {
@@ -78,7 +228,7 @@ void DMI_Handler::d5loghandler()
             v = 0;
 
         QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
-        QObject *obj = m_rootObject->findChild<QObject*>(objectName); 
+        QObject *obj = m_rootObject->findChild<QObject*>(objectName);
         obj->setProperty("barValue", v);
         obj->setProperty("visible",true);
 
@@ -146,6 +296,7 @@ void DMI_Handler::d5loghandler()
     }
 }
 
+// Conversion from real distance to logarithmic pixel height.
 double DMI_Handler::toLogScale(double value)
 {
     double logValue = 0;
@@ -176,6 +327,7 @@ double DMI_Handler::toLogScale(double value)
     return logValue;
 }
 
+// Conversion from real distance to linear pixel height.
 double DMI_Handler::toLinScale(double value)
 {
     double lengthOfLinearPart = 41;
@@ -203,209 +355,7 @@ double DMI_Handler::toLinScale(double value)
     return result;
 }
 
-
-void DMI_Handler::receiveUpdate()
-{
-
-    m_latestUpdate = m_client->getUpdate();
-    foreach(const QString& key, m_latestUpdate.keys())
-    {
-        if(key == VTI_DMI::SUPERVISION_STATUS)
-        {
-            m_speedometer->updateSpeedometer(m_latestUpdate);
-            return;
-        }
-        m_jsonState.insert(key, m_latestUpdate.value(key));
-
-        //Update GUI
-        if(!testStart)
-        {
-            if(key == VTI_DMI::TRAIN_POSITION)
-            {
-                trainPos = m_latestUpdate.value(key).toDouble();
-                d5loghandler();
-                continue;
-            }
-
-            QObject *obj = m_rootObject->findChild<QObject*>(key);
-            if(!obj)
-            {
-                qDebug() << "Unknown object: " << key;
-                continue;
-            }
-
-            if ( key == VTI_DMI::VELOCITY )
-            {
-                // Special case example
-            }
-            else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE || key == VTI_DMI::ETCSC3Text)
-            {
-                QString newValue = m_latestUpdate.value(key).toString();
-                obj->setProperty("text", newValue);
-            }
-
-            else if ( key == VTI_DMI::DISTANCE )
-            {
-                QString distanceStr = m_latestUpdate.value(key).toString();
-                obj->setProperty("text", distanceStr);
-
-                obj = m_rootObject->findChild<QObject*>(VTI_DMI::DISTANCE_BAR);
-                double distance = distanceStr.toDouble();
-                obj->setProperty("barValue", distanceToPixelHeight(distance));
-            }
-
-            else if( key == VTI_DMI::TEXTINFO)
-            {
-                QString newText = m_latestUpdate.value(key).toString();
-                obj->setProperty("text", newText);
-            }
-
-            else if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image
-                      || key == VTI_DMI::ETCSB5Image  ||  key == VTI_DMI::ETCSB7Image
-                      || key == VTI_DMI::ETCSC1Image)
-            {
-                QString value = m_latestUpdate.value(key).toString();
-                QString s;
-                if(key == VTI_DMI::ETCSB7Image)
-                    s = "symbols/Track Conditions/MO_";
-                else if(key == VTI_DMI::ETCSC1Image)
-                {
-                    s = "symbols/Level/LE_";
-                }
-                else
-                    s = "symbols/Track Conditions/TC_";
-                s = s + value + ".bmp";
-                qDebug() << s;
-
-                obj->setProperty("source", s);
-            }
-            else if (key == VTI_DMI::GRADIENT_PROFILE)
-            {
-                // Receive gradient profile here :)
-            }
-            else
-            {
-                QString newState = m_latestUpdate.value(key).toString();
-                qDebug() << key << " : " << newState;
-                obj->setProperty("state", newState);
-            }
-            updateGUI(key, obj);
-        }
-    }
-}
-
-void DMI_Handler::updateGUI(QString const& key, QObject *obj)
-{
-    if ( key == VTI_DMI::VELOCITY )
-    {
-        //Special case
-    }
-    else if ( key == VTI_DMI::SPEEDLIMIT || key == VTI_DMI::DISTANCE || key == VTI_DMI::ETCSC3Text)
-    {
-        QString newValue = m_latestUpdate.value(key).toString();
-        obj->setProperty("text", newValue);
-    }
-
-    else if ( key == VTI_DMI::DISTANCE_BAR )
-    {
-        int newValue = m_latestUpdate.value(key).toDouble();
-        qDebug() << "DISTANCE: " << newValue;
-        obj->setProperty("barValue", newValue);
-    }
-
-    else if( key == VTI_DMI::TEXTINFO)
-    {
-        QString newText = m_latestUpdate.value(key).toString();
-        obj->setProperty("text", newText);
-    }
-
-    else if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image
-              || key == VTI_DMI::ETCSB5Image  ||  key == VTI_DMI::ETCSB7Image
-              || key == VTI_DMI::ETCSC1Image)
-    {
-        QString value = m_latestUpdate.value(key).toString();
-        QString s;
-        if(key == VTI_DMI::ETCSB7Image)
-            s = "symbols/Track Conditions/MO_";
-        else if(key == VTI_DMI::ETCSC1Image)
-        {
-            s = "symbols/Level/LE_";
-        }
-        else
-            s = "symbols/Track Conditions/TC_";
-        s = s + value + ".bmp";
-        qDebug() << s;
-
-        obj->setProperty("source", s);
-    }
-    else
-    {
-        QString newState = m_latestUpdate.value(key).toString();
-        qDebug() << key << " : " << newState;
-        obj->setProperty("state", newState);
-    }
-
-    if ( key == VTI_DMI::ETCSB3Image || key == VTI_DMI::ETCSB4Image || key == VTI_DMI::ETCSB5Image )
-    {
-        QString value = m_latestUpdate.value(key).toString();
-
-        QString s = "symbols/Track Conditions/TC_" + value + ".bmp";
-        qDebug() << s;
-        obj->setProperty("source", s);
-    }
-    else
-    {
-        QString newState = m_latestUpdate.value(key).toString();
-        qDebug() << key << " : " << newState;
-        obj->setProperty("state", newState);
-    }
-}
-
-void DMI_Handler::animationHandler()
-{
-    foreach(const QString& key, m_jsonState.keys())
-    {
-        QString currentState = m_jsonState.value(key).toString();
-        if ( currentState == STATE::WARNING || currentState == STATE::BLINKING )
-        {
-            QObject *image = m_rootObject->findChild<QObject*>(key + "Image");
-            if ( image == nullptr )
-                continue;
-
-            QObject *imageBlinking = m_rootObject->findChild<QObject*>(key + "ImageBlinking");
-            if ( imageBlinking == nullptr )
-                continue;
-
-            image->setProperty("visible", animationState);
-            imageBlinking->setProperty("visible", !animationState);
-            if(key == VTI_DMI::DOOR_CLOSE && !animationState)
-            {
-                doorCounter++;
-                if(doorCounter>3)
-                {
-                    doorCounter = 0;
-                    QJsonObject json{};
-                    json.insert(VTI_DMI::RESET_DOORS, true);
-                    m_client->sendUpdate(json);
-                }
-            }
-            if ( key == VTI_DMI::PANTOGRAPH_UP && !animationState)
-            {
-                pantCounter++;
-                if(pantCounter>3)
-                {
-                    pantCounter = 0;
-                    QJsonObject json{};
-                    json.insert(VTI_DMI::RESET_PANTOGRAPH_UP, true);
-                    m_client->sendUpdate(json);
-                }
-            }
-        }
-    }
-
-    animationState = !animationState;
-}
-
+// Converts the real distance to pixel height of the distance bar in A3.
 int DMI_Handler::distanceToPixelHeight(double distance)
 {
     double scaleLength{186};
@@ -424,6 +374,8 @@ int DMI_Handler::distanceToPixelHeight(double distance)
 
     return pixelHeight;
 }
+
+// Sets the max distance/scale of the D5 profile
 void DMI_Handler::recieveMaxDistance(int x)
 {
     m_maxDistance = x;
