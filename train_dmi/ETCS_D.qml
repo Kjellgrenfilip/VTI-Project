@@ -480,7 +480,7 @@ Item {
         Image
         {
             id: image0
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -508,7 +508,7 @@ Item {
         Image
         {
             id: image1
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -536,7 +536,7 @@ Item {
         Image
         {
             id: image2
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -564,7 +564,7 @@ Item {
         Image
         {
             id: image3
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -592,7 +592,7 @@ Item {
         Image
         {
             id: image4
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20

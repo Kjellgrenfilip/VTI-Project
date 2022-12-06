@@ -263,12 +263,12 @@ Item
         {
             id: speedText
             text: qsTr(currentSpeed.toString())
-            anchors.right: parent.right
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             anchors.margins: 2
             color: speedDigitColor
             font.bold: true
-            font.pointSize: 24
+            font.pixelSize: 20
         }
         transform: Translate
         {
