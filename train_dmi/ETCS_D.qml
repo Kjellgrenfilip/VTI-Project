@@ -32,7 +32,7 @@ Item {
                         anchors.fill: parent
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pointSize:(topSign.pressed) ? parent.height*2 - 15 : parent.height*2 - 10
+                        font.pixelSize:(topSign.pressed) ? parent.height*2 - 15 : parent.height*2 - 10
                         font.weight: 1
                     }
                     onPressed: buttonHandler.scaleDownPressed(d1.scale)
@@ -75,7 +75,7 @@ Item {
                     id: d1text1
                     text: d1.scale
                     width: parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(0/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -84,7 +84,7 @@ Item {
                     id: d1text2
                     text: d1.scale/2
                     width:parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(41/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -93,7 +93,7 @@ Item {
                     id: d1text3
                     text: d1.scale/4
                     width:parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(84/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -102,7 +102,7 @@ Item {
                     id: d1text4
                     text: d1.scale/8
                     width:parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(127/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -111,7 +111,7 @@ Item {
                     id: d1text5
                     text: qsTr("0")
                     width:parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(261/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -443,7 +443,7 @@ Item {
                         anchors.fill: parent
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pointSize:(scaleUp.pressed) ? parent.height - 5 : parent.height
+                        font.pixelSize:(scaleUp.pressed) ? parent.height - 5 : parent.height
 
                     }
                     onPressed:buttonHandler.scaleUpPressed(d1.scale)
@@ -480,7 +480,7 @@ Item {
         Image
         {
             id: image0
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -490,7 +490,7 @@ Item {
         {
             id: text0
             text: qsTr("80")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image0.right
         }
     }
@@ -508,7 +508,7 @@ Item {
         Image
         {
             id: image1
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -518,7 +518,7 @@ Item {
         {
             id: text1
             text: qsTr("120")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image1.right
         }
     }
@@ -536,7 +536,7 @@ Item {
         Image
         {
             id: image2
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -546,7 +546,7 @@ Item {
         {
             id: text2
             text: qsTr("140")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image2.right
         }
     }
@@ -564,7 +564,7 @@ Item {
         Image
         {
             id: image3
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -574,7 +574,7 @@ Item {
         {
             id: text3
             text: qsTr("40")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image3.right
         }
     }
@@ -592,7 +592,7 @@ Item {
         Image
         {
             id: image4
-            source: "symbols/Planning/PL_21.png"
+            source: "symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -602,7 +602,7 @@ Item {
         {
             id: text4
             text: qsTr("60")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image4.right
         }
     }

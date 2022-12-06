@@ -18,6 +18,8 @@ Item
             height:(activateButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.left: parent.left
             padding: 0
+            hoverEnabled: false
+
             background: Rectangle
             {
                 anchors.fill: parent
@@ -81,6 +83,7 @@ Item
             height:(protectionButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.horizontalCenter: parent.horizontalCenter
             enabled: false
+            hoverEnabled: false
 
             background: Rectangle
             {
@@ -146,6 +149,8 @@ Item
             height:(cartButton.pressed) ? parent.height/(14/9) - 10 : parent.height/(14/9) - 5
             anchors.right: parent.right
             enabled: true
+            hoverEnabled: false
+
             background: Rectangle
             {
                 anchors.fill: parent
@@ -202,7 +207,7 @@ Item
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("AKTIVERING")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color: "White"
             }
         }
@@ -217,7 +222,7 @@ Item
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("TÅGSKYDD")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color:"White"
             }
         }
@@ -232,7 +237,7 @@ Item
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BYT HYTT")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color:"White"
             }
 

@@ -29,7 +29,7 @@ Item {
                     anchors.fill: parent
                     color: "White"
                     text: qsTr("hello")
-                    font.pointSize: parent.width/24
+                    font.pixelSize: parent.width/24
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -58,7 +58,7 @@ Item {
             anchors.bottom: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("FEL")
-            font.pointSize: parent.width /8
+            font.pixelSize: parent.width /8
             color:"White"
         }
         Text
@@ -67,7 +67,7 @@ Item {
             text: qsTr("KVITT.")
             anchors.top: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pointSize: parent.width /8
+            font.pixelSize: parent.width /8
             color:"White"
         }
         onPressed: buttonHandler.receiptPressed()

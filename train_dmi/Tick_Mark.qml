@@ -26,7 +26,7 @@ Item
         x: placementRadius * Math.cos(alpha * Math.PI / 180) + 140
         y: placementRadius * Math.sin(alpha * Math.PI / 180) + 135
 
-        // Rotates the tickmark so that they point to the middle!
+        // Rotates the tickmark so that they pixel to the middle!
         transform: Rotation
         {
             origin.x: 0
@@ -40,7 +40,7 @@ Item
         text: speedValue.toString()
         color: "lightgrey"
         font.bold: true
-        font.pointSize: 15
+        font.pixelSize: 15
         visible: visibility
         x: 85 * Math.cos(alpha * Math.PI / 180) + 140
         y: 85 * Math.sin(alpha * Math.PI / 180) + 140
