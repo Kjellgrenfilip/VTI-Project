@@ -3,8 +3,6 @@ import QtQuick.Controls 2.0
 
 import "Imports" 1.0
 
-import QtMultimedia
-
 Item
 {
     id: reverseHorn
@@ -95,13 +93,7 @@ Item
             anchors.verticalCenter: parent.verticalCenter
             enabled: false
 
-            onPressed: { buttonHandler.hornPressed(); sound.play() }
-
-            SoundEffect
-            {
-                id: sound
-                source: "sounds/mlg-airhorn.wav"
-            }
+            onPressed: buttonHandler.hornPressed()
 
             Image
             {

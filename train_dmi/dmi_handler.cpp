@@ -38,20 +38,16 @@ DMI_Handler::~DMI_Handler()
 void DMI_Handler::d5loghandler()
 {
     double totalPixelHeight = 0;
-    double totalDistance = 0;
     double lin = 0;
     double linv = 0;
     double v = 0;
     int it = 1;
-
-    qDebug() << trainPos;
 
     for ( size_t i = 0; i < m_gradientProfile.size(); i++ )
     {
         double logv = 0;
         double log = 0;
         double y = m_gradientProfile[i].second - trainPos;
-        //qDebug() << "distance: " <<  m_gradientProfile[i].second << "-" << trainPos << "=" << y;
 
         if ( y < 0 )
         {
@@ -72,24 +68,19 @@ void DMI_Handler::d5loghandler()
         {
             log = m_maxDistance/8;
             logv = toLogScale(log);
-            lin = y; //- log;
+            lin = y;
             linv = toLinScale(lin);
             v = linv + logv;
         }
 
-        //qDebug() << v << " - " << totalPixelHeight << " = " << v - totalPixelHeight;
-        //qDebug() << "pixelheight" <<  v - totalPixelHeight;
-        //qDebug() << "totalHeight" << totalPixelHeight;
         v -= totalPixelHeight;
         if ( v < 0 )
             v = 0;
-
 
         QString objectName = QString::fromStdString("d5bar" + std::to_string(it++));
         QObject *obj = m_rootObject->findChild<QObject*>(objectName); 
         obj->setProperty("barValue", v);
         obj->setProperty("visible",true);
-        qDebug() << it-1 << ": " << v;
 
         if(m_gradientProfile.at(i).first <0)
         {
@@ -110,7 +101,6 @@ void DMI_Handler::d5loghandler()
                 QObject *textObj = m_rootObject->findChild<QObject*>(textObjectName);
                 textObj->setProperty("color", "#000000");
             }
-
         }
 
         if(v>20)
@@ -141,11 +131,8 @@ void DMI_Handler::d5loghandler()
         else
             obj->setProperty("lowerSign", "");
 
-
         totalPixelHeight += v;
     }
-    getchar();
-    //qDebug() << "it: " << it;
 
     while ( it <= 4 )
     {
@@ -157,7 +144,6 @@ void DMI_Handler::d5loghandler()
         obj->setProperty("upperSign", "");
         obj->setProperty("visible",false);
     }
-
 }
 
 double DMI_Handler::toLogScale(double value)
@@ -187,7 +173,6 @@ double DMI_Handler::toLogScale(double value)
     if ( logValue < 0 )
         logValue = 0;
 
-
     return logValue;
 }
 
@@ -215,8 +200,6 @@ double DMI_Handler::toLinScale(double value)
         }
     }
 
-
-
     return result;
 }
 
@@ -233,7 +216,7 @@ void DMI_Handler::receiveUpdate()
             return;
         }
         m_jsonState.insert(key, m_latestUpdate.value(key));
-        qDebug() << key;
+
         //Update GUI
         if(!testStart)
         {
