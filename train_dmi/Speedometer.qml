@@ -268,7 +268,7 @@ Item
             anchors.margins: 2
             color: speedDigitColor
             font.bold: true
-            font.pointSize: 24
+            font.pixelSize: 24
         }
         transform: Translate
         {
