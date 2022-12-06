@@ -3,16 +3,19 @@
 Button_Handler::Button_Handler() : QObject()
 {}
 
+// Used by all button functions to send an update to the server.
 void Button_Handler::sendSignal(QString const& object, bool const value)
 {
     QJsonObject json{};
     json.insert(object, value);
     emit sendUpdate(json);
 }
+
 //void Button_Handler::sendSignalMaxDistance(int x)
 //{
 
 //}
+
 void Button_Handler::activatePressed()
 {
     qDebug() << "Activate";
