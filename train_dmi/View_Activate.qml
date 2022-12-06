@@ -203,11 +203,8 @@ Grid
         {
             id: activateText
             anchors.horizontalCenter: parent.horizontalCenter
-            //anchors.horizontalCenter: parent.horizontalCenter
-            //anchors.bottom:parent.bottom
             Text
             {
-                //anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("AKTIVERING")
                 font.pointSize: parent.width/3
@@ -229,7 +226,6 @@ Grid
             anchors.horizontalCenter: parent.horizontalCenter
             Text
             {
-                //anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("TÅGSKYDD")
                 font.pointSize: parent.width/3
@@ -250,7 +246,6 @@ Grid
             anchors.horizontalCenter: parent.horizontalCenter
             Text
             {
-                //anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BYT HYTT")
                 font.pointSize: parent.width/3
                 color:"White"
@@ -261,80 +256,5 @@ Grid
 
         }
     }
-
-//    Rectangle
-//    {
-//        Text
-//        {
-//            id: activateText
-//            width: parent.width/9
-//            anchors.horizontalCenter: activateButton.horizontalCenter
-//            anchors.bottom:parent.bottom
-
-//            Text
-//            {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                text: qsTr("AKTIVERING")
-//                font.pointSize: parent.width/3
-//                color: "White"
-//            }
-//        }
-//    }
-//    Rectangle
-//    {
-//        Text
-//        {
-//            id: protectionText
-//            width: parent.width/9
-//            anchors.bottom:parent.bottom
-//            anchors.horizontalCenter: protectionButton.horizontalCenter
-//            Text
-//            {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                text: qsTr("TÅGSKYDD")
-//                font.pointSize: parent.width/3
-//                color:"White"
-//            }
-//        }
-//    }
-//    Rectangle
-//    {
-//        Text
-//        {
-//            id: cartText
-//            anchors.bottom:parent.bottom
-//            anchors.horizontalCenter: cartButton.horizontalCenter
-//            width: parent.width/9
-//            Text
-//            {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                text: qsTr("BYT HYTT")
-//                font.pointSize: parent.width/3
-//                color:"White"
-//            }
-
-//        }
-//    }
-
-
 }
 
-//Item
-//{
-
-//    Rectangle
-//    {
-//        anchors.fill: parent
-//        color: "transparent"
-
-
-
-
-
-
-
-
-
-
-//    }
-//}
