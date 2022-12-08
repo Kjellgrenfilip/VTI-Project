@@ -28,9 +28,10 @@ Item {
             {
                 id: alarmText
                 text: qsTr("LARM")
-                font.pixelSize: alarm.width / 25 // gives warning
+                font.pixelSize: alarm.width / 20 // gives warning
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.top
             }
         }
         anchors.fill: parent
