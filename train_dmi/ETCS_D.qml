@@ -493,6 +493,7 @@ Item {
         Text
         {
             id: text0
+            color: MyConst.grey
             text: qsTr("80")
             font.pixelSize: 12
             anchors.left: image0.right
@@ -521,6 +522,7 @@ Item {
         Text
         {
             id: text1
+            color: MyConst.grey
             text: qsTr("120")
             font.pixelSize: 12
             anchors.left: image1.right
@@ -549,6 +551,7 @@ Item {
         Text
         {
             id: text2
+            color: MyConst.grey
             text: qsTr("140")
             font.pixelSize: 12
             anchors.left: image2.right
@@ -577,6 +580,7 @@ Item {
         Text
         {
             id: text3
+            color: MyConst.grey
             text: qsTr("40")
             font.pixelSize: 12
             anchors.left: image3.right
@@ -589,7 +593,7 @@ Item {
         height: 20
         width: 30
         x: d6.x + 3
-        //visible: false
+        visible: false
         objectName: "PASP4"
         y: 0
 
@@ -605,6 +609,7 @@ Item {
         Text
         {
             id: text4
+            color: MyConst.grey
             text: qsTr("60")
             font.pixelSize: 12
             anchors.left: image4.right
