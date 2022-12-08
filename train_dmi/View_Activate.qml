@@ -271,7 +271,6 @@ Grid
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
-
         }
     }
 }
