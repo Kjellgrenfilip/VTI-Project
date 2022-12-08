@@ -153,7 +153,7 @@ Item
         visible: thicCSG
         value: ((csgThicLayerValue - 11) <= 0) ? 0 : csgThicLayerValue - 11
         gaugeColor: thicColor
-        startAngle1: speedometer.calcCSGAngle(permittedSpeed) + 126 + 3
+        startAngle1: speedometer.calcCSGAngle(permittedSpeed) + 126 + 3.5
         rX: 127
         rY:127
         type: "thic"

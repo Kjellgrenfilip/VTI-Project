@@ -229,7 +229,7 @@ void DMI_Handler::receiveUpdate()
     {
         if(key == VTI_DMI::SUPERVISION_STATUS)
         {
-            m_speedometer->updateSpeedometer(m_latestUpdate);
+           m_speedometer->updateSpeedometer(m_latestUpdate);
             return;
         }
         m_jsonState.insert(key, m_latestUpdate.value(key));

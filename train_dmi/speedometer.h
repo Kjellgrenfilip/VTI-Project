@@ -30,6 +30,11 @@ private:
     QString m_speedometerMode;
     QJsonObject m_values{VTI_DMI::JSON_SPEEDOMETER};
 
+    void updateCSM(QJsonObject update);
+    void updateCSM_NV(QJsonObject update);
+    void updateTSM(QJsonObject update);
+    void updateRSM(QJsonObject update);
+
 signals:
 
 };
