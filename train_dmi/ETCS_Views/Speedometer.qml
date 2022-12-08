@@ -3,7 +3,7 @@ import QtQuick.Shapes 1.15
 
 import QtQuick.Controls 2.15
 
-import "Imports" 1.0
+import "../Imports" 1.0
 Item
 {
     id: speedometer
@@ -224,7 +224,7 @@ Item
             anchors.horizontalCenter:parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
 
-            source: "symbols/Speedometer/"+needleColor+"_needle.png"
+            source: "../symbols/Speedometer/"+needleColor+"_needle.png"
             scale: 0.1
 
             transform:

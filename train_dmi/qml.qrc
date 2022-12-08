@@ -2,8 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>ATC_view.qml</file>
-        <file>ETCS_view.qml</file>
-        <file>DESK_view.qml</file>
         <file>Imports/Constants.qml</file>
         <file>Imports/qmldir</file>
         <file>desk_ikoner/indicator_frameR.png</file>
@@ -32,11 +30,8 @@
         <file>desk_ikoner/doorleftY.png</file>
         <file>desk_ikoner/doorrightY.png</file>
         <file>desk_ikoner/closedG.png</file>
-        <file>Speedometer.qml</file>
-        <file>ETCS_A.qml</file>
         <file>ETCS_icons/MO_21.bmp</file>
         <file>sounds/mlg-airhorn.wav</file>
-        <file>ETCS_B.qml</file>
         <file>symbols/Driver Request/DR_01.bmp</file>
         <file>symbols/Driver Request/DR_02.bmp</file>
         <file>symbols/Driver Request/DR_03.bmp</file>
@@ -189,11 +184,6 @@
         <file>symbols/Track Conditions/TC_35.bmp</file>
         <file>symbols/Track Conditions/TC_36.bmp</file>
         <file>symbols/Track Conditions/TC_37.bmp</file>
-        <file>ETCS_Box3DEffect.qml</file>
-        <file>Tick_Mark.qml</file>
-        <file>ETCS_C.qml</file>
-        <file>ETCS_D.qml</file>
-        <file>ETCS_D_GradientEffect.qml</file>
         <file>desk_ikoner/back.tif</file>
         <file>desk_ikoner/backR.tif</file>
         <file>desk_ikoner/backY.tif</file>
@@ -230,8 +220,6 @@
         <file>desk_ikoner/siren6.tif</file>
         <file>desk_ikoner/UpY.tif</file>
         <file>desk_ikoner/yellow.tif</file>
-        <file>CircularSpeedGauge.qml</file>
-        <file>CircularSpeedGauge3.qml</file>
         <file>symbols/Planning/PL_21.png</file>
         <file>symbols/Planning/PL_22.png</file>
         <file>symbols/Planning/PL_23.png</file>
@@ -248,5 +236,19 @@
         <file>Button_groups/View_Power.qml</file>
         <file>Button_groups/View_Reverse_Horn.qml</file>
         <file>Button_groups/View_Text_Info.qml</file>
+        <file>ETCS_Views/ETCS_A.qml</file>
+        <file>ETCS_Views/ETCS_B.qml</file>
+        <file>ETCS_Views/ETCS_Box3DEffect.qml</file>
+        <file>ETCS_Views/ETCS_BSpeedometer.qml</file>
+        <file>ETCS_Views/ETCS_C.qml</file>
+        <file>ETCS_Views/ETCS_D.qml</file>
+        <file>ETCS_Views/ETCS_D_GradientEffect.qml</file>
+        <file>ETCS_Views/CircularSpeedGauge.qml</file>
+        <file>ETCS_Views/CircularSpeedGauge3.qml</file>
+        <file>ETCS_Views/ETCS_view.qml</file>
+        <file>ETCS_Views/PASPImage.qml</file>
+        <file>ETCS_Views/Speedometer.qml</file>
+        <file>ETCS_Views/Tick_Mark.qml</file>
+        <file>Button_groups/DESK_view.qml</file>
     </qresource>
 </RCC>

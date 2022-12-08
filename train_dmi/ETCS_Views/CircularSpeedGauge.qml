@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Shapes 1.5
 import QtQuick.Controls 2.0
 
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item {
     id: circularGauge

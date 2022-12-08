@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item
 {
@@ -276,7 +276,7 @@ Item
                     PropertyChanges
                     {
                         target: etcsB7Image
-                        source: "symbols/Mode/MO_13.bmp"
+                        source: "../symbols/Mode/MO_13.bmp"
                         visible: true
                     }
                 }
