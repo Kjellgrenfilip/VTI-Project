@@ -273,7 +273,6 @@ Item
                     }
                 }
             ]
-
         }
 
         // Button for the magnetic brake
