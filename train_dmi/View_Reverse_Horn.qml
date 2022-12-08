@@ -49,7 +49,7 @@ Item
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BACK")
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             states:
                 [

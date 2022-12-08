@@ -45,7 +45,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("FRONT")
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             Text
             {
@@ -54,7 +54,7 @@ Item {
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             states:
             [
@@ -116,7 +116,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("NÖD")
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             Text
             {
@@ -125,7 +125,7 @@ Item {
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             states: [
                 State {

@@ -13,6 +13,7 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color :  "transparent"
+
         //Activation button
         Button
         {
@@ -84,6 +85,7 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color: "transparent"
+
         //Train protection button
         Button
         {
@@ -154,6 +156,7 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color : "transparent"
+
         // Change cart button
         Button
         {
@@ -209,6 +212,7 @@ Grid
             ]
         }
     }
+
     // Text for activation button
     Rectangle
     {
@@ -224,12 +228,13 @@ Grid
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("AKTIVERING")
                 font.pixelSize: parent.width/3
-                color: "White"
+                color: MyConst.white
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
         }
     }
+
     // Text for train protection button
     Rectangle
     {
@@ -246,12 +251,13 @@ Grid
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("TÅGSKYDD")
                 font.pixelSize: parent.width/3
-                color:"White"
+                color: MyConst.white
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
         }
     }
+
     // Text for changing cart button
     Rectangle
     {
@@ -266,7 +272,7 @@ Grid
             {
                 text: qsTr("BYT HYTT")
                 font.pixelSize: parent.width/3
-                color:"White"
+                color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
