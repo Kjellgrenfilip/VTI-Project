@@ -33,7 +33,7 @@ Item
         {
             text: qsTr("DÖRRAR")
             font.pixelSize: doors.width / 25 // gives warning
-            color: "white"
+            color: MyConst.white
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
@@ -229,7 +229,7 @@ Item
                 anchors.margins:10
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: "white"
+                color: MyConst.white
                 font.pixelSize: parent.width /9
             }
             onPressed: buttonHandler.departureButtonPressed()
@@ -266,24 +266,24 @@ Item
                 },
                 State
                 {
-                     name: "inactive";
-                     PropertyChanges
-                     {
+                    name: "inactive";
+                    PropertyChanges
+                    {
                         target: departureImage
                         visible:true
-                     }
-                     PropertyChanges
-                     {
+                    }
+                    PropertyChanges
+                    {
                         target: departureImageBlinking
                         visible:false
-                     }
-                     PropertyChanges
-                     {
+                    }
+                    PropertyChanges
+                    {
                         target: departureButton
                         enabled: false
-                     }
-                 }
-             ]
+                    }
+                }
+            ]
         }
 
         // The button for closing doors

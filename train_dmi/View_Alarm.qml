@@ -23,13 +23,13 @@ Item {
             width: parent.width / 2
             height: 30
             x: parent.width / 4
-            color: "#041122"
+            color: MyConst.backgroundColor
             Text
             {
                 id: alarmText
                 text: qsTr("LARM")
                 font.pixelSize: alarm.width / 25 // gives warning
-                color: "white"
+                color: MyConst.backgroundColor
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }
@@ -74,8 +74,9 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("NBÖ")
                 font.pixelSize: parent.width /8
-                color: "White"
+                color: MyConst.white
             }
+
             states:
                 [
                 State
@@ -165,7 +166,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BRAND")
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
 
             states:

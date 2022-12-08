@@ -29,7 +29,7 @@ Item {
                     id: textAreaInfoText
                     objectName: "textAreaInfoText"
                     anchors.fill: parent
-                    color: "White"
+                    color: MyConst.white
                     text: qsTr("")
                     font.pixelSize: parent.width/24
                     horizontalAlignment: Text.AlignHCenter
@@ -63,7 +63,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("FEL")
             font.pixelSize: parent.width /8
-            color:"White"
+            color: MyConst.white
         }
         Text
         {
@@ -72,7 +72,7 @@ Item {
             anchors.top: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: parent.width /8
-            color:"White"
+            color: MyConst.white
         }
         onPressed: buttonHandler.receiptPressed()
 

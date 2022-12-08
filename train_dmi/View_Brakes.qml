@@ -29,7 +29,7 @@ Item
             id: brake
             text: qsTr("BROMS")
             font.pixelSize: brakes.width / 25 // gives warning
-            color: "white"
+            color: MyConst.white
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
@@ -69,7 +69,7 @@ Item
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("PARK")
                 font.pixelSize: parent.width /8
-                color: "White"
+                color: MyConst.white
             }
 
             states:
@@ -140,7 +140,7 @@ Item
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BROMS")
                 font.pixelSize: parent.width /9
-                color:"White"
+                color: MyConst.white
             }
             Text
             {
@@ -149,7 +149,7 @@ Item
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: parent.width /9
-                color:"White"
+                color: MyConst.white
             }
             states:
                 [
@@ -211,7 +211,7 @@ Item
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("ELBR")
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             Text
             {
@@ -219,9 +219,8 @@ Item
                 text: qsTr("TILL")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                //y:broms.y + 30
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             states:
                 [
@@ -301,7 +300,7 @@ Item
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("MG")
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             states:
                 [

@@ -34,7 +34,7 @@ Item
         {
             text: qsTr("SPÄNNING")
             font.pixelSize: power.width / 25
-            color: "white"
+            color: MyConst.white
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
@@ -164,7 +164,7 @@ Item
             {
                 id: pantChargeText
                 text: qsTr("0V")
-                color: "white"
+                color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -187,7 +187,7 @@ Item
                     PropertyChanges
                     {
                         target: pantChargeText
-                        color: "black"
+                        color: MyConst.black
                     }
                 },
                 State
@@ -206,7 +206,7 @@ Item
                     PropertyChanges
                     {
                         target: pantChargeText
-                        color: "white"
+                        color: MyConst.white
                     }
                 }
             ]
@@ -471,7 +471,7 @@ Item
 
             onPressed: buttonHandler.heatingPressed()
             states:
-                [
+            [
                 State
                 {
                     name: "default"
@@ -514,7 +514,7 @@ Item
                         enabled: true
                     }
                 }
-                ]
+            ]
         }
     }
 }
