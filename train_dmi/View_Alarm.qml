@@ -28,7 +28,7 @@ Item {
             {
                 id: alarmText
                 text: qsTr("LARM")
-                font.pointSize: alarm.width / 25 // gives warning
+                font.pixelSize: alarm.width / 25 // gives warning
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
@@ -73,7 +73,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("NBÖ")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color: "White"
             }
             states:
@@ -164,7 +164,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BRAND")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
 

@@ -1,10 +1,10 @@
 # Driver Machine Interface
 
-A project in which a standalone Driver Machine Interface (DMI) is developed. The DMI is designed to be used togheter with a simulator made by VTI.
+A project in which a standalone Driver Machine Interface (DMI) is developed. The DMI is designed to be used togheter with a simulator made by VTI, The Swedish National Road and Transport Research Institute.
 
 ## Information about QT
 
-The DMI is implemented in the QT version 6.4 with the addition of the multimedia module. The module can be added to the framework via the included **maintenanceTool**.
+The DMI is implemented in QT, version 6.4. Additionaly the offical QT multimedia module is required. The module can be added to the framework via the included **maintenanceTool**.
 
 ### How to start the application
 
@@ -17,6 +17,7 @@ To start the application, do the following steps:
 ## Known bugs
 
 - The application behaves & looks different depending on which OS the application is running on. 
+- The application window can be resized during runtime, and all graphics will scale according to the new window size. However the speedometer will not scale but instead remain the same size. 
 
 ## Licence
 

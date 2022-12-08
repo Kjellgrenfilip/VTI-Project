@@ -44,7 +44,7 @@ Item {
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("FRONT")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
             Text
@@ -53,7 +53,7 @@ Item {
                 text: qsTr("LJUS")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
             states:
@@ -115,7 +115,7 @@ Item {
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("NÖD")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
             Text
@@ -124,7 +124,7 @@ Item {
                 text: qsTr("ANROP")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
             states: [

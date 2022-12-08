@@ -28,7 +28,7 @@ Item
         {
             id: brake
             text: qsTr("BROMS")
-            font.pointSize: brakes.width / 25 // gives warning
+            font.pixelSize: brakes.width / 25 // gives warning
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -68,7 +68,7 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("PARK")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color: "White"
             }
 
@@ -139,7 +139,7 @@ Item
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BROMS")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /9
                 color:"White"
             }
             Text
@@ -148,7 +148,7 @@ Item
                 text: qsTr("FRÅN")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /9
                 color:"White"
             }
             states:
@@ -210,7 +210,7 @@ Item
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("ELBR")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
             Text
@@ -220,7 +220,7 @@ Item
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 //y:broms.y + 30
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
             states:
@@ -301,7 +301,7 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("MG")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
             states:
