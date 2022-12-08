@@ -13,6 +13,7 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color :  "transparent"
+        //Activation button
         Button
         {
             id: activateButton
@@ -82,6 +83,7 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color: "transparent"
+        //Train protection button
         Button
         {
             id: protectionButton
@@ -146,6 +148,7 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color : "transparent"
+        // Change cart button
         Button
         {
             id: cartButton
@@ -194,6 +197,7 @@ Grid
             ]
         }
     }
+    // Text for activation button
     Rectangle
     {
         height: parent.height / 4
@@ -214,6 +218,7 @@ Grid
             }
         }
     }
+    // Text for train protection button
     Rectangle
     {
         height: parent.height / 4
@@ -235,6 +240,7 @@ Grid
             }
         }
     }
+    // Text for changing cart button
     Rectangle
     {
         height: parent.height / 4
