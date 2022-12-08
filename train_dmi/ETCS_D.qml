@@ -479,7 +479,7 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP0"
-        y: (d7.height - d7Collumn4.height)
+        y: (d7.height - d7Collumn4.height) + height/2
 
         Image
         {
@@ -508,7 +508,7 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP1"
-        y: (d7.height - d7Collumn3.height)
+        y: (d7.height - d7Collumn3.height) + height/2
 
         Image
         {
@@ -537,7 +537,7 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP2"
-        y: (d7.height - d7Collumn2.height)
+        y: (d7.height - d7Collumn2.height) + height/2
 
         Image
         {
@@ -566,7 +566,7 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP3"
-        y: 0
+        y: 0  + height/2
 
         Image
         {
@@ -595,7 +595,7 @@ Item {
         x: d6.x + 3
         visible: false
         objectName: "PASP4"
-        y: 0
+        y: 0  + height/2
 
         Image
         {
