@@ -33,9 +33,10 @@ Item
         Text
         {
             text: qsTr("SPÄNNING")
-            font.pixelSize: power.width / 25
+            font.pixelSize: power.width / 20
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.top
         }
     }
 
