@@ -6,26 +6,18 @@
         <file>DESK_view.qml</file>
         <file>Imports/Constants.qml</file>
         <file>Imports/qmldir</file>
-        <file>View_Power.qml</file>
         <file>desk_ikoner/indicator_frameR.png</file>
         <file>desk_ikoner/Up.png</file>
         <file>desk_ikoner/indicator_frame.png</file>
         <file>desk_ikoner/Down.png</file>
         <file>desk_ikoner/yellow.png</file>
         <file>desk_ikoner/button69.png</file>
-        <file>View_Doors.qml</file>
         <file>desk_ikoner/doorleft.png</file>
         <file>desk_ikoner/doorright.png</file>
         <file>desk_ikoner/avgang.png</file>
         <file>desk_ikoner/closed.png</file>
-        <file>View_Brakes.qml</file>
-        <file>View_Alarm.qml</file>
-        <file>View_Light_Emergency.qml</file>
-        <file>View_Activate.qml</file>
         <file>desk_ikoner/power_green.png</file>
-        <file>View_Reverse_Horn.qml</file>
         <file>desk_ikoner/siren5.png</file>
-        <file>View_Text_Info.qml</file>
         <file>desk_ikoner/redButton.png</file>
         <file>sounds/S_info.wav</file>
         <file>sounds/S_info_2.wav</file>
@@ -248,5 +240,13 @@
         <file>symbols/Speedometer/red_needle.png</file>
         <file>symbols/Speedometer/white_needle.png</file>
         <file>symbols/Speedometer/grey_needle.png</file>
+        <file>Button_groups/View_Activate.qml</file>
+        <file>Button_groups/View_Alarm.qml</file>
+        <file>Button_groups/View_Brakes.qml</file>
+        <file>Button_groups/View_Doors.qml</file>
+        <file>Button_groups/View_Light_Emergency.qml</file>
+        <file>Button_groups/View_Power.qml</file>
+        <file>Button_groups/View_Reverse_Horn.qml</file>
+        <file>Button_groups/View_Text_Info.qml</file>
     </qresource>
 </RCC>

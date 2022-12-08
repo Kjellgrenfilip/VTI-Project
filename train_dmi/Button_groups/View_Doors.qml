@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item
 {
@@ -65,7 +65,7 @@ Item
                 id: doorLeftImage
                 objectName: "doorLeftImage"
                 anchors.fill: parent
-                source: "desk_ikoner/doorleft.png"
+                source: "../desk_ikoner/doorleft.png"
                 visible: true
             }
             Image
@@ -73,7 +73,7 @@ Item
                 id: doorLeftImageBlinking
                 objectName: "doorLeftImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/doorleftY.png"
+                source: "../desk_ikoner/doorleftY.png"
                 visible: false
             }
             states:
@@ -132,7 +132,7 @@ Item
                 id:doorRightImage
                 objectName: "doorRightImage"
                 anchors.fill: parent
-                source: "desk_ikoner/doorright.png"
+                source: "../desk_ikoner/doorright.png"
                 visible: true
             }
             Image
@@ -140,7 +140,7 @@ Item
                 id:doorRightImageBlinking
                 objectName: "doorRightImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/doorrightY.png"
+                source: "../desk_ikoner/doorrightY.png"
                 visible:false
             }
 
@@ -211,7 +211,7 @@ Item
                 id: departureImage
                 objectName: "departureImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -219,7 +219,7 @@ Item
                 id: departureImageBlinking
                 objectName: "departureImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/green.png"
+                source: "../desk_ikoner/green.png"
                 visible: false
             }
             Text {
@@ -300,7 +300,7 @@ Item
                 id: closedImage
                 objectName: "doorCloseImage"
                 anchors.fill: parent
-                source: "desk_ikoner/closed.png"
+                source: "../desk_ikoner/closed.png"
                 visible: true
             }
             Image
@@ -308,7 +308,7 @@ Item
                 id: closedImageBlinking
                 objectName: "doorCloseImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/closedG.png"
+                source: "../desk_ikoner/closedG.png"
                 visible: false
             }
 

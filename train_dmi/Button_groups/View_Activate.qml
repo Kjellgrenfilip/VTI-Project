@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Grid
 {
@@ -33,7 +33,7 @@ Grid
             {
                 id: activateImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_green_3d.png"
+                source: "../desk_ikoner/power_green_3d.png"
             }
 
             onPressed: buttonHandler.activatePressed()
@@ -48,7 +48,7 @@ Grid
                 {
                     target: activateImage
                     property: "source"
-                    to: "desk_ikoner/power_green_3d.png"
+                    to: "../desk_ikoner/power_green_3d.png"
                     duration: MyConst.animationDuration
                 }
 
@@ -56,7 +56,7 @@ Grid
                 {
                     target: activateImage
                     property: "source"
-                    to: "desk_ikoner/power_white_3d.png"
+                    to: "../desk_ikoner/power_white_3d.png"
                     duration: MyConst.animationDuration
                 }
             }
@@ -67,7 +67,7 @@ Grid
                     PropertyChanges
                     {
                         target: activateImage
-                        source:"desk_ikoner/power_green_3d.png"
+                        source:"../desk_ikoner/power_green_3d.png"
                     }
                     PropertyChanges
                     {
@@ -105,7 +105,7 @@ Grid
             {
                 id: protectionImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_white_3d.png"
+                source: "../desk_ikoner/power_white_3d.png"
             }
             SequentialAnimation
             {
@@ -117,7 +117,7 @@ Grid
                 {
                     target: protectionImage
                     property: "source"
-                    to: "desk_ikoner/power_green_3d.png"
+                    to: "../desk_ikoner/power_green_3d.png"
                     duration: MyConst.animationDuration
                 }
 
@@ -125,7 +125,7 @@ Grid
                 {
                     target: protectionImage
                     property: "source"
-                    to: "desk_ikoner/power_white_3d.png"
+                    to: "../desk_ikoner/power_white_3d.png"
                     duration: MyConst.animationDuration
                 }
             }
@@ -173,7 +173,7 @@ Grid
             {
                 id: cartImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_green_3d.png"
+                source: "../desk_ikoner/power_green_3d.png"
             }
 
             states:
@@ -189,7 +189,7 @@ Grid
                     PropertyChanges
                     {
                         target: cartImage
-                        source: "desk_ikoner/power_green_3d.png"
+                        source: "../desk_ikoner/power_green_3d.png"
                     }
                 },
                 State
@@ -203,7 +203,7 @@ Grid
                     PropertyChanges
                     {
                         target: cartImage
-                        source: "desk_ikoner/power_white_3d.png"
+                        source: "../desk_ikoner/power_white_3d.png"
                     }
                 }
             ]
