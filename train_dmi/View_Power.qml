@@ -16,7 +16,8 @@ Item
     // Grey border around the button group
     Rectangle
     {
-        anchors.fill: parent
+        width: parent.width
+        height: parent.height - 10
         color: "transparent"
         border.width: 5
         border.color: MyConst.darkGrey

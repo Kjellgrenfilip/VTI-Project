@@ -28,9 +28,10 @@ Item
         {
             id: brake
             text: qsTr("BROMS")
-            font.pixelSize: brakes.width / 25 // gives warning
+            font.pixelSize: brakes.width / 20 // gives warning
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.top
         }
     }
     Grid
