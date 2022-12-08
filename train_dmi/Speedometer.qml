@@ -263,7 +263,7 @@ Item
         {
             id: speedText
             text: qsTr(currentSpeed.toString())
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             anchors.margins: 2
             color: speedDigitColor
