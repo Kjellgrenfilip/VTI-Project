@@ -47,7 +47,7 @@ Item
         rows: 3
         columns: 2
         anchors.margins: 30
-
+        //clickable pantograph up button
         Button
         {
             id:pantUpButton
@@ -274,7 +274,7 @@ Item
                 ]
         }
 
-        // non-clickable current indicator?
+        // non-clickable current indicator
         Button
         {
             id:voltageWarningButton
