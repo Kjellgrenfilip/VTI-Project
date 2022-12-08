@@ -18,7 +18,7 @@ Item {
             border.width: 5
             border.color: MyConst.darkGrey
             radius: 20
-            Text // should be textinput
+            Text
             {
                 id: textAreaInfo
                 objectName: "textInfo"
@@ -37,7 +37,7 @@ Item {
                 }
             }
         }
-           }
+    }
 
     // The button for acknowledging the received information
     Button
