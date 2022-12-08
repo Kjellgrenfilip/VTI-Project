@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 Item {
     id: textInfo
     anchors.fill: parent
@@ -54,7 +54,7 @@ Item {
         {
             id: receiptImage
             anchors.fill: parent
-            source: "desk_ikoner/button69.png"
+            source: "../desk_ikoner/button69.png"
         }
         Text
         {

@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 Item {
     id: lightEmergency
     anchors.fill: parent
@@ -26,7 +26,7 @@ Item {
                 id: lightImage
                 objectName: "lightImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -34,7 +34,7 @@ Item {
                 id: lightImageBlinking
                 objectName: "lightImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/yellow.png"
+                source: "../desk_ikoner/yellow.png"
                 visible: false
             }
 
@@ -105,7 +105,7 @@ Item {
                 id: emergencyImage
                 objectName: "emergencyCallImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
 
@@ -136,7 +136,7 @@ Item {
                     }
                     PropertyChanges {
                         target: emergencyImage
-                        source: "desk_ikoner/redButton.png"
+                        source: "../desk_ikoner/redButton.png"
                     }
                 }
 

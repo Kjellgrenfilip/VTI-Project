@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item
 {
@@ -60,7 +60,7 @@ Item
             {
                 id: parkImage
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
             }
             Text
             {
@@ -80,7 +80,7 @@ Item
                 PropertyChanges
                 {
                     target: parkImage
-                    source:"desk_ikoner/yellow.png"
+                    source:"../desk_ikoner/yellow.png"
                 }
                 PropertyChanges
                 {
@@ -94,7 +94,7 @@ Item
                 PropertyChanges
                 {
                     target: parkImage
-                    source:"desk_ikoner/yellow.png"
+                    source:"../desk_ikoner/yellow.png"
                 }
                 PropertyChanges
                 {
@@ -108,7 +108,7 @@ Item
                 PropertyChanges
                 {
                     target: parkImage
-                    source:"desk_ikoner/button69.png"
+                    source:"../desk_ikoner/button69.png"
                 }
                 PropertyChanges
                 {
@@ -131,7 +131,7 @@ Item
             {
                 id: brakeImage
                 anchors.fill: parent
-                source: "desk_ikoner/indicator_frame.png"
+                source: "../desk_ikoner/indicator_frame.png"
             }
             Text
             {
@@ -159,7 +159,7 @@ Item
                     PropertyChanges
                     {
                         target: brakeImage
-                        source:"desk_ikoner/indicator_frame_green.png"
+                        source:"../desk_ikoner/indicator_frame_green.png"
                     }
                 },
                 State
@@ -168,7 +168,7 @@ Item
                     PropertyChanges
                     {
                         target: brakeImage
-                        source:"desk_ikoner/indicator_frameR.png"
+                        source:"../desk_ikoner/indicator_frameR.png"
                     }
                     PropertyChanges
                     {
@@ -182,7 +182,7 @@ Item
                     PropertyChanges
                     {
                         target: brakeImage
-                        source:"desk_ikoner/indicator_frame_green.png"
+                        source:"../desk_ikoner/indicator_frame_green.png"
                     }
                 }
             ]
@@ -202,7 +202,7 @@ Item
             {
                 id: electricityBrakeImage
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
             }
             Text
             {
@@ -230,7 +230,7 @@ Item
                     PropertyChanges
                     {
                         target: electricityBrakeImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -244,7 +244,7 @@ Item
                     PropertyChanges
                     {
                         target: electricityBrakeImage
-                        source:"desk_ikoner/yellow.png"
+                        source:"../desk_ikoner/yellow.png"
                     }
                     PropertyChanges
                     {
@@ -263,7 +263,7 @@ Item
                     PropertyChanges
                     {
                         target: electricityBrakeImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -291,7 +291,7 @@ Item
             {
                 id: mgImage
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
             }
             Text
             {
@@ -309,7 +309,7 @@ Item
                     name: "default";
                     PropertyChanges {
                         target: mgImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -322,7 +322,7 @@ Item
                     name: "active";
                     PropertyChanges {
                         target: mgImage
-                        source:"desk_ikoner/redButton.png"
+                        source:"../desk_ikoner/redButton.png"
                     }
                     PropertyChanges
                     {
@@ -335,7 +335,7 @@ Item
                     name: "inactive";
                     PropertyChanges {
                         target: mgImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {

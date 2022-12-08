@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Shapes 1.15
 
 import "Imports" 1.0
+import "Button_groups" 1.0
 
 Item {
     anchors.fill: parent
