@@ -22,6 +22,7 @@ Grid
             height: (activateButton.pressed) ? parent.height -5 : parent.height
             anchors.horizontalCenter: parent.horizontalCenter
             padding: 0
+            hoverEnabled: false
             background: Rectangle
             {
                 anchors.fill: parent
@@ -92,7 +93,12 @@ Grid
             height: (protectionButton.pressed) ? parent.height -5 : parent.height
             anchors.horizontalCenter: parent.horizontalCenter
             enabled: false
-
+            hoverEnabled: false
+            background: Rectangle
+            {
+                anchors.fill: parent
+                color: MyConst.backgroundColor
+            }
             onPressed: buttonHandler.protectionPressed()
 
             Image
@@ -157,6 +163,12 @@ Grid
             height:(cartButton.pressed) ? parent.height - 5 : parent.height
             anchors.horizontalCenter: parent.horizontalCenter
             enabled: true
+            hoverEnabled: false
+            background: Rectangle
+            {
+                anchors.fill: parent
+                color: MyConst.backgroundColor
+            }
             Image
             {
                 id: cartImage
@@ -211,7 +223,7 @@ Grid
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("AKTIVERING")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color: "White"
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -233,7 +245,7 @@ Grid
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("TÅGSKYDD")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color:"White"
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -253,7 +265,7 @@ Grid
             Text
             {
                 text: qsTr("BYT HYTT")
-                font.pointSize: parent.width/3
+                font.pixelSize: parent.width/3
                 color:"White"
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter

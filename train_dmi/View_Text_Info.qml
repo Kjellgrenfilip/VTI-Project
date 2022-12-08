@@ -18,7 +18,7 @@ Item {
             border.width: 5
             border.color: MyConst.darkGrey
             radius: 20
-            Text // should be textinput
+            Text
             {
                 id: textAreaInfo
                 objectName: "textInfo"
@@ -31,13 +31,13 @@ Item {
                     anchors.fill: parent
                     color: "White"
                     text: qsTr("")
-                    font.pointSize: parent.width/24
+                    font.pixelSize: parent.width/24
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
             }
         }
-           }
+    }
 
     // The button for acknowledging the received information
     Button
@@ -62,7 +62,7 @@ Item {
             anchors.bottom: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("FEL")
-            font.pointSize: parent.width /8
+            font.pixelSize: parent.width /8
             color:"White"
         }
         Text
@@ -71,7 +71,7 @@ Item {
             text: qsTr("KVITT.")
             anchors.top: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pointSize: parent.width /8
+            font.pixelSize: parent.width /8
             color:"White"
         }
         onPressed: buttonHandler.receiptPressed()

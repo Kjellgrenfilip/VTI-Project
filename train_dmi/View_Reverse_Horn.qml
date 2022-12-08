@@ -48,7 +48,7 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BACK")
-                font.pointSize: parent.width /8
+                font.pixelSize: parent.width /8
                 color:"White"
             }
             states:

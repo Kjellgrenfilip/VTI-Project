@@ -33,7 +33,7 @@ Item
         Text
         {
             text: qsTr("SPÄNNING")
-            font.pointSize: power.width / 25
+            font.pixelSize: power.width / 25
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -299,7 +299,15 @@ Item
                 source: "desk_ikoner/yellow.png"
                 visible: false
             }
-            text: "0-SP"
+            Text
+            {
+                text: "0-SP"
+                color: MyConst.white
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+
 
             states:
                 [
@@ -380,8 +388,16 @@ Item
                 visible: true
             }
 
-            text: "H-BRYT"
+            Text
+            {
+                text: "H-BRYT"
+                color: MyConst.white
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
             onPressed: buttonHandler.mainBreakerPressed()
+
             states:
                 [
                 State
@@ -444,7 +460,15 @@ Item
                 anchors.fill: parent
                 source: "desk_ikoner/button69.png"
             }
-            text: "TÅGV."
+
+            Text
+            {
+                text: "TÅGV."
+                color: MyConst.white
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
             onPressed: buttonHandler.heatingPressed()
             states:
                 [
