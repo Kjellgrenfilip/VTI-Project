@@ -101,20 +101,18 @@ Item
                      name: "inactive";
                      PropertyChanges
                      {
-                         target: doorLeftImage
-                         //source: "desk_ikoner/doorleft.png"
-                         visible:true
+                        target: doorLeftImage
+                        visible:true
                      }
                      PropertyChanges
                      {
-                         target: doorLeftImageBlinking
-                         //source: "desk_ikoner/doorleft.png"
-                         visible:false
+                        target: doorLeftImageBlinking
+                        visible:false
                      }
                      PropertyChanges
                      {
-                         target: doorLeftButton
-                         enabled: true
+                        target: doorLeftButton
+                        enabled: true
                      }
                  }
              ]
@@ -155,20 +153,18 @@ Item
                      name: "default";
                      PropertyChanges
                      {
-                         target: doorRightImage
-                         //source: "desk_ikoner/doorright.png"
-                         visible:true
+                        target: doorRightImage
+                        visible:true
                      }
                      PropertyChanges
                      {
-                         target: doorRightImageBlinking
-                         //source: "desk_ikoner/doorright.png"
-                         visible:false
+                        target: doorRightImageBlinking
+                        visible:false
                      }
                      PropertyChanges
                      {
-                         target: doorRightButton
-                         enabled: true
+                        target: doorRightButton
+                        enabled: true
                      }
                 },
                 State
@@ -176,27 +172,26 @@ Item
                      name: "warning"
                      PropertyChanges
                      {
-                         target: doorRightButton
-                         enabled: true
+                        target: doorRightButton
+                        enabled: true
                      }
                 },
                  State {
                      name: "inactive";
                      PropertyChanges
                      {
-                         target: doorRightImage
-                         //source: "desk_ikoner/doorright.png"
-                         visible:true
+                        target: doorRightImage
+                        visible:true
                      }
                      PropertyChanges
                      {
-                         target: doorRightImageBlinking
-                         visible:false
+                        target: doorRightImageBlinking
+                        visible:false
                      }
                      PropertyChanges
                      {
-                         target: doorRightButton
-                         enabled: true
+                        target: doorRightButton
+                        enabled: true
                      }
                 }
             ]
@@ -246,15 +241,13 @@ Item
                     name: "default";
                     PropertyChanges
                     {
-                         target: departureImage
-                         //source: "desk_ikoner/button69.png"
-                         visible: true
+                        target: departureImage
+                        visible: true
                     }
                     PropertyChanges
                     {
-                         target: departureImageBlinking
-                         //source: "desk_ikoner/button69.png"
-                         visible: false
+                        target: departureImageBlinking
+                        visible: false
                     }
                     PropertyChanges
                     {
@@ -276,20 +269,18 @@ Item
                      name: "inactive";
                      PropertyChanges
                      {
-                         target: departureImage
-                         //source: "desk_ikoner/avgang.png"
-                         visible:true
+                        target: departureImage
+                        visible:true
                      }
                      PropertyChanges
                      {
-                         target: departureImageBlinking
-                         //source: "desk_ikoner/avgang.png"
-                         visible:false
+                        target: departureImageBlinking
+                        visible:false
                      }
                      PropertyChanges
                      {
-                         target: departureButton
-                         enabled: false
+                        target: departureButton
+                        enabled: false
                      }
                  }
              ]
@@ -331,13 +322,11 @@ Item
                     PropertyChanges
                     {
                         target: closedImage
-                        //source: "desk_ikoner/closedG.png"
                         visible:true
                     }
                     PropertyChanges
                     {
                         target: closedImageBlinking
-                        //source: "desk_ikoner/closedG.png"
                         visible:false
                     }
                     PropertyChanges
@@ -361,13 +350,11 @@ Item
                     PropertyChanges
                     {
                         target: closedImage
-                        //source: "desk_ikoner/closed.png"
                         visible:true
                     }
                     PropertyChanges
                     {
                         target: closedImageBlinking
-                        //source: "desk_ikoner/closed.png"
                         visible:false
                     }
                     PropertyChanges
