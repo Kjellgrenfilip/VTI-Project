@@ -22,7 +22,6 @@ Grid
             anchors.horizontalCenter: parent.horizontalCenter
             padding: 0
             hoverEnabled: false
-
             background: Rectangle
             {
                 anchors.fill: parent
@@ -93,7 +92,11 @@ Grid
             anchors.horizontalCenter: parent.horizontalCenter
             enabled: false
             hoverEnabled: false
-
+            background: Rectangle
+            {
+                anchors.fill: parent
+                color: MyConst.backgroundColor
+            }
             onPressed: buttonHandler.protectionPressed()
 
             Image
@@ -158,7 +161,11 @@ Grid
             anchors.horizontalCenter: parent.horizontalCenter
             enabled: true
             hoverEnabled: false
-
+            background: Rectangle
+            {
+                anchors.fill: parent
+                color: MyConst.backgroundColor
+            }
             Image
             {
                 id: cartImage
