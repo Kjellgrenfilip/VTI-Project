@@ -15,7 +15,8 @@ Item
     // Grey border around the button group
     Rectangle
     {
-        anchors.fill: parent
+        width: parent.width
+        height: parent.height - 10
         color: "transparent"
         border.width: 5
         border.color: MyConst.darkGrey
@@ -32,9 +33,10 @@ Item
         Text
         {
             text: qsTr("DÖRRAR")
-            font.pixelSize: doors.width / 25 // gives warning
+            font.pixelSize: doors.width / 20 // gives warning
             color: "white"
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.top
         }
     }
 
