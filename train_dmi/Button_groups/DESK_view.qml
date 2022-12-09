@@ -2,8 +2,8 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import "Imports" 1.0
-
+import "../Imports" 1.0
+//import "Button_groups" 1.0
 
 Item
 {

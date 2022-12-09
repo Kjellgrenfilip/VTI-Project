@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item
 {
@@ -33,8 +33,8 @@ Item
         Text
         {
             text: qsTr("DÖRRAR")
-            font.pixelSize: doors.width / 20 // gives warning
-            color: "white"
+            font.pixelSize: doors.width / 25 // gives warning
+            color: MyConst.white
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.top
         }
@@ -67,7 +67,7 @@ Item
                 id: doorLeftImage
                 objectName: "doorLeftImage"
                 anchors.fill: parent
-                source: "desk_ikoner/doorleft.png"
+                source: "../desk_ikoner/doorleft.png"
                 visible: true
             }
             Image
@@ -75,7 +75,7 @@ Item
                 id: doorLeftImageBlinking
                 objectName: "doorLeftImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/doorleftY.png"
+                source: "../desk_ikoner/doorleftY.png"
                 visible: false
             }
             states:
@@ -103,20 +103,18 @@ Item
                      name: "inactive";
                      PropertyChanges
                      {
-                         target: doorLeftImage
-                         //source: "desk_ikoner/doorleft.png"
-                         visible:true
+                        target: doorLeftImage
+                        visible:true
                      }
                      PropertyChanges
                      {
-                         target: doorLeftImageBlinking
-                         //source: "desk_ikoner/doorleft.png"
-                         visible:false
+                        target: doorLeftImageBlinking
+                        visible:false
                      }
                      PropertyChanges
                      {
-                         target: doorLeftButton
-                         enabled: true
+                        target: doorLeftButton
+                        enabled: true
                      }
                  }
              ]
@@ -136,7 +134,7 @@ Item
                 id:doorRightImage
                 objectName: "doorRightImage"
                 anchors.fill: parent
-                source: "desk_ikoner/doorright.png"
+                source: "../desk_ikoner/doorright.png"
                 visible: true
             }
             Image
@@ -144,7 +142,7 @@ Item
                 id:doorRightImageBlinking
                 objectName: "doorRightImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/doorrightY.png"
+                source: "../desk_ikoner/doorrightY.png"
                 visible:false
             }
 
@@ -157,20 +155,18 @@ Item
                      name: "default";
                      PropertyChanges
                      {
-                         target: doorRightImage
-                         //source: "desk_ikoner/doorright.png"
-                         visible:true
+                        target: doorRightImage
+                        visible:true
                      }
                      PropertyChanges
                      {
-                         target: doorRightImageBlinking
-                         //source: "desk_ikoner/doorright.png"
-                         visible:false
+                        target: doorRightImageBlinking
+                        visible:false
                      }
                      PropertyChanges
                      {
-                         target: doorRightButton
-                         enabled: true
+                        target: doorRightButton
+                        enabled: true
                      }
                 },
                 State
@@ -178,27 +174,26 @@ Item
                      name: "warning"
                      PropertyChanges
                      {
-                         target: doorRightButton
-                         enabled: true
+                        target: doorRightButton
+                        enabled: true
                      }
                 },
                  State {
                      name: "inactive";
                      PropertyChanges
                      {
-                         target: doorRightImage
-                         //source: "desk_ikoner/doorright.png"
-                         visible:true
+                        target: doorRightImage
+                        visible:true
                      }
                      PropertyChanges
                      {
-                         target: doorRightImageBlinking
-                         visible:false
+                        target: doorRightImageBlinking
+                        visible:false
                      }
                      PropertyChanges
                      {
-                         target: doorRightButton
-                         enabled: true
+                        target: doorRightButton
+                        enabled: true
                      }
                 }
             ]
@@ -218,7 +213,7 @@ Item
                 id: departureImage
                 objectName: "departureImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -226,7 +221,7 @@ Item
                 id: departureImageBlinking
                 objectName: "departureImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/green.png"
+                source: "../desk_ikoner/green.png"
                 visible: false
             }
             Text {
@@ -236,7 +231,7 @@ Item
                 anchors.margins:10
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: "white"
+                color: MyConst.white
                 font.pixelSize: parent.width /9
             }
             onPressed: buttonHandler.departureButtonPressed()
@@ -248,15 +243,13 @@ Item
                     name: "default";
                     PropertyChanges
                     {
-                         target: departureImage
-                         //source: "desk_ikoner/button69.png"
-                         visible: true
+                        target: departureImage
+                        visible: true
                     }
                     PropertyChanges
                     {
-                         target: departureImageBlinking
-                         //source: "desk_ikoner/button69.png"
-                         visible: false
+                        target: departureImageBlinking
+                        visible: false
                     }
                     PropertyChanges
                     {
@@ -275,26 +268,24 @@ Item
                 },
                 State
                 {
-                     name: "inactive";
-                     PropertyChanges
-                     {
-                         target: departureImage
-                         //source: "desk_ikoner/avgang.png"
-                         visible:true
-                     }
-                     PropertyChanges
-                     {
-                         target: departureImageBlinking
-                         //source: "desk_ikoner/avgang.png"
-                         visible:false
-                     }
-                     PropertyChanges
-                     {
-                         target: departureButton
-                         enabled: false
-                     }
-                 }
-             ]
+                    name: "inactive";
+                    PropertyChanges
+                    {
+                        target: departureImage
+                        visible:true
+                    }
+                    PropertyChanges
+                    {
+                        target: departureImageBlinking
+                        visible:false
+                    }
+                    PropertyChanges
+                    {
+                        target: departureButton
+                        enabled: false
+                    }
+                }
+            ]
         }
 
         // The button for closing doors
@@ -311,7 +302,7 @@ Item
                 id: closedImage
                 objectName: "doorCloseImage"
                 anchors.fill: parent
-                source: "desk_ikoner/closed.png"
+                source: "../desk_ikoner/closed.png"
                 visible: true
             }
             Image
@@ -319,7 +310,7 @@ Item
                 id: closedImageBlinking
                 objectName: "doorCloseImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/closedG.png"
+                source: "../desk_ikoner/closedG.png"
                 visible: false
             }
 
@@ -333,13 +324,11 @@ Item
                     PropertyChanges
                     {
                         target: closedImage
-                        //source: "desk_ikoner/closedG.png"
                         visible:true
                     }
                     PropertyChanges
                     {
                         target: closedImageBlinking
-                        //source: "desk_ikoner/closedG.png"
                         visible:false
                     }
                     PropertyChanges
@@ -363,13 +352,11 @@ Item
                     PropertyChanges
                     {
                         target: closedImage
-                        //source: "desk_ikoner/closed.png"
                         visible:true
                     }
                     PropertyChanges
                     {
                         target: closedImageBlinking
-                        //source: "desk_ikoner/closed.png"
                         visible:false
                     }
                     PropertyChanges

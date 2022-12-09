@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
-import "Imports" 1.0
+import "../Imports" 1.0
 Item {
     anchors.fill:parent
     Grid
@@ -49,7 +49,7 @@ Item {
                     name: "active"
                     PropertyChanges {
                         target: lssmaImage
-                        source: "ETCS_icons/MO_21.bmp"
+                        source: "../ETCS_icons/MO_21.bmp"
                     }
                     PropertyChanges {
                         target: lssmaText

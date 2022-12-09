@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 Item {
     id: textInfo
     anchors.fill: parent
@@ -18,7 +18,7 @@ Item {
             border.width: 5
             border.color: MyConst.darkGrey
             radius: 20
-            Text // should be textinput
+            Text
             {
                 id: textAreaInfo
                 objectName: "textInfo"
@@ -29,7 +29,7 @@ Item {
                     id: textAreaInfoText
                     objectName: "textAreaInfoText"
                     anchors.fill: parent
-                    color: "White"
+                    color: MyConst.white
                     text: qsTr("")
                     font.pixelSize: parent.width/24
                     horizontalAlignment: Text.AlignHCenter
@@ -37,7 +37,7 @@ Item {
                 }
             }
         }
-           }
+    }
 
     // The button for acknowledging the received information
     Button
@@ -54,7 +54,7 @@ Item {
         {
             id: receiptImage
             anchors.fill: parent
-            source: "desk_ikoner/button69.png"
+            source: "../desk_ikoner/button69.png"
         }
         Text
         {
@@ -63,7 +63,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("FEL")
             font.pixelSize: parent.width /8
-            color:"White"
+            color: MyConst.white
         }
         Text
         {
@@ -72,7 +72,7 @@ Item {
             anchors.top: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: parent.width /8
-            color:"White"
+            color: MyConst.white
         }
         onPressed: buttonHandler.receiptPressed()
 

@@ -9,7 +9,6 @@ QtObject{
     readonly property int etcsWidth: 640
     readonly property int etcsHeight: 480
 
-
     readonly property color white: "#FFFFFF"
     readonly property color black: "#000000"
     readonly property color grey: "#C3C3C3"

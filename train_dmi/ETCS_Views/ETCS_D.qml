@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 import QtQuick.Controls 2.12
 
 Item {
@@ -13,6 +13,7 @@ Item {
             anchors.top: parent.top
             columns: 3
             rows: 1
+            // - button to change scale
             Rectangle
             {
                 id:d12
@@ -72,7 +73,7 @@ Item {
                 height: parent.height
                 color: "transparent"
                 property int scale: 4000
-
+                // Numbers next to Scale lines
                 Text {
                     id: d1text1
                     text: d1.scale
@@ -119,6 +120,7 @@ Item {
                     horizontalAlignment: Text.AlignRight
                 }
             }
+            // Scale lines from top to bottom
             Rectangle
             {
                 id:d2
@@ -203,6 +205,7 @@ Item {
                 height: parent.height
                 color: "transparent"
             }
+            // Distance bars
             Rectangle
             {
                 id:d5
@@ -426,6 +429,7 @@ Item {
             height: (15/300) * parent.height
             width: parent.width
             anchors.top: middlegrid.bottom
+            // + button to change scale of distance
             Rectangle
             {
                 id: d9
@@ -484,7 +488,7 @@ Item {
         Image
         {
             id: image0
-            source: "symbols/Planning/PL_22.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -513,7 +517,7 @@ Item {
         Image
         {
             id: image1
-            source: "symbols/Planning/PL_22.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -542,7 +546,7 @@ Item {
         Image
         {
             id: image2
-            source: "symbols/Planning/PL_22.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -571,7 +575,7 @@ Item {
         Image
         {
             id: image3
-            source: "symbols/Planning/PL_22.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -600,7 +604,7 @@ Item {
         Image
         {
             id: image4
-            source: "symbols/Planning/PL_22.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20

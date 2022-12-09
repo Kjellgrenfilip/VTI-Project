@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item {
     id: etcsC
@@ -206,7 +206,7 @@ Item {
                 id: c6Image
                 anchors.fill: parent
                 anchors.margins: 2
-                source: "symbols/Status/ST_06.bmp"
+                source: "../symbols/Status/ST_06.bmp"
             }
 
             states:

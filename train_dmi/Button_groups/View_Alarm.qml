@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item {
     id: alarm
@@ -23,13 +23,13 @@ Item {
             width: parent.width / 2
             height: 30
             x: parent.width / 4
-            color: "#041122"
+            color: MyConst.backgroundColor
             Text
             {
                 id: alarmText
                 text: qsTr("LARM")
-                font.pixelSize: alarm.width / 20 // gives warning
-                color: "white"
+                font.pixelSize: alarm.width / 25 // gives warning
+                color: MyConst.backgroundColor
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.top
             }
@@ -56,7 +56,7 @@ Item {
                 id: emergencyBrakeImage
                 objectName: "emergencyBrakeImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -64,7 +64,7 @@ Item {
                 id: emergencyBrakeImageBlinking
                 objectName: "emergencyBrakeImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/redButton.png"
+                source: "../desk_ikoner/redButton.png"
                 visible: false
             }
 
@@ -75,8 +75,9 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("NBÖ")
                 font.pixelSize: parent.width /8
-                color: "White"
+                color: MyConst.white
             }
+
             states:
                 [
                 State
@@ -148,7 +149,7 @@ Item {
                 id: fireImage
                 objectName: "fireImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -156,7 +157,7 @@ Item {
                 id: fireImageBlinking
                 objectName: "fireImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/redButton.png"
+                source: "../desk_ikoner/redButton.png"
                 visible: false
             }
             Text
@@ -166,7 +167,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BRAND")
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
 
             states:

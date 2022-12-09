@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Shapes 1.15
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item{
     anchors.fill: parent

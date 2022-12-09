@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item
 {
@@ -31,7 +31,7 @@ Item
                 id: reverseImage
                 objectName: "reverseImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -39,7 +39,7 @@ Item
                 id: reverseImageBlinking
                 objectName: "reverseImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/yellow.png"
+                source: "../desk_ikoner/yellow.png"
                 visible: false
             }
             Text
@@ -49,7 +49,7 @@ Item
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BACK")
                 font.pixelSize: parent.width /8
-                color:"White"
+                color: MyConst.white
             }
             states:
                 [
@@ -102,7 +102,7 @@ Item
             {
                 id: hornImage
                 anchors.fill: parent
-                source: "desk_ikoner/siren5.png"
+                source: "../desk_ikoner/siren5.png"
             }
 
             states:

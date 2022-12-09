@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Grid
 {
@@ -13,6 +13,8 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color :  "transparent"
+
+        //Activation button
         Button
         {
             id: activateButton
@@ -32,7 +34,7 @@ Grid
             {
                 id: activateImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_green_3d.png"
+                source: "../desk_ikoner/power_green_3d.png"
             }
 
             onPressed: buttonHandler.activatePressed()
@@ -47,7 +49,7 @@ Grid
                 {
                     target: activateImage
                     property: "source"
-                    to: "desk_ikoner/power_green_3d.png"
+                    to: "../desk_ikoner/power_green_3d.png"
                     duration: MyConst.animationDuration
                 }
 
@@ -55,7 +57,7 @@ Grid
                 {
                     target: activateImage
                     property: "source"
-                    to: "desk_ikoner/power_white_3d.png"
+                    to: "../desk_ikoner/power_white_3d.png"
                     duration: MyConst.animationDuration
                 }
             }
@@ -66,7 +68,7 @@ Grid
                     PropertyChanges
                     {
                         target: activateImage
-                        source:"desk_ikoner/power_green_3d.png"
+                        source:"../desk_ikoner/power_green_3d.png"
                     }
                     PropertyChanges
                     {
@@ -83,6 +85,8 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color: "transparent"
+
+        //Train protection button
         Button
         {
             id: protectionButton
@@ -103,7 +107,7 @@ Grid
             {
                 id: protectionImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_white_3d.png"
+                source: "../desk_ikoner/power_white_3d.png"
             }
             SequentialAnimation
             {
@@ -115,7 +119,7 @@ Grid
                 {
                     target: protectionImage
                     property: "source"
-                    to: "desk_ikoner/power_green_3d.png"
+                    to: "../desk_ikoner/power_green_3d.png"
                     duration: MyConst.animationDuration
                 }
 
@@ -123,7 +127,7 @@ Grid
                 {
                     target: protectionImage
                     property: "source"
-                    to: "desk_ikoner/power_white_3d.png"
+                    to: "../desk_ikoner/power_white_3d.png"
                     duration: MyConst.animationDuration
                 }
             }
@@ -152,6 +156,8 @@ Grid
         height : parent.height * 3 / 4
         width : parent.width/3
         color : "transparent"
+
+        // Change cart button
         Button
         {
             id: cartButton
@@ -170,7 +176,7 @@ Grid
             {
                 id: cartImage
                 anchors.fill: parent
-                source: "desk_ikoner/power_green_3d.png"
+                source: "../desk_ikoner/power_green_3d.png"
             }
 
             states:
@@ -186,7 +192,7 @@ Grid
                     PropertyChanges
                     {
                         target: cartImage
-                        source: "desk_ikoner/power_green_3d.png"
+                        source: "../desk_ikoner/power_green_3d.png"
                     }
                 },
                 State
@@ -200,12 +206,14 @@ Grid
                     PropertyChanges
                     {
                         target: cartImage
-                        source: "desk_ikoner/power_white_3d.png"
+                        source: "../desk_ikoner/power_white_3d.png"
                     }
                 }
             ]
         }
     }
+
+    // Text for activation button
     Rectangle
     {
         height: parent.height / 4
@@ -220,12 +228,14 @@ Grid
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("AKTIVERING")
                 font.pixelSize: parent.width/3
-                color: "White"
+                color: MyConst.white
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
         }
     }
+
+    // Text for train protection button
     Rectangle
     {
         height: parent.height / 4
@@ -241,12 +251,14 @@ Grid
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("TÅGSKYDD")
                 font.pixelSize: parent.width/3
-                color:"White"
+                color: MyConst.white
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
         }
     }
+
+    // Text for changing cart button
     Rectangle
     {
         height: parent.height / 4
@@ -260,12 +272,11 @@ Grid
             {
                 text: qsTr("BYT HYTT")
                 font.pixelSize: parent.width/3
-                color:"White"
+                color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
-
         }
     }
 }

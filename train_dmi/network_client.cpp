@@ -46,11 +46,6 @@ void Network_Client::disconnected()
     qDebug() << "Disconnected";
 }
 
-void Network_Client::bytesWritten(qint64 bytes)
-{
-    //qDebug() << "We wrote: " << bytes;
-}
-
 // Called automatically when there is data to read on the socket.
 void Network_Client::readyRead()
 {
