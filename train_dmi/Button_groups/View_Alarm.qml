@@ -24,13 +24,15 @@ Item {
             height: 30
             x: parent.width / 4
             color: MyConst.backgroundColor
+            y: -1
             Text
             {
                 id: alarmText
                 text: qsTr("LARM")
-                font.pixelSize: alarm.width / 25 // gives warning
-                color: MyConst.backgroundColor
+                font.pixelSize: alarm.width / 20 // gives warning
+                color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.top
             }
         }
         anchors.fill: parent

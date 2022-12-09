@@ -11,11 +11,6 @@ void Button_Handler::sendSignal(QString const& object, bool const value)
     emit sendUpdate(json);
 }
 
-//void Button_Handler::sendSignalMaxDistance(int x)
-//{
-
-//}
-
 void Button_Handler::activatePressed()
 {
     qDebug() << "Activate";
@@ -128,12 +123,14 @@ void Button_Handler::receiptPressed()
     qDebug() << "receipt button pressed!";
     sendSignal(VTI_DMI::RECEIPT, true);
 }
+
 void Button_Handler::lightPressed()
 {
     QJsonObject json{};
     json.insert(VTI_DMI::LIGHT, true);
     emit sendUpdate(json);
 }
+
 void Button_Handler::emergencyPressed()
 {
     qDebug() << "emergency button pressed!";
@@ -150,6 +147,7 @@ void Button_Handler::scaleDownPressed(int x)
         emit sendSignalMaxDistance(x/2);
     }
 }
+
 void Button_Handler::scaleUpPressed(int x)
 {
     if(x<32000)

@@ -24,13 +24,16 @@ Item
         height: 30
         x: parent.width / 4
         color: MyConst.backgroundColor
+        y: -1
+
         Text
         {
             id: brake
             text: qsTr("BROMS")
-            font.pixelSize: brakes.width / 25 // gives warning
+            font.pixelSize: brakes.width / 20 // gives warning
             color: MyConst.white
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.top
         }
     }
     Grid
