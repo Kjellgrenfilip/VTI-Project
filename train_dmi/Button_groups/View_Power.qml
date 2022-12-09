@@ -31,10 +31,11 @@ Item
         height: 30
         x: parent.width / 4
         color: MyConst.backgroundColor
+        y: -1
         Text
         {
             text: qsTr("SPÄNNING")
-            font.pixelSize: power.width / 25
+            font.pixelSize: power.width / 20
             color: MyConst.white
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.top
