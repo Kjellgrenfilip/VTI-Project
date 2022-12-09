@@ -29,6 +29,7 @@ void Network_Client::connectToServer()
     m_tcpSocket->waitForConnected(1000);
 }
 
+// Delay method which does not freeze the GUI.
 void Network_Client::delay(int timeToWait)
 {
     QTime dieTime= QTime::currentTime().addMSecs(timeToWait);
@@ -36,11 +37,13 @@ void Network_Client::delay(int timeToWait)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
+// Is called when the TCP socket connects
 void Network_Client::connected()
 {
     qDebug() << "Connected";
 }
 
+// Is called when the TCP socket disconnects
 void Network_Client::disconnected()
 {
     qDebug() << "Disconnected";
