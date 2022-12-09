@@ -97,6 +97,8 @@ void Speedometer::updateCSM_NV(QJsonObject update)
     QObject *obj = m_rootObject->findChild<QObject*>("speedometer");
 
 }
+
+//
 void Speedometer::updateTSM(QJsonObject update)
 {
     qDebug() << update.value(VTI_DMI::STATUS_INFORMATION).toString();
@@ -111,12 +113,90 @@ void Speedometer::updateTSM(QJsonObject update)
     {
         if(0.0 <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble()<= update.value(VTI_DMI::RELEASE_SPEED).toDouble())
         {
-            obj->setProperty("topColor", "#969696");
+            obj->setProperty("topColor", csgMediumGrey);
             obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
             obj->setProperty("csgTopLayerHook", false);
+
+        }
+
+        if(0.0 <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() < update.value(VTI_DMI::TARGET_SPEED).toDouble())
+        {
+            obj->setProperty("topColor", csgDarkGrey);
+            obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::TARGET_SPEED));
+            obj->setProperty("topCSG", true);
+            obj->setProperty("csgTopLayerHook", true);
+
+            obj->setProperty("middleCSG", true);
+            obj->setProperty("csgMiddleLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
+            obj->setProperty("outerColor", csgDarkGrey);
+            obj->setProperty("middleColor", csgDarkGrey);
+            obj->setProperty("innerColor", csgDarkGrey);
+        }
+
+        if(update.value(VTI_DMI::TARGET_SPEED).toDouble() <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
+        {
+            obj->setProperty("topColor", csgYellow);
+            obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
+            obj->setProperty("csgTopLayerHook", true);
+            obj->setProperty("topCSG", true);
+
+            obj->setProperty("middleCSG", true);
+            obj->setProperty("csgMiddleLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
+            obj->setProperty("outerColor", csgDarkGrey);
+            obj->setProperty("middleColor", "transparent");
+            obj->setProperty("innerColor", csgYellow);
+            obj->setProperty("topCSG", true);
+
+            obj->setProperty("bottomCSG", true);
+            obj->setProperty("csgBottomLayerValue", update.value(VTI_DMI::TARGET_SPEED));
+        }
+    }
+    if(update.value(VTI_DMI::PERMITTED_SPEED).toDouble() < update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::INTERVENTION_SPEED).toDouble())
+    {
+        if(update.value(VTI_DMI::STATUS_INFORMATION) == "IndS")
+        {
+            // Never occurs, does not change anything according to ERTMS-standard.
+        }
+        if(update.value(VTI_DMI::STATUS_INFORMATION) == "WaS" || update.value(VTI_DMI::STATUS_INFORMATION) == "OvS")
+        {
+            obj->setProperty("csgTopLayerHook", true);
+            obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
+            obj->setProperty("needleColor", "orange");
+            obj->setProperty("speedDigitColor", "black");
+            obj->setProperty("thicCSG", true);
+            obj->setProperty("thicColor", "orange");
+            obj->setProperty("csgThicLayerValue", update.value(VTI_DMI::INTERVENTION_SPEED).toDouble() - update.value(VTI_DMI::PERMITTED_SPEED).toDouble());
+
+            obj->setProperty("middleCSG", true);
+            obj->setProperty("csgMiddleLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
+            obj->setProperty("outerColor", csgMediumGrey);
+            obj->setProperty("middleColor", "#031122");
+        }
+        if(update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
+        {
+            obj->setProperty("needleColor", "red");
+            obj->setProperty("speedDigitColor", "white");
+            obj->setProperty("thicCSG", true);
+            obj->setProperty("thicColor", csgRed);
+            obj->setProperty("csgThicLayerValue", (update.value(VTI_DMI::CURRENT_SPEED).toDouble() - update.value(VTI_DMI::PERMITTED_SPEED).toDouble()));
+            if(update.value(VTI_DMI::RELEASE_SPEED) != -1)
+            {
+                obj->setProperty("middleCSG", true);
+                obj->setProperty("csgMiddleLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
+                obj->setProperty("outerColor", "#969696");
+                obj->setProperty("middleColor", "#031122");
+                obj->setProperty("innerColor", "#DFDF00");
+            }
+            obj->setProperty("topCSG", true);
+            obj->setProperty("csgTopLayerHook", true);
+            obj->setProperty("topColor", "#DFDF00");
+            obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
+            obj->setProperty("bottomCSG", true);
         }
     }
 
+
+    /*
     if(update.value(VTI_DMI::STATUS_INFORMATION) == "OvS")
     {
         if(update.value(VTI_DMI::PERMITTED_SPEED).toDouble() < update.value(VTI_DMI::CURRENT_SPEED).toDouble())
@@ -125,6 +205,7 @@ void Speedometer::updateTSM(QJsonObject update)
             obj->setProperty("speedDigitColor", "black");
         }
     }
+
 
     if(update.value(VTI_DMI::STATUS_INFORMATION) == "WaS")
     {
@@ -214,25 +295,41 @@ void Speedometer::updateTSM(QJsonObject update)
         {
             obj->setProperty("needleColor", "red");
             obj->setProperty("speedDigitColor", "white");
+            obj->setProperty("thicCSG", true);
+            obj->setProperty("thicColor", csgRed);
+            obj->setProperty("csgThicLayerValue", (update.value(VTI_DMI::CURRENT_SPEED).toDouble() - update.value(VTI_DMI::PERMITTED_SPEED).toDouble()));
+            if(update.value(VTI_DMI::RELEASE_SPEED) != -1)
+            {
+                obj->setProperty("middleCSG", true);
+                obj->setProperty("csgMiddleLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
+                obj->setProperty("outerColor", "#969696");
+                obj->setProperty("middleColor", "#031122");
+                obj->setProperty("innerColor", "#DFDF00");
+            }
+            obj->setProperty("topCSG", true);
+            obj->setProperty("csgTopLayerHook", true);
+            obj->setProperty("topColor", "#DFDF00");
+            obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
+            obj->setProperty("bottomCSG", true);
+            //obj->setProperty("csgBottomLayerValue", update.value(VTI_DMI::TARGET_SPEED));
+
         }
-    }
+    }*/
 }
 
 void Speedometer::updateRSM(QJsonObject update)
 {
     QObject *obj = m_rootObject->findChild<QObject*>("speedometer");
-    if(update.value(VTI_DMI::SUPERVISION_STATUS) == "RSM")
-    {
-        obj->setProperty("supervisionMode", update.value(VTI_DMI::SUPERVISION_STATUS));
-        if(update.value(VTI_DMI::STATUS_INFORMATION) == "IndS" || update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
-        {
-            if(0.0 <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::RELEASE_SPEED).toDouble())
-            {
-                obj->setProperty("needleColor", "yellow");
-                obj->setProperty("speedDigitColor", "black");
-            }
-        }
-        if(update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
+
+    obj->setProperty("supervisionMode", update.value(VTI_DMI::SUPERVISION_STATUS));
+
+  if(update.value(VTI_DMI::STATUS_INFORMATION) == "IndS")
+  {
+      obj->setProperty("needleColor", "yellow");
+      obj->setProperty("speedDigitColor", "black");
+
+  }
+   if(update.value(VTI_DMI::STATUS_INFORMATION) == "IntS")
         {
             if(update.value(VTI_DMI::CURRENT_SPEED).toDouble() > update.value(VTI_DMI::RELEASE_SPEED).toDouble())
             {
@@ -240,5 +337,43 @@ void Speedometer::updateRSM(QJsonObject update)
                 obj->setProperty("speedDigitColor", "white");
             }
         }
+
+   if(0.0 <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::RELEASE_SPEED).toDouble())
+   {
+           obj->setProperty("topCSG", true);
+           obj->setProperty("csgTopLayerHook", false);
+           obj->setProperty("topColor", csgMediumGrey);
+           obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
     }
+   if(update.value(VTI_DMI::TARGET_SPEED).toDouble() <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::PERMITTED_SPEED).toDouble())
+   {
+           obj->setProperty("needleColor", "yellow");
+           obj->setProperty("speedDigitColor", "black");
+
+           obj->setProperty("topCSG", true);
+           obj->setProperty("csgTopLayerHook", true);
+           obj->setProperty("topColor", csgYellow);
+           obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
+
+           obj->setProperty("middleCSG", true);
+           obj->setProperty("csgMiddleLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
+           obj->setProperty("outerColor", "#969696");
+           obj->setProperty("middleColor", "#031122");
+           obj->setProperty("innerColor", "#DFDF00");
+    }
+   if(update.value(VTI_DMI::PERMITTED_SPEED).toDouble() <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::RELEASE_SPEED).toDouble())
+    {
+       obj->setProperty("topCSG", true);
+       obj->setProperty("csgTopLayerHook", false);
+       obj->setProperty("topColor", csgMediumGrey);
+       obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
+
+       obj->setProperty("middleCSG", true);
+       obj->setProperty("csgMiddleLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
+       obj->setProperty("outerColor", "#969696");
+       obj->setProperty("middleColor", "#031122");
+       obj->setProperty("innerColor", "#DFDF00");
+       obj->setProperty("smallSpeedHook", true);
+   }
 }
+

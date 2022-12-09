@@ -35,6 +35,13 @@ private:
     void updateTSM(QJsonObject update);
     void updateRSM(QJsonObject update);
 
+    const QString csgWhite = "#FFFFFF";
+    const QString csgMediumGrey = "#969696";
+    const QString csgDarkGrey = "#555555";
+    const QString csgYellow = "#DFDF00";
+    const QString csgOrange = "#EA9100";
+    const QString csgRed = "#BF0002";
+
 signals:
 
 };
