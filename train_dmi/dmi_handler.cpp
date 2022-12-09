@@ -36,6 +36,7 @@ DMI_Handler::~DMI_Handler()
     delete m_client;
     delete m_buttonHandler;
     delete m_animationTimer;
+    delete m_speedometer;
 }
 
 // Is called upon when a update is received by the network handler.
