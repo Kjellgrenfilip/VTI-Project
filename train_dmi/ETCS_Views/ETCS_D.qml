@@ -358,9 +358,11 @@ Item {
                 height: parent.height
                 color: "transparent"
             }
+
+            //PASP area
             Rectangle
             {
-                id:d7
+              id:d7
                width: (93/246) * parent.width
                height: parent.height
                color: MyConst.paspDark
@@ -474,7 +476,10 @@ Item {
             }
         }
 
-
+    /*PASP0 is the image furthest down in the PASP area and the next following
+      images are ascending order. There exists 5 different PASP images since
+      there is no good way of dynamically creating qml objects.
+      */
     Rectangle
     {
         color: "transparent"
