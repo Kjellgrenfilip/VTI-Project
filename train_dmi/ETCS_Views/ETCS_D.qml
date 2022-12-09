@@ -493,7 +493,7 @@ Item {
         Image
         {
             id: image0
-            source: "../symbols/Planning/PL_22.png"
+            source: "../symbols/Planning/PL_23.png"
             anchors.left: parent.left
             height: 20
             width: 20
