@@ -44,7 +44,7 @@ There is also a button handler file/class which has all the button functions. Wh
  
 There is also a file/class called speedometer. This class is responsible for updating all values of the speedometer.
  
-There is also a header file called **network_interface.h** specifies all naming constants. There are two namespaces one called VTI_DMI, which contains all naming constants for signals, JSON templates etc. The second namespace is called STATE and specifies all states that buttons can be in.
+There is also a header file called **network_interface.h** that specifies all naming constants. There are two namespaces one called VTI_DMI, which contains all naming constants for signals, JSON templates etc. The second namespace is called STATE and specifies all states that buttons can be in.
 
 ## Licence
 
