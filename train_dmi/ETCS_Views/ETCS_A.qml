@@ -21,7 +21,7 @@ Item {
                 anchors.fill: parent
                 //anchors.verticalCenter: parent.verticalCenter
                 //anchors.horizontalCenter: parent.horizontalCenter
-                source: "ETCS_icons/MO_21.bmp"
+                source: "../ETCS_icons/MO_21.bmp"
             }
             Text {
                 id: lssmaText

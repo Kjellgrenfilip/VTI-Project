@@ -8,7 +8,7 @@ Network_Client::Network_Client() : QObject(), m_tcpSocket{new QTcpSocket{this}}
     connect(m_tcpSocket, SIGNAL(connected()), this, SLOT(connected()));
     connect(m_tcpSocket, SIGNAL(disconnected()), this, SLOT(disconnected()));
     connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    connect(m_tcpSocket, SIGNAL(bytesWritten(qint64)), this, SLOT(bytesWritten(qint64)));
+    //connect(m_tcpSocket, SIGNAL(bytesWritten(qint64)), this, SLOT(bytesWritten(qint64)));
 }
 
 Network_Client::~Network_Client()
