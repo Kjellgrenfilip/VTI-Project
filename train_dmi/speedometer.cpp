@@ -5,6 +5,11 @@ Speedometer::Speedometer(QObject *obj)
 {
 }
 
+
+void setMiddleLayer();
+void setBottomLayer();
+void setThicLayer();
+
 void Speedometer::updateSpeedometer(QJsonObject update)
 {
     QObject *obj = m_rootObject->findChild<QObject*>("speedometer");
@@ -46,13 +51,16 @@ void Speedometer::updateSpeedometer(QJsonObject update)
 
 void Speedometer::updateCSM(QJsonObject update)
 {
-     QObject *obj = m_rootObject->findChild<QObject*>("speedometer");
+     QObject* obj = m_rootObject->findChild<QObject*>("speedometer");
 
-     obj->setProperty("topCSG", true);
+     setTopLayer(obj, "#555555", true, update.value(VTI_DMI::PERMITTED_SPEED).toDouble(), true);
+  /*   obj->setProperty("topCSG", true);
      obj->setProperty("csgTopLayerHook", true);
      obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
-     obj->setProperty("needleColor", "grey");
-     obj->setProperty("topColor", "#555555");
+     obj->setProperty("topColor", "#555555");*/
+
+     //obj->setProperty("needleColor", "grey");
+     setNeedle(obj, "grey");
 
      if(update.value(VTI_DMI::STATUS_INFORMATION) == "OvS" || update.value(VTI_DMI::STATUS_INFORMATION) == "WaS")
      {
@@ -94,7 +102,7 @@ void Speedometer::updateCSM(QJsonObject update)
 
 void Speedometer::updateCSM_NV(QJsonObject update)
 {
-    QObject *obj = m_rootObject->findChild<QObject*>("speedometer");
+ //   QObject *obj = m_rootObject->findChild<QObject*>("speedometer");
 
 }
 
@@ -363,17 +371,54 @@ void Speedometer::updateRSM(QJsonObject update)
     }
    if(update.value(VTI_DMI::PERMITTED_SPEED).toDouble() <= update.value(VTI_DMI::CURRENT_SPEED).toDouble() && update.value(VTI_DMI::CURRENT_SPEED).toDouble() <= update.value(VTI_DMI::RELEASE_SPEED).toDouble())
     {
-       obj->setProperty("topCSG", true);
+
+       setTopLayer(obj, csgMediumGrey, true, update.value(VTI_DMI::RELEASE_SPEED).toDouble(), false);
+       setMiddleLayer(obj, csgYellow,"#DFDF00",csgMediumGrey, true, update.value(VTI_DMI::PERMITTED_SPEED).toDouble(), true);
+       /*
+        *        obj->setProperty("topCSG", true);
        obj->setProperty("csgTopLayerHook", false);
        obj->setProperty("topColor", csgMediumGrey);
        obj->setProperty("csgTopLayerValue", update.value(VTI_DMI::RELEASE_SPEED));
-
-       obj->setProperty("middleCSG", true);
+        * obj->setProperty("middleCSG", true);
        obj->setProperty("csgMiddleLayerValue", update.value(VTI_DMI::PERMITTED_SPEED));
        obj->setProperty("outerColor", "#969696");
        obj->setProperty("middleColor", "#031122");
        obj->setProperty("innerColor", "#DFDF00");
-       obj->setProperty("smallSpeedHook", true);
+       obj->setProperty("smallSpeedHook", true);*/
    }
 }
+
+void Speedometer::setTopLayer(QObject *obj, QString color, bool status, double dist, bool hook)
+{
+    obj->setProperty("topColor", color);
+    obj->setProperty("csgTopLayerValue", dist);
+    obj->setProperty("topCSG", status);
+    obj->setProperty("csgTopLayerHook", hook);
+}
+
+void Speedometer::setNeedle(QObject *obj, QString color)
+{
+    obj->setProperty("needleColor", color);
+}
+
+void Speedometer::setMiddleLayer(QObject *obj, QString inner, QString middle, QString outer, bool status, double dist, bool hook)
+{
+    obj->setProperty("middleCSG", status);
+    obj->setProperty("csgMiddleLayerValue", dist);
+    obj->setProperty("outerColor", outer);
+    obj->setProperty("middleColor", middle);
+    obj->setProperty("innerColor", inner);
+    obj->setProperty("smallSpeedHook", hook);
+}
+
+/*void Speedometer::setBottomLayer(QObject *obj, QString color)
+{
+    obj->setProperty("needleColor", color);
+}
+
+void Speedometer::setThicLayer(QObject *obj, QString color)
+{
+    obj->setProperty("needleColor", color);
+}*/
+
 

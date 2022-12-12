@@ -35,6 +35,10 @@ private:
     void updateTSM(QJsonObject update);
     void updateRSM(QJsonObject update);
 
+    void setTopLayer(QObject *obj, QString color, bool status, double dist, bool hook);
+    void setNeedle(QObject *obj, QString color);
+    void setMiddleLayer(QObject *obj, QString inner, QString middle,QString outer, bool status, double dist, bool hook);
+
     const QString csgWhite = "#FFFFFF";
     const QString csgMediumGrey = "#969696";
     const QString csgDarkGrey = "#555555";

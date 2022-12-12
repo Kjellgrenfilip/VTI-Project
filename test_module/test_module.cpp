@@ -571,13 +571,13 @@ void Test_Module::resetStates()
  void Test_Module::testSpeedometer()
  {
     m_jsonSpeed.insert(VTI_DMI::RELEASE_SPEED, -1);
-    /* m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
+     m_jsonSpeed.insert(VTI_DMI::SUPERVISION_STATUS, "CSM");
      m_jsonSpeed.insert(VTI_DMI::STATUS_INFORMATION, "NoS");
      m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, 138);
      m_jsonSpeed.insert(VTI_DMI::PERMITTED_SPEED, 160);
      m_networkServer->sendUpdate(m_jsonSpeed);
-     m_networkServer->delay(300);
-
+     m_networkServer->delay(3000);
+/*
      for(int i{138}; i >= 67; i--)
      {
          m_jsonSpeed.insert(VTI_DMI::CURRENT_SPEED, i);
