@@ -36,8 +36,10 @@ private:
     void updateRSM(QJsonObject update);
 
     void setTopLayer(QObject *obj, QString color, bool status, double dist, bool hook);
-    void setNeedle(QObject *obj, QString color);
+    void setNeedle(QObject *obj, QString needleColor, QString textColor);
     void setMiddleLayer(QObject *obj, QString inner, QString middle,QString outer, bool status, double dist, bool hook);
+    void setBottomLayer(QObject *obj, bool status, double val);
+    void setThicLayer(QObject *obj, bool status, QString color, double val);
 
     const QString csgWhite = "#FFFFFF";
     const QString csgMediumGrey = "#969696";
