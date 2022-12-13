@@ -51,7 +51,7 @@ Item
     property bool middleCSG: false
     property bool topCSG: false
     property bool thicCSG: false
-    //supervisionMode:
+    //supervisionMode, set in Speedometer.cpp:
     property string supervisionMode: ""
 
     width: 280; height: 300
@@ -126,7 +126,8 @@ Item
             speedValue: index * 10;
             tickMarkNum: index
         }
-    }    //Creates the normal CircularSpeedGauge.
+    }
+    //Creates the normal CircularSpeedGauge.
     CircularSpeedGauge
     {
         id: csgTop
@@ -134,6 +135,7 @@ Item
         visible: topCSG
         value: csgTopLayerValue
         gaugeColor: topColor
+        //Tick_mark is used as a hook for the topLayer
         Tick_Mark
         {
             alpha: 121+speedometer.calcCSGAngle(csgTopLayerValue) + 1.68
@@ -163,7 +165,6 @@ Item
     {
         id: csgMiddle
         objectName: "csgMiddleLayer"
-        //haveHook: speedHook
         visible: middleCSG
         value: csgMiddleLayerValue
         Tick_Mark
@@ -187,6 +188,7 @@ Item
         gaugeColor: bottomColor
     }
 
+    //Target hook that can be set from the SpeedOmeter if needed
     Tick_Mark
     {
         id: vTargetHook
@@ -197,6 +199,7 @@ Item
         placementRadius: 137
     }
 
+     //Permitted hook that can be set from the SpeedOmeter if needed
     Tick_Mark
     {
         id: vPermHook

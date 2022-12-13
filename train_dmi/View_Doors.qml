@@ -318,13 +318,13 @@ Item
                     {
                         target: closedImage
                         //source: "desk_ikoner/closedG.png"
-                        visible:true
+                        visible:false
                     }
                     PropertyChanges
                     {
                         target: closedImageBlinking
                         //source: "desk_ikoner/closedG.png"
-                        visible:false
+                        visible:true
                     }
                     PropertyChanges
                     {
