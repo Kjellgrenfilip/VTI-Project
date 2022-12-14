@@ -198,8 +198,7 @@ Item
         alpha: 121+speedometer.calcCSGAngle(targetSpeed)
         placementRadius: 137
     }
-
-     //Permitted hook that can be set from the SpeedOmeter if needed
+    //Permitted hook that can be set from the SpeedOmeter if needed
     Tick_Mark
     {
         id: vPermHook
@@ -214,7 +213,6 @@ Item
     {
         id: speedometerNeedle
         width: 250; height: 250
-        //anchors.fill: parent
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.margins: 10
@@ -223,11 +221,8 @@ Item
         radius:  125
         Image {
             id: needleImage
-            //verticalAlignment:
-            //horizontalAlignment:
             anchors.horizontalCenter:parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-
             source: "symbols/Speedometer/"+needleColor+"_needle.png"
             scale: 0.1
 
