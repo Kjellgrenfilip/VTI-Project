@@ -69,6 +69,40 @@ void DMI_Handler::updateGUI(QString const& key, QObject *obj)
     {
         m_trainPos = m_latestUpdate.value(key).toDouble();
         d5loghandler();
+
+        QObject *d7 = m_rootObject->findChild<QObject*>("d7");
+        for(int i{4}; i >= 0; --i)
+        {
+            QString key2 = "PASP";
+            obj = m_rootObject->findChild<QObject*>(key2 + QString::number(i));
+            QVariant k = obj->property("y");
+            double j = 0.3;
+            obj->setProperty("y", k.toDouble()+j);
+
+            QString key3 = "d7Collumn" + QString::number(4-i);
+            QObject *obj2 = m_rootObject->findChild<QObject*>(key3);
+            if(obj2)
+            {
+
+                obj2->setProperty("height", obj2->property("height").toDouble()-j);
+                if(obj2->property("height").toInt() <= 0.1)
+                {
+                    obj->setProperty("visible", "false");
+                   //  obj2->setProperty("height", d7->property("height"));
+                    QString key4 = "d7Collumn" + QString::number(4-i-1);
+                    qDebug() << key4;
+                    QObject *obj3 = m_rootObject->findChild<QObject*>(key4);
+                    if(obj3)
+                        obj2->setProperty("height", obj3->property("height"));
+                    else
+                        obj2->setProperty("height", 0);
+                }
+
+            }
+
+
+        }
+
         return;
     }
 

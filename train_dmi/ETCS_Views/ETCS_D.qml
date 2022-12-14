@@ -410,7 +410,7 @@ Item {
                        height: parent.height*(1/4)
                        color: MyConst.paspLight
                        anchors.bottom: parent.bottom
-                   }
+                   }/*
                    Rectangle
                    {
                        id: indicationMarker
@@ -418,7 +418,7 @@ Item {
                        height: 2
                        width: parent.width
                        color: MyConst.yellow
-                   }
+                   }*/
 
             }
             Rectangle
@@ -497,7 +497,7 @@ Item {
         Image
         {
             id: image0
-            source: "../symbols/Planning/PL_23.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
