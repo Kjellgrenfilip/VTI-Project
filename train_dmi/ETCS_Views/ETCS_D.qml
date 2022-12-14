@@ -372,6 +372,7 @@ Item {
                    Rectangle
                    {
                        id: d7Collumn1
+                       objectName: "d7Collumn1"
                        width: parent.width/4
                        height: parent.height
                        color: MyConst.paspLight
@@ -381,6 +382,7 @@ Item {
                    Rectangle
                    {
                        id: d7Collumn2
+                       objectName: "d7Collumn2"
                        x: parent.width/4
                        width: parent.width/4
                        height: parent.height*(3/4)
@@ -391,6 +393,7 @@ Item {
                    Rectangle
                    {
                        id: d7Collumn3
+                       objectName: "d7Collumn3"
                        x: parent.width/4 * 2
                        width: parent.width/4
                        height: parent.height/2
@@ -401,6 +404,7 @@ Item {
                    Rectangle
                    {
                        id: d7Collumn4
+                       objectName: "d7Collumn4"
                        x: parent.width/4 * 3
                        width: parent.width/4
                        height: parent.height*(1/4)
@@ -486,7 +490,7 @@ Item {
         height: 20
         width: 40
         x: d6.x + 3
-        //visible: false
+        visible: true
         objectName: "PASP0"
         y: (d7.height - d7Collumn4.height) + height/2
 
@@ -515,7 +519,7 @@ Item {
         height: 20
         width: 30
         x: d6.x + 3
-        //visible: false
+        visible: true
         objectName: "PASP1"
         y: (d7.height - d7Collumn3.height) + height/2
 
@@ -544,7 +548,7 @@ Item {
         height: 20
         width: 30
         x: d6.x + 3
-        //visible: false
+        visible: true
         objectName: "PASP2"
         y: (d7.height - d7Collumn2.height) + height/2
 
@@ -573,7 +577,7 @@ Item {
         height: 20
         width: 30
         x: d6.x + 3
-        //visible: false
+        visible: true
         objectName: "PASP3"
         y: 0  + height/2
 

@@ -27,7 +27,7 @@ Test_Module::Test_Module(bool connection)
     }
 
     connect(m_positionTimer, SIGNAL(timeout()), this, SLOT(demoPositionUpdate()));
-    m_positionTimer->setInterval(1);
+    m_positionTimer->setInterval(25);
 }
 
 Test_Module::~Test_Module()
@@ -713,9 +713,6 @@ void Test_Module::resetStates()
 void Test_Module::demoPositionUpdate()
 {
    m_trainPosition += 1;
-
    updatePosition();
- updatePosition();
-
 }
 
