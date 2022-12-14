@@ -484,6 +484,8 @@ void Test_Module::receiveUpdate()
             m_networkServer->delay(10);
             m_networkServer->sendUpdate(m_jsonETCSC);
             m_networkServer->delay(10);
+           updateETCSC("03");
+
 
             testSpeedometer();
 

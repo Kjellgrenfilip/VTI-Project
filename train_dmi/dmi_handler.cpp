@@ -146,13 +146,13 @@ void DMI_Handler::updateGUI(QString const& key, QObject *obj)
         QString value = m_latestUpdate.value(key).toString();
         QString s;
         if(key == VTI_DMI::ETCSB7Image)
-            s = "symbols/Track Conditions/MO_";
+            s = "../symbols/Track Conditions/MO_";
         else if(key == VTI_DMI::ETCSC1Image)
         {
-            s = "symbols/Level/LE_";
+            s = "../symbols/Level/LE_";
         }
         else
-            s = "symbols/Track Conditions/TC_";
+            s = "../symbols/Track Conditions/TC_";
         s = s + value + ".bmp";
         qDebug() << s;
 

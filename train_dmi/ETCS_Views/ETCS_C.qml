@@ -176,7 +176,7 @@ Item {
                 {
                     id: c1Image
                     objectName: "etcsC1Image"
-                    source: ""
+                    source: "../symbols/Level/LE_03.bmp"
                     anchors.fill: parent
                 }
             }
