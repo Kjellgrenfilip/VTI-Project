@@ -1,34 +1,39 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item
 {
     id: brakes
     anchors.fill: parent
 
-    Rectangle       //Grey fram around ButtonGroup
+    //Grey frame around button group
+    Rectangle
     {
         anchors.fill: parent
         color: "transparent"
-        border.width: 10
-        border.color: "grey"
-        radius: 50
+        border.width: 5
+        border.color: MyConst.darkGrey
+        radius: 40
     }
 
-    Rectangle       //Rectangle to hold the text
+    // Text for brakes button group
+    Rectangle
     {
         width: parent.width / 2
         height: 30
         x: parent.width / 4
         color: MyConst.backgroundColor
+        y: -1
+
         Text
         {
             id: brake
             text: qsTr("BROMS")
-            font.pointSize: brakes.width / 25 // gives warning
-            color: "white"
+            font.pixelSize: brakes.width / 20 // gives warning
+            color: MyConst.white
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.top
         }
     }
     Grid
@@ -41,6 +46,8 @@ Item
         rows: 2
         columns: 2
         anchors.margins: 30
+
+        // Button for parking brake
         Button
         {
 
@@ -56,7 +63,7 @@ Item
             {
                 id: parkImage
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
             }
             Text
             {
@@ -64,8 +71,8 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("PARK")
-                font.pointSize: parent.width /8
-                color: "White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
 
             states:
@@ -76,7 +83,7 @@ Item
                 PropertyChanges
                 {
                     target: parkImage
-                    source:"desk_ikoner/yellow.png"
+                    source:"../desk_ikoner/yellow.png"
                 }
                 PropertyChanges
                 {
@@ -90,7 +97,7 @@ Item
                 PropertyChanges
                 {
                     target: parkImage
-                    source:"desk_ikoner/yellow.png"
+                    source:"../desk_ikoner/yellow.png"
                 }
                 PropertyChanges
                 {
@@ -104,7 +111,7 @@ Item
                 PropertyChanges
                 {
                     target: parkImage
-                    source:"desk_ikoner/button69.png"
+                    source:"../desk_ikoner/button69.png"
                 }
                 PropertyChanges
                 {
@@ -115,6 +122,7 @@ Item
             ]
         }
 
+        // Button for the brake indicator
         Button
         {
             id: brakeIndicator
@@ -126,7 +134,7 @@ Item
             {
                 id: brakeImage
                 anchors.fill: parent
-                source: "desk_ikoner/indicator_frame.png"
+                source: "../desk_ikoner/indicator_frame.png"
             }
             Text
             {
@@ -134,8 +142,8 @@ Item
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BROMS")
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /9
+                color: MyConst.white
             }
             Text
             {
@@ -143,8 +151,8 @@ Item
                 text: qsTr("FRÅN")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /9
+                color: MyConst.white
             }
             states:
                 [
@@ -154,7 +162,7 @@ Item
                     PropertyChanges
                     {
                         target: brakeImage
-                        source:"desk_ikoner/indicator_frame_green.png"
+                        source:"../desk_ikoner/indicator_frame_green.png"
                     }
                 },
                 State
@@ -163,7 +171,7 @@ Item
                     PropertyChanges
                     {
                         target: brakeImage
-                        source:"desk_ikoner/indicator_frameR.png"
+                        source:"../desk_ikoner/indicator_frameR.png"
                     }
                     PropertyChanges
                     {
@@ -177,11 +185,13 @@ Item
                     PropertyChanges
                     {
                         target: brakeImage
-                        source:"desk_ikoner/indicator_frame_green.png"
+                        source:"../desk_ikoner/indicator_frame_green.png"
                     }
                 }
             ]
         }
+
+        // Button for the electric brake
         Button
         {
             id: electricityBrake
@@ -195,7 +205,7 @@ Item
             {
                 id: electricityBrakeImage
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
             }
             Text
             {
@@ -203,8 +213,8 @@ Item
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("ELBR")
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
             Text
             {
@@ -212,9 +222,8 @@ Item
                 text: qsTr("TILL")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                //y:broms.y + 30
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
             states:
                 [
@@ -224,7 +233,7 @@ Item
                     PropertyChanges
                     {
                         target: electricityBrakeImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -238,7 +247,7 @@ Item
                     PropertyChanges
                     {
                         target: electricityBrakeImage
-                        source:"desk_ikoner/yellow.png"
+                        source:"../desk_ikoner/yellow.png"
                     }
                     PropertyChanges
                     {
@@ -257,7 +266,7 @@ Item
                     PropertyChanges
                     {
                         target: electricityBrakeImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -266,8 +275,9 @@ Item
                     }
                 }
             ]
-
         }
+
+        // Button for the magnetic brake
         Button
         {
             id: magneticBrake
@@ -284,7 +294,7 @@ Item
             {
                 id: mgImage
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
             }
             Text
             {
@@ -292,8 +302,8 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("MG")
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
             states:
                 [
@@ -302,7 +312,7 @@ Item
                     name: "default";
                     PropertyChanges {
                         target: mgImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -315,7 +325,7 @@ Item
                     name: "active";
                     PropertyChanges {
                         target: mgImage
-                        source:"desk_ikoner/redButton.png"
+                        source:"../desk_ikoner/redButton.png"
                     }
                     PropertyChanges
                     {
@@ -328,7 +338,7 @@ Item
                     name: "inactive";
                     PropertyChanges {
                         target: mgImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {

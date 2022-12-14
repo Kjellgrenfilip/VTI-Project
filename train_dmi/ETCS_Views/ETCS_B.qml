@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item
 {
@@ -34,7 +34,7 @@ Item
                 id: b6Text
                 text: qsTr("25")
                 color: MyConst.white
-                font.pointSize: parent.height/2
+                font.pixelSize: parent.height/2
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
@@ -233,7 +233,7 @@ Item
                 color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                font.pointSize: parent.height/1.8
+                font.pixelSize: parent.height/1.8
             }
 
             Image
@@ -276,7 +276,7 @@ Item
                     PropertyChanges
                     {
                         target: etcsB7Image
-                        source: "symbols/Mode/MO_13.bmp"
+                        source: "../symbols/Mode/MO_13.bmp"
                         visible: true
                     }
                 }

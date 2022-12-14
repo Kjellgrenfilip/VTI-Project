@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 Item {
     id: textInfo
     anchors.fill: parent
@@ -8,15 +8,17 @@ Item {
     {
         anchors.fill: parent
         color: "transparent"
+
+        // The area for showing received information
         Rectangle
         {
             width: parent.width*7/8 -5
             height: parent.height - 5
             color: "transparent"
-            border.width: 10
-            border.color: "grey"
-            radius: 25
-            Text // should be textinput
+            border.width: 5
+            border.color: MyConst.darkGrey
+            radius: 20
+            Text
             {
                 id: textAreaInfo
                 objectName: "textInfo"
@@ -27,15 +29,17 @@ Item {
                     id: textAreaInfoText
                     objectName: "textAreaInfoText"
                     anchors.fill: parent
-                    color: "White"
-                    text: qsTr("hello")
-                    font.pointSize: parent.width/24
+                    color: MyConst.white
+                    text: qsTr("")
+                    font.pixelSize: parent.width/24
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
             }
         }
-           }
+    }
+
+    // The button for acknowledging the received information
     Button
     {
         id: receiptButton
@@ -50,7 +54,7 @@ Item {
         {
             id: receiptImage
             anchors.fill: parent
-            source: "desk_ikoner/button69.png"
+            source: "../desk_ikoner/button69.png"
         }
         Text
         {
@@ -58,8 +62,8 @@ Item {
             anchors.bottom: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("FEL")
-            font.pointSize: parent.width /8
-            color:"White"
+            font.pixelSize: parent.width /8
+            color: MyConst.white
         }
         Text
         {
@@ -67,8 +71,8 @@ Item {
             text: qsTr("KVITT.")
             anchors.top: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pointSize: parent.width /8
-            color:"White"
+            font.pixelSize: parent.width /8
+            color: MyConst.white
         }
         onPressed: buttonHandler.receiptPressed()
 

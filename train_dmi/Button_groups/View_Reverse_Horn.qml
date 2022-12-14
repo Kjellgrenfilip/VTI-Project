@@ -1,9 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 
-import "Imports" 1.0
-
-import QtMultimedia
+import "../Imports" 1.0
 
 Item
 {
@@ -14,6 +12,7 @@ Item
         anchors.fill: parent
         color: "transparent"
 
+        // The button for reverse
         Button
         {
             id: reverseButton
@@ -32,7 +31,7 @@ Item
                 id: reverseImage
                 objectName: "reverseImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -40,7 +39,7 @@ Item
                 id: reverseImageBlinking
                 objectName: "reverseImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/yellow.png"
+                source: "../desk_ikoner/yellow.png"
                 visible: false
             }
             Text
@@ -49,8 +48,8 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BACK")
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
             states:
                 [
@@ -84,6 +83,8 @@ Item
                 }
                 ]
         }
+
+        // The button for the horn
         Button
         {
             id: hornButton
@@ -95,19 +96,13 @@ Item
             anchors.verticalCenter: parent.verticalCenter
             enabled: false
 
-            onPressed: { buttonHandler.hornPressed(); sound.play() }
-
-            SoundEffect
-            {
-                id: sound
-                source: "sounds/mlg-airhorn.wav"
-            }
+            onPressed: buttonHandler.hornPressed()
 
             Image
             {
                 id: hornImage
                 anchors.fill: parent
-                source: "desk_ikoner/siren5.png"
+                source: "../desk_ikoner/siren5.png"
             }
 
             states:

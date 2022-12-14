@@ -3,7 +3,8 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtQuick.Shapes 1.15
 
-import "Imports" 1.0
+import "../Imports" 1.0
+import "../Button_groups" 1.0
 
 Item {
     anchors.fill: parent
@@ -17,19 +18,13 @@ Item {
         background: Rectangle{
             anchors.fill: parent;
             color: MyConst.backgroundColor;
-            border.color: "#bfbfbf";
-            border.width: 2;
-            Text{
-                text: "ETCS_Panel";
-                color:"white";
-            }
         }
         Rectangle
         {
             id: rectangleZ
             width: parent.width
             height: (15/MyConst.etcsHeight) * parent.height
-            color:"purple"
+            color:"transparent"
         }
 
         Rectangle
@@ -79,7 +74,7 @@ Item {
             anchors.top: rectangleC.bottom
             width: (334/MyConst.etcsWidth) * parent.width
             height: (100/MyConst.etcsHeight) * parent.height
-            color: "red"
+            color: "transparent"
 
         }
         Rectangle
@@ -89,7 +84,7 @@ Item {
             anchors.bottom: parent.bottom
             width:(640/MyConst.etcsWidth) * parent.width
             height:(15/MyConst.etcsHeight) * parent.height
-            color:"green"
+            color:"transparent"
         }
         Rectangle
         {
@@ -98,7 +93,7 @@ Item {
             anchors.top:rectangleD.bottom
             width: (246/MyConst.etcsWidth) * parent.width
             height: (150/MyConst.etcsHeight) * parent.height
-            color: "orange"
+            color: "transparent"
         }
         Rectangle
         {
@@ -108,7 +103,7 @@ Item {
             anchors.bottom: rectangleY.top
             width: (60/MyConst.etcsWidth) * parent.width
             height: (450/MyConst.etcsHeight) * parent.height
-            color: "blue"
+            color: "transparent"
         }
     }
 }

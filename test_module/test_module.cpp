@@ -712,7 +712,10 @@ void Test_Module::resetStates()
 
 void Test_Module::demoPositionUpdate()
 {
-   // m_trainPosition += 1;
-   //updatePosition();
+   m_trainPosition += 1;
+
+   updatePosition();
+ updatePosition();
+
 }
 

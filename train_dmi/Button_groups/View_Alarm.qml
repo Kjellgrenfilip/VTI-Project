@@ -1,37 +1,44 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item {
     id: alarm
     anchors.fill: parent
     Rectangle
     {
+        // Grey border around button group
         Rectangle
         {
             anchors.fill: parent
             color: "transparent"
-            border.width: 10
-            border.color: "grey"
-            radius: 50
+            border.width: 5
+            border.color: MyConst.darkGrey
+            radius: 20
         }
+
+        // Text for alarm button group
         Rectangle
         {
             width: parent.width / 2
             height: 30
             x: parent.width / 4
-            color: "#041122"
+            color: MyConst.backgroundColor
+            y: -1
             Text
             {
                 id: alarmText
                 text: qsTr("LARM")
-                font.pointSize: alarm.width / 25 // gives warning
-                color: "white"
+                font.pixelSize: alarm.width / 20 // gives warning
+                color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.top
             }
         }
         anchors.fill: parent
         color: "transparent"
+
+        // Button for emergency brake
         Button
         {
             id: emergencyBrakeButton
@@ -50,7 +57,7 @@ Item {
                 id: emergencyBrakeImage
                 objectName: "emergencyBrakeImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -58,7 +65,7 @@ Item {
                 id: emergencyBrakeImageBlinking
                 objectName: "emergencyBrakeImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/redButton.png"
+                source: "../desk_ikoner/redButton.png"
                 visible: false
             }
 
@@ -68,9 +75,10 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("NBÖ")
-                font.pointSize: parent.width /8
-                color: "White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
+
             states:
                 [
                 State
@@ -123,6 +131,7 @@ Item {
             ]
         }
 
+        // Button for fire alam
         Button
         {
             id: fireButton
@@ -141,7 +150,7 @@ Item {
                 id: fireImage
                 objectName: "fireImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -149,7 +158,7 @@ Item {
                 id: fireImageBlinking
                 objectName: "fireImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/redButton.png"
+                source: "../desk_ikoner/redButton.png"
                 visible: false
             }
             Text
@@ -158,8 +167,8 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("BRAND")
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
 
             states:

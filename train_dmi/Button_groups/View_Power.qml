@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.12
-import "Imports" 1.0
+import "../Imports" 1.0
 
 Item
 {
@@ -12,26 +12,33 @@ Item
         anchors.fill: parent
         color: "transparent"
     }
+
+    // Grey border around the button group
     Rectangle
     {
-        anchors.fill: parent
+        width: parent.width
+        height: parent.height - 10
         color: "transparent"
-        border.width: 10
-        border.color: "grey"
-        radius: 50
+        border.width: 5
+        border.color: MyConst.darkGrey
+        radius: 40
     }
+
+    // Text for the button group
     Rectangle
     {
         width: parent.width / 2
         height: 30
         x: parent.width / 4
         color: MyConst.backgroundColor
+        y: -1
         Text
         {
             text: qsTr("SPÄNNING")
-            font.pointSize: power.width / 25
-            color: "white"
+            font.pixelSize: power.width / 20
+            color: MyConst.white
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.top
         }
     }
 
@@ -43,7 +50,7 @@ Item
         rows: 3
         columns: 2
         anchors.margins: 30
-
+        //clickable pantograph up button
         Button
         {
             id:pantUpButton
@@ -58,7 +65,7 @@ Item
                 id: pantUpImage
                 objectName: "pantographUpImage"
                 anchors.fill: parent
-                source: "desk_ikoner/Up.png"
+                source: "../desk_ikoner/Up.png"
                 visible: true
             }
             Image
@@ -66,7 +73,7 @@ Item
                 id: pantUpImageBlinking
                 objectName: "pantographUpImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/UpY.png"
+                source: "../desk_ikoner/UpY.png"
                 visible: false
             }
             states:
@@ -153,14 +160,14 @@ Item
             {
                 id:pantChargeImage
                 anchors.fill: parent
-                source: "desk_ikoner/indicator_frame.png"
+                source: "../desk_ikoner/indicator_frame.png"
             }
 
             Text
             {
                 id: pantChargeText
                 text: qsTr("0V")
-                color: "white"
+                color: MyConst.white
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -178,7 +185,12 @@ Item
                     PropertyChanges
                     {
                         target: pantChargeImage
-                        source: "desk_ikoner/indicator_frame.png"
+                        source: "../desk_ikoner/indicator_frame.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: pantChargeText
+                        color: MyConst.black
                     }
                 },
                 State
@@ -192,7 +204,12 @@ Item
                     PropertyChanges
                     {
                         target: pantChargeImage
-                        source: "desk_ikoner/indicator_frameR.png"
+                        source: "../desk_ikoner/indicator_frameR.png"
+                    }
+                    PropertyChanges
+                    {
+                        target: pantChargeText
+                        color: MyConst.white
                     }
                 }
             ]
@@ -210,7 +227,7 @@ Item
             {
                 id:pantDownImage
                 anchors.fill: parent
-                source: "desk_ikoner/Down.png"
+                source: "../desk_ikoner/Down.png"
             }
             onPressed: buttonHandler.pantDownPressed()
             states:
@@ -221,7 +238,7 @@ Item
                     PropertyChanges
                     {
                         target: pantDownImage
-                        source:"desk_ikoner/Down.png"
+                        source:"../desk_ikoner/Down.png"
                     }
                     PropertyChanges
                     {
@@ -235,7 +252,7 @@ Item
                     PropertyChanges
                     {
                         target: pantDownImage
-                        source: "desk_ikoner/DownY.png"
+                        source: "../desk_ikoner/DownY.png"
                     }
                     PropertyChanges
                     {
@@ -249,7 +266,7 @@ Item
                     PropertyChanges
                     {
                         target: pantDownImage
-                        source:"desk_ikoner/Down.png"
+                        source:"../desk_ikoner/Down.png"
                     }
                     PropertyChanges
                     {
@@ -260,7 +277,7 @@ Item
                 ]
         }
 
-        // non-clickable current indicator?
+        // non-clickable current indicator
         Button
         {
             id:voltageWarningButton
@@ -274,7 +291,7 @@ Item
                 id: voltageWarningImage
                 objectName: "voltageWarningImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -282,10 +299,18 @@ Item
                 id: voltageWarningImageBlinking
                 objectName: "voltageWarningImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/yellow.png"
+                source: "../desk_ikoner/yellow.png"
                 visible: false
             }
-            text: "0-SP"
+            Text
+            {
+                text: "0-SP"
+                color: MyConst.white
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+
 
             states:
                 [
@@ -362,12 +387,20 @@ Item
                 id: mainBreakerImage
                 objectName: "mainBreakerImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
 
-            text: "H-BRYT"
+            Text
+            {
+                text: "H-BRYT"
+                color: MyConst.white
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
             onPressed: buttonHandler.mainBreakerPressed()
+
             states:
                 [
                 State
@@ -376,7 +409,7 @@ Item
                     PropertyChanges
                     {
                         target: mainBreakerImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -390,7 +423,7 @@ Item
                     PropertyChanges
                     {
                         target: mainBreakerImage
-                        source: "desk_ikoner/yellow.png"
+                        source: "../desk_ikoner/yellow.png"
                     }
                     PropertyChanges
                     {
@@ -404,7 +437,7 @@ Item
                     PropertyChanges
                     {
                         target: mainBreakerImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -428,19 +461,27 @@ Item
             {
                 id: trainHeatImage
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
             }
-            text: "TÅGV."
+
+            Text
+            {
+                text: "TÅGV."
+                color: MyConst.white
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
             onPressed: buttonHandler.heatingPressed()
             states:
-                [
+            [
                 State
                 {
                     name: "default"
                     PropertyChanges
                     {
                         target: trainHeatImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -454,7 +495,7 @@ Item
                     PropertyChanges
                     {
                         target: trainHeatImage
-                        source: "desk_ikoner/yellow.png"
+                        source: "../desk_ikoner/yellow.png"
                     }
                     PropertyChanges
                     {
@@ -468,7 +509,7 @@ Item
                     PropertyChanges
                     {
                         target: trainHeatImage
-                        source:"desk_ikoner/button69.png"
+                        source:"../desk_ikoner/button69.png"
                     }
                     PropertyChanges
                     {
@@ -476,7 +517,7 @@ Item
                         enabled: true
                     }
                 }
-                ]
+            ]
         }
     }
 }

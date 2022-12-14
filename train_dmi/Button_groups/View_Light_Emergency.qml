@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 Item {
     id: lightEmergency
     anchors.fill: parent
@@ -8,6 +8,8 @@ Item {
     {
         anchors.fill: parent
         color: "transparent"
+
+        // The button for front lights
         Button
         {
             id: lightButton
@@ -24,7 +26,7 @@ Item {
                 id: lightImage
                 objectName: "lightImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
             Image
@@ -32,7 +34,7 @@ Item {
                 id: lightImageBlinking
                 objectName: "lightImageBlinking"
                 anchors.fill: parent
-                source: "desk_ikoner/yellow.png"
+                source: "../desk_ikoner/yellow.png"
                 visible: false
             }
 
@@ -42,8 +44,8 @@ Item {
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("FRONT")
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
             Text
             {
@@ -51,8 +53,8 @@ Item {
                 text: qsTr("LJUS")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
             states:
             [
@@ -85,6 +87,8 @@ Item {
             ]
             onPressed: buttonHandler.lightPressed()
         }
+
+        // The button for emergency call
         Button
         {
             id: emergencyButton
@@ -101,7 +105,7 @@ Item {
                 id: emergencyImage
                 objectName: "emergencyCallImage"
                 anchors.fill: parent
-                source: "desk_ikoner/button69.png"
+                source: "../desk_ikoner/button69.png"
                 visible: true
             }
 
@@ -111,8 +115,8 @@ Item {
                 anchors.bottom: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("NÖD")
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
             Text
             {
@@ -120,8 +124,8 @@ Item {
                 text: qsTr("ANROP")
                 anchors.top: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pointSize: parent.width /8
-                color:"White"
+                font.pixelSize: parent.width /8
+                color: MyConst.white
             }
             states: [
                 State {
@@ -132,7 +136,7 @@ Item {
                     }
                     PropertyChanges {
                         target: emergencyImage
-                        source: "desk_ikoner/redButton.png"
+                        source: "../desk_ikoner/redButton.png"
                     }
                 }
 

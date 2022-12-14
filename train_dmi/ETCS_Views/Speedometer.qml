@@ -3,7 +3,7 @@ import QtQuick.Shapes 1.15
 
 import QtQuick.Controls 2.15
 
-import "Imports" 1.0
+import "../Imports" 1.0
 Item
 {
     id: speedometer
@@ -177,7 +177,8 @@ Item
             visible: csgMiddleLayerHook
         }
     }
-    //Creates the bottom darkgrey CircularSpeedGauge.
+
+//Creates the bottom darkgrey CircularSpeedGauge.
     CircularSpeedGauge
     {
         id: csgBottom
@@ -222,7 +223,7 @@ Item
             id: needleImage
             anchors.horizontalCenter:parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-            source: "symbols/Speedometer/"+needleColor+"_needle.png"
+            source: "../symbols/Speedometer/"+needleColor+"_needle.png"
             scale: 0.1
 
             transform:
@@ -266,7 +267,7 @@ Item
             anchors.margins: 2
             color: speedDigitColor
             font.bold: true
-            font.pointSize: 24
+            font.pixelSize: 24
         }
         transform: Translate
         {

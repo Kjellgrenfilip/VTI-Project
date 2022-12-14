@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import "Imports" 1.0
+import "../Imports" 1.0
 import QtQuick.Controls 2.12
 
 Item {
@@ -13,6 +13,7 @@ Item {
             anchors.top: parent.top
             columns: 3
             rows: 1
+            // - button to change scale
             Rectangle
             {
                 id:d12
@@ -24,6 +25,8 @@ Item {
                     id: topSign
                     anchors.fill: parent
                     background:Rectangle { color:"transparent"}
+                    hoverEnabled: false
+
                     Text
                     {
                         id: upperSign
@@ -32,7 +35,7 @@ Item {
                         anchors.fill: parent
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pointSize:(topSign.pressed) ? parent.height*2 - 15 : parent.height*2 - 10
+                        font.pixelSize:(topSign.pressed) ? parent.height*2 - 15 : parent.height*2 - 10
                         font.weight: 1
                     }
                     onPressed: buttonHandler.scaleDownPressed(d1.scale)
@@ -70,12 +73,12 @@ Item {
                 height: parent.height
                 color: "transparent"
                 property int scale: 4000
-
+                // Numbers next to Scale lines
                 Text {
                     id: d1text1
                     text: d1.scale
                     width: parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(0/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -84,7 +87,7 @@ Item {
                     id: d1text2
                     text: d1.scale/2
                     width:parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(41/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -93,7 +96,7 @@ Item {
                     id: d1text3
                     text: d1.scale/4
                     width:parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(84/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -102,7 +105,7 @@ Item {
                     id: d1text4
                     text: d1.scale/8
                     width:parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(127/270) * parent.height
                     horizontalAlignment: Text.AlignRight
@@ -111,12 +114,13 @@ Item {
                     id: d1text5
                     text: qsTr("0")
                     width:parent.width
-                    font.pointSize: parent.height/28
+                    font.pixelSize: parent.height/24
                     color: MyConst.mediumGrey
                     y:(261/270) * parent.height
                     horizontalAlignment: Text.AlignRight
                 }
             }
+            // Scale lines from top to bottom
             Rectangle
             {
                 id:d2
@@ -201,6 +205,7 @@ Item {
                 height: parent.height
                 color: "transparent"
             }
+            // Distance bars
             Rectangle
             {
                 id:d5
@@ -353,9 +358,11 @@ Item {
                 height: parent.height
                 color: "transparent"
             }
+
+            //PASP area
             Rectangle
             {
-                id:d7
+              id:d7
                width: (93/246) * parent.width
                height: parent.height
                color: MyConst.paspDark
@@ -424,6 +431,7 @@ Item {
             height: (15/300) * parent.height
             width: parent.width
             anchors.top: middlegrid.bottom
+            // + button to change scale of distance
             Rectangle
             {
                 id: d9
@@ -435,6 +443,8 @@ Item {
                     id: scaleUp
                     anchors.fill: parent
                     background:Rectangle { color:"transparent"}
+                    hoverEnabled: false
+
                     Text
                     {
                         id: lowerSign
@@ -443,7 +453,7 @@ Item {
                         anchors.fill: parent
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pointSize:(scaleUp.pressed) ? parent.height - 5 : parent.height
+                        font.pixelSize:(scaleUp.pressed) ? parent.height - 5 : parent.height
 
                     }
                     onPressed:buttonHandler.scaleUpPressed(d1.scale)
@@ -466,7 +476,10 @@ Item {
             }
         }
 
-
+    /*PASP0 is the image furthest down in the PASP area and the next following
+      images are ascending order. There exists 5 different PASP images since
+      there is no good way of dynamically creating qml objects.
+      */
     Rectangle
     {
         color: "transparent"
@@ -475,12 +488,12 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP0"
-        y: (d7.height - d7Collumn4.height)
+        y: (d7.height - d7Collumn4.height) + height/2
 
         Image
         {
             id: image0
-            source: "symbols/Planning/PL_21.png"
+            source: "../symbols/Planning/PL_23.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -489,8 +502,9 @@ Item {
         Text
         {
             id: text0
+            color: MyConst.grey
             text: qsTr("80")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image0.right
         }
     }
@@ -503,12 +517,12 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP1"
-        y: (d7.height - d7Collumn3.height)
+        y: (d7.height - d7Collumn3.height) + height/2
 
         Image
         {
             id: image1
-            source: "symbols/Planning/PL_21.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -517,8 +531,9 @@ Item {
         Text
         {
             id: text1
+            color: MyConst.grey
             text: qsTr("120")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image1.right
         }
     }
@@ -531,12 +546,12 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP2"
-        y: (d7.height - d7Collumn2.height)
+        y: (d7.height - d7Collumn2.height) + height/2
 
         Image
         {
             id: image2
-            source: "symbols/Planning/PL_21.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -545,8 +560,9 @@ Item {
         Text
         {
             id: text2
+            color: MyConst.grey
             text: qsTr("140")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image2.right
         }
     }
@@ -559,12 +575,12 @@ Item {
         x: d6.x + 3
         //visible: false
         objectName: "PASP3"
-        y: 0
+        y: 0  + height/2
 
         Image
         {
             id: image3
-            source: "symbols/Planning/PL_21.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -573,8 +589,9 @@ Item {
         Text
         {
             id: text3
+            color: MyConst.grey
             text: qsTr("40")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image3.right
         }
     }
@@ -585,14 +602,14 @@ Item {
         height: 20
         width: 30
         x: d6.x + 3
-        //visible: false
+        visible: false
         objectName: "PASP4"
-        y: 0
+        y: 0  + height/2
 
         Image
         {
             id: image4
-            source: "symbols/Planning/PL_21.png"
+            source: "../symbols/Planning/PL_22.png"
             anchors.left: parent.left
             height: 20
             width: 20
@@ -601,8 +618,9 @@ Item {
         Text
         {
             id: text4
+            color: MyConst.grey
             text: qsTr("60")
-            font.pointSize: 12
+            font.pixelSize: 12
             anchors.left: image4.right
         }
     }
