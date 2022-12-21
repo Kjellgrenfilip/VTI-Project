@@ -503,7 +503,7 @@ Item {
         {
             id: text0
             color: MyConst.grey
-            text: qsTr("80")
+            text: qsTr("140")
             font.pixelSize: 12
             anchors.left: image0.right
         }
@@ -561,7 +561,7 @@ Item {
         {
             id: text2
             color: MyConst.grey
-            text: qsTr("140")
+            text: qsTr("60")
             font.pixelSize: 12
             anchors.left: image2.right
         }
