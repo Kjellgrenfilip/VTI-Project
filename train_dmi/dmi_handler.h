@@ -12,7 +12,7 @@
 
 typedef std::pair<double, double> Grad_Pos;
 
-// Remove before handover of project
+// Only for test
 static const std::vector<Grad_Pos> test_vector = { {15, -375.73}, {0, 201.26}, {-10, 800.26}, {12, 3500}, {0, 4500.0} };
 
 class DMI_Handler : public QObject
